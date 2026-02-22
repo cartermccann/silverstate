@@ -2,6 +2,7 @@ import { useEffect, useRef, type ReactNode } from 'react'
 import Lenis from 'lenis'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { isTouchDevice } from '../hooks/useIsMobile'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -15,6 +16,10 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
   useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (prefersReduced) return
+
+    // Disable Lenis on touch devices — it conflicts with ScrollTrigger
+    // pinning and native mobile scroll (address bar, momentum, rubber-band).
+    if (isTouchDevice()) return
 
     const lenis = new Lenis({
       duration: 1.2,

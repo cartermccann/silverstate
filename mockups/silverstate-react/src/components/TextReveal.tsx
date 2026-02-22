@@ -4,6 +4,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
+const isMobile = () => window.matchMedia('(max-width: 900px)').matches
+
 interface TextRevealProps {
   children: ReactNode
   as?: keyof React.JSX.IntrinsicElements
@@ -49,17 +51,20 @@ export default function TextReveal({
       },
     })
 
+    const mobile = isMobile()
+
     tl.fromTo(
       words,
       {
         opacity: 0,
-        y: 20,
-        filter: 'blur(4px)',
+        y: mobile ? 10 : 20,
+        // Skip blur filter on mobile — expensive on mobile GPU
+        ...(mobile ? {} : { filter: 'blur(4px)' }),
       },
       {
         opacity: 1,
         y: 0,
-        filter: 'blur(0px)',
+        ...(mobile ? {} : { filter: 'blur(0px)' }),
         duration: scrub ? 0.3 : duration,
         stagger: scrub ? 0.05 : stagger,
         ease: 'power3.out',
@@ -132,10 +137,11 @@ export function CharReveal({
     if (!el) return
 
     const chars = el.querySelectorAll('.cr-char')
+    const mobile = isMobile()
 
     gsap.fromTo(
       chars,
-      { opacity: 0, y: 40, rotateX: -90 },
+      { opacity: 0, y: mobile ? 20 : 40, rotateX: mobile ? -30 : -90 },
       {
         opacity: 1,
         y: 0,

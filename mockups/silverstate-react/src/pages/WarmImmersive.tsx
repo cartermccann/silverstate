@@ -194,8 +194,8 @@ export default function WarmImmersive() {
               display: 'grid', gridTemplateColumns: '1fr 1.2fr',
               gap: 64, alignItems: 'start',
             }}>
-              {/* Left -- sticky heading (ndstudio.gov sidebar pattern) */}
-              <div style={{ position: 'sticky', top: 120 }}>
+              {/* Left -- sticky heading (ndstudio.gov sidebar pattern) — unstick on mobile via class */}
+              <div className="wi-whothisis-sticky">
                 <AnimateIn variant="fadeIn">
                   <span style={{
                     fontSize: '.7rem', fontWeight: 600, letterSpacing: '.1em',
@@ -251,9 +251,9 @@ export default function WarmImmersive() {
         <section id="programs" style={{ position: 'relative', background: CREAM }}>
           <div className="wrap" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 56, padding: '80px 32px' }}>
 
-            {/* Sticky Images Container */}
+            {/* Sticky Images Container — unstick on mobile via CSS */}
             <div className="wi-program-img-stack" style={{
-              position: 'sticky', top: 120, height: 'var(--sticky-height, 600px)',
+              height: 'var(--sticky-height, 600px)',
               display: 'flex', flexDirection: 'column',
               borderRadius: 'var(--radius-lg)', overflow: 'hidden'
             }}>
@@ -264,7 +264,7 @@ export default function WarmImmersive() {
             {/* Scrolling Content */}
             <div className="wi-programs-scroll-content">
               {[programs.residential, programs.php, programs.iop].map((program) => (
-                <div key={program.title} style={{ minHeight: '80vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', marginBottom: 40 }}>
+                <div key={program.title} className="wi-program-panel" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', marginBottom: 40 }}>
                   <AnimateIn variant="fadeIn" delay={0.1}>
                     <span style={{
                       display: 'inline-block', fontSize: '.75rem', fontWeight: 600,
@@ -1248,8 +1248,39 @@ export default function WarmImmersive() {
         /* Team Carousel scrollbar hide */
         .team-carousel::-webkit-scrollbar { display: none; }
 
+        /* Sticky sidebar for "Who This Is For" — desktop only */
+        .wi-whothisis-sticky {
+          position: sticky;
+          top: 120px;
+        }
+
+        /* Sticky program image — desktop only */
+        .wi-program-img-stack {
+          position: sticky;
+          top: 120px;
+        }
+
+        /* Program scroll panels — tall on desktop for scrollytelling */
+        .wi-program-panel {
+          min-height: 80vh;
+        }
+
         /* Program grids -- responsive */
         @media (max-width: 900px) {
+          /* ── Disable sticky on mobile (single-column layout) ── */
+          .wi-whothisis-sticky {
+            position: static !important;
+          }
+          .wi-program-img-stack {
+            position: static !important;
+            height: 300px !important;
+          }
+
+          /* Reduce program panel height — no scrollytelling on mobile */
+          .wi-program-panel {
+            min-height: auto !important;
+          }
+
           .wi-program-grid {
             grid-template-columns: 1fr !important;
             gap: 32px !important;

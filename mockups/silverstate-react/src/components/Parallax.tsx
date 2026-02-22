@@ -1,6 +1,7 @@
 import { useRef, useEffect, type ReactNode, type CSSProperties } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { isTouchDevice } from '../hooks/useIsMobile'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -38,9 +39,16 @@ export default function Parallax({
     const inner = innerRef.current
     if (!container || !inner) return
 
-    const distance = 100 * speed
+    const isTouch = isTouchDevice()
+
+    // Halve parallax speed on touch — scrub fights momentum scrolling
+    const effectiveSpeed = isTouch ? speed * 0.4 : speed
+    const distance = 100 * effectiveSpeed
     const yFrom = direction === 'up' ? distance : -distance
     const yTo = direction === 'up' ? -distance : distance
+
+    // Disable scale on touch — combined transforms are expensive on mobile GPU
+    const useScale = scale && !isTouch
 
     const props: gsap.TweenVars = {
       y: yTo,
@@ -53,7 +61,7 @@ export default function Parallax({
       },
     }
 
-    if (scale) {
+    if (useScale) {
       props.scale = scaleTo
     }
 
@@ -61,7 +69,7 @@ export default function Parallax({
       inner,
       {
         y: yFrom,
-        ...(scale ? { scale: scaleFrom } : {}),
+        ...(useScale ? { scale: scaleFrom } : {}),
       },
       props
     )
