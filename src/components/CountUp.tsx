@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react'
+import { useRef, useEffect, useState, useMemo } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -20,24 +20,27 @@ export default function CountUp({
   triggerStart = 'top 85%',
 }: CountUpProps) {
   const ref = useRef<HTMLSpanElement>(null)
-  const [display, setDisplay] = useState(`${prefix}0${suffix}`)
   const hasAnimated = useRef(false)
 
+  const numericEnd = useMemo(() => (typeof end === 'number' ? end : parseFloat(String(end))), [end])
+  const canAnimate = !isNaN(numericEnd)
+  const prefersReduced = useMemo(
+    () =>
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+    [],
+  )
+  const shouldAnimate = canAnimate && !prefersReduced
+
+  const [display, setDisplay] = useState(() =>
+    shouldAnimate ? `${prefix}0${suffix}` : `${prefix}${end}${suffix}`,
+  )
+
   useEffect(() => {
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (prefersReduced) {
-      setDisplay(`${prefix}${end}${suffix}`)
-      return
-    }
+    if (!shouldAnimate) return
 
     const el = ref.current
     if (!el) return
-
-    const numericEnd = typeof end === 'number' ? end : parseFloat(end)
-    if (isNaN(numericEnd)) {
-      setDisplay(`${prefix}${end}${suffix}`)
-      return
-    }
 
     const isFloat = !Number.isInteger(numericEnd)
     const counter = { value: 0 }
@@ -56,7 +59,7 @@ export default function CountUp({
           ease: 'power2.out',
           onUpdate: () => {
             setDisplay(
-              `${prefix}${isFloat ? counter.value.toFixed(1) : Math.round(counter.value)}${suffix}`
+              `${prefix}${isFloat ? counter.value.toFixed(1) : Math.round(counter.value)}${suffix}`,
             )
           },
         })
@@ -68,7 +71,7 @@ export default function CountUp({
         if (t.trigger === el) t.kill()
       })
     }
-  }, [end, suffix, prefix, duration, triggerStart])
+  }, [numericEnd, shouldAnimate, suffix, prefix, duration, triggerStart])
 
   return <span ref={ref}>{display}</span>
 }

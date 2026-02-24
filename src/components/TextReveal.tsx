@@ -68,7 +68,7 @@ export default function TextReveal({
         duration: scrub ? 0.3 : duration,
         stagger: scrub ? 0.05 : stagger,
         ease: 'power3.out',
-      }
+      },
     )
 
     return () => {
@@ -79,7 +79,9 @@ export default function TextReveal({
   if (typeof children !== 'string') {
     return (
       // @ts-expect-error -- polymorphic ref
-      <Tag ref={containerRef} className={className} style={style}>{children}</Tag>
+      <Tag ref={containerRef} className={className} style={style}>
+        {children}
+      </Tag>
     )
   }
 
@@ -102,7 +104,7 @@ export default function TextReveal({
           >
             {word}
           </span>
-        )
+        ),
       )}
     </Tag>
   )
@@ -154,18 +156,21 @@ export function CharReveal({
           start: triggerStart,
           once: true,
         },
-      }
+      },
     )
 
-    return () => ScrollTrigger.getAll().forEach((t) => {
-      if (t.trigger === el) t.kill()
-    })
+    return () =>
+      ScrollTrigger.getAll().forEach((t) => {
+        if (t.trigger === el) t.kill()
+      })
   }, [children, stagger, triggerStart, duration])
 
   if (typeof children !== 'string') {
     return (
       // @ts-expect-error -- polymorphic ref
-      <Tag ref={containerRef} className={className} style={style}>{children}</Tag>
+      <Tag ref={containerRef} className={className} style={style}>
+        {children}
+      </Tag>
     )
   }
 
@@ -173,19 +178,12 @@ export function CharReveal({
 
   return (
     // @ts-expect-error -- polymorphic ref
-    <Tag
-      ref={containerRef}
-      className={className}
-      style={{ ...style, perspective: 800 }}
-    >
+    <Tag ref={containerRef} className={className} style={{ ...style, perspective: 800 }}>
       {words.map((word, wi) =>
         /^\s+$/.test(word) ? (
           <span key={wi}> </span>
         ) : (
-          <span
-            key={wi}
-            style={{ display: 'inline-block', whiteSpace: 'nowrap' }}
-          >
+          <span key={wi} style={{ display: 'inline-block', whiteSpace: 'nowrap' }}>
             {word.split('').map((char, ci) => (
               <span
                 key={ci}
@@ -199,7 +197,7 @@ export function CharReveal({
               </span>
             ))}
           </span>
-        )
+        ),
       )}
     </Tag>
   )

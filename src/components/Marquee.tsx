@@ -42,7 +42,7 @@ export default function Marquee({
         modifiers: {
           x: gsap.utils.unitize((x) => {
             return direction === 'left'
-              ? ((parseFloat(x) % contentWidth) + contentWidth) % contentWidth * -1
+              ? (((parseFloat(x) % contentWidth) + contentWidth) % contentWidth) * -1
               : parseFloat(x) % contentWidth
           }),
         },

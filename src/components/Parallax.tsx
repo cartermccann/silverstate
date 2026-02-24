@@ -71,7 +71,7 @@ export default function Parallax({
         y: yFrom,
         ...(useScale ? { scale: scaleFrom } : {}),
       },
-      props
+      props,
     )
 
     return () => {
@@ -161,7 +161,7 @@ export function ClipReveal({
           start: triggerStart,
           once: true,
         },
-      }
+      },
     )
 
     return () => {

@@ -1,0 +1,9 @@
+dist/
+build/
+node_modules/
+public/
+mockups/
+*.config.ts
+*.config.cjs
+playwright-report/
+test-results/

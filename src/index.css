@@ -4,25 +4,25 @@
 :root {
   --font-display: 'Space Grotesk', sans-serif;
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
-  --blue: #134B8E;
+  --blue: #134b8e;
   --blue-hover: #1a5daf;
   --blue-soft: #edf2f8;
-  --sage: #5A7A6E;
+  --sage: #5a7a6e;
   --sage-soft: #eef4f1;
-  --cream: #FDFBF7;
-  --warm: #F5F2EB;
-  --warm-deep: #E5DED3;
+  --cream: #fdfbf7;
+  --warm: #f5f2eb;
+  --warm-deep: #e5ded3;
   --text: #111;
   --body: #4a4a4a;
   --muted: #999;
-  --border: rgba(0, 0, 0, .07);
+  --border: rgba(0, 0, 0, 0.07);
   --white: #fff;
   --dark: #0f172a;
   --radius: 12px;
   --radius-lg: 16px;
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .04);
-  --shadow: 0 1px 3px rgba(0, 0, 0, .04), 0 4px 12px rgba(0, 0, 0, .03);
-  --shadow-hover: 0 2px 8px rgba(0, 0, 0, .06), 0 8px 24px rgba(0, 0, 0, .04);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.03);
+  --shadow-hover: 0 2px 8px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.04);
 
   /* Type Scale (realfood.gov style) */
   --h1-size: clamp(3rem, 6vw, 5rem);
@@ -89,19 +89,29 @@ body {
 
 img {
   display: block;
-  max-width: 100%
+  max-width: 100%;
 }
 
 a {
   text-decoration: none;
-  color: inherit
+  color: inherit;
 }
 
 /* ── Text Wrap (realfood.gov / ndstudio.gov style) ── */
-h1, h2, h3, h4, h5, h6,
-.section-heading { text-wrap: balance; }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.section-heading {
+  text-wrap: balance;
+}
 
-p, .section-desc { text-wrap: pretty; }
+p,
+.section-desc {
+  text-wrap: pretty;
+}
 
 /* ── Skip Link (Accessibility) ── */
 .skip-link {
@@ -112,10 +122,10 @@ p, .section-desc { text-wrap: pretty; }
   color: var(--white);
   padding: 12px 24px;
   border-radius: 0 0 8px 8px;
-  font-size: .875rem;
+  font-size: 0.875rem;
   font-weight: 600;
   z-index: 9999;
-  transition: top .15s ease;
+  transition: top 0.15s ease;
 }
 
 .skip-link:focus {
@@ -128,13 +138,13 @@ p, .section-desc { text-wrap: pretty; }
 .wrap {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 32px
+  padding: 0 32px;
 }
 
 .wrap-narrow {
   max-width: 800px;
   margin: 0 auto;
-  padding: 0 32px
+  padding: 0 32px;
 }
 
 /* ── Buttons ── */
@@ -144,9 +154,9 @@ p, .section-desc { text-wrap: pretty; }
   gap: 8px;
   padding: 14px 28px;
   border-radius: 999px;
-  font-size: .9rem;
+  font-size: 0.9rem;
   font-weight: 600;
-  transition: all .15s ease;
+  transition: all 0.15s ease;
   border: none;
   cursor: pointer;
   font-family: inherit;
@@ -160,64 +170,64 @@ p, .section-desc { text-wrap: pretty; }
 
 .btn-primary {
   background: var(--blue);
-  color: var(--white)
+  color: var(--white);
 }
 
 .btn-primary:hover {
   background: var(--blue-hover);
-  transform: scale(1.02) translateY(-1px)
+  transform: scale(1.02) translateY(-1px);
 }
 
 .btn-dark {
   background: var(--dark);
-  color: var(--white)
+  color: var(--white);
 }
 
 .btn-dark:hover {
-  opacity: .85;
-  transform: scale(1.02) translateY(-1px)
+  opacity: 0.85;
+  transform: scale(1.02) translateY(-1px);
 }
 
 .btn-outline {
   background: transparent;
   border: 1.5px solid var(--border);
-  color: var(--text)
+  color: var(--text);
 }
 
 .btn-outline:hover {
   border-color: var(--blue);
   color: var(--blue);
-  transform: scale(1.02) translateY(-1px)
+  transform: scale(1.02) translateY(-1px);
 }
 
 .btn-white {
   background: var(--white);
-  color: var(--dark)
+  color: var(--dark);
 }
 
 .btn-white:hover {
   transform: scale(1.02) translateY(-1px);
-  box-shadow: var(--shadow)
+  box-shadow: var(--shadow);
 }
 
 .btn-ghost {
   background: transparent;
-  border: 1.5px solid rgba(255, 255, 255, .25);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
   color: var(--white);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
 
 .btn-ghost:hover {
-  border-color: rgba(255, 255, 255, .5);
-  transform: scale(1.02) translateY(-1px)
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.02) translateY(-1px);
 }
 
 /* ── Section Headings ── */
 .section-label {
-  font-size: .7rem;
+  font-size: 0.7rem;
   font-weight: 600;
-  letter-spacing: .1em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--blue);
 }
@@ -227,13 +237,13 @@ p, .section-desc { text-wrap: pretty; }
   font-size: clamp(1.75rem, 2.5vw, 2.25rem);
   font-weight: 600;
   line-height: 1.05;
-  letter-spacing: -.04em;
+  letter-spacing: -0.04em;
   margin-top: 8px;
 }
 
 .section-desc {
   color: var(--body);
-  font-size: .95rem;
+  font-size: 0.95rem;
   line-height: 1.7;
   max-width: 480px;
   margin-top: 12px;
@@ -255,12 +265,10 @@ textarea:focus-visible {
   will-change: transform, opacity;
 }
 
-
 @media (max-width: 900px) {
-
   .wrap,
   .wrap-narrow {
-    padding: 0 20px
+    padding: 0 20px;
   }
 }
 
@@ -279,17 +287,23 @@ textarea:focus-visible {
 
 .bento-card:hover {
   transform: scale(1.02);
-  box-shadow: 0 10px 40px 0 rgba(0,0,0,.08), 0 20px 60px -10px rgba(0,0,0,.06);
+  box-shadow:
+    0 10px 40px 0 rgba(0, 0, 0, 0.08),
+    0 20px 60px -10px rgba(0, 0, 0, 0.06);
   border-color: rgba(19, 75, 142, 0.15);
 }
 
 /* Hover Lift Utility (ndstudio.gov style) */
 .hover-lift {
-  transition: transform 0.4s cubic-bezier(0.2, 0.6, 0.3, 1), box-shadow 0.4s cubic-bezier(0.2, 0.6, 0.3, 1);
+  transition:
+    transform 0.4s cubic-bezier(0.2, 0.6, 0.3, 1),
+    box-shadow 0.4s cubic-bezier(0.2, 0.6, 0.3, 1);
 }
 .hover-lift:hover {
   transform: scale(1.03) translateY(-2px);
-  box-shadow: 0 10px 40px rgba(0,0,0,.08), 0 20px 60px -10px rgba(0,0,0,.06);
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.08),
+    0 20px 60px -10px rgba(0, 0, 0, 0.06);
 }
 
 /* Pulsing Action Button (Realfood.gov style) */
@@ -317,22 +331,42 @@ textarea:focus-visible {
 
 /* Spring Animation Keyframes (Realfood.gov style) */
 @keyframes springUp {
-  from { transform: translateY(40px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 @keyframes springDown {
-  from { transform: translateY(-20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 /* Sage Pulse Glow (realfood.gov dga_pulse adapted for sage) */
 @keyframes sage-glow {
-  0%  { box-shadow: 0 0 4px 0 rgba(90,122,110,0.6); }
-  75% { box-shadow: 0 0 6px 8px rgba(90,122,110,0); }
-  100% { box-shadow: 0 0 8px 0 rgba(90,122,110,0); }
+  0% {
+    box-shadow: 0 0 4px 0 rgba(90, 122, 110, 0.6);
+  }
+  75% {
+    box-shadow: 0 0 6px 8px rgba(90, 122, 110, 0);
+  }
+  100% {
+    box-shadow: 0 0 8px 0 rgba(90, 122, 110, 0);
+  }
 }
-.btn-sage-pulse { animation: sage-glow 2.5s infinite cubic-bezier(0.2, 0.8, 0.2, 1); }
+.btn-sage-pulse {
+  animation: sage-glow 2.5s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
+}
 
 /* ── Glassmorphic Lightbox ── */
 .lightbox-overlay {
@@ -342,7 +376,7 @@ textarea:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0,0,0,0.95);
+  background: rgba(0, 0, 0, 0.95);
   animation: lightbox-fade-in 0.3s ease;
 }
 
@@ -373,7 +407,7 @@ textarea:focus-visible {
   height: 44px;
   border-radius: 50%;
   border: none;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   color: #fff;
@@ -385,7 +419,9 @@ textarea:focus-visible {
   transition: background 0.2s;
   z-index: 2;
 }
-.lightbox-close:hover { background: rgba(255,255,255,0.15); }
+.lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
 
 .lightbox-nav {
   position: absolute;
@@ -394,27 +430,37 @@ textarea:focus-visible {
   padding: 12px 18px;
   border-radius: 999px;
   border: none;
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   color: #fff;
   font-size: 1.1rem;
   cursor: pointer;
   opacity: 0;
-  transition: opacity 0.3s, background 0.2s;
+  transition:
+    opacity 0.3s,
+    background 0.2s;
   z-index: 2;
 }
-.lightbox-overlay:hover .lightbox-nav { opacity: 1; }
-.lightbox-nav:hover { background: rgba(255,255,255,0.18); }
-.lightbox-nav--prev { left: 20px; }
-.lightbox-nav--next { right: 20px; }
+.lightbox-overlay:hover .lightbox-nav {
+  opacity: 1;
+}
+.lightbox-nav:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+.lightbox-nav--prev {
+  left: 20px;
+}
+.lightbox-nav--next {
+  right: 20px;
+}
 
 .lightbox-caption {
   position: absolute;
   bottom: 24px;
   left: 50%;
   transform: translateX(-50%);
-  color: rgba(255,255,255,0.5);
+  color: rgba(255, 255, 255, 0.5);
   font-size: 12px;
   letter-spacing: 0.36px;
   text-align: center;
@@ -422,13 +468,23 @@ textarea:focus-visible {
 }
 
 @keyframes lightbox-fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes lightbox-scale-in {
-  from { opacity: 0; transform: scale(0.92); }
-  to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 /* ── Timeline (ndstudio.gov style) ── */
@@ -441,15 +497,19 @@ textarea:focus-visible {
   border-bottom: 1px solid var(--border);
   transition: background 0.15s;
 }
-.timeline-row:last-child { border-bottom: none; }
-.timeline-row:hover { background: rgba(0,0,0,0.015); }
+.timeline-row:last-child {
+  border-bottom: none;
+}
+.timeline-row:hover {
+  background: rgba(0, 0, 0, 0.015);
+}
 
 .timeline-time {
   font-family: var(--font-display);
-  font-size: .78rem;
+  font-size: 0.78rem;
   font-weight: 600;
   color: var(--muted);
-  letter-spacing: .02em;
+  letter-spacing: 0.02em;
   padding-top: 2px;
   white-space: nowrap;
 }
@@ -474,25 +534,32 @@ textarea:focus-visible {
   height: calc(100% + 30px);
   background: var(--border);
 }
-.timeline-row:last-child .timeline-dot::before { display: none; }
+.timeline-row:last-child .timeline-dot::before {
+  display: none;
+}
 
 .timeline-content h4 {
   font-family: var(--font-display);
-  font-size: .95rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: var(--text);
   line-height: 1.3;
 }
 .timeline-content p {
-  font-size: .85rem;
+  font-size: 0.85rem;
   color: var(--body);
   line-height: 1.6;
   margin-top: 4px;
 }
 
 @media (max-width: 500px) {
-  .timeline-row { grid-template-columns: 64px 20px 1fr; gap: 0 12px; }
-  .timeline-time { font-size: .72rem; }
+  .timeline-row {
+    grid-template-columns: 64px 20px 1fr;
+    gap: 0 12px;
+  }
+  .timeline-time {
+    font-size: 0.72rem;
+  }
 }
 
 /* ── Step Cards (realfood.gov process style) ── */
@@ -506,8 +573,10 @@ textarea:focus-visible {
 }
 .step-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 40px rgba(0,0,0,.06), 0 20px 60px -10px rgba(0,0,0,.04);
-  border-color: rgba(90,122,110,0.2);
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.06),
+    0 20px 60px -10px rgba(0, 0, 0, 0.04);
+  border-color: rgba(90, 122, 110, 0.2);
 }
 
 .step-number {
@@ -520,7 +589,7 @@ textarea:focus-visible {
   background: var(--sage);
   color: #fff;
   font-family: var(--font-display);
-  font-size: .85rem;
+  font-size: 0.85rem;
   font-weight: 700;
   margin-bottom: 16px;
 }
@@ -537,8 +606,8 @@ textarea:focus-visible {
   transition: all 0.3s cubic-bezier(0.2, 0.6, 0.3, 1);
 }
 .profile-chip:hover {
-  border-color: rgba(90,122,110,0.2);
-  background: rgba(90,122,110,0.03);
+  border-color: rgba(90, 122, 110, 0.2);
+  background: rgba(90, 122, 110, 0.03);
 }
 
 /* ── Feature Grid Card ── */
@@ -551,5 +620,5 @@ textarea:focus-visible {
 }
 .feature-grid-card:hover {
   border-color: rgba(19, 75, 142, 0.12);
-  box-shadow: 0 4px 20px rgba(0,0,0,.04);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }

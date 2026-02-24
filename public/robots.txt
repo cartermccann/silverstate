@@ -1,0 +1,8 @@
+# robots.txt for Silver State Adolescent Treatment Center
+# https://www.silverstatetreatment.com
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.silverstatetreatment.com/sitemap.xml

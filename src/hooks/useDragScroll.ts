@@ -23,15 +23,18 @@ export default function useDragScroll(sensitivity = 1.5) {
     setIsDragging(false)
   }, [])
 
-  const onMouseMove = useCallback((e: React.MouseEvent) => {
-    if (!dragState.current.isDown) return
-    e.preventDefault()
-    const el = ref.current
-    if (!el) return
-    const x = e.pageX - el.offsetLeft
-    const walk = (x - dragState.current.startX) * sensitivity
-    el.scrollLeft = dragState.current.scrollLeft - walk
-  }, [sensitivity])
+  const onMouseMove = useCallback(
+    (e: React.MouseEvent) => {
+      if (!dragState.current.isDown) return
+      e.preventDefault()
+      const el = ref.current
+      if (!el) return
+      const x = e.pageX - el.offsetLeft
+      const walk = (x - dragState.current.startX) * sensitivity
+      el.scrollLeft = dragState.current.scrollLeft - walk
+    },
+    [sensitivity],
+  )
 
   return {
     ref,
