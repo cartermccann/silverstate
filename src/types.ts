@@ -9,9 +9,17 @@ export interface BaseComponentProps {
 
 // Animation variants (used by AnimateIn)
 export type AnimationVariant =
-  | 'fadeUp' | 'fadeIn' | 'fadeLeft' | 'fadeRight'
-  | 'scaleUp' | 'slideUp' | 'rotateIn' | 'blurUp'
-  | 'springUp' | 'springDown' | 'clipUp'
+  | 'fadeUp'
+  | 'fadeIn'
+  | 'fadeLeft'
+  | 'fadeRight'
+  | 'scaleUp'
+  | 'slideUp'
+  | 'rotateIn'
+  | 'blurUp'
+  | 'springUp'
+  | 'springDown'
+  | 'clipUp'
 
 // Animation preset shape
 export interface AnimationPreset {
@@ -85,6 +93,21 @@ export interface WhyChooseEntry {
 export interface ProfileEntry {
   label: string
   desc: string
+}
+
+// --- Homepage interfaces (Story 2.1) ---
+
+export interface HeroData {
+  headline: string
+  body: string
+  ctaPrimary: { label: string; href: string }
+  ctaSecondary: { label: string; href: string }
+  backgroundImage: { src: string; alt: string }
+}
+
+export interface IntroData {
+  paragraph: string
+  credibilityLine: string
 }
 
 // --- NEW interfaces (Story 1.2) ---
@@ -184,6 +207,18 @@ export interface ProgramPageData {
   metaDescription: string
   reviewedBy?: string
   reviewDate?: string
+}
+
+export interface PrivacySection {
+  id: string
+  heading: string
+  content: string[]
+}
+
+export interface NotFoundContent {
+  headline: string
+  message: string
+  suggestions: { label: string; href: string }[]
 }
 
 export interface InsurancePageData {

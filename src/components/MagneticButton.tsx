@@ -51,9 +51,7 @@ export default function MagneticButton({
     setIsHovered(true)
   }
 
-  const MotionTag = as === 'button' ? motion.button
-                  : as === 'a' ? motion.a
-                  : motion.div
+  const MotionTag = as === 'button' ? motion.button : as === 'a' ? motion.a : motion.div
 
   return (
     <MotionTag

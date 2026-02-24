@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react'
 
 export default function useIsMobile(breakpoint = 900): boolean {
   const [isMobile, setIsMobile] = useState(
-    () => typeof window !== 'undefined' && window.innerWidth <= breakpoint
+    () =>
+      typeof window !== 'undefined' && window.matchMedia(`(max-width: ${breakpoint}px)`).matches,
   )
 
   useEffect(() => {
     const mq = window.matchMedia(`(max-width: ${breakpoint}px)`)
-    setIsMobile(mq.matches)
     const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches)
     mq.addEventListener('change', handler)
     return () => mq.removeEventListener('change', handler)
@@ -18,7 +18,5 @@ export default function useIsMobile(breakpoint = 900): boolean {
 
 /** Check for touch device (non-reactive, use inside useEffect) */
 export function isTouchDevice(): boolean {
-  return typeof window !== 'undefined' && (
-    'ontouchstart' in window || navigator.maxTouchPoints > 0
-  )
+  return typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0)
 }

@@ -11,7 +11,14 @@ interface CardStackProps {
   style?: CSSProperties
 }
 
-export default function CardStack({ children, topStart = 120, topStep = 20, scaleTarget = 0.95, gap = 40, style }: CardStackProps) {
+export default function CardStack({
+  children,
+  topStart = 120,
+  topStep = 20,
+  scaleTarget = 0.95,
+  gap = 40,
+  style,
+}: CardStackProps) {
   const ref = useRef<HTMLDivElement>(null)
   const isMobile = useIsMobile()
 

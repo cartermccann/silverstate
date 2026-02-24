@@ -62,14 +62,24 @@ const presets: Record<AnimationVariant, AnimationPreset> = {
 
 /* Toned-down mobile presets — smaller offsets, no blur filter */
 const mobilePresets: Partial<Record<AnimationVariant, AnimationPreset>> = {
-  fadeUp:    { from: { opacity: 0, y: 30 },  to: { opacity: 1, y: 0 } },
-  fadeLeft:  { from: { opacity: 0, x: -30 }, to: { opacity: 1, x: 0 } },
-  fadeRight: { from: { opacity: 0, x: 30 },  to: { opacity: 1, x: 0 } },
-  slideUp:   { from: { opacity: 0, y: 50 },  to: { opacity: 1, y: 0 } },
-  rotateIn:  { from: { opacity: 0, y: 20 },  to: { opacity: 1, y: 0 } },
-  blurUp:    { from: { opacity: 0, y: 20 },  to: { opacity: 1, y: 0 } },
-  springUp:  { from: { opacity: 0, y: 20 },  to: { opacity: 1, y: 0 }, ease: 'cubic-bezier(.34, 1.56, .64, 1)', duration: 0.5 },
-  springDown:{ from: { opacity: 0, y: -20 }, to: { opacity: 1, y: 0 }, ease: 'cubic-bezier(.34, 1.56, .64, 1)', duration: 0.5 },
+  fadeUp: { from: { opacity: 0, y: 30 }, to: { opacity: 1, y: 0 } },
+  fadeLeft: { from: { opacity: 0, x: -30 }, to: { opacity: 1, x: 0 } },
+  fadeRight: { from: { opacity: 0, x: 30 }, to: { opacity: 1, x: 0 } },
+  slideUp: { from: { opacity: 0, y: 50 }, to: { opacity: 1, y: 0 } },
+  rotateIn: { from: { opacity: 0, y: 20 }, to: { opacity: 1, y: 0 } },
+  blurUp: { from: { opacity: 0, y: 20 }, to: { opacity: 1, y: 0 } },
+  springUp: {
+    from: { opacity: 0, y: 20 },
+    to: { opacity: 1, y: 0 },
+    ease: 'cubic-bezier(.34, 1.56, .64, 1)',
+    duration: 0.5,
+  },
+  springDown: {
+    from: { opacity: 0, y: -20 },
+    to: { opacity: 1, y: 0 },
+    ease: 'cubic-bezier(.34, 1.56, .64, 1)',
+    duration: 0.5,
+  },
 }
 
 interface AnimateInProps {

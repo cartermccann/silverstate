@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { useEffect, useCallback } from 'react'
 import type { LightboxImage } from '../types'
 
@@ -12,11 +13,14 @@ interface LightboxProps {
 export default function Lightbox({ images, index, onClose, onPrev, onNext }: LightboxProps) {
   const current = images[index]!
 
-  const handleKey = useCallback((e: KeyboardEvent) => {
-    if (e.key === 'Escape') onClose()
-    if (e.key === 'ArrowLeft' && index > 0) onPrev()
-    if (e.key === 'ArrowRight' && index < images.length - 1) onNext()
-  }, [onClose, onPrev, onNext, index, images.length])
+  const handleKey = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose()
+      if (e.key === 'ArrowLeft' && index > 0) onPrev()
+      if (e.key === 'ArrowRight' && index < images.length - 1) onNext()
+    },
+    [onClose, onPrev, onNext, index, images.length],
+  )
 
   useEffect(() => {
     document.addEventListener('keydown', handleKey)
@@ -31,15 +35,16 @@ export default function Lightbox({ images, index, onClose, onPrev, onNext }: Lig
     <div
       className="lightbox-overlay"
       onClick={onClose}
+      onKeyDown={(e) => {
+        if (e.key === 'Escape') onClose()
+      }}
       role="dialog"
       aria-modal="true"
       aria-label="Image lightbox"
+      tabIndex={-1}
     >
       {/* Ambient blur background */}
-      <div
-        className="lightbox-bg"
-        style={{ backgroundImage: `url(${current.src})` }}
-      />
+      <div className="lightbox-bg" style={{ backgroundImage: `url(${current.src})` }} />
 
       {/* Main image */}
       <img
@@ -48,6 +53,8 @@ export default function Lightbox({ images, index, onClose, onPrev, onNext }: Lig
         alt={current.alt || ''}
         className="lightbox-img"
         onClick={(e) => e.stopPropagation()}
+        onKeyDown={(e) => e.stopPropagation()}
+        role="presentation"
       />
 
       {/* Close */}
@@ -59,7 +66,10 @@ export default function Lightbox({ images, index, onClose, onPrev, onNext }: Lig
       {index > 0 && (
         <button
           className="lightbox-nav lightbox-nav--prev"
-          onClick={(e) => { e.stopPropagation(); onPrev() }}
+          onClick={(e) => {
+            e.stopPropagation()
+            onPrev()
+          }}
           aria-label="Previous image"
         >
           &#8592;
@@ -70,7 +80,10 @@ export default function Lightbox({ images, index, onClose, onPrev, onNext }: Lig
       {index < images.length - 1 && (
         <button
           className="lightbox-nav lightbox-nav--next"
-          onClick={(e) => { e.stopPropagation(); onNext() }}
+          onClick={(e) => {
+            e.stopPropagation()
+            onNext()
+          }}
           aria-label="Next image"
         >
           &#8594;
@@ -78,9 +91,7 @@ export default function Lightbox({ images, index, onClose, onPrev, onNext }: Lig
       )}
 
       {/* Caption */}
-      {current.caption && (
-        <span className="lightbox-caption">{current.caption}</span>
-      )}
+      {current.caption && <span className="lightbox-caption">{current.caption}</span>}
     </div>
   )
 }
