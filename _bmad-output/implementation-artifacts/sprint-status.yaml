@@ -44,23 +44,23 @@ development_status:
   epic-1: in-progress
   1-1-initialize-production-project-from-mockup: review
   1-2-shared-data-types-and-common-content-data: review
-  1-3-nav-component: ready-for-dev
-  1-4-footer-component: ready-for-dev
-  1-5-trustbadges-and-ctaband-components: ready-for-dev
-  1-6-breadcrumb-and-errorboundary-components: ready-for-dev
-  1-7-pagelayout-shared-page-shell: ready-for-dev
-  1-8-seo-utilities-and-route-configuration: ready-for-dev
-  1-9-build-scripts-sitemap-validation-and-robots: ready-for-dev
-  1-10-testing-and-linting-infrastructure: ready-for-dev
-  1-11-deployment-and-ci-pipeline: ready-for-dev
-  1-12-privacy-policy-and-404-pages: ready-for-dev
+  1-3-nav-component: review
+  1-4-footer-component: review
+  1-5-trustbadges-and-ctaband-components: review
+  1-6-breadcrumb-and-errorboundary-components: review
+  1-7-pagelayout-shared-page-shell: review
+  1-8-seo-utilities-and-route-configuration: review
+  1-9-build-scripts-sitemap-validation-and-robots: review
+  1-10-testing-and-linting-infrastructure: review
+  1-11-deployment-and-ci-pipeline: review
+  1-12-privacy-policy-and-404-pages: review
   epic-1-retrospective: optional
 
   # Epic 2: Homepage - The Trust Engine (3 stories) — ALL STORIES CREATED
   epic-2: in-progress
-  2-1-homepage-data-and-hero-section: ready-for-dev
-  2-2-homepage-content-sections: ready-for-dev
-  2-3-homepage-seo-schema-and-conversion-ctas: ready-for-dev
+  2-1-homepage-data-and-hero-section: review
+  2-2-homepage-content-sections: review
+  2-3-homepage-seo-schema-and-conversion-ctas: review
   epic-2-retrospective: optional
 
   # Epic 3: Treatment Program Pages (3 stories) — ALL STORIES CREATED
