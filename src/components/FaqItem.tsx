@@ -53,6 +53,8 @@ export default function FaqItem({ q, a, isOpen, onToggle, accentColor = '#5A7A6E
         </span>
       </button>
       <div
+        role="region"
+        aria-hidden={!isOpen}
         style={{
           display: 'grid',
           gridTemplateRows: isOpen ? '1fr' : '0fr',

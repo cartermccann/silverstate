@@ -89,7 +89,7 @@ if (programPages.length > 0) {
     requireSlug('programs.ts', p.slug ?? '(unknown)', 'slug', p.slug)
     requireString('programs.ts', p.slug, 'label', p.label)
     requireString('programs.ts', p.slug, 'title', p.title)
-    requireString('programs.ts', p.slug, 'body', p.body)
+    requireString('programs.ts', p.slug, 'overview', p.overview)
     requireArray('programs.ts', p.slug, 'features', p.features)
     requireString('programs.ts', p.slug, 'duration', p.duration)
     requireArray('programs.ts', p.slug, 'therapyModalities', p.therapyModalities)
@@ -175,7 +175,10 @@ if (therapyModalities.length > 0) {
   for (const t of therapyModalities) {
     requireSlug('therapies.ts', t.slug ?? '(unknown)', 'slug', t.slug)
     requireString('therapies.ts', t.slug, 'name', t.name)
+    requireString('therapies.ts', t.slug, 'shortName', t.shortName)
     requireString('therapies.ts', t.slug, 'description', t.description)
+    requireString('therapies.ts', t.slug, 'howItHelps', t.howItHelps)
+    requireArray('therapies.ts', t.slug, 'usedFor', t.usedFor)
   }
 } else {
   console.log('  Skipping therapyModalities — empty (will be populated in Epic 3)')

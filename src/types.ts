@@ -218,29 +218,31 @@ export interface TeamMember {
 export interface TherapyModality {
   slug: string
   name: string
-  abbreviation?: string
+  shortName: string
   description: string
-  approach?: string
-  relatedConditions?: string[]
-  relatedPrograms?: string[]
+  howItHelps: string
+  usedFor: string[]
+  evidenceBasis?: string
 }
 
 export interface ProgramPageData {
   slug: string
   label: string
   title: string
-  body: string
-  features: string[]
-  stat?: string
+  metaTitle: string
+  metaDescription: string
+  heroImage?: string
+  overview: string
   approach: string
   duration: string
   targetAudience: string
   dailySchedule: DailyScheduleEntry[]
   therapyModalities: string[]
+  features: string[]
+  stat?: string
   faqs: FaqEntry[]
   relatedConditions: string[]
   relatedPrograms: string[]
-  metaDescription: string
   reviewedBy?: string
   reviewDate?: string
 }

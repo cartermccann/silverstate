@@ -65,9 +65,9 @@ development_status:
 
   # Epic 3: Treatment Program Pages (3 stories) — ALL STORIES CREATED
   epic-3: in-progress
-  3-1-program-and-therapy-content-data: ready-for-dev
-  3-2-program-page-template-and-residential-page: ready-for-dev
-  3-3-php-and-iop-program-pages: ready-for-dev
+  3-1-program-and-therapy-content-data: review
+  3-2-program-page-template-and-residential-page: review
+  3-3-php-and-iop-program-pages: review
   epic-3-retrospective: optional
 
   # Epic 4: Condition Treatment Pages (4 stories) — ALL STORIES CREATED
