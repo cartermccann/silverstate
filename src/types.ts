@@ -95,7 +95,43 @@ export interface ProfileEntry {
   desc: string
 }
 
-// --- Homepage interfaces (Story 2.1) ---
+// --- Homepage interfaces (Story 2.1 + 2.2) ---
+
+export interface HomepageProgramHighlight {
+  slug: string
+  label: string
+  title: string
+  body: string
+  features: string[]
+  stat?: string
+}
+
+export interface ConditionOverviewItem {
+  name: string
+  slug: string
+}
+
+export interface ConditionOverviewCategory {
+  category: string
+  conditions: ConditionOverviewItem[]
+}
+
+export interface HomepageTeamOverview {
+  clinical: string
+  members: string[]
+}
+
+export interface FamilySectionData {
+  heading: string
+  body: string
+  bulletPoints: string[]
+}
+
+export interface HomepageAdmissionsStep {
+  step: number
+  title: string
+  desc: string
+}
 
 export interface HeroData {
   headline: string
@@ -219,6 +255,14 @@ export interface NotFoundContent {
   headline: string
   message: string
   suggestions: { label: string; href: string }[]
+}
+
+export interface FinalCtaData {
+  headline: string
+  body: string
+  primaryCtaLabel: string
+  secondaryCtaLabel: string
+  secondaryCtaHref: string
 }
 
 export interface InsurancePageData {
