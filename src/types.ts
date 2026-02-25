@@ -207,12 +207,34 @@ export interface LocationData {
 
 export interface TeamMember {
   name: string
+  slug: string
+  photoUrl: string
   title: string
-  photo?: string
-  credentials?: string
-  licenseNumbers?: string[]
-  specializations?: string[]
-  bio: string
+  credentials: string
+  licenseNumbers: string[]
+  specializations: string[]
+  professionalBackground: string
+  education?: string
+  certifications?: string[]
+  reviewedBy?: string
+  reviewDate?: string
+}
+
+export interface AboutPageData {
+  title: string
+  slug: string
+  description: string
+  features: string[]
+  images: { src: string; alt: string }[]
+  metaTitle: string
+  metaDescription: string
+}
+
+export interface KeyDifferentiator {
+  icon?: string
+  title: string
+  value: string
+  description: string
 }
 
 export interface TherapyModality {
