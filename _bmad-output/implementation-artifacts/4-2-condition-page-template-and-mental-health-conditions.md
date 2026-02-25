@@ -1,6 +1,6 @@
 # Story 4.2: Condition Page Template & Mental Health Conditions
 
-Status: ready-for-dev
+Status: review
 
 ## Story
 
@@ -25,59 +25,59 @@ So that I know Silver State has specialized expertise for my teen's exact situat
 
 ## Tasks / Subtasks
 
-- [ ] **Task 1: Create the reusable ConditionPage template component** (AC: #1, #2, #3, #4, #5, #8)
-  - [ ] 1.1: Create `src/pages/conditions/ConditionPage.tsx` as a shared template component. This is NOT a route page -- it is a presentational component that receives `ConditionData` as a prop and renders the full condition page layout. Export as `export default function ConditionPage({ condition }: ConditionPageProps)`
-  - [ ] 1.2: Define `ConditionPageProps` interface: `{ condition: ConditionData }`
-  - [ ] 1.3: Import `ConditionData`, `FaqEntry`, `SourceCitation` types from `../../types`
-  - [ ] 1.4: Import `site` from `../../data/common` for phone CTA references
-  - [ ] 1.5: Import relevant icon components from `../../components/Icons` (e.g., `IconPhone`)
+- [x]**Task 1: Create the reusable ConditionPage template component** (AC: #1, #2, #3, #4, #5, #8)
+  - [x]1.1: Create `src/pages/conditions/ConditionPage.tsx` as a shared template component. This is NOT a route page -- it is a presentational component that receives `ConditionData` as a prop and renders the full condition page layout. Export as `export default function ConditionPage({ condition }: ConditionPageProps)`
+  - [x]1.2: Define `ConditionPageProps` interface: `{ condition: ConditionData }`
+  - [x]1.3: Import `ConditionData`, `FaqEntry`, `SourceCitation` types from `../../types`
+  - [x]1.4: Import `site` from `../../data/common` for phone CTA references
+  - [x]1.5: Import relevant icon components from `../../components/Icons` (e.g., `IconPhone`)
 
-- [ ] **Task 2: Implement the condition page sections** (AC: #1, #2, #3)
-  - [ ] 2.1: **Hero/Header Section** -- Display `condition.headline` as the `<h1>`. Below it, show `condition.category` as a styled label (e.g., "Mental Health" / "Substance Abuse" / "Eating Disorders") using a `<span>` with appropriate styling. Include a brief introductory line establishing Silver State's expertise
-  - [ ] 2.2: **Condition Overview Section** -- Render `condition.description` as the main body content under an `<h2>` heading like "Understanding {condition.name} in Adolescents". Use paragraph elements for each paragraph (split on double newline if description contains multiple paragraphs)
-  - [ ] 2.3: **Symptoms Section** -- Render `condition.symptoms` as a styled list under an `<h2>` heading like "Signs of {shortName} in Teens". Use `<ul>` with `<li>` items. Each symptom gets its own list item. Style with appropriate spacing and optional check/bullet icons
-  - [ ] 2.4: **Evidence-Based Therapies Section** -- Render `condition.therapies` under an `<h2>` heading like "Evidence-Based Treatment Approaches". Each therapy name displayed prominently. Consider a card or list layout
-  - [ ] 2.5: **Our Approach Section** -- Render `condition.approach` under an `<h2>` heading like "How Silver State Treats {shortName}". This is where Silver State's specific treatment methodology is described
-  - [ ] 2.6: **Clinical Reviewer Attribution** -- Display `condition.reviewedBy` and `condition.reviewDate` in a visible attribution block. Format: "Clinically reviewed by {reviewedBy} on {reviewDate}". Style as a subtle but visible badge/block near the top or bottom of the clinical content. This satisfies FR15
-  - [ ] 2.7: **Source Citations Section** -- Render `condition.sources` as a numbered or bulleted list of links at the bottom of the clinical content. Each source renders as `<a href={source.url} target="_blank" rel="noopener noreferrer">{source.label}</a>`. This satisfies FR16
+- [x]**Task 2: Implement the condition page sections** (AC: #1, #2, #3)
+  - [x]2.1: **Hero/Header Section** -- Display `condition.headline` as the `<h1>`. Below it, show `condition.category` as a styled label (e.g., "Mental Health" / "Substance Abuse" / "Eating Disorders") using a `<span>` with appropriate styling. Include a brief introductory line establishing Silver State's expertise
+  - [x]2.2: **Condition Overview Section** -- Render `condition.description` as the main body content under an `<h2>` heading like "Understanding {condition.name} in Adolescents". Use paragraph elements for each paragraph (split on double newline if description contains multiple paragraphs)
+  - [x]2.3: **Symptoms Section** -- Render `condition.symptoms` as a styled list under an `<h2>` heading like "Signs of {shortName} in Teens". Use `<ul>` with `<li>` items. Each symptom gets its own list item. Style with appropriate spacing and optional check/bullet icons
+  - [x]2.4: **Evidence-Based Therapies Section** -- Render `condition.therapies` under an `<h2>` heading like "Evidence-Based Treatment Approaches". Each therapy name displayed prominently. Consider a card or list layout
+  - [x]2.5: **Our Approach Section** -- Render `condition.approach` under an `<h2>` heading like "How Silver State Treats {shortName}". This is where Silver State's specific treatment methodology is described
+  - [x]2.6: **Clinical Reviewer Attribution** -- Display `condition.reviewedBy` and `condition.reviewDate` in a visible attribution block. Format: "Clinically reviewed by {reviewedBy} on {reviewDate}". Style as a subtle but visible badge/block near the top or bottom of the clinical content. This satisfies FR15
+  - [x]2.7: **Source Citations Section** -- Render `condition.sources` as a numbered or bulleted list of links at the bottom of the clinical content. Each source renders as `<a href={source.url} target="_blank" rel="noopener noreferrer">{source.label}</a>`. This satisfies FR16
 
-- [ ] **Task 3: Implement the FAQ section with JSON-LD** (AC: #4)
-  - [ ] 3.1: Render `condition.faqs` under an `<h2>` heading "Frequently Asked Questions". Use `FaqItem` component from `../../components/FaqItem` if it exists, or create an accordion-style FAQ display with `<details>`/`<summary>` elements
-  - [ ] 3.2: Each FAQ renders with `faq.q` as the question and `faq.a` as the answer
-  - [ ] 3.3: Import `generateFaqPageSchema` from `../../utils/schema` and generate FAQPage JSON-LD from `condition.faqs`. Inject into the page head via a `<script type="application/ld+json">` block
+- [x]**Task 3: Implement the FAQ section with JSON-LD** (AC: #4)
+  - [x]3.1: Render `condition.faqs` under an `<h2>` heading "Frequently Asked Questions". Use `FaqItem` component from `../../components/FaqItem` if it exists, or create an accordion-style FAQ display with `<details>`/`<summary>` elements
+  - [x]3.2: Each FAQ renders with `faq.q` as the question and `faq.a` as the answer
+  - [x]3.3: Import `generateFaqPageSchema` from `../../utils/schema` and generate FAQPage JSON-LD from `condition.faqs`. Inject into the page head via a `<script type="application/ld+json">` block
 
-- [ ] **Task 4: Implement internal links section** (AC: #5)
-  - [ ] 4.1: **Related Programs** -- Render links to programs referenced in `condition.relatedPrograms`. Use `<Link to={'/programs/' + slug}>` for each. Display under a heading like "Treatment Programs for {shortName}"
-  - [ ] 4.2: **Related Conditions** -- Render links to conditions referenced in `condition.relatedConditions`. Use `<Link to={'/conditions/' + slug}>` for each. Display under a heading like "Related Conditions We Treat"
-  - [ ] 4.3: **Insurance & Admissions Links** -- Include a static section with links to `/insurance` ("Verify Your Insurance") and `/admissions` ("Start the Admissions Process") with a phone CTA
-  - [ ] 4.4: All internal links use React Router `<Link>` component -- not `<a href>`
+- [x]**Task 4: Implement internal links section** (AC: #5)
+  - [x]4.1: **Related Programs** -- Render links to programs referenced in `condition.relatedPrograms`. Use `<Link to={'/programs/' + slug}>` for each. Display under a heading like "Treatment Programs for {shortName}"
+  - [x]4.2: **Related Conditions** -- Render links to conditions referenced in `condition.relatedConditions`. Use `<Link to={'/conditions/' + slug}>` for each. Display under a heading like "Related Conditions We Treat"
+  - [x]4.3: **Insurance & Admissions Links** -- Include a static section with links to `/insurance` ("Verify Your Insurance") and `/admissions` ("Start the Admissions Process") with a phone CTA
+  - [x]4.4: All internal links use React Router `<Link>` component -- not `<a href>`
 
-- [ ] **Task 5: Implement phone CTA within the page** (AC: #5)
-  - [ ] 5.1: Include a mid-page CTA section between the clinical content and the FAQ, styled prominently. Text like "Ready to get help for your teen? Call us now" with a `<a href={site.phoneTel}>` button showing the phone number
-  - [ ] 5.2: Include `aria-label` on the phone link: `aria-label="Call Silver State at {site.phone}"`
-  - [ ] 5.3: The CTA uses the `.btn` class or equivalent styling -- must be visually prominent with `background: var(--blue)`, `color: var(--white)`
+- [x]**Task 5: Implement phone CTA within the page** (AC: #5)
+  - [x]5.1: Include a mid-page CTA section between the clinical content and the FAQ, styled prominently. Text like "Ready to get help for your teen? Call us now" with a `<a href={site.phoneTel}>` button showing the phone number
+  - [x]5.2: Include `aria-label` on the phone link: `aria-label="Call Silver State at {site.phone}"`
+  - [x]5.3: The CTA uses the `.btn` class or equivalent styling -- must be visually prominent with `background: var(--blue)`, `color: var(--white)`
 
-- [ ] **Task 6: Implement MedicalCondition JSON-LD** (AC: #7)
-  - [ ] 6.1: Import `generateMedicalConditionSchema` from `../../utils/schema` (or create inline if the utility does not yet exist for this type)
-  - [ ] 6.2: Generate MedicalCondition JSON-LD with fields: `@type: 'MedicalCondition'`, `name`, `description`, `possibleTreatment` (list of therapies), `signOrSymptom` (list of symptoms)
-  - [ ] 6.3: Inject into the page via a `<script type="application/ld+json">` block alongside the FAQPage JSON-LD
+- [x]**Task 6: Implement MedicalCondition JSON-LD** (AC: #7)
+  - [x]6.1: Import `generateMedicalConditionSchema` from `../../utils/schema` (or create inline if the utility does not yet exist for this type)
+  - [x]6.2: Generate MedicalCondition JSON-LD with fields: `@type: 'MedicalCondition'`, `name`, `description`, `possibleTreatment` (list of therapies), `signOrSymptom` (list of symptoms)
+  - [x]6.3: Inject into the page via a `<script type="application/ld+json">` block alongside the FAQPage JSON-LD
 
-- [ ] **Task 7: Create individual mental health condition route pages (~12)** (AC: #6, #8)
-  - [ ] 7.1: Create `src/pages/conditions/Anxiety.tsx` -- imports `conditions` from `../../data/conditions`, finds the anxiety entry by slug, renders `<ConditionPage condition={anxietyData} />`, exports route `meta` function using `utils/meta.ts` for SEO metadata (title, description, OG tags, canonical URL)
-  - [ ] 7.2: Create `src/pages/conditions/Depression.tsx` -- same pattern with depression data
-  - [ ] 7.3: Create `src/pages/conditions/TraumaPTSD.tsx` -- same pattern with trauma/PTSD data
-  - [ ] 7.4: Create `src/pages/conditions/SuicidalIdeation.tsx` -- same pattern with suicidal ideation data
-  - [ ] 7.5: Create `src/pages/conditions/OCD.tsx` -- same pattern with OCD data
-  - [ ] 7.6: Create `src/pages/conditions/BipolarDisorder.tsx` -- same pattern with bipolar disorder data
-  - [ ] 7.7: Create `src/pages/conditions/AutismSpectrum.tsx` -- same pattern with autism spectrum data
-  - [ ] 7.8: Create `src/pages/conditions/OppositionalDefiant.tsx` -- same pattern with ODD data
-  - [ ] 7.9: Create `src/pages/conditions/ConductDisorder.tsx` -- same pattern with conduct disorder data
-  - [ ] 7.10: Create `src/pages/conditions/DMDD.tsx` -- same pattern with DMDD data
-  - [ ] 7.11: Create `src/pages/conditions/BPD.tsx` -- same pattern with BPD data
-  - [ ] 7.12: Create `src/pages/conditions/AdjustmentDisorder.tsx` -- same pattern with adjustment disorder data
+- [x]**Task 7: Create individual mental health condition route pages (~12)** (AC: #6, #8)
+  - [x]7.1: Create `src/pages/conditions/Anxiety.tsx` -- imports `conditions` from `../../data/conditions`, finds the anxiety entry by slug, renders `<ConditionPage condition={anxietyData} />`, exports route `meta` function using `utils/meta.ts` for SEO metadata (title, description, OG tags, canonical URL)
+  - [x]7.2: Create `src/pages/conditions/Depression.tsx` -- same pattern with depression data
+  - [x]7.3: Create `src/pages/conditions/TraumaPTSD.tsx` -- same pattern with trauma/PTSD data
+  - [x]7.4: Create `src/pages/conditions/SuicidalIdeation.tsx` -- same pattern with suicidal ideation data
+  - [x]7.5: Create `src/pages/conditions/OCD.tsx` -- same pattern with OCD data
+  - [x]7.6: Create `src/pages/conditions/BipolarDisorder.tsx` -- same pattern with bipolar disorder data
+  - [x]7.7: Create `src/pages/conditions/AutismSpectrum.tsx` -- same pattern with autism spectrum data
+  - [x]7.8: Create `src/pages/conditions/OppositionalDefiant.tsx` -- same pattern with ODD data
+  - [x]7.9: Create `src/pages/conditions/ConductDisorder.tsx` -- same pattern with conduct disorder data
+  - [x]7.10: Create `src/pages/conditions/DMDD.tsx` -- same pattern with DMDD data
+  - [x]7.11: Create `src/pages/conditions/BPD.tsx` -- same pattern with BPD data
+  - [x]7.12: Create `src/pages/conditions/AdjustmentDisorder.tsx` -- same pattern with adjustment disorder data
 
-- [ ] **Task 8: Route page pattern (repeated for each page in Task 7)** (AC: #6, #8)
-  - [ ] 8.1: Each route page file follows this exact pattern:
+- [x]**Task 8: Route page pattern (repeated for each page in Task 7)** (AC: #6, #8)
+  - [x]8.1: Each route page file follows this exact pattern:
     ```typescript
     import { getConditionBySlug } from '../../data/conditions'
     import { generateMeta } from '../../utils/meta'
@@ -95,13 +95,13 @@ So that I know Silver State has specialized expertise for my teen's exact situat
       return <ConditionPage condition={condition} />
     }
     ```
-  - [ ] 8.2: Each route page uses `export default function PageName` -- named function, not arrow
-  - [ ] 8.3: Each route page imports condition data via `getConditionBySlug` from `data/conditions`
-  - [ ] 8.4: Each route page file is thin -- it contains ONLY the data lookup, meta export, and ConditionPage render. All presentation logic lives in `ConditionPage.tsx`
-  - [ ] 8.5: The `meta` function must use `condition.metaTitle` and `condition.metaDescription` from the ConditionData fields -- not construct the title inline
+  - [x]8.2: Each route page uses `export default function PageName` -- named function, not arrow
+  - [x]8.3: Each route page imports condition data via `getConditionBySlug` from `data/conditions`
+  - [x]8.4: Each route page file is thin -- it contains ONLY the data lookup, meta export, and ConditionPage render. All presentation logic lives in `ConditionPage.tsx`
+  - [x]8.5: The `meta` function must use `condition.metaTitle` and `condition.metaDescription` from the ConditionData fields -- not construct the title inline
 
-- [ ] **Task 9: Verify breadcrumb handle exports** (AC: #6, #8)
-  - [ ] 9.1: **Breadcrumb Handle Export:** Each condition page wrapper must export a `handle` object for breadcrumb rendering by PageLayout's Breadcrumb component. Example:
+- [x]**Task 9: Verify breadcrumb handle exports** (AC: #6, #8)
+  - [x]9.1: **Breadcrumb Handle Export:** Each condition page wrapper must export a `handle` object for breadcrumb rendering by PageLayout's Breadcrumb component. Example:
     ```ts
     export const handle = {
       breadcrumb: { label: 'Anxiety Treatment', parent: '/conditions' }
@@ -109,8 +109,8 @@ So that I know Silver State has specialized expertise for my teen's exact situat
     ```
     Verify this export is present in every mental health condition page wrapper created in Task 7.
 
-- [ ] **Task 10: Register routes in routes.ts** (AC: #6)
-  - [ ] 10.1: Add route entries for all 12 mental health condition pages in `src/routes.ts`:
+- [x]**Task 10: Register routes in routes.ts** (AC: #6)
+  - [x]10.1: Add route entries for all 12 mental health condition pages in `src/routes.ts`:
     - `/conditions/anxiety-treatment` -> `pages/conditions/Anxiety`
     - `/conditions/depression-treatment` -> `pages/conditions/Depression`
     - `/conditions/trauma-ptsd-treatment` -> `pages/conditions/TraumaPTSD`
@@ -123,24 +123,24 @@ So that I know Silver State has specialized expertise for my teen's exact situat
     - `/conditions/dmdd-treatment` -> `pages/conditions/DMDD`
     - `/conditions/bpd-treatment` -> `pages/conditions/BPD`
     - `/conditions/adjustment-disorder-treatment` -> `pages/conditions/AdjustmentDisorder`
-  - [ ] 10.2: All routes use lazy loading for code splitting
+  - [x]10.2: All routes use lazy loading for code splitting
 
-- [ ] **Task 11: Responsive styling** (AC: #1)
-  - [ ] 11.1: ConditionPage uses inline styles + CSS tokens. All colors reference `var(--blue)`, `var(--text)`, `var(--body)`, `var(--cream)`, `var(--white)`, etc.
-  - [ ] 11.2: Layout uses `.wrap` container for max-width centering (1200px)
-  - [ ] 11.3: At mobile (< 900px), all sections stack vertically with appropriate spacing
-  - [ ] 11.4: At desktop (>= 900px), consider a two-column layout for some sections (e.g., symptoms list beside therapies list) or maintain single-column with wider max-width
-  - [ ] 11.5: All touch targets (links, CTAs) meet 44x44px minimum on mobile
-  - [ ] 11.6: Heading hierarchy: `<h1>` for page title, `<h2>` for section headings, `<h3>` for subsections -- never skip levels
+- [x]**Task 11: Responsive styling** (AC: #1)
+  - [x]11.1: ConditionPage uses inline styles + CSS tokens. All colors reference `var(--blue)`, `var(--text)`, `var(--body)`, `var(--cream)`, `var(--white)`, etc.
+  - [x]11.2: Layout uses `.wrap` container for max-width centering (1200px)
+  - [x]11.3: At mobile (< 900px), all sections stack vertically with appropriate spacing
+  - [x]11.4: At desktop (>= 900px), consider a two-column layout for some sections (e.g., symptoms list beside therapies list) or maintain single-column with wider max-width
+  - [x]11.5: All touch targets (links, CTAs) meet 44x44px minimum on mobile
+  - [x]11.6: Heading hierarchy: `<h1>` for page title, `<h2>` for section headings, `<h3>` for subsections -- never skip levels
 
-- [ ] **Task 12: Verify compilation and rendering** (AC: all)
-  - [ ] 12.1: Run `npx tsc --noEmit` -- zero TypeScript errors
-  - [ ] 12.2: Run `npm run dev` -- condition pages render correctly
-  - [ ] 12.3: Verify at least one condition page at 320px, 768px, and 1024px viewports
-  - [ ] 12.4: Verify JSON-LD appears in page source (MedicalCondition + FAQPage)
-  - [ ] 12.5: Verify all internal links navigate correctly
-  - [ ] 12.6: Verify clinical reviewer attribution is visible
-  - [ ] 12.7: Verify source citations render as links
+- [x]**Task 12: Verify compilation and rendering** (AC: all)
+  - [x]12.1: Run `npx tsc --noEmit` -- zero TypeScript errors
+  - [x]12.2: Run `npm run dev` -- condition pages render correctly
+  - [x]12.3: Verify at least one condition page at 320px, 768px, and 1024px viewports
+  - [x]12.4: Verify JSON-LD appears in page source (MedicalCondition + FAQPage)
+  - [x]12.5: Verify all internal links navigate correctly
+  - [x]12.6: Verify clinical reviewer attribution is visible
+  - [x]12.7: Verify source citations render as links
 
 ## Dev Notes
 
@@ -281,10 +281,42 @@ The exact `meta` export pattern depends on how Story 1.8 implemented `utils/meta
 
 ### Agent Model Used
 
-_To be filled by dev agent_
+Claude Opus 4.6
 
 ### Debug Log References
 
+- Fixed `noUncheckedIndexedAccess` TS strict issue: `description.split('\n\n')[0]` returns `string | undefined`, added `?? ''` fallback
+- Fixed 2 route slug mismatches in routes.tsx: `oppositional-defiant-treatment` → `oppositional-defiant-disorder-treatment`, `binge-eating-treatment` → `binge-eating-disorder-treatment`
+
 ### Completion Notes List
 
+- Created `ConditionPage.tsx` shared template with 11 sections: hero, overview, symptoms, therapies, approach, mid-page CTA, FAQ accordion, related programs, related conditions, insurance/admissions CTAs, source citations
+- Clinical reviewer attribution displayed prominently below hero heading
+- FAQPage + MedicalCondition JSON-LD injected via `<script type="application/ld+json">`
+- All internal links use React Router `<Link>`, external source citations use `<a target="_blank" rel="noopener noreferrer">`
+- Phone CTA uses `site.phoneTel` from data/common with proper aria-label
+- Created 12 mental health condition route pages (thin wrappers): Anxiety, Depression, TraumaPTSD, SuicidalIdeation, OCD, BipolarDisorder, AutismSpectrum, OppositionalDefiant, ConductDisorder, DMDD, BPD, AdjustmentDisorder
+- Each route page exports `meta` (SEO), `handle` (breadcrumb), and renders `<ConditionPage condition={...} />`
+- All routes already registered in routes.tsx (from Story 1.8), fixed 2 slug mismatches
+- TypeScript: zero errors, Vite build succeeds
+
+### Change Log
+
+- 2026-02-24: Story 4.2 implemented — ConditionPage template + 12 mental health condition route pages
+
 ### File List
+
+- `src/pages/conditions/ConditionPage.tsx` — NEW: shared condition page template
+- `src/pages/conditions/Anxiety.tsx` — MODIFIED: replaced placeholder with thin wrapper
+- `src/pages/conditions/Depression.tsx` — MODIFIED: replaced placeholder
+- `src/pages/conditions/TraumaPTSD.tsx` — MODIFIED: replaced placeholder
+- `src/pages/conditions/SuicidalIdeation.tsx` — MODIFIED: replaced placeholder
+- `src/pages/conditions/OCD.tsx` — MODIFIED: replaced placeholder
+- `src/pages/conditions/BipolarDisorder.tsx` — MODIFIED: replaced placeholder
+- `src/pages/conditions/AutismSpectrum.tsx` — MODIFIED: replaced placeholder
+- `src/pages/conditions/OppositionalDefiant.tsx` — MODIFIED: replaced placeholder
+- `src/pages/conditions/ConductDisorder.tsx` — MODIFIED: replaced placeholder
+- `src/pages/conditions/DMDD.tsx` — MODIFIED: replaced placeholder
+- `src/pages/conditions/BPD.tsx` — MODIFIED: replaced placeholder
+- `src/pages/conditions/AdjustmentDisorder.tsx` — MODIFIED: replaced placeholder
+- `src/routes.tsx` — MODIFIED: fixed ODD and binge-eating route slugs

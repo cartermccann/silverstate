@@ -199,7 +199,7 @@ export const routes: RouteObject[] = [
     ),
   },
   {
-    path: '/conditions/oppositional-defiant-treatment',
+    path: '/conditions/oppositional-defiant-disorder-treatment',
     element: (
       <S>
         <OppositionalDefiant />
@@ -323,7 +323,7 @@ export const routes: RouteObject[] = [
     ),
   },
   {
-    path: '/conditions/binge-eating-treatment',
+    path: '/conditions/binge-eating-disorder-treatment',
     element: (
       <S>
         <BingeEating />

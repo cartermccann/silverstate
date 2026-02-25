@@ -72,10 +72,10 @@ development_status:
 
   # Epic 4: Condition Treatment Pages (4 stories) — ALL STORIES CREATED
   epic-4: in-progress
-  4-1-condition-content-data: ready-for-dev
-  4-2-condition-page-template-and-mental-health-conditions: ready-for-dev
-  4-3-substance-abuse-condition-pages: ready-for-dev
-  4-4-eating-disorder-condition-pages: ready-for-dev
+  4-1-condition-content-data: review
+  4-2-condition-page-template-and-mental-health-conditions: review
+  4-3-substance-abuse-condition-pages: review
+  4-4-eating-disorder-condition-pages: review
   epic-4-retrospective: optional
 
   # Epic 5: Insurance Coverage Pages (2 stories) — ALL STORIES CREATED
