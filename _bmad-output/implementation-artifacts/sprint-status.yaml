@@ -92,8 +92,8 @@ development_status:
 
   # Epic 7: Location & Service Area Pages (2 stories) — ALL STORIES CREATED
   epic-7: in-progress
-  7-1-location-content-data-and-hub-page: ready-for-dev
-  7-2-city-service-area-pages: ready-for-dev
+  7-1-location-content-data-and-hub-page: review
+  7-2-city-service-area-pages: review
   epic-7-retrospective: optional
 
   # Epic 8: Admissions & Contact (2 stories) — ALL STORIES CREATED

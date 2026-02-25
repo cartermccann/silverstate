@@ -195,14 +195,19 @@ export interface ConditionData {
 }
 
 export interface LocationData {
+  name: string
   slug: string
-  city: string
-  headline: string
   description: string
-  distance: string
+  distanceFromFacility: string
+  directions: string
   localContext: string
+  serviceAreaDescription: string
   relatedPrograms: string[]
+  relatedConditions: string[]
+  metaTitle: string
   metaDescription: string
+  faqEntries?: FaqEntry[]
+  image?: { src: string; alt: string }
 }
 
 export interface TeamMember {

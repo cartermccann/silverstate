@@ -1,6 +1,6 @@
 # Story 7.2: City Service Area Pages
 
-Status: ready-for-dev
+Status: review
 
 ## Story
 
@@ -23,16 +23,16 @@ So that when I search "teen treatment Henderson NV" I find a page speaking to my
 
 ## Tasks / Subtasks
 
-- [ ] **Task 1: Create a reusable CityPage template component** (AC: #5)
-  - [ ] 1.1: Create `src/pages/locations/CityPage.tsx` — a shared internal component (not a route page itself) that accepts `LocationData` as a prop and renders the full city service area page layout
-  - [ ] 1.2: Define the props interface:
+- [x] **Task 1: Create a reusable CityPage template component** (AC: #5)
+  - [x]1.1: Create `src/pages/locations/CityPage.tsx` — a shared internal component (not a route page itself) that accepts `LocationData` as a prop and renders the full city service area page layout
+  - [x]1.2: Define the props interface:
     ```typescript
     interface CityPageProps {
       location: LocationData
     }
     ```
-  - [ ] 1.3: `export default function CityPage({ location }: CityPageProps)` — this is the template that all 5 city page files will use
-  - [ ] 1.4: The CityPage template renders:
+  - [x]1.3: `export default function CityPage({ location }: CityPageProps)` — this is the template that all 5 city page files will use
+  - [x]1.4: The CityPage template renders:
     - **Header section:** `<h1>` with city-specific title (e.g., "Adolescent Treatment Near Henderson, NV" or "Teen Treatment in {location.name}"). Subheading with `location.serviceAreaDescription`
     - **Proximity section:** `location.distanceFromFacility` and `location.directions` — how to get to Silver State from this area. Display Silver State's full address (`site.address`) and phone (`site.phone`/`site.phoneTel`) as a click-to-call link (FR24)
     - **Local context section:** `location.localContext` — why Silver State serves this community, local relevance
@@ -42,12 +42,12 @@ So that when I search "teen treatment Henderson NV" I find a page speaking to my
     - **Internal links section (FR5):** Links to insurance hub (`/insurance`), admissions (`/admissions`), team page (`/about/our-team`), locations hub (`/locations`)
     - **Phone CTA:** "Ready to learn more? Call Silver State at (725) 525-9897" using `site.phoneTel`
     - **Image (optional):** If `location.image` exists, render with descriptive `alt` text and `loading="lazy"`
-  - [ ] 1.5: Import `site` from `../../data/common` inside the template
-  - [ ] 1.6: Use semantic `<address>` element for the Silver State address display
-  - [ ] 1.7: All text content comes from the `location` prop — the template has zero hardcoded city-specific content
+  - [x]1.5: Import `site` from `../../data/common` inside the template
+  - [x]1.6: Use semantic `<address>` element for the Silver State address display
+  - [x]1.7: All text content comes from the `location` prop — the template has zero hardcoded city-specific content
 
-- [ ] **Task 2: Create all 5 city page files** (AC: #1, #5)
-  - [ ] 2.1: Create `src/pages/locations/LasVegas.tsx`:
+- [x] **Task 2: Create all 5 city page files** (AC: #1, #5)
+  - [x]2.1: Create `src/pages/locations/LasVegas.tsx`:
     ```typescript
     import { getLocationBySlug } from '../../data/locations'
     import CityPage from './CityPage'
@@ -59,11 +59,11 @@ So that when I search "teen treatment Henderson NV" I find a page speaking to my
       return <CityPage location={location} />
     }
     ```
-  - [ ] 2.2: Create `src/pages/locations/Henderson.tsx` — same pattern with `getLocationBySlug('henderson')`
-  - [ ] 2.3: Create `src/pages/locations/NorthLasVegas.tsx` — same pattern with `getLocationBySlug('north-las-vegas')`
-  - [ ] 2.4: Create `src/pages/locations/Summerlin.tsx` — same pattern with `getLocationBySlug('summerlin')`
-  - [ ] 2.5: Create `src/pages/locations/ClarkCounty.tsx` — same pattern with `getLocationBySlug('clark-county')`
-  - [ ] 2.6: Each page file is minimal — it finds its data from the `locations` array via the `getLocationBySlug` helper and passes it to `CityPage`. The page file owns the route `meta` export for SEO; the template owns the rendering
+  - [x]2.2: Create `src/pages/locations/Henderson.tsx` — same pattern with `getLocationBySlug('henderson')`
+  - [x]2.3: Create `src/pages/locations/NorthLasVegas.tsx` — same pattern with `getLocationBySlug('north-las-vegas')`
+  - [x]2.4: Create `src/pages/locations/Summerlin.tsx` — same pattern with `getLocationBySlug('summerlin')`
+  - [x]2.5: Create `src/pages/locations/ClarkCounty.tsx` — same pattern with `getLocationBySlug('clark-county')`
+  - [x]2.6: Each page file is minimal — it finds its data from the `locations` array via the `getLocationBySlug` helper and passes it to `CityPage`. The page file owns the route `meta` export for SEO; the template owns the rendering
 
 > **Pattern Consistency:** Add a `getLocationBySlug(slug: string): LocationData | undefined` helper function to `data/locations.ts`, consistent with `getInsuranceBySlug()` in `data/insurance.ts`. Wrapper files should use this helper instead of inline `.find()`. Example:
 > ```ts
@@ -73,8 +73,8 @@ So that when I search "teen treatment Henderson NV" I find a page speaking to my
 > ```
 > Update wrapper file examples to use: `const location = getLocationBySlug('las-vegas')!`
 
-- [ ] **Task 3: Implement LocalBusiness JSON-LD per city page** (AC: #4)
-  - [ ] 3.1: Each city page generates a `LocalBusiness` JSON-LD block scoped to that service area:
+- [x] **Task 3: Implement LocalBusiness JSON-LD per city page** (AC: #4)
+  - [x]3.1: Each city page generates a `LocalBusiness` JSON-LD block scoped to that service area:
     ```json
     {
       "@context": "https://schema.org",
@@ -102,22 +102,22 @@ So that when I search "teen treatment Henderson NV" I find a page speaking to my
       }
     }
     ```
-  - [ ] 3.2: Use `utils/schema.ts` generator from Story 1.8 — pass city-specific `areaServed` and `url`. If the generator doesn't support per-city customization, create the JSON-LD inline with `// TODO: extend utils/schema.ts`
-  - [ ] 3.3: For Clark County, use `@type: "AdministrativeArea"` instead of `"City"` in `areaServed`
-  - [ ] 3.4: Inject JSON-LD via the route `meta`/`handle` export in each city page file (not in the template)
+  - [x]3.2: Use `utils/schema.ts` generator from Story 1.8 — pass city-specific `areaServed` and `url`. If the generator doesn't support per-city customization, create the JSON-LD inline with `// TODO: extend utils/schema.ts`
+  - [x]3.3: For Clark County, use `@type: "AdministrativeArea"` instead of `"City"` in `areaServed`
+  - [x]3.4: Inject JSON-LD via the route `meta`/`handle` export in each city page file (not in the template)
 
-- [ ] **Task 4: SEO metadata and OG tags per city page** (AC: #4)
-  - [ ] 4.1: Each city page file exports route `meta` using `location.metaTitle` and `location.metaDescription` from the data:
+- [x] **Task 4: SEO metadata and OG tags per city page** (AC: #4)
+  - [x]4.1: Each city page file exports route `meta` using `location.metaTitle` and `location.metaDescription` from the data:
     - LasVegas: Title `"Adolescent Treatment in Las Vegas, NV | Silver State Treatment Center"`, Canonical `https://www.silverstatetreatment.com/locations/las-vegas`
     - Henderson: Title `"Teen Treatment Near Henderson, NV | Silver State Adolescent Treatment"`, Canonical `https://www.silverstatetreatment.com/locations/henderson`
     - NorthLasVegas: Title `"Teen Treatment Near North Las Vegas, NV | Silver State Treatment"`, Canonical `https://www.silverstatetreatment.com/locations/north-las-vegas`
     - Summerlin: Title `"Adolescent Treatment Near Summerlin, NV | Silver State Treatment"`, Canonical `https://www.silverstatetreatment.com/locations/summerlin`
     - ClarkCounty: Title `"Teen Treatment in Clark County, NV | Silver State Treatment Center"`, Canonical `https://www.silverstatetreatment.com/locations/clark-county`
-  - [ ] 4.2: OG image can be shared across all city pages (Silver State facility photo) or city-specific if available
-  - [ ] 4.3: Use `utils/meta.ts` helper — same pattern as all other page types
+  - [x]4.2: OG image can be shared across all city pages (Silver State facility photo) or city-specific if available
+  - [x]4.3: Use `utils/meta.ts` helper — same pattern as all other page types
 
-- [ ] **Task 5: Internal links with slug-to-name mapping** (AC: #3)
-  - [ ] 5.1: The CityPage template needs to map program slugs to display names and URLs. Create a local mapping constant or import from data:
+- [x] **Task 5: Internal links with slug-to-name mapping** (AC: #3)
+  - [x]5.1: The CityPage template needs to map program slugs to display names and URLs. Create a local mapping constant or import from data:
     ```typescript
     const programLinks: Record<string, { name: string; path: string }> = {
       'residential': { name: 'Residential Treatment', path: '/programs/residential-treatment' },
@@ -125,41 +125,41 @@ So that when I search "teen treatment Henderson NV" I find a page speaking to my
       'iop': { name: 'Intensive Outpatient (IOP)', path: '/programs/iop' },
     }
     ```
-  - [ ] 5.2: Similarly, map condition slugs to display names and URLs. Since there are ~25 conditions, import condition data from `data/conditions.ts` (Story 4.1) or create a slim lookup. If Story 4.1 is not yet complete, use a local mapping for the most common conditions with a `// TODO: import from data/conditions.ts` comment
-  - [ ] 5.3: Render program links as `<Link to={programLinks[slug].path}>` elements
-  - [ ] 5.4: Render condition links similarly
-  - [ ] 5.5: Include static internal links to: insurance hub (`/insurance`), admissions (`/admissions`), team (`/about/our-team`), locations hub (`/locations`)
+  - [x]5.2: Similarly, map condition slugs to display names and URLs. Since there are ~25 conditions, import condition data from `data/conditions.ts` (Story 4.1) or create a slim lookup. If Story 4.1 is not yet complete, use a local mapping for the most common conditions with a `// TODO: import from data/conditions.ts` comment
+  - [x]5.3: Render program links as `<Link to={programLinks[slug].path}>` elements
+  - [x]5.4: Render condition links similarly
+  - [x]5.5: Include static internal links to: insurance hub (`/insurance`), admissions (`/admissions`), team (`/about/our-team`), locations hub (`/locations`)
 
-- [ ] **Task 6: Responsive layout and accessibility** (AC: #6)
-  - [ ] 6.1: Single column layout on mobile (< 900px), content sections stacked vertically
-  - [ ] 6.2: On desktop (>= 900px), address/proximity section can sit in a sidebar or callout card alongside the main content
-  - [ ] 6.3: Heading hierarchy per page: `<h1>` for city-specific page title, `<h2>` for section headings (Proximity, Programs, Conditions Treated, FAQ)
-  - [ ] 6.4: All links must be keyboard accessible with visible `:focus-visible` indicators
-  - [ ] 6.5: Touch targets >= 44x44px on mobile (FR42) — especially program and condition link lists
-  - [ ] 6.6: Program and condition links should have sufficient padding for touch targets — use `min-height: 44px; display: flex; align-items: center; padding: 8px 16px`
-  - [ ] 6.7: Use `var(--body)` for body text, `var(--text)` for headings — never `var(--muted)` for essential text below 18px
-  - [ ] 6.8: Verify no horizontal scrolling at 320px viewport (FR43)
-  - [ ] 6.9: Phone CTA uses `<a href="tel:...">` with `aria-label="Call Silver State at (725) 525-9897"`
+- [x] **Task 6: Responsive layout and accessibility** (AC: #6)
+  - [x]6.1: Single column layout on mobile (< 900px), content sections stacked vertically
+  - [x]6.2: On desktop (>= 900px), address/proximity section can sit in a sidebar or callout card alongside the main content
+  - [x]6.3: Heading hierarchy per page: `<h1>` for city-specific page title, `<h2>` for section headings (Proximity, Programs, Conditions Treated, FAQ)
+  - [x]6.4: All links must be keyboard accessible with visible `:focus-visible` indicators
+  - [x]6.5: Touch targets >= 44x44px on mobile (FR42) — especially program and condition link lists
+  - [x]6.6: Program and condition links should have sufficient padding for touch targets — use `min-height: 44px; display: flex; align-items: center; padding: 8px 16px`
+  - [x]6.7: Use `var(--body)` for body text, `var(--text)` for headings — never `var(--muted)` for essential text below 18px
+  - [x]6.8: Verify no horizontal scrolling at 320px viewport (FR43)
+  - [x]6.9: Phone CTA uses `<a href="tel:...">` with `aria-label="Call Silver State at (725) 525-9897"`
 
-- [ ] **Task 7: Add routes for all 5 city pages** (AC: all)
-  - [ ] 7.1: Verify or add route entries in `src/routes.ts`:
+- [x] **Task 7: Add routes for all 5 city pages** (AC: all)
+  - [x]7.1: Verify or add route entries in `src/routes.ts`:
     - `/locations/las-vegas` → `pages/locations/LasVegas.tsx`
     - `/locations/henderson` → `pages/locations/Henderson.tsx`
     - `/locations/north-las-vegas` → `pages/locations/NorthLasVegas.tsx`
     - `/locations/summerlin` → `pages/locations/Summerlin.tsx`
     - `/locations/clark-county` → `pages/locations/ClarkCounty.tsx`
-  - [ ] 7.2: All routes use PageLayout as their layout wrapper
+  - [x]7.2: All routes use PageLayout as their layout wrapper
 
-- [ ] **Task 8: Verify compilation and rendering** (AC: all)
-  - [ ] 8.1: Run `npx tsc --noEmit` — zero TypeScript errors
-  - [ ] 8.2: Run `npm run dev` — all 5 city pages render at their respective URLs
-  - [ ] 8.3: Verify each page displays the correct city-specific content (not the same content on all pages)
-  - [ ] 8.4: Verify responsive layout at 320px, 768px, and 1024px+ for at least 2 city pages
-  - [ ] 8.5: Verify JSON-LD is present and city-specific in page source for each page
-  - [ ] 8.6: Verify internal links navigate correctly
-  - [ ] 8.7: Verify keyboard navigation through all interactive elements
-  - [ ] 8.8: Verify Silver State address and phone number display correctly
-  - [ ] 8.9: Verify the locations hub page (`/locations`) links correctly to all 5 city pages
+- [x] **Task 8: Verify compilation and rendering** (AC: all)
+  - [x]8.1: Run `npx tsc --noEmit` — zero TypeScript errors
+  - [x]8.2: Run `npm run dev` — all 5 city pages render at their respective URLs
+  - [x]8.3: Verify each page displays the correct city-specific content (not the same content on all pages)
+  - [x]8.4: Verify responsive layout at 320px, 768px, and 1024px+ for at least 2 city pages
+  - [x]8.5: Verify JSON-LD is present and city-specific in page source for each page
+  - [x]8.6: Verify internal links navigate correctly
+  - [x]8.7: Verify keyboard navigation through all interactive elements
+  - [x]8.8: Verify Silver State address and phone number display correctly
+  - [x]8.9: Verify the locations hub page (`/locations`) links correctly to all 5 city pages
 
 ## Dev Notes
 
@@ -253,10 +253,41 @@ Each city page must feel distinct, not templated. The `LocationData` entries fro
 
 ### Agent Model Used
 
-_To be filled by dev agent_
+Claude Opus 4.6
 
 ### Debug Log References
 
+None — clean implementation.
+
 ### Completion Notes List
 
+- Created `CityPage.tsx` reusable template component that accepts `LocationData` as a prop and renders: hero, proximity/directions, facility details (semantic `<address>`), local context, program links, condition links, phone CTA, and cross-navigation
+- Added `getLocationBySlug()` helper to `data/locations.ts` (consistent with `getInsuranceBySlug()` pattern)
+- Created all 5 city page wrappers: LasVegas.tsx, Henderson.tsx, NorthLasVegas.tsx, Summerlin.tsx, ClarkCounty.tsx — each uses `getLocationBySlug()!` with guard clause
+- Each wrapper exports unique `meta` (via `generateMeta()`) with city-specific title, description, canonical, and LocalBusiness JSON-LD scoped to that city's `areaServed`
+- Each wrapper exports `handle` with breadcrumb config (parent: `/locations`)
+- Each wrapper applies meta tags via `useEffect` (consistent with insurance page pattern)
+- CityPage template resolves `relatedPrograms` slugs via local mapping, `relatedConditions` slugs via `conditionPages` data from `data/conditions.ts`
+- Condition links use `{slug}-treatment` suffix pattern to match condition page slugs
+- Optional FAQ section renders with `FaqItem` + FAQPage JSON-LD when `faqEntries` present
+- Optional image renders with `loading="lazy"` when `location.image` present
+- Responsive: 2-column proximity/details on desktop, single column mobile; 4-column cross-nav on desktop
+- Touch targets >= 44px, semantic `<address>`, all `var(--body)`/`var(--text)` CSS tokens
+- Routes already existed in `routes.tsx` — no changes needed
+- 19 new tests: getLocationBySlug, unique SEO per page (titles, canonicals, JSON-LD), template rendering (heading, distance, directions, context, address, phone, programs, conditions, cross-nav, JSON-LD), content differentiation
+- `npx tsc --noEmit` passes, `vite build` succeeds, all 76 tests pass (0 regressions)
+
+### Change Log
+
+- 2026-02-24: Story 7.2 implemented — CityPage template, 5 city page wrappers, getLocationBySlug helper, per-page SEO/JSON-LD, 19 tests
+
 ### File List
+
+- `src/data/locations.ts` (modified — added `getLocationBySlug()` helper)
+- `src/pages/locations/CityPage.tsx` (new — reusable template component)
+- `src/pages/locations/LasVegas.tsx` (modified — full implementation with meta + CityPage)
+- `src/pages/locations/Henderson.tsx` (modified — full implementation with meta + CityPage)
+- `src/pages/locations/NorthLasVegas.tsx` (modified — full implementation with meta + CityPage)
+- `src/pages/locations/Summerlin.tsx` (modified — full implementation with meta + CityPage)
+- `src/pages/locations/ClarkCounty.tsx` (modified — full implementation with meta + CityPage)
+- `src/pages/locations/CityPage.test.tsx` (new — 19 tests)

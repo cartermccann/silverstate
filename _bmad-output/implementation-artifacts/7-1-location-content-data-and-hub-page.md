@@ -1,6 +1,6 @@
 # Story 7.1: Location Content Data & Hub Page
 
-Status: ready-for-dev
+Status: review
 
 ## Story
 
@@ -27,8 +27,8 @@ So that I know this facility serves my area.
 
 ## Tasks / Subtasks
 
-- [ ] **Task 1: Define/verify LocationData interface in types.ts** (AC: #1, #5)
-  - [ ] 1.1: Verify Story 1.2 has created the `LocationData` interface in `src/types.ts`. If not yet present, add it with these fields:
+- [x] **Task 1: Define/verify LocationData interface in types.ts** (AC: #1, #5)
+  - [x] 1.1: Verify Story 1.2 has created the `LocationData` interface in `src/types.ts`. If not yet present, add it with these fields:
     - `name: string` — display name (e.g., "Las Vegas")
     - `slug: string` — URL slug (e.g., `'las-vegas'`)
     - `description: string` — city/area overview paragraph
@@ -42,11 +42,11 @@ So that I know this facility serves my area.
     - `metaDescription: string` — SEO description for the city page
     - `faqEntries?: FaqEntry[]` — optional FAQ specific to the location
     - `image?: { src: string; alt: string }` — optional area-relevant image
-  - [ ] 1.2: Ensure `FaqEntry` is imported/available from the same `types.ts` file
+  - [x] 1.2: Ensure `FaqEntry` is imported/available from the same `types.ts` file
 
-- [ ] **Task 2: Create src/data/locations.ts with LocationData for all 5 service areas** (AC: #1, #5)
-  - [ ] 2.1: Create `src/data/locations.ts` with import: `import type { LocationData } from '../types'`
-  - [ ] 2.2: Export `locations` array with typed `LocationData[]` annotation containing all 5 service areas:
+- [x] **Task 2: Create src/data/locations.ts with LocationData for all 5 service areas** (AC: #1, #5)
+  - [x] 2.1: Create `src/data/locations.ts` with import: `import type { LocationData } from '../types'`
+  - [x] 2.2: Export `locations` array with typed `LocationData[]` annotation containing all 5 service areas:
 
     **Las Vegas:**
     - slug: `'las-vegas'`
@@ -84,10 +84,10 @@ So that I know this facility serves my area.
     - Related programs: all three
     - Related conditions: anxiety, depression, substance-abuse, dual-diagnosis, trauma-ptsd
 
-  - [ ] 2.3: Each location entry must include `metaTitle` and `metaDescription` optimized for local SEO. Examples:
+  - [x] 2.3: Each location entry must include `metaTitle` and `metaDescription` optimized for local SEO. Examples:
     - Las Vegas: `"Adolescent Treatment in Las Vegas, NV | Silver State Treatment Center"`
     - Henderson: `"Teen Treatment Near Henderson, NV | Silver State Adolescent Treatment"`
-  - [ ] 2.4: Export `locationHubContent` object for the hub page:
+  - [x] 2.4: Export `locationHubContent` object for the hub page:
     ```typescript
     export const locationHubContent: { title: string; description: string; metaTitle: string; metaDescription: string } = {
       title: 'Areas We Serve',
@@ -96,31 +96,31 @@ So that I know this facility serves my area.
       metaDescription: 'Silver State serves families in Las Vegas, Henderson, North Las Vegas, Summerlin, and Clark County. Adolescent residential, PHP, and IOP treatment for teens 11-17.',
     }
     ```
-  - [ ] 2.5: Use `import.meta.env.VITE_R2_BASE_URL || '/assets'` for any image paths
-  - [ ] 2.6: Add re-export to `src/data/index.ts`: `export * from './locations'`
+  - [x] 2.5: Use `import.meta.env.VITE_R2_BASE_URL || '/assets'` for any image paths
+  - [x] 2.6: Add re-export to `src/data/index.ts`: `export * from './locations'`
 
-- [ ] **Task 3: Create the Locations hub page at src/pages/locations/Index.tsx** (AC: #2, #3, #4)
-  - [ ] 3.1: Create `src/pages/locations/Index.tsx` with `export default function LocationsHub()` (note: file is `Index.tsx` per architecture, but the function name should be descriptive — `LocationsHub` not `Index`)
-  - [ ] 3.2: Import `locations`, `locationHubContent` from `../../data/locations`
-  - [ ] 3.3: Import `site` from `../../data/common`
-  - [ ] 3.4: Render a page header section with `<h1>` containing the hub title (e.g., "Areas We Serve" from `locationHubContent.title`) and introductory description
-  - [ ] 3.5: Render Silver State's address and facility details prominently (FR24):
+- [x] **Task 3: Create the Locations hub page at src/pages/locations/Index.tsx** (AC: #2, #3, #4)
+  - [x] 3.1: Create `src/pages/locations/Index.tsx` with `export default function LocationsHub()` (note: file is `Index.tsx` per architecture, but the function name should be descriptive — `LocationsHub` not `Index`)
+  - [x] 3.2: Import `locations`, `locationHubContent` from `../../data/locations`
+  - [x] 3.3: Import `site` from `../../data/common`
+  - [x] 3.4: Render a page header section with `<h1>` containing the hub title (e.g., "Areas We Serve" from `locationHubContent.title`) and introductory description
+  - [x] 3.5: Render Silver State's address and facility details prominently (FR24):
     - Full address: `site.address` ("8225 W Robindale Rd, Las Vegas, NV 89113")
     - Phone: `site.phone` / `site.phoneTel` as a click-to-call link
     - Ages served: "Adolescents ages 11-17"
     - Programs available: "Residential Treatment, PHP, IOP"
     - This section should be visually distinct — use a card or callout box with `var(--cream)` or `var(--sage-soft)` background
-  - [ ] 3.6: Render the service area grid/list — map over `locations` array to create a card for each area:
+  - [x] 3.6: Render the service area grid/list — map over `locations` array to create a card for each area:
     - City name as heading (`<h2>`)
     - Brief description or distance from Silver State
     - `<Link to={`/locations/${location.slug}`}>` for navigation to the individual city page
     - Each card should be visually engaging — use `.bento-card` or `.hover-lift` pattern
-  - [ ] 3.7: Optionally include a map context section — can be a static map image or a textual description of the Las Vegas metro area. If using an image, provide descriptive `alt` text: "Map of Silver State's service area covering Las Vegas, Henderson, North Las Vegas, Summerlin, and Clark County"
-  - [ ] 3.8: Include a phone CTA within page content: "Not sure if we serve your area? Call us at (725) 525-9897" using `site.phoneTel`
-  - [ ] 3.9: Internal links to related content: programs hub or residential page, admissions, insurance hub
+  - [x] 3.7: Optionally include a map context section — can be a static map image or a textual description of the Las Vegas metro area. If using an image, provide descriptive `alt` text: "Map of Silver State's service area covering Las Vegas, Henderson, North Las Vegas, Summerlin, and Clark County"
+  - [x] 3.8: Include a phone CTA within page content: "Not sure if we serve your area? Call us at (725) 525-9897" using `site.phoneTel`
+  - [x] 3.9: Internal links to related content: programs hub or residential page, admissions, insurance hub
 
-- [ ] **Task 4: Implement LocalBusiness JSON-LD for the hub page** (AC: #4)
-  - [ ] 4.1: Generate `LocalBusiness` JSON-LD for the hub page:
+- [x] **Task 4: Implement LocalBusiness JSON-LD for the hub page** (AC: #4)
+  - [x] 4.1: Generate `LocalBusiness` JSON-LD for the hub page:
     ```json
     {
       "@context": "https://schema.org",
@@ -152,40 +152,40 @@ So that I know this facility serves my area.
       "priceRange": "Call for pricing"
     }
     ```
-  - [ ] 4.2: Use `utils/schema.ts` generator from Story 1.8. If `generateLocalBusinessSchema` doesn't support `areaServed` yet, extend it or create the JSON-LD object inline with a `// TODO: move to utils/schema.ts` comment
-  - [ ] 4.3: Inject JSON-LD via the route `meta`/`handle` export pattern
+  - [x] 4.2: Use `utils/schema.ts` generator from Story 1.8. If `generateLocalBusinessSchema` doesn't support `areaServed` yet, extend it or create the JSON-LD object inline with a `// TODO: move to utils/schema.ts` comment
+  - [x] 4.3: Inject JSON-LD via the route `meta`/`handle` export pattern
 
-- [ ] **Task 5: SEO metadata and OG tags** (AC: #4)
-  - [ ] 5.1: Use `utils/meta.ts` to generate route `meta` export:
+- [x] **Task 5: SEO metadata and OG tags** (AC: #4)
+  - [x] 5.1: Use `utils/meta.ts` to generate route `meta` export:
     - Title: `locationHubContent.metaTitle` — "Service Areas | Silver State Adolescent Treatment Center"
     - Description: `locationHubContent.metaDescription`
     - Canonical: `https://www.silverstatetreatment.com/locations`
     - OG image: Silver State facility exterior or Las Vegas area image
 
-- [ ] **Task 6: Responsive layout and accessibility** (AC: all)
-  - [ ] 6.1: Service area cards: on desktop (>= 900px), display in a 2 or 3-column grid. On mobile (< 900px), single column stack
-  - [ ] 6.2: Facility details callout: full-width on both mobile and desktop, visually prominent
-  - [ ] 6.3: Heading hierarchy: `<h1>` for page title, `<h2>` for each service area name and section headings
-  - [ ] 6.4: All links (service area cards, phone CTA, internal links) must be keyboard accessible with visible `:focus-visible` indicators
-  - [ ] 6.5: Touch targets on cards, phone CTA, and links must be >= 44x44px on mobile (FR42)
-  - [ ] 6.6: Service area cards should be fully clickable (the entire card is a link target, not just the text)
-  - [ ] 6.7: Use `var(--body)` for body text, `var(--text)` for headings
-  - [ ] 6.8: Verify no horizontal scrolling at 320px viewport (FR43)
-  - [ ] 6.9: Address display uses semantic `<address>` element
+- [x] **Task 6: Responsive layout and accessibility** (AC: all)
+  - [x] 6.1: Service area cards: on desktop (>= 900px), display in a 2 or 3-column grid. On mobile (< 900px), single column stack
+  - [x] 6.2: Facility details callout: full-width on both mobile and desktop, visually prominent
+  - [x] 6.3: Heading hierarchy: `<h1>` for page title, `<h2>` for each service area name and section headings
+  - [x] 6.4: All links (service area cards, phone CTA, internal links) must be keyboard accessible with visible `:focus-visible` indicators
+  - [x] 6.5: Touch targets on cards, phone CTA, and links must be >= 44x44px on mobile (FR42)
+  - [x] 6.6: Service area cards should be fully clickable (the entire card is a link target, not just the text)
+  - [x] 6.7: Use `var(--body)` for body text, `var(--text)` for headings
+  - [x] 6.8: Verify no horizontal scrolling at 320px viewport (FR43)
+  - [x] 6.9: Address display uses semantic `<address>` element
 
-- [ ] **Task 7: Add route for the hub page** (AC: all)
-  - [ ] 7.1: Verify or add route entry in `src/routes.ts`:
+- [x] **Task 7: Add route for the hub page** (AC: all)
+  - [x] 7.1: Verify or add route entry in `src/routes.ts`:
     - `/locations` → `pages/locations/Index.tsx`
-  - [ ] 7.2: Route should use PageLayout as its layout wrapper
+  - [x] 7.2: Route should use PageLayout as its layout wrapper
 
-- [ ] **Task 8: Verify compilation and rendering** (AC: #6)
-  - [ ] 8.1: Run `npx tsc --noEmit` — zero TypeScript errors
-  - [ ] 8.2: Run `npm run dev` — Locations hub renders at `/locations`
-  - [ ] 8.3: Verify responsive layout at 320px, 768px, and 1024px+
-  - [ ] 8.4: Verify JSON-LD is present in page source
-  - [ ] 8.5: Verify all service area links navigate to correct `/locations/{slug}` URLs (pages may 404 until Story 7.2 is complete — that's expected)
-  - [ ] 8.6: Verify keyboard navigation through all interactive elements
-  - [ ] 8.7: Verify Silver State address and phone number display correctly from `site` data
+- [x] **Task 8: Verify compilation and rendering** (AC: #6)
+  - [x] 8.1: Run `npx tsc --noEmit` — zero TypeScript errors
+  - [x] 8.2: Run `npm run dev` — Locations hub renders at `/locations`
+  - [x] 8.3: Verify responsive layout at 320px, 768px, and 1024px+
+  - [x] 8.4: Verify JSON-LD is present in page source
+  - [x] 8.5: Verify all service area links navigate to correct `/locations/{slug}` URLs (pages may 404 until Story 7.2 is complete — that's expected)
+  - [x] 8.6: Verify keyboard navigation through all interactive elements
+  - [x] 8.7: Verify Silver State address and phone number display correctly from `site` data
 
 ## Dev Notes
 
@@ -277,10 +277,34 @@ The Locations hub page and `locations.ts` data file serve two purposes:
 
 ### Agent Model Used
 
-_To be filled by dev agent_
+Claude Opus 4.6
 
 ### Debug Log References
 
+None — clean implementation with no blocking issues.
+
 ### Completion Notes List
 
+- Expanded `LocationData` interface in `types.ts` to include all required fields: `name`, `slug`, `description`, `distanceFromFacility`, `directions`, `localContext`, `serviceAreaDescription`, `relatedPrograms`, `relatedConditions`, `metaTitle`, `metaDescription`, `faqEntries?`, `image?`
+- Created full location content data for all 5 service areas (Las Vegas, Henderson, North Las Vegas, Summerlin, Clark County) with accurate geographic context and distances
+- Added `locationsBySlug` lookup map and `locationHubContent` hub page content export
+- Built full `LocationsHub` page following Insurance hub pattern: hero section with CharReveal, facility details callout with semantic `<address>` element, service area card grid with fully-clickable `<Link>` wrapping, phone CTA section, and cross-navigation links
+- LocalBusiness JSON-LD injected via `generateLocalBusiness()` from `utils/schema.ts` (already supports `areaServed`)
+- SEO meta exported via `generateMeta()` with JSON-LD included in meta tags
+- Responsive layout: 3-column grid on desktop (>=900px), single column on mobile
+- All CSS tokens used correctly: `var(--body)`, `var(--text)`, `var(--sage-soft)`, `var(--blue)`
+- Touch targets >= 44px on all interactive elements
+- 21 new tests covering data validation, SEO meta, and page rendering
+- `npx tsc --noEmit` passes, `vite build` succeeds, all 57 tests pass (0 regressions)
+- Route `/locations` already existed in `routes.tsx`; barrel re-export already in `data/index.ts`
+
+### Change Log
+
+- 2026-02-24: Story 7.1 implemented — LocationData interface expanded, locations.ts data created for 5 service areas, LocationsHub page built with JSON-LD, SEO, responsive layout, and 21 tests
+
 ### File List
+
+- `src/types.ts` (modified — expanded LocationData interface)
+- `src/data/locations.ts` (modified — populated with 5 locations + hub content + locationsBySlug)
+- `src/pages/locations/Index.tsx` (modified — full LocationsHub page implementation)
+- `src/pages/locations/Index.test.tsx` (new — 21 tests for data + SEO + rendering)
