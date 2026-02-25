@@ -80,8 +80,8 @@ development_status:
 
   # Epic 5: Insurance Coverage Pages (2 stories) — ALL STORIES CREATED
   epic-5: in-progress
-  5-1-insurance-content-data-and-hub-page: ready-for-dev
-  5-2-individual-insurance-provider-pages: ready-for-dev
+  5-1-insurance-content-data-and-hub-page: review
+  5-2-individual-insurance-provider-pages: review
   epic-5-retrospective: optional
 
   # Epic 6: About & Clinical Credibility (2 stories) — ALL STORIES CREATED

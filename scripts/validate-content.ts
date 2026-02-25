@@ -7,7 +7,7 @@
 import { site, navLinks } from '../src/data/common'
 import { programs, programPages } from '../src/data/programs'
 import { conditionPages } from '../src/data/conditions'
-import { insurance, insurancePages } from '../src/data/insurance'
+import { insurance, insuranceProviders } from '../src/data/insurance'
 import { locations } from '../src/data/locations'
 import { leadership } from '../src/data/about'
 import { admissionsProcess } from '../src/data/admissions'
@@ -134,15 +134,21 @@ for (const ins of insurance) {
 }
 
 // ─── insurance.ts (full page data — populated in Epic 5) ────
-if (insurancePages.length > 0) {
-  for (const ins of insurancePages) {
+if (insuranceProviders.length > 0) {
+  for (const ins of insuranceProviders) {
     requireSlug('insurance.ts', ins.slug ?? '(unknown)', 'slug', ins.slug)
     requireString('insurance.ts', ins.slug, 'name', ins.name)
     requireString('insurance.ts', ins.slug, 'coverageDescription', ins.coverageDescription)
+    requireString('insurance.ts', ins.slug, 'preAuthorization', ins.preAuthorization)
+    requireString('insurance.ts', ins.slug, 'metaDescription', ins.metaDescription)
     requireArray('insurance.ts', ins.slug, 'faqs', ins.faqs)
+    for (const faq of ins.faqs) {
+      requireString('insurance.ts', `${ins.slug}.faqs`, 'q', faq.q)
+      requireString('insurance.ts', `${ins.slug}.faqs`, 'a', faq.a)
+    }
   }
 } else {
-  console.log('  Skipping insurancePages — empty (will be populated in Epic 5)')
+  console.log('  Skipping insuranceProviders — empty (will be populated in Epic 5)')
 }
 
 // ─── locations.ts (populated in Epic 7) ─────────────────────
