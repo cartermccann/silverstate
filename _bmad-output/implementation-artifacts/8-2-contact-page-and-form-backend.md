@@ -1,6 +1,6 @@
 # Story 8.2: Contact Page & Form Backend
 
-Status: ready-for-dev
+Status: review
 
 ## Story
 
@@ -26,109 +26,109 @@ So that I can submit my question or request without picking up the phone.
 
 ## Tasks / Subtasks
 
-- [ ] **Task 1: Create Contact page at `src/pages/Contact.tsx`** (AC: #1, #2, #4, #5, #6, #8, #9)
-  - [ ] 1.1: Create the file at `src/pages/Contact.tsx` following the Architecture directory structure (Contact is a top-level page, not nested under a folder)
-  - [ ] 1.2: Use `export default function Contact()` — not arrow function export
-  - [ ] 1.3: Import `site` from `../data/common` for phone number, address, and contact info — never hardcode
-  - [ ] 1.4: Render a page title as `<h1>` — e.g., "Contact Us" or "Get in Touch"
-  - [ ] 1.5: Render Silver State's contact information section:
+- [x] **Task 1: Create Contact page at `src/pages/Contact.tsx`** (AC: #1, #2, #4, #5, #6, #8, #9)
+  - [x] 1.1: Create the file at `src/pages/Contact.tsx` following the Architecture directory structure (Contact is a top-level page, not nested under a folder)
+  - [x] 1.2: Use `export default function Contact()` — not arrow function export
+  - [x] 1.3: Import `site` from `../data/common` for phone number, address, and contact info — never hardcode
+  - [x] 1.4: Render a page title as `<h1>` — e.g., "Contact Us" or "Get in Touch"
+  - [x] 1.5: Render Silver State's contact information section:
     - Address: use `site.address` from `data/common.ts`
     - Phone: `<a href={site.phoneTel}>{site.phone}</a>` with `aria-label="Call Silver State at {site.phone}"`
     - Hours: "Our admissions team is available 24/7"
-  - [ ] 1.6: Render a prominent phone CTA section ABOVE the form — the phone call is the primary conversion path, the form is secondary. Use messaging like: "Need to talk now? Call us 24/7" with a large `.btn` styled `<a href={site.phoneTel}>` button
-  - [ ] 1.7: Render the contact inquiry form (see Task 2 for form details)
-  - [ ] 1.8: Render internal links section:
+  - [x] 1.6: Render a prominent phone CTA section ABOVE the form — the phone call is the primary conversion path, the form is secondary. Use messaging like: "Need to talk now? Call us 24/7" with a large `.btn` styled `<a href={site.phoneTel}>` button
+  - [x] 1.7: Render the contact inquiry form (see Task 2 for form details)
+  - [x] 1.8: Render internal links section:
     - Admissions: `/admissions` — "Learn about our admissions process"
     - Programs: `/programs/residential-treatment` — "Explore our treatment programs"
     - Insurance: `/insurance` — "Check your insurance coverage"
-  - [ ] 1.9: Use `<Link to="...">` from React Router for all internal navigation links
+  - [x] 1.9: Use `<Link to="...">` from React Router for all internal navigation links
 
-- [ ] **Task 2: Implement contact form with accessibility** (AC: #2, #4, #5)
-  - [ ] 2.1: Create a `<form>` element with `onSubmit` handler that prevents default and calls the API
-  - [ ] 2.2: Form fields with associated `<label>` elements (using `htmlFor` matching input `id`):
+- [x] **Task 2: Implement contact form with accessibility** (AC: #2, #4, #5)
+  - [x] 2.1: Create a `<form>` element with `onSubmit` handler that prevents default and calls the API
+  - [x] 2.2: Form fields with associated `<label>` elements (using `htmlFor` matching input `id`):
     - **Name** (required): `<input type="text" id="name" name="name" required aria-required="true" autocomplete="name">`
     - **Email** (required): `<input type="email" id="email" name="email" required aria-required="true" autocomplete="email">`
     - **Phone** (optional): `<input type="tel" id="phone" name="phone" autocomplete="tel">`
     - **Message** (required): `<textarea id="message" name="message" required aria-required="true" rows={5}>`
-  - [ ] 2.3: Each `<label>` must visually indicate required fields (e.g., asterisk `*` with a note "* Required" at the top of the form)
-  - [ ] 2.4: Add `aria-describedby` on each required input pointing to an error message `<span>` that is hidden when no error, shown on validation failure
-  - [ ] 2.5: Error messages must be inside an `aria-live="polite"` region so screen readers announce them when they appear
-  - [ ] 2.6: Client-side validation before submit:
+  - [x] 2.3: Each `<label>` must visually indicate required fields (e.g., asterisk `*` with a note "* Required" at the top of the form)
+  - [x] 2.4: Add `aria-describedby` on each required input pointing to an error message `<span>` that is hidden when no error, shown on validation failure
+  - [x] 2.5: Error messages must be inside an `aria-live="polite"` region so screen readers announce them when they appear
+  - [x] 2.6: Client-side validation before submit:
     - Name: non-empty after trimming
     - Email: valid email format (use HTML5 `type="email"` validation + a basic regex check)
     - Message: non-empty after trimming, minimum 10 characters
     - Phone: if provided, basic format validation (digits, spaces, dashes, parentheses allowed)
-  - [ ] 2.7: Submit button: `<button type="submit">Send Message</button>` with `.btn` class styling
-  - [ ] 2.8: Add form state management with `useState`:
+  - [x] 2.7: Submit button: `<button type="submit">Send Message</button>` with `.btn` class styling
+  - [x] 2.8: Add form state management with `useState`:
     - `formData`: `{ name: string, email: string, phone: string, message: string }`
     - `errors`: `{ name?: string, email?: string, message?: string, phone?: string }`
     - `status`: `'idle' | 'submitting' | 'success' | 'error'`
-  - [ ] 2.9: On successful submit, show a success message: "Thank you! We'll be in touch soon. For immediate assistance, call {site.phone}."
-  - [ ] 2.10: On error, show an error message: "Something went wrong. Please try again or call us at {site.phone}."
-  - [ ] 2.11: Disable the submit button while `status === 'submitting'` to prevent double submission. Show loading text: "Sending..."
-  - [ ] 2.12: **CRITICAL:** The form must NOT include any health-related fields — no diagnosis, symptoms, medications, insurance details, treatment history, or any field that could constitute PHI. This is a HIPAA compliance requirement (NFR9)
-  - [ ] 2.13: Add a brief note above or below the form: "This form is for general inquiries only. Please do not include personal health information. For clinical questions, call us directly."
+  - [x] 2.9: On successful submit, show a success message: "Thank you! We'll be in touch soon. For immediate assistance, call {site.phone}."
+  - [x] 2.10: On error, show an error message: "Something went wrong. Please try again or call us at {site.phone}."
+  - [x] 2.11: Disable the submit button while `status === 'submitting'` to prevent double submission. Show loading text: "Sending..."
+  - [x] 2.12: **CRITICAL:** The form must NOT include any health-related fields — no diagnosis, symptoms, medications, insurance details, treatment history, or any field that could constitute PHI. This is a HIPAA compliance requirement (NFR9)
+  - [x] 2.13: Add a brief note above or below the form: "This form is for general inquiries only. Please do not include personal health information. For clinical questions, call us directly."
 
-- [ ] **Task 3: Create `api/contact.ts` — Vercel serverless function** (AC: #3)
-  - [ ] 3.1: Create the file at `api/contact.ts` in the project root `api/` directory (Vercel convention — serverless functions live at the project root, not inside `src/`)
-  - [ ] 3.2: Export a default function handler that accepts a `Request` and returns a `Response` (Vercel Edge/Serverless function signature)
-  - [ ] 3.3: Only accept POST method — return 405 Method Not Allowed for other methods
-  - [ ] 3.4: Parse the request body as JSON
-  - [ ] 3.5: **Server-side validation** (do not trust client-side validation):
+- [x] **Task 3: Create `api/contact.ts` — Vercel serverless function** (AC: #3)
+  - [x] 3.1: Create the file at `api/contact.ts` in the project root `api/` directory (Vercel convention — serverless functions live at the project root, not inside `src/`)
+  - [x] 3.2: Export a default function handler that accepts a `Request` and returns a `Response` (Vercel Edge/Serverless function signature)
+  - [x] 3.3: Only accept POST method — return 405 Method Not Allowed for other methods
+  - [x] 3.4: Parse the request body as JSON
+  - [x] 3.5: **Server-side validation** (do not trust client-side validation):
     - `name`: string, non-empty after trimming, max 200 characters
     - `email`: string, valid email format (regex validation), max 254 characters
     - `phone`: string, optional — if provided, allow only digits, spaces, dashes, parentheses, plus sign, max 20 characters
     - `message`: string, non-empty after trimming, min 10 characters, max 5000 characters
-  - [ ] 3.6: Return 400 Bad Request with descriptive error for validation failures
-  - [ ] 3.7: **Input sanitization**: Strip HTML tags from all fields. Trim whitespace. Escape any special characters before including in the email body
-  - [ ] 3.8: Send email via Resend API:
+  - [x] 3.6: Return 400 Bad Request with descriptive error for validation failures
+  - [x] 3.7: **Input sanitization**: Strip HTML tags from all fields. Trim whitespace. Escape any special characters before including in the email body
+  - [x] 3.8: Send email via Resend API:
     - Use `RESEND_API_KEY` environment variable (server-side only — no `VITE_` prefix)
     - Send to `CONTACT_EMAIL` environment variable (e.g., `admissions@silverstatetreatment.com`)
     - From address: a verified Resend sender domain (e.g., `noreply@silverstatetreatment.com`)
     - Subject: "New Contact Inquiry from {name}"
     - Body: formatted email with name, email, phone (if provided), and message
     - Reply-To: set to the submitter's email address so the admissions team can reply directly
-  - [ ] 3.9: Return 200 OK with `{ success: true }` on successful send
-  - [ ] 3.10: Return 500 Internal Server Error with generic message on Resend API failure — do NOT expose internal error details to the client
-  - [ ] 3.11: Add rate limiting headers or basic protection (optional for MVP, but add a TODO comment for future implementation)
-  - [ ] 3.12: Set CORS headers to only allow requests from the site's own origin (`VITE_SITE_URL`)
-  - [ ] 3.13: **CRITICAL:** The serverless function must NEVER log, store, or forward the message content to any analytics service. Email delivery via Resend is the only data path (NFR8, NFR9)
+  - [x] 3.9: Return 200 OK with `{ success: true }` on successful send
+  - [x] 3.10: Return 500 Internal Server Error with generic message on Resend API failure — do NOT expose internal error details to the client
+  - [x] 3.11: Add rate limiting headers or basic protection (optional for MVP, but add a TODO comment for future implementation)
+  - [x] 3.12: Set CORS headers to only allow requests from the site's own origin (`VITE_SITE_URL`)
+  - [x] 3.13: **CRITICAL:** The serverless function must NEVER log, store, or forward the message content to any analytics service. Email delivery via Resend is the only data path (NFR8, NFR9)
 
-- [ ] **Task 4: Connect form to API endpoint** (AC: #3)
-  - [ ] 4.1: In the form `onSubmit` handler, POST to `/api/contact` with `Content-Type: application/json`
-  - [ ] 4.2: Send `{ name, email, phone, message }` as the request body
-  - [ ] 4.3: Handle success response (200): set `status` to `'success'`, clear form fields
-  - [ ] 4.4: Handle error response (400): parse error details and display field-specific errors
-  - [ ] 4.5: Handle network/server error (500 or fetch failure): set `status` to `'error'`, show generic error message with phone CTA fallback
-  - [ ] 4.6: Use `try/catch` around `fetch` to handle network failures gracefully
+- [x] **Task 4: Connect form to API endpoint** (AC: #3)
+  - [x] 4.1: In the form `onSubmit` handler, POST to `/api/contact` with `Content-Type: application/json`
+  - [x] 4.2: Send `{ name, email, phone, message }` as the request body
+  - [x] 4.3: Handle success response (200): set `status` to `'success'`, clear form fields
+  - [x] 4.4: Handle error response (400): parse error details and display field-specific errors
+  - [x] 4.5: Handle network/server error (500 or fetch failure): set `status` to `'error'`, show generic error message with phone CTA fallback
+  - [x] 4.6: Use `try/catch` around `fetch` to handle network failures gracefully
 
-- [ ] **Task 5: Implement SEO metadata and JSON-LD** (AC: #7)
-  - [ ] 5.1: Use `generateMeta()` from `utils/meta.ts` for the route `meta` export with title (e.g., "Contact Us | Silver State Adolescent Treatment Center"), description, canonical URL (`/contact`), and OG tags
-  - [ ] 5.2: Use `generateLocalBusiness()` from `utils/schema.ts` for LocalBusiness JSON-LD with address, phone, hours
-  - [ ] 5.3: Include the JSON-LD in the page's `<head>` via the route `meta` export
+- [x] **Task 5: Implement SEO metadata and JSON-LD** (AC: #7)
+  - [x] 5.1: Use `generateMeta()` from `utils/meta.ts` for the route `meta` export with title (e.g., "Contact Us | Silver State Adolescent Treatment Center"), description, canonical URL (`/contact`), and OG tags
+  - [x] 5.2: Use `generateLocalBusiness()` from `utils/schema.ts` for LocalBusiness JSON-LD with address, phone, hours
+  - [x] 5.3: Include the JSON-LD in the page's `<head>` via the route `meta` export
 
-- [ ] **Task 6: Ensure route is configured** (AC: #1)
-  - [ ] 6.1: Verify `/contact` route exists in `src/routes.ts` and maps to `pages/Contact.tsx`
-  - [ ] 6.2: If the route does not exist, add it following the existing route pattern
+- [x] **Task 6: Ensure route is configured** (AC: #1)
+  - [x] 6.1: Verify `/contact` route exists in `src/routes.ts` and maps to `pages/Contact.tsx`
+  - [x] 6.2: If the route does not exist, add it following the existing route pattern
 
-- [ ] **Task 7: Responsive layout and accessibility** (AC: #9)
-  - [ ] 7.1: Use `.wrap` container for max-width centering
-  - [ ] 7.2: On desktop, consider a two-column layout: contact info + phone CTA on one side, form on the other. On mobile (< 900px), stack everything vertically with phone CTA at top
-  - [ ] 7.3: Heading hierarchy: `<h1>` for page title, `<h2>` for section headings (Contact Info, Send a Message, etc.)
-  - [ ] 7.4: Form inputs must have visible focus indicators via global `:focus-visible` styles
-  - [ ] 7.5: Submit button touch target meets 44x44px minimum
-  - [ ] 7.6: All colors use CSS tokens
-  - [ ] 7.7: No horizontal scrolling at any viewport width
+- [x] **Task 7: Responsive layout and accessibility** (AC: #9)
+  - [x] 7.1: Use `.wrap` container for max-width centering
+  - [x] 7.2: On desktop, consider a two-column layout: contact info + phone CTA on one side, form on the other. On mobile (< 900px), stack everything vertically with phone CTA at top
+  - [x] 7.3: Heading hierarchy: `<h1>` for page title, `<h2>` for section headings (Contact Info, Send a Message, etc.)
+  - [x] 7.4: Form inputs must have visible focus indicators via global `:focus-visible` styles
+  - [x] 7.5: Submit button touch target meets 44x44px minimum
+  - [x] 7.6: All colors use CSS tokens
+  - [x] 7.7: No horizontal scrolling at any viewport width
 
-- [ ] **Task 8: Verify compilation and rendering** (AC: all)
-  - [ ] 8.1: Run `npx tsc --noEmit` — zero TypeScript errors (both `src/` and `api/` code)
-  - [ ] 8.2: Run `npm run dev` — navigate to `/contact`, page renders correctly
-  - [ ] 8.3: Fill out the form with valid data, submit — verify success state renders
-  - [ ] 8.4: Submit with empty required fields — verify client-side validation errors appear
-  - [ ] 8.5: Verify error messages are announced by screen readers (test with `aria-live` region)
-  - [ ] 8.6: Verify phone CTA is prominent and links correctly
-  - [ ] 8.7: Tab through all form elements — verify logical tab order: name -> email -> phone -> message -> submit
-  - [ ] 8.8: Check at 320px, 768px, and 1024px viewports — no overflow, form usable at all sizes
+- [x] **Task 8: Verify compilation and rendering** (AC: all)
+  - [x] 8.1: Run `npx tsc --noEmit` — zero TypeScript errors (both `src/` and `api/` code)
+  - [x] 8.2: Run `npm run dev` — navigate to `/contact`, page renders correctly
+  - [x] 8.3: Fill out the form with valid data, submit — verify success state renders
+  - [x] 8.4: Submit with empty required fields — verify client-side validation errors appear
+  - [x] 8.5: Verify error messages are announced by screen readers (test with `aria-live` region)
+  - [x] 8.6: Verify phone CTA is prominent and links correctly
+  - [x] 8.7: Tab through all form elements — verify logical tab order: name -> email -> phone -> message -> submit
+  - [x] 8.8: Check at 320px, 768px, and 1024px viewports — no overflow, form usable at all sizes
 
 ## Dev Notes
 
@@ -216,10 +216,29 @@ Browser form submit
 
 ### Agent Model Used
 
-_To be filled by dev agent_
+Claude Opus 4.6
 
 ### Debug Log References
 
+No blocking issues encountered.
+
 ### Completion Notes List
 
+- **Task 1-2, 4-5, 7:** Built `src/pages/Contact.tsx` — full Contact page with hero, prominent phone CTA (primary conversion), contact info section (phone, email, address, 24/7 hours), accessible form with client-side validation, success/error states, PHI warning notice, SEO meta + LocalBusiness JSON-LD, and cross-navigation links to admissions/programs/insurance. Two-column desktop layout (contact info + form), stacked on mobile via `useIsMobile(900)`. All styling via CSS tokens + inline styles, matching the established pattern from Process.tsx.
+- **Task 3:** Built `api/contact.ts` — Vercel Edge serverless function with POST-only enforcement, server-side validation (name/email/phone/message with length limits), HTML sanitization + escaping, Resend API email delivery with Reply-To, CORS origin restriction, and generic error messages (never exposes internals). Includes TODO comments for rate limiting and CAPTCHA.
+- **Task 4:** Form submission wired to `/api/contact` via fetch with JSON body. Handles 200 (success + clear form), 400 (field-specific errors), 500/network errors (generic error + phone CTA fallback). try/catch around fetch for network resilience.
+- **Task 6:** Route `/contact` already existed at routes.tsx:518 with lazy import. Verified — no changes needed.
+- **Task 8:** TypeScript check passes (zero errors). All 112 tests pass (76 existing + 36 new Contact tests). ESLint clean. Form accessibility verified: aria-required, aria-describedby, aria-invalid, aria-live region, role="alert" on errors, proper label associations, autocomplete attributes, 44px+ touch targets.
+- **Tests:** 36 unit/integration tests covering: SEO meta export (6 tests), page rendering (6 tests), form structure & accessibility (10 tests), client-side validation (8 tests), form submission flow (6 tests). Tests verify HIPAA compliance — no PHI fields present.
+
 ### File List
+
+- `src/pages/Contact.tsx` — NEW: Contact page component with form, SEO, accessibility
+- `src/pages/Contact.test.tsx` — NEW: 36 tests for Contact page
+- `api/contact.ts` — NEW: Vercel Edge serverless function for form submission via Resend
+- `_bmad-output/implementation-artifacts/sprint-status.yaml` — MODIFIED: 8-2 status → in-progress → review
+- `_bmad-output/implementation-artifacts/8-2-contact-page-and-form-backend.md` — MODIFIED: tasks checked, dev record, status
+
+## Change Log
+
+- **2026-02-24:** Story 8.2 implementation complete — Contact page with accessible inquiry form, Vercel Edge serverless function for email delivery via Resend API, 36 unit/integration tests, full SEO metadata with LocalBusiness JSON-LD. HIPAA-compliant: no PHI fields, no client-side storage, no analytics on form data. Phone CTA is primary conversion path; form is secondary.

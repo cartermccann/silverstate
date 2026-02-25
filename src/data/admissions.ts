@@ -23,33 +23,43 @@ export const admissionsProcess: AdmissionStep[] = [
   },
 ]
 
-export const faqs: FaqEntry[] = [
+export const admissionsFaqs: FaqEntry[] = [
   {
-    q: 'What makes your program different?',
-    a: 'We focus exclusively on adolescents, combining clinical therapy, education, and compassionate support tailored to the needs of each teen.',
+    q: 'How long does the admissions process take?',
+    a: 'Most families complete the admissions process within 24-48 hours. The initial call takes about 15-20 minutes, insurance verification is typically completed within 10 minutes, and the clinical assessment can often be scheduled the same day.',
   },
   {
-    q: 'Do you treat both boys and girls?',
-    a: 'Yes. Our program is inclusive of all genders, with gender-specific accommodations and therapeutic groups when appropriate.',
+    q: 'What insurance do you accept?',
+    a: 'Silver State accepts most major insurance plans including Aetna, Cigna, Blue Cross Blue Shield, Ambetter, Humana, United Healthcare, TRICARE, Medicaid, and Anthem. Our admissions team can verify your specific coverage in under 10 minutes.',
   },
   {
-    q: 'What age range do you accept?',
-    a: 'We accept teens between the ages of 11 and 17.',
+    q: 'What should my teen bring?',
+    a: 'We provide a detailed packing list after admission is confirmed. Generally, your teen should bring comfortable clothing for 1-2 weeks, personal hygiene items, any prescribed medications in original containers, school materials, and a few personal comfort items like photos or a favorite book.',
   },
   {
-    q: 'How do I know if my teen needs residential treatment?',
-    a: "If outpatient care isn't enough and your teen's mental health is interfering with daily life, relationships, or safety, residential treatment may be appropriate.",
+    q: 'Can I visit my teen during treatment?',
+    a: 'Yes. Family involvement is a core part of our treatment approach. We offer scheduled family therapy sessions, family visiting days, and regular phone calls. Your treatment team will work with you to establish a visitation schedule that supports your teen\'s recovery.',
   },
   {
-    q: "I've never done this before. Where do I start?",
-    a: "Call us. We'll walk you through everything step by step with zero judgment.",
+    q: "What if my teen doesn't want to go?",
+    a: "This is very common. Most teens are initially resistant to treatment, but our experienced admissions team can help guide you through this conversation. Many teens who were initially reluctant become engaged in their treatment within the first few days as they build trust with staff and peers.",
   },
   {
-    q: 'What if my teen doesn\'t look "sick enough" for treatment?',
-    a: "If you're worried, that's enough to call. We assess every situation carefully.",
+    q: 'Do you offer transportation assistance?',
+    a: 'We can help coordinate transportation for families traveling to our Las Vegas facility. Our admissions team can discuss options based on your specific situation and location.',
   },
   {
-    q: "What if I've tried everything and nothing has worked?",
-    a: 'We understand. Our program is designed for teens who need a different level of care.',
+    q: 'What ages do you treat?',
+    a: 'Silver State treats adolescents ages 11-17. Our programs, therapies, and clinical staff are specifically trained to work with this age group.',
+  },
+  {
+    q: 'What happens after residential treatment?',
+    a: 'Silver State offers a full continuum of care. After residential treatment, your teen may step down to our Partial Hospitalization Program (PHP) or Intensive Outpatient Program (IOP). Your treatment team develops a personalized discharge plan to ensure a smooth transition and continued support.',
   },
 ]
+
+export const admissionsPageMeta: { title: string; description: string } = {
+  title: 'Admissions Process | Silver State Adolescent Treatment Center',
+  description:
+    'Start the admissions process at Silver State. Call 24/7, verify insurance in 10 minutes, and get your teen the help they need. Adolescent treatment ages 11-17.',
+}

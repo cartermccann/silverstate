@@ -98,14 +98,14 @@ development_status:
 
   # Epic 8: Admissions & Contact (2 stories) — ALL STORIES CREATED
   epic-8: in-progress
-  8-1-admissions-content-data-and-process-page: ready-for-dev
-  8-2-contact-page-and-form-backend: ready-for-dev
+  8-1-admissions-content-data-and-process-page: review
+  8-2-contact-page-and-form-backend: review
   epic-8-retrospective: optional
 
   # Epic 9: Analytics, Tracking & Privacy Compliance (2 stories) — ALL STORIES CREATED
   epic-9: in-progress
-  9-1-cookie-consent-and-ga4-analytics-setup: ready-for-dev
-  9-2-ctm-integration-and-performance-monitoring: ready-for-dev
+  9-1-cookie-consent-and-ga4-analytics-setup: review
+  9-2-ctm-integration-and-performance-monitoring: review
   epic-9-retrospective: optional
 
 # STORY DEPENDENCY MAP
