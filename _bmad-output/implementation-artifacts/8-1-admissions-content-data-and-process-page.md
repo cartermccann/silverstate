@@ -1,6 +1,6 @@
 # Story 8.1: Admissions Content Data & Process Page
 
-Status: review
+Status: done
 
 ## Story
 
@@ -162,26 +162,68 @@ So that I know exactly what to expect when I call and what the process looks lik
 
 ### Agent Model Used
 
-Claude Opus 4.6
+GPT-5 Codex
 
 ### Debug Log References
 
-None.
+- Senior review (2026-02-25): added required `admissionsSteps` export and aligned step titles/content with Story 8.1 process contract.
+- Senior review (2026-02-25): added `admissionsPageMeta.ogImage` and wired route metadata to use it.
+- Senior review (2026-02-25): removed duplicate FAQ schema emission by keeping FAQPage JSON-LD script in page content and removing route-level `meta.jsonLd`.
+- Senior review (2026-02-25): removed manual `useEffect` head/meta DOM mutation and standardized to route `meta` exports.
+- Senior review (2026-02-25): replaced hardcoded admissions page style constants with design-token values.
+- Senior review (2026-02-25): added Story 8.1 regression test coverage in `src/pages/admissions/Process.test.tsx`.
 
 ### Completion Notes List
 
-- Updated `data/admissions.ts`: renamed `faqs` to `admissionsFaqs`, expanded to 8 story-specified FAQ entries, added `admissionsPageMeta` export
-- Built full `Process.tsx` page: hero, 24/7 phone CTA, numbered step-by-step process (ordered list with visual step circles), FAQ accordion with FaqItem + FAQPage JSON-LD, cross-navigation links (insurance, programs, contact)
-- SEO meta via `generateMeta()` with JSON-LD, canonical `/admissions`, OG tags
+- Updated `data/admissions.ts` with explicit typed exports:
+  - `admissionsSteps: AdmissionStep[]` (plus backward-compatible `admissionsProcess` alias)
+  - `admissionsFaqs: FaqEntry[]`
+  - `admissionsPageMeta` including `title`, `description`, and `ogImage`
+- Admissions process steps now align to Story 8.1 flow and naming: Initial Call, Insurance Verification, Clinical Assessment, Admission.
+- Built/updated `Process.tsx`: hero, 24/7 phone CTA, ordered step flow, FAQ accordion with FAQPage JSON-LD script, and required internal links (insurance, programs, contact).
+- Route metadata now provides unique canonical/OG tags with page-specific OG image and no route-level FAQ schema duplication.
+- Added focused regression coverage in `src/pages/admissions/Process.test.tsx` for data exports, route meta contract, rendering, links, and FAQ schema output.
 - Route `/admissions` already existed in routes.tsx
 - `data/index.ts` already re-exports admissions
-- Zero TS errors, 76 tests pass, zero regressions
+- Verification commands passed:
+  - `npx tsc --noEmit`
+  - `npx vitest run src/pages/admissions/Process.test.tsx src/pages/Contact.test.tsx`
+  - `npm run lint`
+  - `npm run format:check`
 
 ### Change Log
 
 - 2026-02-24: Story 8.1 implemented — admissions data + Process page with FAQs, JSON-LD, SEO
+- 2026-02-25: Senior code review completed — fixed export/meta/schema contract gaps, removed head side-effects, and added Story 8.1 regression tests.
 
 ### File List
 
-- `src/data/admissions.ts` (modified — admissionsFaqs, admissionsPageMeta)
-- `src/pages/admissions/Process.tsx` (modified — full page implementation)
+- `src/data/admissions.ts` (modified — added `admissionsSteps`, refined step content, and `admissionsPageMeta.ogImage`)
+- `src/pages/admissions/Process.tsx` (modified — removed head side-effects/route schema duplication, tokenized style constants, route meta OG image wiring)
+- `src/pages/admissions/Process.test.tsx` (added — Story 8.1 admissions data/meta/rendering regression coverage)
+- `_bmad-output/implementation-artifacts/8-1-admissions-content-data-and-process-page.md` (modified — review completion record)
+- `_bmad-output/implementation-artifacts/sprint-status.yaml` (modified — story status sync)
+
+### Senior Developer Review (AI)
+
+**Reviewer:** Silver  
+**Date:** 2026-02-25  
+**Outcome:** Approved (all high and medium findings fixed)
+
+**Findings**
+
+1. **HIGH:** Story required `admissionsSteps` export, but only `admissionsProcess` was exported and step naming did not fully match the admissions-process contract.
+2. **HIGH:** Admissions FAQ schema was emitted twice (route `meta.jsonLd` and in-page `<script>`), creating duplicate JSON-LD output.
+3. **MEDIUM:** Admissions page used manual `useEffect` head/meta mutation, diverging from route-meta conventions.
+4. **MEDIUM:** `admissionsPageMeta` was missing required `ogImage` field, leaving route metadata without page-specific OG image wiring.
+5. **MEDIUM:** Admissions page used hardcoded display/warm style constants instead of tokenized values.
+6. **MEDIUM:** Story lacked dedicated admissions page regression tests for data/meta/schema/link contracts.
+
+**Fixes Applied**
+
+- Added `admissionsSteps` export (and kept compatibility alias), then aligned step titles/content to Story 8.1.
+- Removed route-level FAQ schema emission; kept FAQPage JSON-LD script output in page body.
+- Removed manual head/meta `useEffect` mutation and standardized on route `meta` export.
+- Added `admissionsPageMeta.ogImage` and wired it into admissions route metadata.
+- Replaced hardcoded constants with `var(--font-display)` and `var(--warm)`.
+- Added `src/pages/admissions/Process.test.tsx` and validated with typecheck/lint/format/test commands.

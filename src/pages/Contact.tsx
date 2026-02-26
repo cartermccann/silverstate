@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router'
 import { site } from '../data/common'
+import { facilityData } from '../data/about'
 import { generateMeta } from '../utils/meta'
 import { generateLocalBusiness } from '../utils/schema'
 import useIsMobile from '../hooks/useIsMobile'
@@ -9,17 +10,17 @@ import { CharReveal } from '../components/TextReveal'
 import MagneticButton from '../components/MagneticButton'
 import { IconPhone, IconMapPin, IconMail, IconArrowRight } from '../components/Icons'
 
-const DISPLAY = "'Space Grotesk', sans-serif"
-const WARM = '#F0EBE3'
+const DISPLAY = 'var(--font-display)'
+const WARM = 'var(--warm)'
 
-const localBusinessSchema = generateLocalBusiness()
+const localBusinessSchema = generateLocalBusiness({ url: '/contact' })
 
 export const meta = generateMeta({
-  title: 'Contact Us',
+  title: 'Contact Us | Silver State Adolescent Treatment Center',
   description:
     'Contact Silver State Adolescent Treatment Center. Call 24/7 at (725) 525-9897 or send a message. Our admissions team is ready to help your family.',
   path: '/contact',
-  jsonLd: [localBusinessSchema],
+  ogImage: facilityData.images[0]?.src,
 })
 
 interface FormData {
@@ -70,54 +71,12 @@ export default function Contact() {
   const [errors, setErrors] = useState<FormErrors>({})
   const [status, setStatus] = useState<FormStatus>('idle')
 
-  useEffect(() => {
-    const prevTitle = document.title
-    const addedElements: HTMLElement[] = []
-
-    for (const tag of meta) {
-      if (tag.title) {
-        document.title = tag.title
-      } else if (tag.tagName === 'link' && tag.rel && tag.href) {
-        let el = document.querySelector<HTMLLinkElement>(`link[rel="${tag.rel}"]`)
-        if (!el) {
-          el = document.createElement('link')
-          el.rel = tag.rel
-          document.head.appendChild(el)
-          addedElements.push(el)
-        }
-        el.href = tag.href
-      } else if (tag.name) {
-        let el = document.querySelector<HTMLMetaElement>(`meta[name="${tag.name}"]`)
-        if (!el) {
-          el = document.createElement('meta')
-          el.name = tag.name
-          document.head.appendChild(el)
-          addedElements.push(el)
-        }
-        el.content = tag.content ?? ''
-      } else if (tag.property) {
-        let el = document.querySelector<HTMLMetaElement>(`meta[property="${tag.property}"]`)
-        if (!el) {
-          el = document.createElement('meta')
-          el.setAttribute('property', tag.property)
-          document.head.appendChild(el)
-          addedElements.push(el)
-        }
-        el.content = tag.content ?? ''
-      }
-    }
-
-    return () => {
-      document.title = prevTitle
-      for (const el of addedElements) {
-        el.remove()
-      }
-    }
-  }, [])
-
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
+    if (status === 'success' || status === 'error') {
+      setStatus('idle')
+    }
     if (errors[name as keyof FormErrors]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }))
     }
@@ -154,6 +113,9 @@ export default function Contact() {
         const data = await res.json()
         if (data.errors) {
           setErrors(data.errors)
+        } else {
+          setStatus('error')
+          return
         }
         setStatus('idle')
       } else {
@@ -496,10 +458,7 @@ export default function Contact() {
                       </p>
                       <p style={{ color: 'var(--body)', fontSize: '0.9rem' }}>
                         For immediate assistance, call{' '}
-                        <a
-                          href={site.phoneTel}
-                          style={{ color: 'var(--blue)', fontWeight: 600 }}
-                        >
+                        <a href={site.phoneTel} style={{ color: 'var(--blue)', fontWeight: 600 }}>
                           {site.phone}
                         </a>
                         .
@@ -512,8 +471,8 @@ export default function Contact() {
                   <AnimateIn variant="fadeUp">
                     <div
                       style={{
-                        background: '#FEF2F2',
-                        border: '1px solid #FECACA',
+                        background: 'var(--error-bg)',
+                        border: '1px solid var(--error-border)',
                         borderRadius: 'var(--radius-md)',
                         padding: '20px 24px',
                         marginBottom: 24,
@@ -522,12 +481,15 @@ export default function Contact() {
                       <p
                         style={{
                           fontWeight: 600,
-                          color: '#991B1B',
+                          color: 'var(--error-text)',
                           marginBottom: 4,
                         }}
                       >
                         Something went wrong. Please try again or call us at{' '}
-                        <a href={site.phoneTel} style={{ color: '#991B1B', fontWeight: 700 }}>
+                        <a
+                          href={site.phoneTel}
+                          style={{ color: 'var(--error-text)', fontWeight: 700 }}
+                        >
                           {site.phone}
                         </a>
                         .
@@ -569,7 +531,7 @@ export default function Contact() {
                       name="name"
                       required
                       aria-required="true"
-                      aria-describedby={errors.name ? 'name-error' : undefined}
+                      aria-describedby="name-error"
                       aria-invalid={errors.name ? 'true' : undefined}
                       autoComplete="name"
                       value={formData.name}
@@ -579,7 +541,7 @@ export default function Contact() {
                         padding: '12px 16px',
                         fontSize: '1rem',
                         border: errors.name
-                          ? '2px solid #DC2626'
+                          ? '2px solid var(--error-text)'
                           : '1px solid var(--border)',
                         borderRadius: 'var(--radius-md)',
                         background: 'var(--white)',
@@ -588,20 +550,19 @@ export default function Contact() {
                         boxSizing: 'border-box',
                       }}
                     />
-                    {errors.name && (
-                      <span
-                        id="name-error"
-                        role="alert"
-                        style={{
-                          display: 'block',
-                          color: '#DC2626',
-                          fontSize: '0.85rem',
-                          marginTop: 4,
-                        }}
-                      >
-                        {errors.name}
-                      </span>
-                    )}
+                    <span
+                      id="name-error"
+                      role="alert"
+                      aria-live="polite"
+                      style={{
+                        display: errors.name ? 'block' : 'none',
+                        color: 'var(--error-text)',
+                        fontSize: '0.85rem',
+                        marginTop: 4,
+                      }}
+                    >
+                      {errors.name}
+                    </span>
                   </div>
 
                   {/* Email */}
@@ -624,7 +585,7 @@ export default function Contact() {
                       name="email"
                       required
                       aria-required="true"
-                      aria-describedby={errors.email ? 'email-error' : undefined}
+                      aria-describedby="email-error"
                       aria-invalid={errors.email ? 'true' : undefined}
                       autoComplete="email"
                       value={formData.email}
@@ -634,7 +595,7 @@ export default function Contact() {
                         padding: '12px 16px',
                         fontSize: '1rem',
                         border: errors.email
-                          ? '2px solid #DC2626'
+                          ? '2px solid var(--error-text)'
                           : '1px solid var(--border)',
                         borderRadius: 'var(--radius-md)',
                         background: 'var(--white)',
@@ -643,20 +604,19 @@ export default function Contact() {
                         boxSizing: 'border-box',
                       }}
                     />
-                    {errors.email && (
-                      <span
-                        id="email-error"
-                        role="alert"
-                        style={{
-                          display: 'block',
-                          color: '#DC2626',
-                          fontSize: '0.85rem',
-                          marginTop: 4,
-                        }}
-                      >
-                        {errors.email}
-                      </span>
-                    )}
+                    <span
+                      id="email-error"
+                      role="alert"
+                      aria-live="polite"
+                      style={{
+                        display: errors.email ? 'block' : 'none',
+                        color: 'var(--error-text)',
+                        fontSize: '0.85rem',
+                        marginTop: 4,
+                      }}
+                    >
+                      {errors.email}
+                    </span>
                   </div>
 
                   {/* Phone */}
@@ -678,7 +638,7 @@ export default function Contact() {
                       id="phone"
                       name="phone"
                       autoComplete="tel"
-                      aria-describedby={errors.phone ? 'phone-error' : undefined}
+                      aria-describedby="phone-error"
                       aria-invalid={errors.phone ? 'true' : undefined}
                       value={formData.phone}
                       onChange={handleChange}
@@ -687,7 +647,7 @@ export default function Contact() {
                         padding: '12px 16px',
                         fontSize: '1rem',
                         border: errors.phone
-                          ? '2px solid #DC2626'
+                          ? '2px solid var(--error-text)'
                           : '1px solid var(--border)',
                         borderRadius: 'var(--radius-md)',
                         background: 'var(--white)',
@@ -696,20 +656,19 @@ export default function Contact() {
                         boxSizing: 'border-box',
                       }}
                     />
-                    {errors.phone && (
-                      <span
-                        id="phone-error"
-                        role="alert"
-                        style={{
-                          display: 'block',
-                          color: '#DC2626',
-                          fontSize: '0.85rem',
-                          marginTop: 4,
-                        }}
-                      >
-                        {errors.phone}
-                      </span>
-                    )}
+                    <span
+                      id="phone-error"
+                      role="alert"
+                      aria-live="polite"
+                      style={{
+                        display: errors.phone ? 'block' : 'none',
+                        color: 'var(--error-text)',
+                        fontSize: '0.85rem',
+                        marginTop: 4,
+                      }}
+                    >
+                      {errors.phone}
+                    </span>
                   </div>
 
                   {/* Message */}
@@ -731,7 +690,7 @@ export default function Contact() {
                       name="message"
                       required
                       aria-required="true"
-                      aria-describedby={errors.message ? 'message-error' : undefined}
+                      aria-describedby="message-error"
                       aria-invalid={errors.message ? 'true' : undefined}
                       rows={5}
                       value={formData.message}
@@ -741,7 +700,7 @@ export default function Contact() {
                         padding: '12px 16px',
                         fontSize: '1rem',
                         border: errors.message
-                          ? '2px solid #DC2626'
+                          ? '2px solid var(--error-text)'
                           : '1px solid var(--border)',
                         borderRadius: 'var(--radius-md)',
                         background: 'var(--white)',
@@ -752,20 +711,19 @@ export default function Contact() {
                         boxSizing: 'border-box',
                       }}
                     />
-                    {errors.message && (
-                      <span
-                        id="message-error"
-                        role="alert"
-                        style={{
-                          display: 'block',
-                          color: '#DC2626',
-                          fontSize: '0.85rem',
-                          marginTop: 4,
-                        }}
-                      >
-                        {errors.message}
-                      </span>
-                    )}
+                    <span
+                      id="message-error"
+                      role="alert"
+                      aria-live="polite"
+                      style={{
+                        display: errors.message ? 'block' : 'none',
+                        color: 'var(--error-text)',
+                        fontSize: '0.85rem',
+                        marginTop: 4,
+                      }}
+                    >
+                      {errors.message}
+                    </span>
                   </div>
 
                   {/* Submit Button */}

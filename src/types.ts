@@ -146,6 +146,36 @@ export interface IntroData {
   credibilityLine: string
 }
 
+export interface LegacyHeroData {
+  refined: {
+    label: string
+    headline: string
+    body: string
+  }
+  immersive: {
+    headline: string
+    body: string
+  }
+}
+
+export interface HomepageStatItem {
+  value: string
+  label: string
+  suffix?: string
+}
+
+export interface HomepageTestimonialData {
+  quote: string
+  author: string
+  detail: string
+}
+
+export interface WhoThisIsForData {
+  headline: string
+  body: string
+  profiles: ProfileEntry[]
+}
+
 // --- NEW interfaces (Story 1.2) ---
 
 export interface NavLinkItem {
@@ -194,6 +224,9 @@ export interface ConditionData {
   sources: SourceCitation[]
 }
 
+/** @alias Explicit page schema name per story contract */
+export type ConditionPageData = ConditionData
+
 export interface LocationData {
   name: string
   slug: string
@@ -209,6 +242,9 @@ export interface LocationData {
   faqEntries?: FaqEntry[]
   image?: { src: string; alt: string }
 }
+
+/** @alias Explicit page schema name per story contract */
+export type LocationPageData = LocationData
 
 export interface TeamMember {
   name: string

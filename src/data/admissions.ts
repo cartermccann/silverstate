@@ -1,27 +1,41 @@
 import type { AdmissionStep, FaqEntry } from '../types'
 
-export const admissionsProcess: AdmissionStep[] = [
+// Supports both browser runtime (import.meta.env) and Node build scripts (globalThis.process.env).
+const baseUrl =
+  (import.meta as ImportMeta & { env?: Record<string, string | undefined> }).env
+    ?.VITE_R2_BASE_URL ||
+  (
+    globalThis as {
+      process?: { env?: Record<string, string | undefined> }
+    }
+  ).process?.env?.VITE_R2_BASE_URL ||
+  '/assets'
+
+export const admissionsSteps: AdmissionStep[] = [
   {
     step: 1,
-    title: 'Call our team',
-    desc: "Speak with an admissions counselor 24/7. No waitlists, no judgment. We'll ask about your teen's situation and answer every question you have.",
+    title: 'Initial Call',
+    desc: "Speak with an admissions counselor 24/7. We'll listen to your concerns, ask a few questions about your teen, and explain exactly what happens next.",
   },
   {
     step: 2,
-    title: 'Verify insurance',
-    desc: 'We handle everything. Share your insurance details or upload a photo of your card — our team verifies eligibility, explains coverage, and estimates out-of-pocket costs.',
+    title: 'Insurance Verification',
+    desc: 'Our team verifies your benefits directly with your insurance provider and explains coverage details in plain language, usually within about 10 minutes.',
   },
   {
     step: 3,
-    title: 'Clinical assessment',
+    title: 'Clinical Assessment',
     desc: "A licensed clinician conducts a comprehensive evaluation to determine the right level of care — residential, PHP, or IOP — tailored to your teen's needs.",
   },
   {
     step: 4,
-    title: 'Begin treatment',
-    desc: 'Your teen is welcomed into a structured, supportive environment from day one. Treatment planning starts immediately with their dedicated care team.',
+    title: 'Admission',
+    desc: "We'll coordinate scheduling, review what to bring, and prepare your family for day one so your teen can start treatment with confidence and support.",
   },
 ]
+
+// Backward-compat alias for existing imports.
+export const admissionsProcess: AdmissionStep[] = admissionsSteps
 
 export const admissionsFaqs: FaqEntry[] = [
   {
@@ -38,11 +52,11 @@ export const admissionsFaqs: FaqEntry[] = [
   },
   {
     q: 'Can I visit my teen during treatment?',
-    a: 'Yes. Family involvement is a core part of our treatment approach. We offer scheduled family therapy sessions, family visiting days, and regular phone calls. Your treatment team will work with you to establish a visitation schedule that supports your teen\'s recovery.',
+    a: "Yes. Family involvement is a core part of our treatment approach. We offer scheduled family therapy sessions, family visiting days, and regular phone calls. Your treatment team will work with you to establish a visitation schedule that supports your teen's recovery.",
   },
   {
     q: "What if my teen doesn't want to go?",
-    a: "This is very common. Most teens are initially resistant to treatment, but our experienced admissions team can help guide you through this conversation. Many teens who were initially reluctant become engaged in their treatment within the first few days as they build trust with staff and peers.",
+    a: 'This is very common. Most teens are initially resistant to treatment, but our experienced admissions team can help guide you through this conversation. Many teens who were initially reluctant become engaged in their treatment within the first few days as they build trust with staff and peers.',
   },
   {
     q: 'Do you offer transportation assistance?',
@@ -58,8 +72,9 @@ export const admissionsFaqs: FaqEntry[] = [
   },
 ]
 
-export const admissionsPageMeta: { title: string; description: string } = {
+export const admissionsPageMeta: { title: string; description: string; ogImage: string } = {
   title: 'Admissions Process | Silver State Adolescent Treatment Center',
   description:
     'Start the admissions process at Silver State. Call 24/7, verify insurance in 10 minutes, and get your teen the help they need. Adolescent treatment ages 11-17.',
+  ogImage: `${baseUrl}/facility/exterior.webp`,
 }

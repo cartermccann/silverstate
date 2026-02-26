@@ -1,6 +1,33 @@
 import { site } from '../data/common'
 
-const SITE_URL = import.meta.env?.VITE_SITE_URL || 'https://www.silverstatetreatment.com'
+const SITE_URL = (import.meta.env?.VITE_SITE_URL || 'https://www.silverstatetreatment.com').replace(
+  /\/+$/,
+  '',
+)
+
+function toAbsoluteUrl(value: string): string {
+  if (/^https?:\/\//i.test(value)) {
+    return value
+  }
+
+  return `${SITE_URL}${value.startsWith('/') ? value : `/${value}`}`
+}
+
+function toSchemaTelephone(phone: string): string {
+  const digits = phone.replace(/\D/g, '')
+
+  if (digits.length === 11 && digits.startsWith('1')) {
+    return `+${digits}`
+  }
+
+  if (digits.length === 10) {
+    return `+1${digits}`
+  }
+
+  return phone
+}
+
+const SCHEMA_TELEPHONE = toSchemaTelephone(site.phoneTel)
 
 // --- Structured address (common.ts has flat string; schema needs components) ---
 const ADDRESS = {
@@ -20,12 +47,15 @@ const GEO = {
 
 export interface MedicalOrganizationInput {
   url?: string
+  credentials?: string[]
 }
 
 export interface LocalBusinessInput {
   name?: string
   url?: string
   areaServed?: string[]
+  ratingValue?: number
+  reviewCount?: number
 }
 
 export interface MedicalConditionInput {
@@ -78,13 +108,19 @@ export interface WebPageInput {
 export function generateMedicalOrganization(
   input?: MedicalOrganizationInput,
 ): Record<string, unknown> {
+  const credentials = input?.credentials ?? [
+    'Joint Commission Gold Seal of Approval',
+    'LegitScript Certified',
+    'NAATP Member',
+  ]
+
   return {
     '@context': 'https://schema.org',
     '@type': 'MedicalOrganization',
     name: site.name,
-    url: input?.url ?? SITE_URL,
+    url: input?.url ? toAbsoluteUrl(input.url) : SITE_URL,
     logo: `${SITE_URL}/assets/logo.png`,
-    telephone: site.phone,
+    telephone: SCHEMA_TELEPHONE,
     address: {
       '@type': 'PostalAddress',
       ...ADDRESS,
@@ -107,23 +143,15 @@ export function generateMedicalOrganization(
         description: 'Flexible outpatient treatment for adolescents',
       },
     ],
-    hasCredential: [
-      {
-        '@type': 'EducationalOccupationalCredential',
-        credentialCategory: 'Accreditation',
-        name: 'Joint Commission Gold Seal of Approval',
-      },
-      {
-        '@type': 'EducationalOccupationalCredential',
-        credentialCategory: 'Certification',
-        name: 'LegitScript Certified',
-      },
-      {
-        '@type': 'EducationalOccupationalCredential',
-        credentialCategory: 'Membership',
-        name: 'NAATP Member',
-      },
-    ],
+    hasCredential: credentials.map((name) => ({
+      '@type': 'EducationalOccupationalCredential',
+      credentialCategory: /member/i.test(name)
+        ? 'Membership'
+        : /cert/i.test(name)
+          ? 'Certification'
+          : 'Accreditation',
+      name,
+    })),
   }
 }
 
@@ -139,8 +167,8 @@ export function generateLocalBusiness(input?: LocalBusinessInput): Record<string
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     name: input?.name ?? site.name,
-    url: input?.url ?? SITE_URL,
-    telephone: site.phone,
+    url: input?.url ? toAbsoluteUrl(input.url) : SITE_URL,
+    telephone: SCHEMA_TELEPHONE,
     address: {
       '@type': 'PostalAddress',
       ...ADDRESS,
@@ -155,6 +183,11 @@ export function generateLocalBusiness(input?: LocalBusinessInput): Record<string
       dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
       opens: '00:00',
       closes: '23:59',
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: input?.ratingValue ?? site.rating,
+      reviewCount: input?.reviewCount ?? site.reviewCount,
     },
     priceRange: '$$$$',
   }
@@ -191,7 +224,7 @@ export function generateMedicalCondition(input: MedicalConditionInput): Record<s
 }
 
 export function generateMedicalTherapy(input: MedicalTherapyInput): Record<string, unknown> {
-  return {
+  const result: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': 'MedicalTherapy',
     name: input.name,
@@ -210,6 +243,19 @@ export function generateMedicalTherapy(input: MedicalTherapyInput): Record<strin
       name: 'The Joint Commission',
     },
   }
+
+  if (input.therapyType) {
+    result.additionalType = input.therapyType
+  }
+
+  if (input.conditions?.length) {
+    result.indication = input.conditions.map((name) => ({
+      '@type': 'MedicalCondition',
+      name,
+    }))
+  }
+
+  return result
 }
 
 export function generatePhysician(input: PhysicianInput): Record<string, unknown> {
@@ -238,7 +284,7 @@ export function generatePhysician(input: PhysicianInput): Record<string, unknown
   }
 
   if (input.image) {
-    result.image = input.image.startsWith('http') ? input.image : `${SITE_URL}${input.image}`
+    result.image = toAbsoluteUrl(input.image)
   }
 
   return result
@@ -267,7 +313,7 @@ export function generateBreadcrumbList(input: BreadcrumbInput): Record<string, u
       '@type': 'ListItem',
       position: index + 1,
       name: item.name,
-      item: item.url,
+      item: toAbsoluteUrl(item.url),
     })),
   }
 }
@@ -278,7 +324,7 @@ export function generateWebPage(input: WebPageInput): Record<string, unknown> {
     '@type': 'WebPage',
     name: input.title,
     description: input.description,
-    url: input.url,
+    url: toAbsoluteUrl(input.url),
     publisher: {
       '@type': 'Organization',
       name: site.name,

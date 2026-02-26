@@ -1,6 +1,6 @@
 # Story 1.5: TrustBadges & CtaBand Components
 
-Status: review
+Status: done
 
 ## Story
 
@@ -416,22 +416,48 @@ Claude Opus 4.6
 
 ### Debug Log References
 
-- NAATP already present in accreditations data (added during Story 1.4). HIPAA Compliant also kept as a 4th entry.
+- Senior code review identified three AC/task compliance gaps:
+  1) accreditation set in `data/common.ts` did not match the explicit FR12 target list,
+  2) component props were not extending `BaseComponentProps`,
+  3) CtaBand layout did not implement the desktop-horizontal/mobile-stacked behavior described in Task 2.8.
 
 ### Completion Notes List
 
 - Created TrustBadges.tsx: horizontal badge strip with `var(--warm)` background, flexWrap for mobile, `<section aria-label>`, IconAward for text-only badges, descriptive alt text on logo images
 - Created CtaBand.tsx: dark full-width CTA band with urgency headline, phone CTA using `btn btn-primary btn-pulse`, `site.phoneTel`/`site.phone` from data, `<section aria-label="Contact us">`, responsive padding via `<style>` block, aria-label on phone link
 - Both components follow architecture: `export default function`, extracted CSSProperties constants, CSS tokens only, no hardcoded data
-- Accreditations data verified: Joint Commission (logo), LegitScript (null), HIPAA Compliant (null), NAATP (null)
-- Zero TypeScript errors, zero Vite build errors
+- Code review remediation (2026-02-25):
+  - Updated `accreditations` to exact FR12 target set: Joint Commission Gold Seal, LegitScript Certified, NAATP Member
+  - Updated `TrustBadgesProps` and `CtaBandProps` to extend `BaseComponentProps`
+  - Added explicit `AccreditationEntry` typing in `TrustBadges` map path
+  - Refined CtaBand responsive behavior: horizontal layout on desktop, stacked layout on mobile (900px breakpoint)
+  - Added explicit 44x44 minimum touch target guardrails for the CTA button
+- Zero TypeScript errors, zero Vite build/prerender errors
 - No new dependencies
 
 ### Change Log
 
 - 2026-02-24: Story 1.5 implemented — TrustBadges and CtaBand greenfield components created
+- 2026-02-25: Senior code review fixes applied; AC/task conformance updated and verification re-run
+
+### Senior Developer Review (AI)
+
+**Reviewer:** Silver  
+**Date:** 2026-02-25  
+**Outcome:** Approved after fixes
+
+**Findings addressed**
+- Accreditation source data in `data/common.ts` included an extra non-story badge and did not match the exact FR12 target naming. Updated to the required three-entry set.
+- Tasks 1.2/1.3 and 2.3 were marked complete but implementation had not imported/used `AccreditationEntry` and did not extend `BaseComponentProps`.
+- Task 2.8 required desktop-horizontal/mobile-stacked CTA composition; implementation remained single-column at all breakpoints.
+
+**Verification**
+- `npx tsc --noEmit` passes.
+- `npm run build` passes end-to-end (content validation, schema validation, sitemap generation, Vite build, prerender).
+- `TrustBadges` and `CtaBand` satisfy AC1-AC5 with shared phone data sourcing via `site.phoneTel`.
 
 ### File List
 
 - src/components/TrustBadges.tsx (new)
 - src/components/CtaBand.tsx (new)
+- src/data/common.ts (modified - accreditation list aligned to FR12 targets)

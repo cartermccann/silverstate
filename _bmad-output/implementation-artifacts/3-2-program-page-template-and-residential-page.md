@@ -1,6 +1,6 @@
 # Story 3.2: Program Page Template & Residential Page
 
-Status: review
+Status: done
 
 ## Story
 
@@ -214,7 +214,9 @@ Claude Opus 4.6 (claude-opus-4-6)
 
 ### Debug Log References
 
-No debug issues encountered.
+- Senior review (2026-02-25): fixed missing therapy-card links (task marked complete but links were not rendered)
+- Senior review (2026-02-25): removed duplicate JSON-LD emission by de-duplicating schema generation between page wrappers and template
+- Senior review (2026-02-25): enforced 44px minimum touch target on primary conversion CTAs in program pages
 
 ### Completion Notes List
 
@@ -225,25 +227,49 @@ No debug issues encountered.
 - All animations: CharReveal on headings, AnimateIn blurUp on body, StaggerGroup on features/therapies, slideUp on glass containers
 - FaqItem controlled via useState, matching Home.tsx pattern
 - Glass containers matching homepage pattern (rgba white, blur(24px), border) with 20px horizontal padding for mobile fit
-- Therapy cards use bento-card class, show name + description + howItHelps
+- Therapy cards use bento-card class, show name + description + howItHelps + a related condition link
 - Related content: related programs, related conditions, insurance/admissions CTAs with phone CTA
 - Clinical reviewer attribution displayed at bottom ("Clinically Reviewed by Dr. Russ Park, DNP")
 - 44px touch targets on all interactive links
 - Route `/programs/residential-treatment` registered in routes.tsx
 - Breadcrumb correctly displays Home > Programs > Residential Treatment via URL segment labels
 - Handle export present: `{ breadcrumb: { label: 'Residential Treatment', parent: '/programs' } }`
-- Meta export generates title, description, canonical, OG tags, Twitter cards, and JSON-LD
+- Meta export generates title, description, canonical, OG tags, and Twitter cards; JSON-LD is emitted once by `ProgramPage` to avoid duplication
 - **Responsive fixes (Session 2):** Reduced therapy grid minmax from 300px to 260px to prevent overflow at 320px viewport; reduced glass container padding from 32px to 20px horizontal for better mobile fit
 - **Accessibility fixes (Session 2):** Added `role="region"` and `aria-hidden={!isOpen}` to FaqItem content region; fixed nested `<a>` tag in MagneticButton (changed from `as="a"` to default `as="div"`)
 - Heading hierarchy verified: h1 (program title) → h2 (section headings) → h3 (subsections) — no skipped levels
-- TypeScript compiles clean, Vite builds, all 36 tests pass, zero regressions
+- TypeScript compiles clean, Vite builds, and targeted Story 3.2 regression tests pass with zero regressions observed
+- Senior review regression checks (2026-02-25): `npx tsc --noEmit`, `npm run lint`, `npm run test -- src/pages/programs/ProgramPage.test.tsx`, `npm run format:check`, and `npm run build` all pass
 
 ### File List
 
 - `src/pages/programs/ProgramPage.tsx` (created) — Shared program page template component
 - `src/pages/programs/Residential.tsx` (modified) — Residential page wrapper with SEO meta, JSON-LD, handle export
 - `src/components/FaqItem.tsx` (modified) — Added role="region" and aria-hidden to collapsible content
+- `src/pages/programs/PHP.tsx` (modified) — Removed duplicate wrapper-level JSON-LD generation (de-duplicated with ProgramPage template)
+- `src/pages/programs/IOP.tsx` (modified) — Removed duplicate wrapper-level JSON-LD generation (de-duplicated with ProgramPage template)
+- `src/pages/programs/ProgramPage.test.tsx` (created) — Added Story 3.2 review regression tests for therapy links, JSON-LD scripts, touch targets, and non-duplicated route meta JSON-LD
 
 ## Change Log
 
 - **2026-02-24:** Story 3.2 complete — ProgramPage template and Residential page implemented with all 7 sections, dual JSON-LD (FAQPage + MedicalTherapy), responsive grids, accessibility improvements (FaqItem aria-hidden), and mobile-safe padding
+- **2026-02-25:** Senior code review completed — fixed missing therapy links, removed duplicate JSON-LD generation across template/wrappers, enforced 44px CTA touch targets, and added focused regression tests.
+
+### Senior Developer Review (AI)
+
+**Reviewer:** Silver  
+**Date:** 2026-02-25  
+**Outcome:** Approved (all high/medium findings fixed)
+
+**Findings**
+
+1. **HIGH:** Task 5.3 was marked complete, but therapy cards had no links (`src/pages/programs/ProgramPage.tsx`)
+2. **MEDIUM:** JSON-LD emitted twice per program page (wrapper meta `jsonLd` + template `<script>` output), creating duplicate schema entries (`src/pages/programs/Residential.tsx`, `src/pages/programs/PHP.tsx`, `src/pages/programs/IOP.tsx`, `src/pages/programs/ProgramPage.tsx`)
+3. **MEDIUM:** Primary conversion CTAs did not explicitly enforce 44px minimum touch target for FR42 (`src/pages/programs/ProgramPage.tsx`)
+
+**Fixes Applied**
+
+- Added therapy-card condition links in `ProgramPage` using `therapy.usedFor` and program condition context.
+- Removed wrapper-level JSON-LD generation from program wrappers; JSON-LD is now emitted once by the shared template.
+- Added explicit `minHeight: 44` styling to insurance, admissions, and phone CTAs in the related-content card.
+- Added targeted regression tests covering links, schema presence, touch targets, and wrapper meta de-duplication behavior.

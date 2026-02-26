@@ -15,8 +15,8 @@ interface CityPageProps {
   location: LocationData
 }
 
-const DISPLAY = "'Space Grotesk', sans-serif"
-const WARM = '#F0EBE3'
+const DISPLAY = 'var(--font-display)'
+const WARM = 'var(--warm)'
 
 const programLinks: Record<string, { name: string; path: string }> = {
   residential: { name: 'Residential Treatment', path: '/programs/residential-treatment' },
@@ -29,6 +29,7 @@ export default function CityPage({ location }: CityPageProps) {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
 
   const localBusinessSchema = generateLocalBusiness({
+    url: `/locations/${location.slug}`,
     areaServed: [location.name],
   })
 
@@ -266,10 +267,7 @@ export default function CityPage({ location }: CityPageProps) {
       <section style={{ padding: '48px 0' }}>
         <div className="wrap">
           <AnimateIn variant="fadeUp">
-            <h2
-              className="section-heading"
-              style={{ textAlign: 'center', marginBottom: 24 }}
-            >
+            <h2 className="section-heading" style={{ textAlign: 'center', marginBottom: 24 }}>
               Programs Available to {location.name} Families
             </h2>
           </AnimateIn>
@@ -279,7 +277,9 @@ export default function CityPage({ location }: CityPageProps) {
             variant="fadeUp"
             style={{
               display: 'grid',
-              gridTemplateColumns: isMobile ? '1fr' : `repeat(${Math.min(location.relatedPrograms.length, 3)}, 1fr)`,
+              gridTemplateColumns: isMobile
+                ? '1fr'
+                : `repeat(${Math.min(location.relatedPrograms.length, 3)}, 1fr)`,
               gap: 20,
               maxWidth: 800,
               margin: '0 auto',
@@ -342,10 +342,7 @@ export default function CityPage({ location }: CityPageProps) {
         <section style={{ padding: '48px 0', background: WARM }}>
           <div className="wrap">
             <AnimateIn variant="fadeUp">
-              <h2
-                className="section-heading"
-                style={{ textAlign: 'center', marginBottom: 24 }}
-              >
+              <h2 className="section-heading" style={{ textAlign: 'center', marginBottom: 24 }}>
                 Conditions We Treat
               </h2>
             </AnimateIn>
@@ -513,11 +510,23 @@ export default function CityPage({ location }: CityPageProps) {
             <AnimateIn variant="fadeUp" delay={0.1}>
               <div className="bento-card" style={{ height: '100%' }}>
                 <h3
-                  style={{ fontFamily: DISPLAY, fontSize: '1rem', fontWeight: 600, marginBottom: 12 }}
+                  style={{
+                    fontFamily: DISPLAY,
+                    fontSize: '1rem',
+                    fontWeight: 600,
+                    marginBottom: 12,
+                  }}
                 >
                   Insurance Coverage
                 </h3>
-                <p style={{ fontSize: '.9rem', color: 'var(--body)', lineHeight: 1.6, marginBottom: 16 }}>
+                <p
+                  style={{
+                    fontSize: '.9rem',
+                    color: 'var(--body)',
+                    lineHeight: 1.6,
+                    marginBottom: 16,
+                  }}
+                >
                   Verify your insurance covers treatment at Silver State.
                 </p>
                 <Link
@@ -541,11 +550,23 @@ export default function CityPage({ location }: CityPageProps) {
             <AnimateIn variant="fadeUp" delay={0.15}>
               <div className="bento-card" style={{ height: '100%' }}>
                 <h3
-                  style={{ fontFamily: DISPLAY, fontSize: '1rem', fontWeight: 600, marginBottom: 12 }}
+                  style={{
+                    fontFamily: DISPLAY,
+                    fontSize: '1rem',
+                    fontWeight: 600,
+                    marginBottom: 12,
+                  }}
                 >
                   Admissions
                 </h3>
-                <p style={{ fontSize: '.9rem', color: 'var(--body)', lineHeight: 1.6, marginBottom: 16 }}>
+                <p
+                  style={{
+                    fontSize: '.9rem',
+                    color: 'var(--body)',
+                    lineHeight: 1.6,
+                    marginBottom: 16,
+                  }}
+                >
                   Learn about our admissions process and what to expect.
                 </p>
                 <Link
@@ -569,11 +590,23 @@ export default function CityPage({ location }: CityPageProps) {
             <AnimateIn variant="fadeUp" delay={0.2}>
               <div className="bento-card" style={{ height: '100%' }}>
                 <h3
-                  style={{ fontFamily: DISPLAY, fontSize: '1rem', fontWeight: 600, marginBottom: 12 }}
+                  style={{
+                    fontFamily: DISPLAY,
+                    fontSize: '1rem',
+                    fontWeight: 600,
+                    marginBottom: 12,
+                  }}
                 >
                   Our Team
                 </h3>
-                <p style={{ fontSize: '.9rem', color: 'var(--body)', lineHeight: 1.6, marginBottom: 16 }}>
+                <p
+                  style={{
+                    fontSize: '.9rem',
+                    color: 'var(--body)',
+                    lineHeight: 1.6,
+                    marginBottom: 16,
+                  }}
+                >
                   Meet the clinical team caring for your teen.
                 </p>
                 <Link
@@ -597,11 +630,23 @@ export default function CityPage({ location }: CityPageProps) {
             <AnimateIn variant="fadeUp" delay={0.25}>
               <div className="bento-card" style={{ height: '100%' }}>
                 <h3
-                  style={{ fontFamily: DISPLAY, fontSize: '1rem', fontWeight: 600, marginBottom: 12 }}
+                  style={{
+                    fontFamily: DISPLAY,
+                    fontSize: '1rem',
+                    fontWeight: 600,
+                    marginBottom: 12,
+                  }}
                 >
                   All Service Areas
                 </h3>
-                <p style={{ fontSize: '.9rem', color: 'var(--body)', lineHeight: 1.6, marginBottom: 16 }}>
+                <p
+                  style={{
+                    fontSize: '.9rem',
+                    color: 'var(--body)',
+                    lineHeight: 1.6,
+                    marginBottom: 16,
+                  }}
+                >
                   See all communities Silver State serves.
                 </p>
                 <Link

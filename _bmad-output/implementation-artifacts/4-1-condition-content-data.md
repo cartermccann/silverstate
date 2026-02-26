@@ -1,6 +1,6 @@
 # Story 4.1: Condition Content Data
 
-Status: review
+Status: done
 
 ## Story
 
@@ -258,28 +258,57 @@ Claude Opus 4.6
 
 No debug issues encountered.
 
+- Senior review (2026-02-25): fixed Story 4.1 contract drift by restoring required `conditions` export while keeping `conditionPages` as a compatibility alias.
+- Senior review (2026-02-25): tightened content validation to enforce required condition schema fields, SEO length constraints, and related slug/link integrity.
+- Senior review (2026-02-25): added focused condition data regression tests and normalized out-of-range `metaDescription` values.
+
 ### Completion Notes List
 
-- Replaced placeholder `src/data/conditions.ts` with full 25-condition ConditionData[] array
-- Renamed legacy `conditions` object export to `conditionNamesByCategory` (nothing imported the old name)
-- Kept original `conditionPages` name for the full ConditionData[] array (consistent with original placeholder)
-- Created 12 mental health conditions: anxiety, depression, trauma/PTSD, suicidal ideation, OCD, bipolar disorder, autism spectrum, ODD, conduct disorder, DMDD, BPD, adjustment disorder
-- Created 8 substance abuse conditions: dual diagnosis, substance abuse (general), alcohol, opioid, benzodiazepine, cocaine, methamphetamine, cannabis
-- Created 5 eating disorder conditions: anorexia nervosa, bulimia nervosa, binge eating disorder, ARFID, OSFED
-- All entries include: description (2-3 paragraphs, parent-facing), symptoms (5-8), therapies (3-5), approach, FAQs (3-5), relatedPrograms, relatedConditions, metaTitle, metaDescription, reviewedBy, reviewDate, and sources (2-4)
-- All `reviewedBy` set to "Dr. Russ Park, MD", `reviewDate` set to "2026-02-01"
-- Source citations reference authoritative sources: NIMH, CDC, SAMHSA, APA, NIDA, NEDA, IOCDF, 988 Lifeline
-- Added category filter exports: `mentalHealthConditions`, `substanceAbuseConditions`, `eatingDisorderConditions`
-- Added `getConditionBySlug()` helper function
-- Barrel `data/index.ts` already uses `export * from './conditions'` — no changes needed
-- TypeScript compilation: zero errors
-- Vite build: succeeds in <1s
-- Verified: 25 unique slugs, all relatedPrograms valid, all relatedConditions valid, all content fields populated
+- Replaced placeholder `src/data/conditions.ts` with full 25-condition `ConditionData[]` content and maintained legacy name-list export via `conditionNamesByCategory`.
+- Added required canonical export `conditions: ConditionData[]` and retained `conditionPages` as a compatibility alias to avoid downstream breakage.
+- Created/verified all 25 conditions across mental health, substance abuse, and eating disorders with full required schema fields and citation coverage.
+- Added typed category filter exports (`mentalHealthConditions`, `substanceAbuseConditions`, `eatingDisorderConditions`) plus `getConditionBySlug()`.
+- Normalized all condition `metaDescription` fields to required 150-160 character range.
+- Strengthened build-time content validation for conditions in `scripts/validate-content.ts`:
+  - required condition fields (`headline`, `approach`, `relatedConditions`, `metaTitle`, `metaDescription`)
+  - array minimums (`symptoms`, `therapies`, `faqs`, `sources`)
+  - SEO constraints (`metaTitle <= 60`, `metaDescription` length range)
+  - related slug integrity checks and source URL format checks.
+- Added `src/data/conditions.test.ts` regression coverage for schema integrity, slug uniqueness, SEO lengths, helper exports, and cross-reference validity.
+- Senior review verification passed:
+  - `npx tsc --noEmit`
+  - `npm run lint`
+  - `npm run test -- src/data/conditions.test.ts src/pages/programs/ProgramPage.test.tsx src/pages/programs/PHPIOP.test.tsx`
+  - `npm run format:check`
+  - `npm run build`
 
 ### Change Log
 
 - 2026-02-24: Story 4.1 implemented — full 25-condition data file with content, citations, and helper exports
+- 2026-02-25: Senior code review completed — fixed export contract and validation coverage gaps, added condition data regression tests, and finalized Story 4.1.
 
 ### File List
 
-- `src/data/conditions.ts` — MODIFIED: replaced placeholder with 25 full ConditionData entries + category filters + slug lookup helper
+- `src/data/conditions.ts` — MODIFIED: restored canonical `conditions` export, retained `conditionPages` compatibility alias, normalized SEO meta descriptions, and kept 25-condition dataset.
+- `scripts/validate-content.ts` — MODIFIED: added strict condition schema, SEO, and cross-reference validation checks.
+- `src/data/conditions.test.ts` — ADDED: Story 4.1 regression tests for data integrity and helper behavior.
+
+### Senior Developer Review (AI)
+
+**Reviewer:** Silver  
+**Date:** 2026-02-25  
+**Outcome:** Approved (all high/medium findings fixed)
+
+**Findings**
+
+1. **HIGH:** Story/AC contract drift: data file did not export expected `conditions` constant (`src/data/conditions.ts`), risking breakage for story consumers and validation assumptions.
+2. **MEDIUM:** Multiple condition `metaDescription` values were outside required 150-160 character constraint (`src/data/conditions.ts`).
+3. **MEDIUM:** `scripts/validate-content.ts` did not enforce all required Story 4.1 condition fields and SEO/cross-reference constraints, allowing invalid content to pass build-time checks.
+4. **MEDIUM:** No Story 4.1-focused regression test suite existed for condition data schema integrity and helper exports.
+
+**Fixes Applied**
+
+- Added `export const conditions: ConditionData[] = [...]` and preserved compatibility via `export const conditionPages: ConditionData[] = conditions`.
+- Updated out-of-range condition `metaDescription` entries to satisfy 150-160 character requirement.
+- Extended `scripts/validate-content.ts` to enforce required condition fields, array minimums, SEO lengths, valid related slugs, and `https://` source URLs.
+- Added `src/data/conditions.test.ts` with targeted integrity tests for count, uniqueness, required fields, SEO constraints, and cross-reference validity.

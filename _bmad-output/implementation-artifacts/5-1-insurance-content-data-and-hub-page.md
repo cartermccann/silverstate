@@ -1,6 +1,6 @@
 # Story 5.1: Insurance Content Data & Hub Page
 
-Status: review
+Status: done
 
 ## Story
 
@@ -256,6 +256,9 @@ Claude Opus 4.6
 - TS6196 fix: Removed unused `FaqEntry` import from `data/insurance.ts` (type is used within `InsurancePageData` interface in types.ts, no direct usage needed)
 - TS2532 fix: Added optional chaining on `coverageDescription.split('\n')[0]?.slice()` for strict null check
 - Build script fix: Updated `scripts/validate-content.ts` to use `insuranceProviders` instead of removed `insurancePages` export, added validation for `preAuthorization` and `metaDescription` fields and FAQ content
+- Senior review (2026-02-25): normalized all insurance provider `metaDescription` values to required 150-160 characters.
+- Senior review (2026-02-25): aligned FAQPage JSON-LD on `/insurance` with the visible hub FAQ section (removed hidden provider-FAQ schema injection mismatch).
+- Senior review (2026-02-25): added Story 5.1 regression tests for insurance data quality, SEO constraints, and hub rendering/metadata contracts.
 
 ### Completion Notes List
 
@@ -264,17 +267,48 @@ Claude Opus 4.6
 - Legacy `insurance: InsuranceEntry[]` export preserved via Option A (derived from `insuranceProviders`) for backward compatibility
 - Added `getInsuranceBySlug()` helper function for Story 5.2 consumption
 - Built full Insurance hub page at `/insurance` with: hero section, phone CTA with urgency messaging, 3-column responsive provider grid, "What if my insurance isn't listed?" section, hub-level FAQ accordion, cross-navigation links
-- SEO: `meta` export via `generateMeta`, `MedicalOrganization` JSON-LD with `insuranceAccepted`, `FAQPage` JSON-LD for all provider FAQs
+- SEO: `meta` export via `generateMeta`, `MedicalOrganization` JSON-LD with `insuranceAccepted`, `FAQPage` JSON-LD mapped to the visible hub FAQ content
 - No hardcoded phone numbers — all phone references use `site.phone`/`site.phoneTel` from data/common
 - Route already registered (Story 1.8); barrel re-export already configured (Story 1.2)
-- Full production build passes: content validation, schema validation, sitemap generation, TypeScript, Vite build, pre-render (54 routes + 404)
+- Added focused regression tests:
+  - `src/data/insurance.test.ts` validates provider count, slug uniqueness, required fields, SEO length constraints, and parity/non-guarantee coverage language.
+  - `src/pages/insurance/Index.test.tsx` validates provider links, urgency CTA + cross-navigation links, JSON-LD shape/count, touch-target sizing, and route metadata contract.
+- Strengthened build-time validation in `scripts/validate-content.ts` with insurance `metaDescription` 150-160 enforcement.
+- Full validation suite passes:
+  - `npx tsc --noEmit`
+  - `npm run lint`
+  - `npm run test -- src/data/insurance.test.ts src/pages/insurance/Index.test.tsx src/pages/conditions/ConditionPage.test.tsx src/data/conditions.test.ts src/pages/programs/ProgramPage.test.tsx src/pages/programs/PHPIOP.test.tsx`
+  - `npm run format:check`
+  - `npm run build`
 
 ### File List
 
 - `src/data/insurance.ts` — Replaced placeholder with full 9-provider insurance data, `insuranceProviders` export, legacy `insurance` export, `getInsuranceBySlug` helper
 - `src/pages/insurance/Index.tsx` — Replaced placeholder stub with full InsuranceHub page component (hero, phone CTA, provider grid, FAQ, cross-nav)
-- `scripts/validate-content.ts` — Updated import from `insurancePages` to `insuranceProviders`, added validation for new fields (preAuthorization, metaDescription, FAQ content)
+- `scripts/validate-content.ts` — Updated import from `insurancePages` to `insuranceProviders`, added validation for new fields (preAuthorization, metaDescription, FAQ content), and enforced insurance metaDescription length range
+- `src/data/insurance.test.ts` — ADDED: Story 5.1 insurance data regression tests
+- `src/pages/insurance/Index.test.tsx` — ADDED: Story 5.1 hub page regression tests
 
 ### Change Log
 
 - 2026-02-24: Story 5.1 implemented — full insurance data file (9 providers) and Insurance hub page at `/insurance` with SEO, JSON-LD, responsive grid, phone CTA, FAQ accordion, and cross-navigation
+- 2026-02-25: Senior code review completed — fixed insurance SEO-length and schema alignment gaps, added focused Story 5.1 regression tests, and finalized story.
+
+### Senior Developer Review (AI)
+
+**Reviewer:** Silver  
+**Date:** 2026-02-25  
+**Outcome:** Approved (all high/medium findings fixed)
+
+**Findings**
+
+1. **HIGH:** All 9 insurance `metaDescription` values were below Story 5.1 AC range (150-160 chars), and build validation did not enforce this constraint.
+2. **MEDIUM:** Insurance hub FAQPage schema serialized provider-level FAQs not shown in visible page FAQ content, risking schema-content mismatch.
+3. **MEDIUM:** No Story 5.1 regression tests existed for provider data integrity, insurance hub linking, or metadata/schema contract.
+
+**Fixes Applied**
+
+- Rewrote all provider `metaDescription` fields to satisfy 150-160 char requirement while keeping provider + adolescent treatment + coverage + Silver State/Las Vegas language.
+- Updated `/insurance` FAQ schema generation to use visible hub FAQ entries.
+- Added `src/data/insurance.test.ts` and `src/pages/insurance/Index.test.tsx` for Story 5.1 coverage.
+- Extended `scripts/validate-content.ts` insurance checks with explicit 150-160 metaDescription enforcement.

@@ -6,6 +6,7 @@ import { navLinks, site } from '../data/common'
 import useIsMobile from '../hooks/useIsMobile'
 
 export default function Nav() {
+  const mobileNavPanelId = 'mobile-main-navigation'
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const isMobile = useIsMobile()
@@ -168,6 +169,9 @@ export default function Nav() {
                 color: 'var(--white)',
                 fontSize: '.85rem',
                 border: 'none',
+                minWidth: 44,
+                minHeight: 44,
+                justifyContent: 'center',
               }}
             >
               <IconPhone />
@@ -180,6 +184,7 @@ export default function Nav() {
                 type="button"
                 aria-label={effectiveMenuOpen ? 'Close menu' : 'Open menu'}
                 aria-expanded={effectiveMenuOpen}
+                aria-controls={mobileNavPanelId}
                 onClick={() => (effectiveMenuOpen ? handleMenuClose() : setMenuOpen(true))}
                 style={{
                   minWidth: 44,
@@ -203,6 +208,7 @@ export default function Nav() {
 
       {effectiveMenuOpen && (
         <nav
+          id={mobileNavPanelId}
           aria-label="Main navigation"
           className="mobile-nav-panel"
           style={{

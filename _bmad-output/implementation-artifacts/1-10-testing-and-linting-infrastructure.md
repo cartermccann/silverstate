@@ -1,6 +1,6 @@
 # Story 1.10: Testing & Linting Infrastructure
 
-Status: review
+Status: done
 
 ## Story
 
@@ -701,10 +701,11 @@ Claude Opus 4.6
 - Installed ESLint 8.57.1 with TypeScript parser, react/react-hooks/jsx-a11y plugins, and prettier config
 - Installed Prettier 3.8.1 with project-matching style (no semicolons, single quotes, 100 char width)
 - Created 3 sample test files: FaqItem.test.tsx (6 component tests), homepage.spec.ts (3 E2E tests), accessibility.spec.ts (1 axe-core scan)
-- All 19 Vitest unit tests pass (Breadcrumb 7, ErrorBoundary 6, FaqItem 6)
-- All 8 Playwright E2E tests pass (chromium + mobile-chrome projects)
-- TypeScript: zero errors; Build: succeeds with 54 pre-rendered routes
-- Pre-existing issues tracked: 17 ESLint errors (a11y, unescaped entities, setState-in-effect), 86 Prettier formatting drifts, 2 axe-core violations (color-contrast, scrollable-region-focusable)
+- Senior review fixes (2026-02-25): aligned `Home.test.tsx` JSON-LD phone assertion with E.164 output and hardened Playwright `webServer` host/port binding for deterministic local/CI startup.
+- All Vitest tests pass: 153/153.
+- All Playwright E2E tests pass: 8/8 (chromium + mobile-chrome projects).
+- TypeScript: zero errors; Build: succeeds with 54 pre-rendered routes.
+- Pre-existing issues tracked (out of scope for this story): 12 ESLint errors, 31 Prettier formatting drifts, 2 excluded axe-core rules in sample accessibility test (`color-contrast`, `scrollable-region-focusable`).
 - 12 npm scripts now available: test, test:watch, test:ui, test:e2e, test:e2e:ui, lint, lint:fix, format, format:check (plus existing dev, build, preview, validate, validate:content, validate:schema, generate:sitemap)
 
 ### File List
@@ -729,7 +730,28 @@ New files:
 Modified files:
 - package.json (added 12 devDependencies + 9 scripts)
 - package-lock.json (auto-generated)
+- src/pages/Home.test.tsx (E.164 schema phone assertion update from senior review)
+- src/utils/gsap.ts (GSAP/ScrollTrigger runtime resolution shim for Vitest + Node compatibility)
 
 ## Change Log
 
 - 2026-02-24: Story 1.10 implemented — full testing (Vitest + Playwright + axe-core), linting (ESLint v8 + jsx-a11y), and formatting (Prettier) infrastructure configured with sample reference tests
+- 2026-02-25: Senior code review completed — fixed stale JSON-LD phone expectation in Home tests, hardened Playwright host/port startup behavior, and re-verified full test/build toolchain
+
+### Senior Developer Review (AI)
+
+**Reviewer:** Silver  
+**Date:** 2026-02-25  
+**Outcome:** Approved (all high/medium issues fixed)
+
+**Findings**
+- Resolved: `src/pages/Home.test.tsx` asserted non-E.164 phone format, causing `npm run test` failure after schema normalization changes.
+- Resolved: `playwright.config.ts` relied on default localhost binding, which caused brittle startup behavior in restricted environments; now explicitly binds host/port for local and CI commands.
+- Resolved: Story record did not reflect review-time test/runtime hardening updates and current validation counts.
+
+**Verification**
+- `npx tsc --noEmit` passes.
+- `npm run test` passes (153 tests).
+- `npm run test:e2e` passes (8 tests, executed outside sandbox due port-binding restrictions).
+- `npm run build` passes end-to-end (validation, sitemap generation, typecheck, Vite build, prerender).
+- `npm run lint` and `npm run format:check` execute successfully but report pre-existing repository issues (tracked, out of scope for this story).

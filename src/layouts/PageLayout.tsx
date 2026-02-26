@@ -10,7 +10,8 @@ import CtaBand from '../components/CtaBand'
 import Footer from '../components/Footer'
 import CookieConsent from '../components/CookieConsent'
 import { getConsentState, getTrackingZone, initializeGA4 } from '../utils/analytics'
-import { initializeCTM, replaceCTMNumber } from '../utils/ctm'
+import { CONSENT_CHANGED_EVENT, type ConsentChangedDetail } from '../utils/consentEvents'
+import { disableCTM, initializeCTM, replaceCTMNumber } from '../utils/ctm'
 import { initializePerformanceMonitoring } from '../utils/performance'
 
 interface PageLayoutProps {
@@ -36,10 +37,31 @@ export default function PageLayout({ children }: PageLayoutProps) {
       initializeCTM()
       ctmInitialized.current = true
     }
+  }, [pathname])
+
+  // React immediately to consent changes so first-time acceptors get CTM without navigation.
+  useEffect(() => {
+    function onConsentChanged(event: Event) {
+      const consent = (event as CustomEvent<ConsentChangedDetail>).detail
+      if (consent === 'granted' && !ctmInitialized.current) {
+        initializeCTM()
+        ctmInitialized.current = true
+      } else if (consent === 'denied') {
+        // Best-effort teardown; CTM does not provide a full unload API.
+        disableCTM()
+        ctmInitialized.current = false
+      }
+    }
+
+    window.addEventListener(CONSENT_CHANGED_EVENT, onConsentChanged as EventListener)
+    return () => {
+      window.removeEventListener(CONSENT_CHANGED_EVENT, onConsentChanged as EventListener)
+    }
   }, [])
 
   // Re-scan for phone numbers on route changes (SPA navigation)
   useEffect(() => {
+    if (getConsentState() !== 'granted') return
     const mainEl = document.getElementById('main-content')
     if (mainEl) {
       replaceCTMNumber(mainEl)

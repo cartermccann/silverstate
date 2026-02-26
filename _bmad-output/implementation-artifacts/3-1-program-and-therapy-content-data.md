@@ -1,6 +1,6 @@
 # Story 3.1: Program & Therapy Content Data
 
-Status: review
+Status: done
 
 ## Story
 
@@ -217,7 +217,8 @@ Claude Opus 4.6 (claude-opus-4-6)
 
 ### Debug Log References
 
-No debug issues encountered.
+- Senior review (2026-02-25): fixed invalid therapy `usedFor` condition slug (`odd-treatment` -> `oppositional-defiant-disorder-treatment`)
+- Senior review (2026-02-25): strengthened `scripts/validate-content.ts` for Story 3.1 contract coverage (program required fields, FAQ/schedule validation, slug-shape checks, and cross-reference integrity checks)
 
 ### Completion Notes List
 
@@ -229,18 +230,40 @@ No debug issues encountered.
 - Added `therapyBySlug` convenience lookup export
 - Updated `scripts/validate-content.ts` to validate new fields: `overview` (was `body`), `shortName`, `howItHelps`, `usedFor`
 - All therapy slug cross-references in program data verified valid
+- Senior review updates:
+  - Added validation coverage for `metaTitle`, `metaDescription`, `approach`, `targetAudience`, `dailySchedule`, `faqs`, `relatedConditions`, `relatedPrograms`, and optional reviewer metadata on `programPages`
+  - Added cross-reference checks: `program.relatedPrograms` -> known program slugs, `program.therapyModalities` -> known therapy slugs, and `usedFor`/`relatedConditions` -> known condition slugs (when condition data is present)
+  - Corrected one invalid therapy condition slug to match existing condition page slug naming
 - Barrel re-exports in `data/index.ts` already existed from Story 1.2
 - All existing ProgramData (homepage) preserved intact — no backward compatibility issues
 - Legacy `therapyNames` string array preserved for homepage use
-- `tsc --noEmit` passes, `validate-content.ts` passes, Vite build succeeds, all 36 tests pass
+- Validation (2026-02-25): `npx tsc --noEmit`, `npm run lint`, `npm run validate:content`, and `npm run build` all pass
 
 ### File List
 
 - `src/types.ts` (modified) — Updated `ProgramPageData` and `TherapyModality` interfaces
 - `src/data/programs.ts` (modified) — Added `residentialProgram`, `phpProgram`, `iopProgram`, `allPrograms`, `programsBySlug`, `programPages`
-- `src/data/therapies.ts` (modified) — Populated `therapyModalities` array with 17 entries, added `therapyBySlug` lookup
-- `scripts/validate-content.ts` (modified) — Updated validation for new field names (`overview`, `shortName`, `howItHelps`, `usedFor`)
+- `src/data/therapies.ts` (modified) — Populated `therapyModalities` array with 17 entries, added `therapyBySlug` lookup, corrected ODD condition slug reference
+- `scripts/validate-content.ts` (modified) — Expanded Story 3.1 validation coverage and cross-reference integrity checks for programs/therapies/conditions
 
 ## Change Log
 
 - 2026-02-24: Story 3.1 implementation — Created typed program page data (3 programs) and therapy modality data (17 therapies) with full content, cross-references, SEO metadata, and convenience lookup exports. Updated interfaces and build-time validation script.
+- 2026-02-25: Senior code review completed — fixed invalid therapy condition slug and added strict cross-reference/content completeness validation for program and therapy data.
+
+### Senior Developer Review (AI)
+
+**Reviewer:** Silver  
+**Date:** 2026-02-25  
+**Outcome:** Approved (all high/medium findings fixed)
+
+**Findings**
+- Resolved (AC #4): `family-therapy.usedFor` referenced a non-existent slug (`odd-treatment`), breaking condition cross-reference integrity.
+- Resolved (Task 6.2): build-time validation did not enforce key Story 3.1 requirements (`programPages` completeness and slug-link consistency between programs, therapies, and conditions).
+- Resolved (Task 6.2): validation did not verify `usedFor` slug shape or existence against known condition slugs when condition data is available.
+
+**Verification**
+- `npx tsc --noEmit` passed.
+- `npm run lint` passed.
+- `npm run validate:content` passed.
+- `npm run build` passed (includes validation + prerender).

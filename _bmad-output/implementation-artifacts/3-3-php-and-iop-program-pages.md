@@ -1,6 +1,6 @@
 # Story 3.3: PHP & IOP Program Pages
 
-Status: review
+Status: done
 
 ## Story
 
@@ -184,7 +184,9 @@ Claude Opus 4.6 (claude-opus-4-6)
 
 ### Debug Log References
 
-No debug issues encountered.
+- Senior review (2026-02-25): fixed AC4 gap where PHP/IOP OG images were not program-specific (default OG image used for all program pages)
+- Senior review (2026-02-25): replaced non-existent program hero image paths with existing public assets to prevent broken OG/Twitter image URLs
+- Senior review (2026-02-25): added Story 3.3 regression tests for PHP/IOP metadata uniqueness, JSON-LD payloads, and cross-links
 
 ### Completion Notes List
 
@@ -199,13 +201,38 @@ No debug issues encountered.
 - Cross-links verified via ProgramPage template: PHP links to Residential+IOP, IOP links to Residential+PHP
 - All pages link to /insurance and /admissions via Related Content section
 - Responsive/a11y inherited from ProgramPage template (verified in Story 3.2)
-- TypeScript compiles clean, Vite builds, all 36 tests pass, zero regressions
+- Updated program `heroImage` values to existing assets and wired page wrappers to use those images for page-specific OG/Twitter previews
+- Senior review regression checks (2026-02-25): `npx tsc --noEmit`, `npm run lint`, `npm run test -- src/pages/programs/ProgramPage.test.tsx src/pages/programs/PHPIOP.test.tsx`, `npm run format:check`, and `npm run build` all pass
 
 ### File List
 
-- `src/pages/programs/PHP.tsx` (modified — was stub) — PHP page wrapper with SEO meta, JSON-LD, handle export
-- `src/pages/programs/IOP.tsx` (modified — was stub) — IOP page wrapper with SEO meta, JSON-LD, handle export
+- `src/data/programs.ts` (modified) — Updated residential/PHP/IOP `heroImage` paths to existing public assets
+- `src/pages/programs/PHP.tsx` (modified — was stub) — PHP page wrapper with SEO meta + program-specific OG image + handle export
+- `src/pages/programs/IOP.tsx` (modified — was stub) — IOP page wrapper with SEO meta + program-specific OG image + handle export
+- `src/pages/programs/PHPIOP.test.tsx` (created) — Added Story 3.3 tests for unique metadata, JSON-LD payload uniqueness, and cross-links
 
 ## Change Log
 
 - **2026-02-24:** Story 3.3 complete — PHP and IOP thin wrapper pages created using ProgramPage template from Story 3.2, with unique SEO metadata and JSON-LD per page
+- **2026-02-25:** Senior code review completed — fixed program-specific OG image gaps, corrected hero image asset paths, and added focused PHP/IOP regression tests.
+
+### Senior Developer Review (AI)
+
+**Reviewer:** Silver  
+**Date:** 2026-02-25  
+**Outcome:** Approved (all high/medium findings fixed)
+
+**Findings**
+
+1. **HIGH:** AC4/Task 1.5 and 2.5 were partially unmet: PHP/IOP OG image tags were not program-specific (`src/pages/programs/PHP.tsx`, `src/pages/programs/IOP.tsx`)
+2. **MEDIUM:** Program hero image data used non-existent asset paths, risking broken social preview images (`src/data/programs.ts`)
+3. **MEDIUM:** No Story 3.3-specific regression tests existed for PHP/IOP metadata uniqueness, JSON-LD payload correctness, or related-program cross-links (`src/pages/programs/*.test.tsx`)
+
+**Fixes Applied**
+
+- Added `ogImage: program.heroImage` in PHP/IOP wrapper `meta` exports (and aligned Residential for consistency).
+- Replaced placeholder/non-existent hero image values in program data with existing assets under `public/assets`.
+- Added `src/pages/programs/PHPIOP.test.tsx` to verify:
+  - unique titles/canonicals and per-page OG images,
+  - program-specific FAQPage + MedicalTherapy schema payloads,
+  - expected cross-links between Residential/PHP/IOP and admissions.

@@ -1,6 +1,6 @@
 # Story 4.2: Condition Page Template & Mental Health Conditions
 
-Status: review
+Status: done
 
 ## Story
 
@@ -287,6 +287,9 @@ Claude Opus 4.6
 
 - Fixed `noUncheckedIndexedAccess` TS strict issue: `description.split('\n\n')[0]` returns `string | undefined`, added `?? ''` fallback
 - Fixed 2 route slug mismatches in routes.tsx: `oppositional-defiant-treatment` → `oppositional-defiant-disorder-treatment`, `binge-eating-treatment` → `binge-eating-disorder-treatment`
+- Senior review (2026-02-25): removed duplicate mental-health page JSON-LD emission by keeping schema generation in `ConditionPage.tsx` and removing route-level schema injection.
+- Senior review (2026-02-25): simplified all 12 mental-health route wrappers to strict thin-page pattern (lookup + meta + handle + render).
+- Senior review (2026-02-25): added Story 4.2 regression coverage for schema count, metadata contract, reviewer attribution, and CTA touch-target sizing.
 
 ### Completion Notes List
 
@@ -296,27 +299,59 @@ Claude Opus 4.6
 - All internal links use React Router `<Link>`, external source citations use `<a target="_blank" rel="noopener noreferrer">`
 - Phone CTA uses `site.phoneTel` from data/common with proper aria-label
 - Created 12 mental health condition route pages (thin wrappers): Anxiety, Depression, TraumaPTSD, SuicidalIdeation, OCD, BipolarDisorder, AutismSpectrum, OppositionalDefiant, ConductDisorder, DMDD, BPD, AdjustmentDisorder
-- Each route page exports `meta` (SEO), `handle` (breadcrumb), and renders `<ConditionPage condition={...} />`
+- Each route page now strictly exports `meta` (SEO), `handle` (breadcrumb), and renders `<ConditionPage condition={...} />` with no page-local schema/meta side-effects
 - All routes already registered in routes.tsx (from Story 1.8), fixed 2 slug mismatches
-- TypeScript: zero errors, Vite build succeeds
+- Removed route-level JSON-LD entries from the 12 mental-health wrappers so prerendered output now contains one FAQPage + one MedicalCondition schema per page
+- Updated ConditionPage CTA link styles to enforce 44px minimum touch targets
+- Added Story 4.2 tests in `src/pages/conditions/ConditionPage.test.tsx` for:
+  - single FAQPage + MedicalCondition script emission,
+  - reviewer/citation/internal-link rendering,
+  - CTA 44px minimum touch targets,
+  - mental-health route `meta` export contract (no `script:ld+json`, canonical/OG URL coverage)
+- Senior review validation suite passed:
+  - `npx tsc --noEmit`
+  - `npm run lint`
+  - `npm run test -- src/pages/conditions/ConditionPage.test.tsx src/data/conditions.test.ts src/pages/programs/ProgramPage.test.tsx src/pages/programs/PHPIOP.test.tsx`
+  - `npm run format:check`
+  - `npm run build`
 
 ### Change Log
 
 - 2026-02-24: Story 4.2 implemented — ConditionPage template + 12 mental health condition route pages
+- 2026-02-25: Senior code review completed — fixed JSON-LD duplication + wrapper thinness gaps, added focused Story 4.2 regression tests, and finalized story.
 
 ### File List
 
 - `src/pages/conditions/ConditionPage.tsx` — NEW: shared condition page template
-- `src/pages/conditions/Anxiety.tsx` — MODIFIED: replaced placeholder with thin wrapper
-- `src/pages/conditions/Depression.tsx` — MODIFIED: replaced placeholder
-- `src/pages/conditions/TraumaPTSD.tsx` — MODIFIED: replaced placeholder
-- `src/pages/conditions/SuicidalIdeation.tsx` — MODIFIED: replaced placeholder
-- `src/pages/conditions/OCD.tsx` — MODIFIED: replaced placeholder
-- `src/pages/conditions/BipolarDisorder.tsx` — MODIFIED: replaced placeholder
-- `src/pages/conditions/AutismSpectrum.tsx` — MODIFIED: replaced placeholder
-- `src/pages/conditions/OppositionalDefiant.tsx` — MODIFIED: replaced placeholder
-- `src/pages/conditions/ConductDisorder.tsx` — MODIFIED: replaced placeholder
-- `src/pages/conditions/DMDD.tsx` — MODIFIED: replaced placeholder
-- `src/pages/conditions/BPD.tsx` — MODIFIED: replaced placeholder
-- `src/pages/conditions/AdjustmentDisorder.tsx` — MODIFIED: replaced placeholder
+- `src/pages/conditions/Anxiety.tsx` — MODIFIED: reduced to strict thin wrapper; removed route-level schema/meta side-effects
+- `src/pages/conditions/Depression.tsx` — MODIFIED: reduced to strict thin wrapper; removed route-level schema/meta side-effects
+- `src/pages/conditions/TraumaPTSD.tsx` — MODIFIED: reduced to strict thin wrapper; removed route-level schema/meta side-effects
+- `src/pages/conditions/SuicidalIdeation.tsx` — MODIFIED: reduced to strict thin wrapper; removed route-level schema/meta side-effects
+- `src/pages/conditions/OCD.tsx` — MODIFIED: reduced to strict thin wrapper; removed route-level schema/meta side-effects
+- `src/pages/conditions/BipolarDisorder.tsx` — MODIFIED: reduced to strict thin wrapper; removed route-level schema/meta side-effects
+- `src/pages/conditions/AutismSpectrum.tsx` — MODIFIED: reduced to strict thin wrapper; removed route-level schema/meta side-effects
+- `src/pages/conditions/OppositionalDefiant.tsx` — MODIFIED: reduced to strict thin wrapper; removed route-level schema/meta side-effects
+- `src/pages/conditions/ConductDisorder.tsx` — MODIFIED: reduced to strict thin wrapper; removed route-level schema/meta side-effects
+- `src/pages/conditions/DMDD.tsx` — MODIFIED: reduced to strict thin wrapper; removed route-level schema/meta side-effects
+- `src/pages/conditions/BPD.tsx` — MODIFIED: reduced to strict thin wrapper; removed route-level schema/meta side-effects
+- `src/pages/conditions/AdjustmentDisorder.tsx` — MODIFIED: reduced to strict thin wrapper; removed route-level schema/meta side-effects
+- `src/pages/conditions/ConditionPage.test.tsx` — ADDED: Story 4.2 regression coverage for schema, links, and metadata contract
 - `src/routes.tsx` — MODIFIED: fixed ODD and binge-eating route slugs
+
+### Senior Developer Review (AI)
+
+**Reviewer:** Silver  
+**Date:** 2026-02-25  
+**Outcome:** Approved (all high/medium findings fixed)
+
+**Findings**
+
+1. **HIGH:** Mental-health condition pages emitted duplicate FAQPage/MedicalCondition schemas due to route-level `meta.jsonLd` plus template-level schema scripts.
+2. **MEDIUM:** Route wrappers violated Story 4.2 thin-wrapper contract by carrying repeated meta side-effect logic and schema construction.
+3. **MEDIUM:** No Story 4.2-focused tests existed to prevent schema duplication and wrapper metadata contract regressions.
+
+**Fixes Applied**
+
+- Removed route-level schema generation/injection for all 12 mental-health wrappers; retained schema generation centrally in `ConditionPage.tsx`.
+- Rewrote the 12 mental-health wrappers to strict pattern: condition lookup + `meta` export + `handle` export + `ConditionPage` render.
+- Added `src/pages/conditions/ConditionPage.test.tsx` to validate single schema emission, reviewer/citations/links, touch-target sizing, and route metadata constraints.

@@ -3,7 +3,10 @@ import { privacySections, privacyLastUpdated } from '../data/privacy'
 import { generateMeta } from '../utils/meta'
 import { generateWebPage } from '../utils/schema'
 
-const SITE_URL = import.meta.env?.VITE_SITE_URL || 'https://www.silverstatetreatment.com'
+const SITE_URL = (import.meta.env?.VITE_SITE_URL || 'https://www.silverstatetreatment.com').replace(
+  /\/+$/,
+  '',
+)
 
 const sectionStyle: CSSProperties = {
   marginBottom: 40,

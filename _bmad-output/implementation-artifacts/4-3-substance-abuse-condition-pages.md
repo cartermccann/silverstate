@@ -1,6 +1,6 @@
 # Story 4.3: Substance Abuse Condition Pages
 
-Status: review
+Status: done
 
 ## Story
 
@@ -178,31 +178,69 @@ Claude Opus 4.6
 
 No debug issues encountered.
 
+- Senior review (2026-02-25): removed duplicate route-level JSON-LD emission for all 8 substance wrappers by keeping schema generation in `ConditionPage.tsx`.
+- Senior review (2026-02-25): refactored substance wrappers to strict thin-page pattern (lookup + meta + handle + render only).
+- Senior review (2026-02-25): added Story 4.3 regression checks for route metadata contract and substance content quality constraints.
+
 ### Completion Notes List
 
 - Updated 8 substance abuse condition page stubs (DualDiagnosis, SubstanceAbuse, AlcoholAbuse, OpioidAbuse, BenzodiazepineAbuse, CocaineAbuse, MethAbuse, CannabisAbuse) from placeholder "Content coming soon" to full thin-wrapper pattern matching Story 4.2's established Anxiety.tsx pattern
-- Each page: imports condition data via `getConditionBySlug`, generates FAQ + MedicalCondition JSON-LD schemas, exports `meta` array for SEO, exports `handle` for breadcrumb, uses `useEffect` to apply meta tags to DOM, renders `<ConditionPage condition={condition} />`
+- Each page now strictly follows the thin-wrapper contract: imports condition via `getConditionBySlug`, exports `meta` + `handle`, and renders `<ConditionPage condition={condition} />`
 - Routes were already registered in `src/routes.tsx` with lazy loading from a prior story (4.2)
 - TypeScript: zero errors (`npx tsc --noEmit` clean)
 - Vite build: all 8 pages produce separate code-split JS chunks
-- Content quality verified: dual diagnosis data covers co-occurring disorders and simultaneous treatment; detox/withdrawal mentioned in alcohol, opioid, and benzodiazepine data; all pages have NIDA/SAMHSA source citations
+- Removed route-level JSON-LD from the 8 wrappers so each substance page now emits exactly one FAQPage and one MedicalCondition schema in prerendered HTML
+- Content quality verified and covered by regression tests:
+  - dual diagnosis copy includes co-occurring/simultaneous treatment framing,
+  - alcohol/opioid/benzodiazepine pages include detox/withdrawal considerations,
+  - every substance page has NIDA and/or SAMHSA citations.
+- Added/extended tests:
+  - `src/pages/conditions/ConditionPage.test.tsx` validates no `script:ld+json` entries in substance route meta and verifies unique titles/canonical/OG path expectations.
+  - `src/data/conditions.test.ts` adds Story 4.3 assertions for dual diagnosis focus, withdrawal/detox coverage, and source authority checks.
 - No modifications to ConditionPage.tsx or condition data files
 - No new npm packages added
 - Viewport responsive testing deferred: Playwright browser could not launch (Chrome conflict), but ConditionPage template responsiveness was already verified in Story 4.2
+- Senior review validation suite passed:
+  - `npx tsc --noEmit`
+  - `npm run lint`
+  - `npm run test -- src/pages/conditions/ConditionPage.test.tsx src/data/conditions.test.ts src/pages/programs/ProgramPage.test.tsx src/pages/programs/PHPIOP.test.tsx`
+  - `npm run format:check`
+  - `npm run build`
 
 ### Change Log
 
 - 2026-02-24: Implemented 8 substance abuse condition page wrappers (Story 4.3)
+- 2026-02-25: Senior code review completed — fixed wrapper contract/schema duplication issues and added focused Story 4.3 regression checks.
 
 ### File List
 
-- `src/pages/conditions/DualDiagnosis.tsx` (modified — replaced stub with full implementation)
-- `src/pages/conditions/SubstanceAbuse.tsx` (modified — replaced stub with full implementation)
-- `src/pages/conditions/AlcoholAbuse.tsx` (modified — replaced stub with full implementation)
-- `src/pages/conditions/OpioidAbuse.tsx` (modified — replaced stub with full implementation)
-- `src/pages/conditions/BenzodiazepineAbuse.tsx` (modified — replaced stub with full implementation)
-- `src/pages/conditions/CocaineAbuse.tsx` (modified — replaced stub with full implementation)
-- `src/pages/conditions/MethAbuse.tsx` (modified — replaced stub with full implementation)
-- `src/pages/conditions/CannabisAbuse.tsx` (modified — replaced stub with full implementation)
+- `src/pages/conditions/DualDiagnosis.tsx` (modified — reduced to strict thin wrapper and removed route-level schema/meta side-effects)
+- `src/pages/conditions/SubstanceAbuse.tsx` (modified — reduced to strict thin wrapper and removed route-level schema/meta side-effects)
+- `src/pages/conditions/AlcoholAbuse.tsx` (modified — reduced to strict thin wrapper and removed route-level schema/meta side-effects)
+- `src/pages/conditions/OpioidAbuse.tsx` (modified — reduced to strict thin wrapper and removed route-level schema/meta side-effects)
+- `src/pages/conditions/BenzodiazepineAbuse.tsx` (modified — reduced to strict thin wrapper and removed route-level schema/meta side-effects)
+- `src/pages/conditions/CocaineAbuse.tsx` (modified — reduced to strict thin wrapper and removed route-level schema/meta side-effects)
+- `src/pages/conditions/MethAbuse.tsx` (modified — reduced to strict thin wrapper and removed route-level schema/meta side-effects)
+- `src/pages/conditions/CannabisAbuse.tsx` (modified — reduced to strict thin wrapper and removed route-level schema/meta side-effects)
+- `src/pages/conditions/ConditionPage.test.tsx` (modified — added Story 4.3 metadata contract assertions for substance routes)
+- `src/data/conditions.test.ts` (modified — added Story 4.3 content quality assertions)
 - `_bmad-output/implementation-artifacts/sprint-status.yaml` (modified — story status updated)
 - `_bmad-output/implementation-artifacts/4-3-substance-abuse-condition-pages.md` (modified — tasks checked, Dev Agent Record updated)
+
+### Senior Developer Review (AI)
+
+**Reviewer:** Silver  
+**Date:** 2026-02-25  
+**Outcome:** Approved (all high/medium findings fixed)
+
+**Findings**
+
+1. **HIGH:** Substance route pages emitted duplicate FAQPage/MedicalCondition JSON-LD due to route-level `meta.jsonLd` plus template-level schema scripts.
+2. **MEDIUM:** Substance wrappers violated thin-wrapper requirements by including repeated per-page schema construction and DOM meta side-effect logic.
+3. **MEDIUM:** No regression tests enforced Story 4.3 content-quality checks (dual diagnosis framing, withdrawal/detox coverage, NIDA/SAMHSA citations).
+
+**Fixes Applied**
+
+- Removed route-level schema generation/injection from all 8 substance wrappers; `ConditionPage.tsx` remains the single schema source.
+- Refactored all 8 wrappers to strict pattern (slug lookup + `meta` + `handle` + render only).
+- Added Story 4.3 test coverage in `ConditionPage.test.tsx` and `conditions.test.ts` for metadata contract and content-quality requirements.

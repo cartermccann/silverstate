@@ -1,6 +1,6 @@
 # Story 5.2: Individual Insurance Provider Pages
 
-Status: review
+Status: done
 
 ## Story
 
@@ -259,33 +259,60 @@ Claude Opus 4.6
 
 ### Debug Log References
 
-No debug issues encountered. TypeScript compiled cleanly on first pass. Vite build succeeded without errors.
+- Senior review (2026-02-25): removed duplicate FAQPage JSON-LD emission by keeping schema generation in `InsurancePage.tsx` only.
+- Senior review (2026-02-25): refactored all 9 insurance wrappers to strict thin-page contract (lookup + meta + handle + render only).
+- Senior review (2026-02-25): added Story 5.2 regression checks for metadata contract, JSON-LD duplication, internal links, and mobile touch-target sizing.
 
 ### Completion Notes List
 
 - Created `InsurancePage.tsx` shared template with 8 sections following the recommended section order from Dev Notes: Hero, Coverage Description, Primary Phone CTA, Pre-Authorization, Coverage Details Callout, FAQ with JSON-LD, Internal Links, Secondary Phone CTA
 - Template uses the same visual patterns as ConditionPage.tsx (AnimateIn, CharReveal, FaqItem, MagneticButton, StaggerGroup/StaggerItem, bento-card)
-- Phone CTA appears twice: mid-page (blue background, white button) and bottom (standard btn-primary) — meeting the conversion emphasis requirement
-- All 9 route page wrappers follow the Anxiety.tsx pattern exactly: useEffect for meta tag injection, generateMeta for SEO, generateFAQPage for JSON-LD, handle.breadcrumb for navigation
-- Routes were already registered in routes.tsx from Story 5.1 setup with lazy loading — no changes needed
-- `--muted` color used only on the "Coverage varies by plan" disclaimer text which is supplementary (not essential) and is 13.6px italic — acceptable per 9.6 since it's not essential content
-- Note: Story specified `generateFaqPageSchema` but the actual export is `generateFAQPage` — used the correct function name
+- Phone CTA appears twice: mid-page (blue background, white button) and bottom (standard btn-primary), with 44px minimum touch-target sizing on primary conversion links.
+- All 9 route wrappers now follow strict thin-wrapper pattern exactly: `getInsuranceBySlug` lookup + `meta` export + `handle.breadcrumb` + `<InsurancePage provider={provider} />`.
+- Removed page-level `useEffect` head mutation and route-level JSON-LD injection from provider wrappers to avoid duplicate FAQPage schema.
+- Routes were already registered in routes.tsx from Story 5.1 setup with lazy loading -- no changes needed.
+- `--muted` color is only used on the "Coverage varies by plan" disclaimer text, which is supplementary and not essential content.
+- Story specified `generateFaqPageSchema`; implementation correctly uses the existing `generateFAQPage` utility export.
+- Added Story 5.2 regression tests in `src/pages/insurance/InsurancePage.test.tsx` covering: single FAQPage script, required internal links, 44px touch-target checks, and wrapper meta contract across all 9 routes.
+- Senior review validation suite passed:
+  - `npx tsc --noEmit`
+  - `npx vitest run src/pages/insurance/InsurancePage.test.tsx src/pages/insurance/Index.test.tsx src/data/insurance.test.ts`
 
 ### File List
 
-- `src/pages/insurance/InsurancePage.tsx` (new) — shared template component
-- `src/pages/insurance/Aetna.tsx` (modified) — thin wrapper, was placeholder
-- `src/pages/insurance/Cigna.tsx` (modified) — thin wrapper, was placeholder
-- `src/pages/insurance/BCBS.tsx` (modified) — thin wrapper, was placeholder
-- `src/pages/insurance/Ambetter.tsx` (modified) — thin wrapper, was placeholder
-- `src/pages/insurance/Humana.tsx` (modified) — thin wrapper, was placeholder
-- `src/pages/insurance/UHC.tsx` (modified) — thin wrapper, was placeholder
-- `src/pages/insurance/TRICARE.tsx` (modified) — thin wrapper, was placeholder
-- `src/pages/insurance/Medicaid.tsx` (modified) — thin wrapper, was placeholder
-- `src/pages/insurance/Anthem.tsx` (modified) — thin wrapper, was placeholder
-- `_bmad-output/implementation-artifacts/sprint-status.yaml` (modified) — status updated
-- `_bmad-output/implementation-artifacts/5-2-individual-insurance-provider-pages.md` (modified) — story file
+- `src/pages/insurance/InsurancePage.tsx` (modified -- centralized FAQ schema output and conversion CTA touch-target constraints)
+- `src/pages/insurance/Aetna.tsx` (modified -- strict thin wrapper, no route-level schema injection)
+- `src/pages/insurance/Cigna.tsx` (modified -- strict thin wrapper, no route-level schema injection)
+- `src/pages/insurance/BCBS.tsx` (modified -- strict thin wrapper, no route-level schema injection)
+- `src/pages/insurance/Ambetter.tsx` (modified -- strict thin wrapper, no route-level schema injection)
+- `src/pages/insurance/Humana.tsx` (modified -- strict thin wrapper, no route-level schema injection)
+- `src/pages/insurance/UHC.tsx` (modified -- strict thin wrapper, no route-level schema injection)
+- `src/pages/insurance/TRICARE.tsx` (modified -- strict thin wrapper, no route-level schema injection)
+- `src/pages/insurance/Medicaid.tsx` (modified -- strict thin wrapper, no route-level schema injection)
+- `src/pages/insurance/Anthem.tsx` (modified -- strict thin wrapper, no route-level schema injection)
+- `src/pages/insurance/InsurancePage.test.tsx` (added -- Story 5.2 regression coverage)
+- `_bmad-output/implementation-artifacts/sprint-status.yaml` (modified -- story and epic status sync)
+- `_bmad-output/implementation-artifacts/5-2-individual-insurance-provider-pages.md` (modified -- senior review and completion updates)
 
 ## Change Log
 
-- **2026-02-24:** Story 5.2 implemented — created InsurancePage.tsx shared template and updated all 9 insurance provider route pages from placeholder stubs to fully functional pages with coverage content, FAQ with JSON-LD, phone CTAs, and internal navigation links. Epic 5 (Insurance Coverage Pages) is now complete.
+- **2026-02-24:** Story 5.2 implemented -- created InsurancePage.tsx shared template and updated all 9 insurance provider route pages from placeholder stubs to full pages with coverage content, FAQ, phone CTAs, and internal navigation links.
+- **2026-02-25:** Senior code review completed -- removed duplicate schema emission, enforced strict thin-wrapper pattern on all provider routes, added Story 5.2 regression tests, and finalized Epic 5.
+
+### Senior Developer Review (AI)
+
+**Reviewer:** Silver  
+**Date:** 2026-02-25  
+**Outcome:** Approved (all high and medium findings fixed)
+
+**Findings**
+
+1. **HIGH:** Provider route wrappers emitted duplicate FAQPage JSON-LD because schema was generated in both route metadata and the shared template.
+2. **MEDIUM:** Provider wrappers were not truly thin; repeated `useEffect` head mutation and page-level schema logic violated the Story 5.2 contract.
+3. **MEDIUM:** Story 5.2 had no focused regression tests validating single-schema output, wrapper metadata contract, and touch-target sizing on key CTAs.
+
+**Fixes Applied**
+
+- Removed route-level JSON-LD/head side-effect logic from all 9 provider wrappers and kept FAQPage schema output centralized in `InsurancePage.tsx`.
+- Refactored wrappers to strict thin pattern: data lookup + `meta` + `handle` + render only.
+- Added `src/pages/insurance/InsurancePage.test.tsx` assertions for single FAQPage script, required internal links, 44px CTA touch targets, and all-9-route metadata integrity.

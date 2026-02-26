@@ -64,8 +64,7 @@ beforeAll(() => {
     thresholds = [0]
     takeRecords = vi.fn().mockReturnValue([])
   }
-  window.IntersectionObserver =
-    MockIntersectionObserver as unknown as typeof IntersectionObserver
+  window.IntersectionObserver = MockIntersectionObserver as unknown as typeof IntersectionObserver
 
   window.matchMedia = vi.fn().mockImplementation((query: string) => ({
     matches: false,
@@ -172,16 +171,15 @@ describe('LocationsHub — SEO meta export', () => {
   it('includes Open Graph tags', () => {
     const ogTitle = meta.find((t) => t.property === 'og:title')
     const ogDesc = meta.find((t) => t.property === 'og:description')
+    const ogImage = meta.find((t) => t.property === 'og:image')
     expect(ogTitle).toBeDefined()
     expect(ogDesc).toBeDefined()
+    expect(ogImage?.content).toContain('/facility/')
   })
 
-  it('includes JSON-LD structured data', () => {
-    const jsonLd = meta.find((t) => t['script:ld+json'])
-    expect(jsonLd).toBeDefined()
-    const schema = jsonLd!['script:ld+json']!
-    expect(schema['@type']).toBe('LocalBusiness')
-    expect(schema['areaServed']).toBeDefined()
+  it('keeps JSON-LD output in-page, not in route meta', () => {
+    const jsonLd = meta.filter((t) => t['script:ld+json'])
+    expect(jsonLd).toHaveLength(0)
   })
 })
 
@@ -244,5 +242,16 @@ describe('LocationsHub — rendering', () => {
     expect(screen.getByText('View Programs →')).toBeInTheDocument()
     expect(screen.getByText('Verify Insurance →')).toBeInTheDocument()
     expect(screen.getByText('Start the Admissions Process')).toBeInTheDocument()
+  })
+
+  it('enforces 44px minimum touch targets on conversion CTAs', () => {
+    renderLocationsHub()
+    const admissions = screen.getByRole('link', { name: /start the admissions process/i })
+    const call = screen.getAllByRole('link', {
+      name: new RegExp(`call\\s+silver state\\s+at\\s+${site.phone}`.replace(/[()]/g, '\\$&'), 'i'),
+    })[0]
+
+    expect(Number.parseInt(admissions.style.minHeight || '0', 10)).toBeGreaterThanOrEqual(44)
+    expect(Number.parseInt(call.style.minHeight || '0', 10)).toBeGreaterThanOrEqual(44)
   })
 })

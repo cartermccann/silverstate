@@ -1,6 +1,7 @@
 import { Link } from 'react-router'
 import { locations, locationHubContent } from '../../data/locations'
 import { site } from '../../data/common'
+import { facilityData } from '../../data/about'
 import { generateMeta } from '../../utils/meta'
 import { generateLocalBusiness } from '../../utils/schema'
 import useIsMobile from '../../hooks/useIsMobile'
@@ -9,18 +10,17 @@ import { CharReveal } from '../../components/TextReveal'
 import MagneticButton from '../../components/MagneticButton'
 import { IconPhone, IconMapPin, IconArrowRight } from '../../components/Icons'
 
-const DISPLAY = "'Space Grotesk', sans-serif"
-const WARM = '#F0EBE3'
+const DISPLAY = 'var(--font-display)'
+const WARM = 'var(--warm)'
+const localBusinessSchema = generateLocalBusiness({
+  areaServed: locations.map((l) => l.name),
+})
 
 export const meta = generateMeta({
   title: locationHubContent.metaTitle,
   description: locationHubContent.metaDescription,
   path: '/locations',
-  jsonLd: [
-    generateLocalBusiness({
-      areaServed: locations.map((l) => l.name),
-    }),
-  ],
+  ogImage: facilityData.images[0]?.src,
 })
 
 export default function LocationsHub() {
@@ -32,11 +32,7 @@ export default function LocationsHub() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            generateLocalBusiness({
-              areaServed: locations.map((l) => l.name),
-            }),
-          ),
+          __html: JSON.stringify(localBusinessSchema),
         }}
       />
 
@@ -163,8 +159,8 @@ export default function LocationsHub() {
                   PHP, IOP
                 </p>
                 <p style={{ color: 'var(--body)', fontSize: '0.95rem', lineHeight: 1.6 }}>
-                  <strong style={{ color: 'var(--text)' }}>Accredited:</strong> Joint Commission Gold
-                  Seal of Approval
+                  <strong style={{ color: 'var(--text)' }}>Accredited:</strong> Joint Commission
+                  Gold Seal of Approval
                 </p>
               </div>
             </address>
@@ -176,10 +172,7 @@ export default function LocationsHub() {
       <section style={{ padding: '48px 0 64px' }}>
         <div className="wrap">
           <AnimateIn variant="fadeUp">
-            <h2
-              className="section-heading"
-              style={{ textAlign: 'center', marginBottom: 12 }}
-            >
+            <h2 className="section-heading" style={{ textAlign: 'center', marginBottom: 12 }}>
               Communities We Serve
             </h2>
           </AnimateIn>
@@ -455,7 +448,13 @@ export default function LocationsHub() {
                 <Link
                   to="/admissions"
                   className="btn btn-primary"
-                  style={{ textAlign: 'center', justifyContent: 'center' }}
+                  style={{
+                    textAlign: 'center',
+                    justifyContent: 'center',
+                    minHeight: 44,
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                  }}
                 >
                   Start the Admissions Process
                 </Link>
@@ -466,6 +465,9 @@ export default function LocationsHub() {
                     className="btn btn-dark"
                     style={{
                       width: '100%',
+                      minHeight: 44,
+                      display: 'inline-flex',
+                      alignItems: 'center',
                       justifyContent: 'center',
                       textDecoration: 'none',
                     }}

@@ -88,7 +88,6 @@ describe('performance', () => {
   })
 
   it('logs to console.debug when consent is denied', async () => {
-    vi.stubEnv('DEV', 'true')
     mockGetConsentState.mockReturnValue('denied')
     const debugSpy = vi.spyOn(console, 'debug').mockImplementation(() => {})
 

@@ -1,6 +1,6 @@
 # Story 1.9: Build Scripts — Sitemap, Validation & Robots
 
-Status: review
+Status: done
 
 ## Story
 
@@ -742,22 +742,29 @@ Claude Opus 4.6
 
 - Build initially failed at `tsc --noEmit` due to pre-existing `.test.tsx` files from Story 1.6 referencing uninstalled testing libraries (Story 1.10). Fixed by adding `exclude` for test files in `tsconfig.json`.
 - `src/utils/schema.ts` uses `import.meta.env.VITE_SITE_URL` which crashes in Node.js (via tsx). Fixed by adding optional chaining: `import.meta.env?.VITE_SITE_URL`.
+- Senior review identified that `validate-content.ts` still hard-imported optional data files (contrary to Story 1.9 requirements) and that `validate-schema.ts` skipped `WebPage` schema validation.
 
 ### Completion Notes List
 
 - Created `public/robots.txt` with permissive crawl rules and `Sitemap:` directive per NFR35
 - Created `scripts/generate-sitemap.ts` importing `routePaths` from `src/routes.tsx` — single source of truth, no duplication. Generates 54 URLs with priority tiers (1.0/0.8/0.6) and changefreq (weekly/monthly)
-- Created `scripts/validate-content.ts` with graceful handling of empty arrays (programPages, conditionPages, insurancePages, locations, therapyModalities all skip with log messages since they're populated in later epics). Validates all present data: common.ts site/navLinks, programs object, insurance entries, leadership, admissionsProcess
-- Created `scripts/validate-schema.ts` validating all 7 JSON-LD generator functions with representative test data: MedicalOrganization, LocalBusiness, MedicalCondition, MedicalTherapy, Physician, FAQPage, BreadcrumbList
+- Created `scripts/validate-content.ts` with graceful handling for missing optional data files via dynamic imports (logs skip notices and only fails on invalid existing files).
+- Created `scripts/validate-schema.ts` validating 8 JSON-LD generator functions with representative test data: MedicalOrganization, LocalBusiness, MedicalCondition, MedicalTherapy, Physician, FAQPage, BreadcrumbList, WebPage
 - Updated `package.json` build chain: validate:content → validate:schema → generate:sitemap → tsc --noEmit → vite build → prerender
 - Updated `tsconfig.node.json` to include `scripts/**/*.ts` for editor type checking
 - Added `exclude` for test files in `tsconfig.json` to unblock build (pre-existing issue from Story 1.6)
 - Added optional chaining to `schema.ts` for `import.meta.env` Node.js compatibility
 - All ACs verified: sitemap regenerates each build (AC#5), robots.txt allows full crawling (AC#2), content validation fails build on errors (AC#3), schema validation catches JSON-LD errors (AC#4), full build succeeds end-to-end (AC#1)
+- Senior review fixes (2026-02-25):
+  - Reworked `validate-content.ts` to load optional data modules dynamically and skip missing files with explicit epic-targeted messages.
+  - Added ISO date validation for `conditions.reviewDate` when present.
+  - Normalized sitemap `SITE_URL` handling to prevent accidental double-slash URLs from trailing slash env values.
+  - Added `WebPage` validation coverage in `validate-schema.ts`.
 
 ### Change Log
 
 - 2026-02-24: Story 1.9 implemented — build scripts for sitemap, content validation, schema validation, and robots.txt
+- 2026-02-25: Senior code review completed — missing-file handling fixed in content validation, sitemap URL normalization added, and WebPage schema validation added
 
 ### File List
 
@@ -772,3 +779,20 @@ Claude Opus 4.6
 | `tsconfig.json` | MODIFY (added exclude for test files) |
 | `tsconfig.node.json` | MODIFY (added scripts/**/*.ts to include) |
 | `src/utils/schema.ts` | MODIFY (optional chaining for import.meta.env) |
+
+### Senior Developer Review (AI)
+
+**Reviewer:** Silver  
+**Date:** 2026-02-25  
+**Outcome:** Approved (all high/medium issues fixed)
+
+**Findings**
+- Resolved: `validate-content.ts` imported optional data modules at top level, violating Story 1.9's required graceful missing-file behavior.
+- Resolved: sitemap generation did not normalize trailing slashes in `VITE_SITE_URL`, which could produce malformed `//path` URLs.
+- Resolved: `validate-schema.ts` did not validate the `WebPage` generator output.
+
+**Verification**
+- `npx tsc --noEmit` passes.
+- `npm run validate` passes (`validate:content`, `validate:schema`).
+- `npm run generate:sitemap` passes and regenerates `public/sitemap.xml` with 54 URLs.
+- `npm run build` passes end-to-end (validation, sitemap generation, typecheck, Vite build, prerender).

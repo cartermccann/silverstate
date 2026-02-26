@@ -2,31 +2,12 @@ import { useEffect } from 'react'
 import ProgramPage from './ProgramPage'
 import { iopProgram } from '../../data/programs'
 import { generateMeta } from '../../utils/meta'
-import { generateFAQPage, generateMedicalTherapy } from '../../utils/schema'
-
-const faqSchema = generateFAQPage({
-  questions: iopProgram.faqs.map((f) => ({ question: f.q, answer: f.a })),
-})
-
-const therapySchema = generateMedicalTherapy({
-  name: iopProgram.label,
-  description: iopProgram.overview,
-  slug: iopProgram.slug,
-  therapyType: 'Behavioral',
-  conditions: iopProgram.relatedConditions.map((slug) =>
-    slug
-      .replace(/-treatment$/, '')
-      .split('-')
-      .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-      .join(' '),
-  ),
-})
 
 export const meta = generateMeta({
   title: iopProgram.metaTitle.replace(/ \| Silver State$/, ''),
   description: iopProgram.metaDescription,
   path: `/programs/${iopProgram.slug}`,
-  jsonLd: [faqSchema, therapySchema],
+  ogImage: iopProgram.heroImage,
 })
 
 export const handle = {

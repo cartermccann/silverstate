@@ -11,8 +11,8 @@ import FaqItem from '../../components/FaqItem'
 import MagneticButton from '../../components/MagneticButton'
 import { IconPhone } from '../../components/Icons'
 
-const DISPLAY = "'Space Grotesk', sans-serif"
-const WARM = '#F0EBE3'
+const DISPLAY = 'var(--font-display)'
+const WARM = 'var(--warm)'
 
 export const meta = generateMeta({
   title: 'Insurance Coverage for Teen Treatment | Silver State Treatment Center',
@@ -31,12 +31,6 @@ export default function InsuranceHub() {
     ...orgSchema,
     insuranceAccepted: insuranceProviders.map((p) => p.name),
   }
-
-  // Combine all provider FAQs for JSON-LD
-  const allFaqs = insuranceProviders.flatMap((p) =>
-    p.faqs.map((f) => ({ question: f.q, answer: f.a })),
-  )
-  const faqSchema = generateFAQPage({ questions: allFaqs })
 
   // General hub-level FAQs
   const hubFaqs = [
@@ -57,6 +51,9 @@ export default function InsuranceHub() {
       a: 'Under the Mental Health Parity and Addiction Equity Act, most health insurance plans are required to cover mental health and substance use disorder treatment at levels comparable to medical and surgical benefits. This includes adolescent residential treatment when medically necessary.',
     },
   ]
+  const faqSchema = generateFAQPage({
+    questions: hubFaqs.map((faq) => ({ question: faq.q, answer: faq.a })),
+  })
 
   return (
     <>
@@ -101,8 +98,9 @@ export default function InsuranceHub() {
               }}
             >
               Silver State accepts most major insurance plans for adolescent residential, partial
-              hospitalization (PHP), and intensive outpatient (IOP) treatment. Our admissions team can
-              verify your coverage in under 10 minutes — call today to find out what your plan covers.
+              hospitalization (PHP), and intensive outpatient (IOP) treatment. Our admissions team
+              can verify your coverage in under 10 minutes — call today to find out what your plan
+              covers.
             </p>
           </AnimateIn>
         </div>
@@ -133,7 +131,8 @@ export default function InsuranceHub() {
                 color: 'rgba(255,255,255,0.9)',
               }}
             >
-              We verify insurance in under 10 minutes. Find out what your plan covers today.
+              Want answers now? Call {site.phone}. We verify insurance in under 10 minutes and can
+              explain exactly what your plan covers.
             </p>
           </AnimateIn>
           <AnimateIn variant="fadeUp" delay={0.2}>
@@ -282,9 +281,9 @@ export default function InsuranceHub() {
                 marginBottom: 24,
               }}
             >
-              We also understand that navigating insurance and treatment costs can feel overwhelming.
-              Our team can discuss payment options and help your family explore all available paths
-              to getting your teen the care they need.
+              We also understand that navigating insurance and treatment costs can feel
+              overwhelming. Our team can discuss payment options and help your family explore all
+              available paths to getting your teen the care they need.
             </p>
           </AnimateIn>
           <AnimateIn variant="fadeUp" delay={0.2}>
@@ -483,7 +482,7 @@ export default function InsuranceHub() {
                 <Link
                   to="/admissions"
                   className="btn btn-primary"
-                  style={{ textAlign: 'center', justifyContent: 'center' }}
+                  style={{ textAlign: 'center', justifyContent: 'center', minHeight: 44 }}
                 >
                   Start the Admissions Process
                 </Link>
@@ -494,6 +493,7 @@ export default function InsuranceHub() {
                     className="btn btn-dark"
                     style={{
                       width: '100%',
+                      minHeight: 44,
                       justifyContent: 'center',
                       textDecoration: 'none',
                     }}

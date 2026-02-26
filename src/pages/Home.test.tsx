@@ -52,7 +52,18 @@ import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router'
 import Home, { meta } from './Home'
 import { site } from '../data/common'
-import { finalCtaData } from '../data/homepage'
+import {
+  finalCtaData,
+  heroData,
+  introData,
+  whoThisIsForData,
+  programHighlightsData,
+  statsData,
+  teamOverviewData,
+} from '../data/homepage'
+
+const normalizedPhone = site.phoneTel.replace(/^tel:/, '').replace(/[^\d]/g, '')
+const e164Phone = normalizedPhone.startsWith('1') ? `+${normalizedPhone}` : `+1${normalizedPhone}`
 
 beforeAll(() => {
   // IntersectionObserver mock
@@ -65,8 +76,7 @@ beforeAll(() => {
     thresholds = [0]
     takeRecords = vi.fn().mockReturnValue([])
   }
-  window.IntersectionObserver =
-    MockIntersectionObserver as unknown as typeof IntersectionObserver
+  window.IntersectionObserver = MockIntersectionObserver as unknown as typeof IntersectionObserver
 
   // matchMedia mock (needed by useIsMobile hook)
   window.matchMedia = vi.fn().mockImplementation((query: string) => ({
@@ -138,9 +148,9 @@ describe('Home — SEO meta export', () => {
 })
 
 describe('Home — JSON-LD script tags', () => {
-  it('renders MedicalOrganization and LocalBusiness script tags', () => {
-    const { container } = renderHome()
-    const scripts = container.querySelectorAll('script[type="application/ld+json"]')
+  it('injects MedicalOrganization and LocalBusiness script tags into document head', () => {
+    renderHome()
+    const scripts = document.head.querySelectorAll('script[type="application/ld+json"]')
     expect(scripts.length).toBe(2)
 
     const contents = Array.from(scripts).map((s) => JSON.parse(s.textContent || '{}'))
@@ -150,21 +160,21 @@ describe('Home — JSON-LD script tags', () => {
   })
 
   it('MedicalOrganization schema contains site name and phone', () => {
-    const { container } = renderHome()
-    const scripts = container.querySelectorAll('script[type="application/ld+json"]')
+    renderHome()
+    const scripts = document.head.querySelectorAll('script[type="application/ld+json"]')
     const medOrg = Array.from(scripts)
       .map((s) => JSON.parse(s.textContent || '{}'))
       .find((c) => c['@type'] === 'MedicalOrganization')
 
     expect(medOrg.name).toBe(site.name)
-    expect(medOrg.telephone).toBe(site.phone)
+    expect(medOrg.telephone).toBe(e164Phone)
     expect(medOrg.hasCredential).toBeDefined()
     expect(medOrg.hasCredential.length).toBeGreaterThan(0)
   })
 
   it('LocalBusiness schema contains address and opening hours', () => {
-    const { container } = renderHome()
-    const scripts = container.querySelectorAll('script[type="application/ld+json"]')
+    renderHome()
+    const scripts = document.head.querySelectorAll('script[type="application/ld+json"]')
     const localBiz = Array.from(scripts)
       .map((s) => JSON.parse(s.textContent || '{}'))
       .find((c) => c['@type'] === 'LocalBusiness')
@@ -173,6 +183,73 @@ describe('Home — JSON-LD script tags', () => {
     expect(localBiz.address.streetAddress).toBe('8225 W Robindale Rd')
     expect(localBiz.geo).toBeDefined()
     expect(localBiz.openingHoursSpecification).toBeDefined()
+    expect(localBiz.aggregateRating).toBeDefined()
+    expect(localBiz.aggregateRating.ratingValue).toBe(site.rating)
+    expect(localBiz.aggregateRating.reviewCount).toBe(site.reviewCount)
+  })
+})
+
+describe('Home — Story 2.1 hero and data sourcing', () => {
+  it('renders hero, intro, and who-this-is-for copy from homepage data', () => {
+    const { container } = renderHome()
+    const pageText = container.textContent ?? ''
+
+    expect(pageText).toContain(heroData.headline)
+    expect(pageText).toContain(heroData.body)
+    expect(pageText).toContain(introData.paragraph)
+    expect(pageText).toContain(whoThisIsForData.headline)
+    expect(pageText).toContain(whoThisIsForData.body)
+  })
+
+  it('marks hero image as eager/high-priority with explicit dimensions', () => {
+    renderHome()
+    const heroImage = screen.getByAltText(heroData.backgroundImage.alt)
+    expect(heroImage).toHaveAttribute('fetchpriority', 'high')
+    expect(heroImage).toHaveAttribute('loading', 'eager')
+    expect(heroImage).toHaveAttribute('width', '1920')
+    expect(heroImage).toHaveAttribute('height', '1080')
+  })
+
+  it('renders hero CTAs with proper targets', () => {
+    const { container } = renderHome()
+
+    expect(screen.getAllByText(heroData.ctaPrimary.label).length).toBeGreaterThan(0)
+    const phoneLinks = container.querySelectorAll(`a[href="${site.phoneTel}"]`)
+    expect(phoneLinks.length).toBeGreaterThan(0)
+
+    const learnMoreLink = screen.getByText(heroData.ctaSecondary.label).closest('a')
+    expect(learnMoreLink).toBeTruthy()
+    expect(learnMoreLink).toHaveAttribute('href', heroData.ctaSecondary.href)
+  })
+})
+
+describe('Home — Story 2.2 content sections', () => {
+  it('renders program highlight links for Residential, PHP, and IOP', () => {
+    const { container } = renderHome()
+
+    for (const program of programHighlightsData) {
+      const link = container.querySelector(`a[href="/programs/${program.slug}"]`)
+      expect(link).toBeTruthy()
+    }
+  })
+
+  it('renders stats strip content from statsData', () => {
+    renderHome()
+
+    for (const stat of statsData) {
+      expect(screen.getByText(stat.label)).toBeInTheDocument()
+    }
+  })
+
+  it('shows named clinical staff trust signal in team section', () => {
+    renderHome()
+    expect(screen.getByText(teamOverviewData.clinical)).toBeInTheDocument()
+  })
+
+  it('uses lazy loading for below-fold program section image', () => {
+    renderHome()
+    const programImage = screen.getByAltText('Teen participating in a therapy session')
+    expect(programImage).toHaveAttribute('loading', 'lazy')
   })
 })
 
@@ -236,5 +313,11 @@ describe('Home — Internal links', () => {
     renderHome()
     const insuranceLinks = screen.getAllByText(/Verify.*Insurance|Verify your coverage/i)
     expect(insuranceLinks.length).toBeGreaterThan(0)
+  })
+
+  it('renders condition links in the conditions section', () => {
+    const { container } = renderHome()
+    const anxietyLink = container.querySelector('a[href="/conditions/anxiety-treatment"]')
+    expect(anxietyLink).toBeTruthy()
   })
 })

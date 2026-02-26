@@ -1,11 +1,9 @@
 import type { CSSProperties } from 'react'
 import { accreditations } from '../data/common'
+import type { AccreditationEntry, BaseComponentProps } from '../types'
 import { IconAward } from './Icons'
 
-interface TrustBadgesProps {
-  className?: string
-  style?: CSSProperties
-}
+type TrustBadgesProps = BaseComponentProps
 
 const sectionStyle: CSSProperties = {
   padding: '32px 0',
@@ -38,6 +36,8 @@ const badgeImgStyle: CSSProperties = {
 }
 
 export default function TrustBadges({ className, style }: TrustBadgesProps) {
+  const badges: AccreditationEntry[] = accreditations
+
   return (
     <section
       aria-label="Accreditations and certifications"
@@ -45,7 +45,7 @@ export default function TrustBadges({ className, style }: TrustBadgesProps) {
       style={{ ...sectionStyle, ...style }}
     >
       <div className="wrap" style={badgeContainerStyle}>
-        {accreditations.map((acc) => (
+        {badges.map((acc) => (
           <div key={acc.name} style={badgeStyle}>
             {acc.logo ? (
               <img src={acc.logo} alt={`${acc.name} accreditation badge`} style={badgeImgStyle} />

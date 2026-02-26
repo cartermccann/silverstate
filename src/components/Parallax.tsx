@@ -1,9 +1,6 @@
 import { useRef, useEffect, type ReactNode, type CSSProperties } from 'react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { gsap, ScrollTrigger } from '../utils/gsap'
 import { isTouchDevice } from '../hooks/useIsMobile'
-
-gsap.registerPlugin(ScrollTrigger)
 
 interface ParallaxProps {
   children?: ReactNode

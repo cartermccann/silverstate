@@ -1,6 +1,6 @@
 # Story 1.6: Breadcrumb & ErrorBoundary Components
 
-Status: review
+Status: done
 
 ## Story
 
@@ -794,15 +794,24 @@ Claude Opus 4.6
 
 ### Debug Log References
 
-No debug issues encountered.
+- Senior code review identified compliance gaps:
+  1) Breadcrumb JSON-LD could emit non-canonical relative/unsanitized URLs when `VITE_SITE_URL` was missing or had trailing slashes,
+  2) `BreadcrumbProps` did not extend `BaseComponentProps` as required,
+  3) ErrorBoundary CTA color used a hardcoded value (`#fff`) instead of design tokens.
 
 ### Completion Notes List
 
 - Created `Breadcrumb.tsx` — path-derived breadcrumb nav with SEGMENT_LABELS static map, `segmentToLabel()` fallback for unknown segments, BreadcrumbList JSON-LD via `<script type="application/ld+json">`, semantic `<nav aria-label="Breadcrumb">` + `<ol>/<li>`, `aria-current="page"` on last crumb, returns `null` on homepage
 - Created `ErrorBoundary.tsx` — React class component with `getDerivedStateFromError` + `componentDidCatch`, generic fallback UI with phone CTA from `site.phoneTel`, homepage link via plain `<a href="/">`, `role="alert"` for screen readers, optional custom `fallback` prop
 - Added `crisis-prevention-intervention` to SEGMENT_LABELS (not in original story map but needed for CPI program page per confirmed decision #3)
-- Test files created but cannot run until Story 1.10 provides Vitest/RTL/jest-dom infrastructure. Tests cover: homepage no-render, nested path trails, JSON-LD generation, aria-current, error catching, phone CTA, custom fallback
-- TypeScript passes with zero errors on component files. Vite build succeeds.
+- Code review remediation (2026-02-25):
+  - `BreadcrumbProps` and `ErrorBoundaryProps` aligned to `BaseComponentProps`
+  - Breadcrumb JSON-LD URL generation now normalizes `VITE_SITE_URL` and guarantees absolute URLs with canonical formatting
+  - Added explicit labels for route slugs introduced/confirmed after initial implementation (`oppositional-defiant-disorder-treatment`, `binge-eating-disorder-treatment`)
+  - ErrorBoundary CTA now uses `var(--white)` and explicit accessible phone aria-label
+  - Added touch-target friendly breadcrumb link sizing and expanded breadcrumb tests for canonical JSON-LD URL assertions and special-slug mapping
+- Targeted component tests executed and passing for Breadcrumb + ErrorBoundary.
+- TypeScript passes with zero errors. Vite build/prerender succeeds.
 
 ### File List
 
@@ -816,3 +825,20 @@ No debug issues encountered.
 ### Change Log
 
 - 2026-02-24: Story 1.6 implemented — Breadcrumb and ErrorBoundary components created with full accessibility, JSON-LD structured data, design token styling, and unit test files (pending test infra from Story 1.10)
+- 2026-02-25: Senior code review fixes applied; JSON-LD canonical URL handling, props contracts, and token compliance updated; tests re-run
+
+### Senior Developer Review (AI)
+
+**Reviewer:** Silver  
+**Date:** 2026-02-25  
+**Outcome:** Approved after fixes
+
+**Findings addressed**
+- Breadcrumb JSON-LD generation depended on unnormalized env URL input and could generate non-canonical output.
+- Base component prop contract (`BaseComponentProps`) was not being used by Breadcrumb/ErrorBoundary props.
+- ErrorBoundary fallback CTA used a hardcoded color token violation (`#fff`).
+
+**Verification**
+- `npm run test -- src/components/Breadcrumb.test.tsx src/components/ErrorBoundary.test.tsx` passes.
+- `npx tsc --noEmit` passes.
+- `npm run build` passes end-to-end (content/schema validation, sitemap, Vite build, prerender).

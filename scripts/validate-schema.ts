@@ -12,6 +12,7 @@ import {
   generatePhysician,
   generateFAQPage,
   generateBreadcrumbList,
+  generateWebPage,
 } from '../src/utils/schema'
 
 interface SchemaError {
@@ -198,6 +199,19 @@ if (!Array.isArray(breadcrumbs.itemListElement) || breadcrumbs.itemListElement.l
   }
 }
 
+// ─── WebPage ────────────────────────────────────────────────
+const webPage = generateWebPage({
+  title: 'Privacy Policy',
+  description: 'Privacy policy for Silver State Adolescent Treatment Center',
+  url: 'https://www.silverstatetreatment.com/privacy',
+  dateModified: '2026-02-25',
+})
+validateContext('WebPage', webPage)
+validateType('WebPage', webPage, 'WebPage')
+validateRequired('WebPage', webPage, 'name')
+validateRequired('WebPage', webPage, 'description')
+validateRequired('WebPage', webPage, 'url')
+
 // ─── Results ────────────────────────────────────────────────
 if (errors.length > 0) {
   console.error('\n=== SCHEMA VALIDATION FAILED ===\n')
@@ -209,6 +223,6 @@ if (errors.length > 0) {
 } else {
   console.log('\n=== Schema validation passed ===')
   console.log('  Validated: MedicalOrganization, LocalBusiness, MedicalCondition,')
-  console.log('    MedicalTherapy, Physician, FAQPage, BreadcrumbList')
+  console.log('    MedicalTherapy, Physician, FAQPage, BreadcrumbList, WebPage')
   console.log('  All JSON-LD structures are well-formed with required fields.\n')
 }

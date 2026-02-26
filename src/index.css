@@ -17,6 +17,9 @@
   --muted: #999;
   --border: rgba(0, 0, 0, 0.07);
   --white: #fff;
+  --error-bg: #fef2f2;
+  --error-border: #fecaca;
+  --error-text: #dc2626;
   --dark: #0f172a;
   --radius: 12px;
   --radius-lg: 16px;

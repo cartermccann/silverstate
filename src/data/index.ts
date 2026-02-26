@@ -8,3 +8,6 @@ export * from './therapies'
 export * from './locations'
 export * from './homepage'
 export * from './privacy'
+
+// Resolve duplicate star export name from about/homepage modules.
+export { youthAcademyData } from './about'

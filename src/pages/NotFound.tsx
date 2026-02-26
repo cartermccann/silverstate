@@ -11,6 +11,7 @@ const linkStyle: CSSProperties = {
   alignItems: 'center',
   justifyContent: 'center',
   minHeight: 44,
+  minWidth: 44,
   padding: '6px 0',
 }
 

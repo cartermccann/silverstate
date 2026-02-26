@@ -51,11 +51,25 @@ describe('Breadcrumb', () => {
     const script = container.querySelector('script[type="application/ld+json"]')
     expect(script).not.toBeNull()
     const jsonLd = JSON.parse(script!.textContent || '')
+    const expectedBaseUrl = (
+      import.meta.env?.VITE_SITE_URL || 'https://www.silverstatetreatment.com'
+    ).replace(/\/+$/, '')
     expect(jsonLd['@type']).toBe('BreadcrumbList')
     expect(jsonLd.itemListElement).toHaveLength(3)
     expect(jsonLd.itemListElement[0].name).toBe('Home')
+    expect(jsonLd.itemListElement[0].item).toBe(`${expectedBaseUrl}/`)
     expect(jsonLd.itemListElement[1].name).toBe('Programs')
     expect(jsonLd.itemListElement[2].name).toBe('PHP')
+    expect(jsonLd.itemListElement[2].item).toBe(`${expectedBaseUrl}/programs/php`)
+  })
+
+  it('renders explicit mapped labels for special condition slugs', () => {
+    render(
+      <MemoryRouter initialEntries={['/conditions/oppositional-defiant-disorder-treatment']}>
+        <Breadcrumb />
+      </MemoryRouter>,
+    )
+    expect(screen.getByText('Oppositional Defiant Disorder Treatment')).toBeInTheDocument()
   })
 
   it('does not render the last crumb as a link', () => {

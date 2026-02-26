@@ -1,10 +1,7 @@
 import { useEffect, useRef, type ReactNode } from 'react'
 import Lenis from 'lenis'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { gsap, ScrollTrigger } from '../utils/gsap'
 import { isTouchDevice } from '../hooks/useIsMobile'
-
-gsap.registerPlugin(ScrollTrigger)
 
 interface SmoothScrollProps {
   children: ReactNode

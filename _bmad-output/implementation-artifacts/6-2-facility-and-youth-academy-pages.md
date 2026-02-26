@@ -1,6 +1,6 @@
 # Story 6.2: Facility & Youth Academy Pages
 
-Status: ready-for-dev
+Status: done
 
 ## Story
 
@@ -25,43 +25,43 @@ So that I understand the physical environment and academic continuity my teen wi
 
 ## Tasks / Subtasks
 
-- [ ] **Task 1: Create the Facility page at src/pages/about/Facility.tsx** (AC: #1, #3, #4, #6)
-  - [ ] 1.1: Create `src/pages/about/Facility.tsx` with `export default function Facility()`
-  - [ ] 1.2: Import `facilityData`, `clinicalReviewer` from `../../data/about`
-  - [ ] 1.3: Import `site` from `../../data/common` for address and contact details
-  - [ ] 1.4: Render a page header section with `<h1>` containing the facility title (e.g., "Our Facility") with a subheading describing the treatment environment
-  - [ ] 1.5: Render Silver State's address and facility details prominently (FR24): `site.address` ("8225 W Robindale Rd, Las Vegas, NV 89113"), phone number via `site.phone`/`site.phoneTel`, hours/availability info
-  - [ ] 1.6: Render the facility description from `facilityData.description` — covering the physical environment, therapeutic spaces, living areas, outdoor spaces, and safety features
-  - [ ] 1.7: Render facility features list from `facilityData.features` — items like: safe therapeutic environment, comfortable living spaces, recreation areas, outdoor courtyard, commercial kitchen for nutritious meals, on-site classrooms, etc.
-  - [ ] 1.8: Render facility images from `facilityData.images` array — each image must have descriptive `alt` text from the data (FR28). Example alt: "Silver State residential living area with comfortable seating", "Outdoor therapeutic courtyard at Silver State". Use `loading="lazy"` on all images below the fold
-  - [ ] 1.9: Include key differentiator callout relevant to facility: 4:1 staff-to-client ratio, 24/7 clinical support, Joint Commission Gold Seal accredited environment
-  - [ ] 1.10: Render internal links section (FR5) with `<Link>` components:
+- [x] **Task 1: Create the Facility page at src/pages/about/Facility.tsx** (AC: #1, #3, #4, #6)
+  - [x] 1.1: Create `src/pages/about/Facility.tsx` with `export default function Facility()`
+  - [x] 1.2: Import `facilityData`, `clinicalReviewer` from `../../data/about`
+  - [x] 1.3: Import `site` from `../../data/common` for address and contact details
+  - [x] 1.4: Render a page header section with `<h1>` containing the facility title (e.g., "Our Facility") with a subheading describing the treatment environment
+  - [x] 1.5: Render Silver State's address and facility details prominently (FR24): `site.address` ("8225 W Robindale Rd, Las Vegas, NV 89113"), phone number via `site.phone`/`site.phoneTel`, hours/availability info
+  - [x] 1.6: Render the facility description from `facilityData.description` — covering the physical environment, therapeutic spaces, living areas, outdoor spaces, and safety features
+  - [x] 1.7: Render facility features list from `facilityData.features` — items like: safe therapeutic environment, comfortable living spaces, recreation areas, outdoor courtyard, commercial kitchen for nutritious meals, on-site classrooms, etc.
+  - [x] 1.8: Render facility images from `facilityData.images` array — each image must have descriptive `alt` text from the data (FR28). Example alt: "Silver State residential living area with comfortable seating", "Outdoor therapeutic courtyard at Silver State". Use `loading="lazy"` on all images below the fold
+  - [x] 1.9: Include key differentiator callout relevant to facility: 4:1 staff-to-client ratio, 24/7 clinical support, Joint Commission Gold Seal accredited environment
+  - [x] 1.10: Render internal links section (FR5) with `<Link>` components:
     - "Explore Our Programs" → `/programs/residential-treatment`
     - "Meet Our Team" → `/about/our-team`
     - "Youth Academy" → `/about/youth-academy`
     - "Start Admissions" → `/admissions`
-  - [ ] 1.11: Include a phone CTA within page content: "Schedule a facility tour — call (725) 525-9897" using `site.phoneTel`
-  - [ ] 1.12: Render clinical reviewer attribution at page bottom: "Page reviewed by {clinicalReviewer.name}, {clinicalReviewer.credentials}" (FR15)
+  - [x] 1.11: Include a phone CTA within page content: "Schedule a facility tour — call (725) 525-9897" using `site.phoneTel`
+  - [x] 1.12: Render clinical reviewer attribution at page bottom: "Page reviewed by {clinicalReviewer.name}, {clinicalReviewer.credentials}" (FR15)
 
-- [ ] **Task 2: Create the Youth Academy page at src/pages/about/YouthAcademy.tsx** (AC: #2, #3, #4, #6)
-  - [ ] 2.1: Create `src/pages/about/YouthAcademy.tsx` with `export default function YouthAcademy()`
-  - [ ] 2.2: Import `youthAcademyData`, `clinicalReviewer` from `../../data/about`
-  - [ ] 2.3: Import `site` from `../../data/common`
-  - [ ] 2.4: Render a page header section with `<h1>` containing the academy title (e.g., "Silver State Youth Academy") with a subheading about academic continuity during treatment
-  - [ ] 2.5: Render the academy description from `youthAcademyData.description` — covering: accredited academics, how credits transfer, small class sizes, individualized learning plans, certified teachers, subjects covered, college prep support
-  - [ ] 2.6: Render academy features list from `youthAcademyData.features` — items like: fully accredited program, credits transfer to home school, small class sizes (typically 6-8 students), individualized learning plans, certified Nevada teachers, core academics (math, science, English, social studies), college prep support, GED preparation available
-  - [ ] 2.7: Render academy images from `youthAcademyData.images` array — each with descriptive `alt` text (FR28). Example alt: "Silver State Youth Academy classroom with small group instruction", "Student workspace in Silver State's on-site academic program". Use `loading="lazy"`
-  - [ ] 2.8: Highlight key differentiator: on-site accredited academics as a unique benefit — many treatment centers disrupt academic progress, Silver State maintains it
-  - [ ] 2.9: Render internal links section (FR5) with `<Link>` components:
+- [x] **Task 2: Create the Youth Academy page at src/pages/about/YouthAcademy.tsx** (AC: #2, #3, #4, #6)
+  - [x] 2.1: Create `src/pages/about/YouthAcademy.tsx` with `export default function YouthAcademy()`
+  - [x] 2.2: Import `youthAcademyData`, `clinicalReviewer` from `../../data/about`
+  - [x] 2.3: Import `site` from `../../data/common`
+  - [x] 2.4: Render a page header section with `<h1>` containing the academy title (e.g., "Silver State Youth Academy") with a subheading about academic continuity during treatment
+  - [x] 2.5: Render the academy description from `youthAcademyData.description` — covering: accredited academics, how credits transfer, small class sizes, individualized learning plans, certified teachers, subjects covered, college prep support
+  - [x] 2.6: Render academy features list from `youthAcademyData.features` — items like: fully accredited program, credits transfer to home school, small class sizes (typically 6-8 students), individualized learning plans, certified Nevada teachers, core academics (math, science, English, social studies), college prep support, GED preparation available
+  - [x] 2.7: Render academy images from `youthAcademyData.images` array — each with descriptive `alt` text (FR28). Example alt: "Silver State Youth Academy classroom with small group instruction", "Student workspace in Silver State's on-site academic program". Use `loading="lazy"`
+  - [x] 2.8: Highlight key differentiator: on-site accredited academics as a unique benefit — many treatment centers disrupt academic progress, Silver State maintains it
+  - [x] 2.9: Render internal links section (FR5) with `<Link>` components:
     - "Explore Our Programs" → `/programs/residential-treatment`
     - "Meet Our Team" → `/about/our-team`
     - "See Our Facility" → `/about/facility`
     - "Start Admissions" → `/admissions`
-  - [ ] 2.10: Include a phone CTA within page content: "Questions about academics during treatment? Call (725) 525-9897" using `site.phoneTel`
-  - [ ] 2.11: Render clinical reviewer attribution at page bottom (FR15)
+  - [x] 2.10: Include a phone CTA within page content: "Questions about academics during treatment? Call (725) 525-9897" using `site.phoneTel`
+  - [x] 2.11: Render clinical reviewer attribution at page bottom (FR15)
 
-- [ ] **Task 3: Implement JSON-LD structured data for both pages** (AC: #5)
-  - [ ] 3.1: Facility page — generate `MedicalOrganization` or `LocalBusiness` JSON-LD including:
+- [x] **Task 3: Implement JSON-LD structured data for both pages** (AC: #5)
+  - [x] 3.1: Facility page — generate `MedicalOrganization` or `LocalBusiness` JSON-LD including:
     ```json
     {
       "@context": "https://schema.org",
@@ -80,7 +80,7 @@ So that I understand the physical environment and academic continuity my teen wi
       "availableService": ["Residential Treatment", "Partial Hospitalization", "Intensive Outpatient"]
     }
     ```
-  - [ ] 3.2: Youth Academy page — generate `EducationalOrganization` JSON-LD including:
+  - [x] 3.2: Youth Academy page — generate `EducationalOrganization` JSON-LD including:
     ```json
     {
       "@context": "https://schema.org",
@@ -94,45 +94,45 @@ So that I understand the physical environment and academic continuity my teen wi
       "address": { ... }
     }
     ```
-  - [ ] 3.3: Use `utils/schema.ts` generators from Story 1.8. If specific generators for these types don't exist yet, use the `generateLocalBusinessSchema` or create appropriately-shaped JSON-LD objects inline with a `// TODO: move to utils/schema.ts` comment
+  - [x] 3.3: Use `utils/schema.ts` generators from Story 1.8. If specific generators for these types don't exist yet, use the `generateLocalBusinessSchema` or create appropriately-shaped JSON-LD objects inline with a `// TODO: move to utils/schema.ts` comment
 
-- [ ] **Task 4: SEO metadata and OG tags for both pages** (AC: #5)
-  - [ ] 4.1: Facility page route `meta` export:
+- [x] **Task 4: SEO metadata and OG tags for both pages** (AC: #5)
+  - [x] 4.1: Facility page route `meta` export:
     - Title: `"Our Facility | Silver State Adolescent Treatment Center"`
     - Description: `"Tour Silver State's treatment facility in Las Vegas, NV — safe therapeutic environment, comfortable living spaces, outdoor areas, and on-site academics for teens 11-17."`
     - Canonical: `https://www.silverstatetreatment.com/about/facility`
     - OG image: facility exterior or interior photo
-  - [ ] 4.2: Youth Academy page route `meta` export:
+  - [x] 4.2: Youth Academy page route `meta` export:
     - Title: `"Silver State Youth Academy | On-Site Accredited Academics"`
     - Description: `"Silver State Youth Academy provides accredited academic programming during treatment — credits transfer, certified teachers, individualized learning plans for teens 11-17."`
     - Canonical: `https://www.silverstatetreatment.com/about/youth-academy`
     - OG image: classroom or academic setting photo
 
-- [ ] **Task 5: Responsive layout and accessibility** (AC: #6)
-  - [ ] 5.1: Both pages: on desktop (>= 900px), images can display in a 2-column grid or alongside text in a side-by-side layout. On mobile (< 900px), single column stack with images full-width
-  - [ ] 5.2: Feature lists: use `<ul>` with `<li>` elements for semantic structure
-  - [ ] 5.3: All images must have descriptive `alt` text — never empty `alt=""` (these are informational images, not decorative)
-  - [ ] 5.4: Heading hierarchy per page: `<h1>` for page title, `<h2>` for sections, `<h3>` for subsections
-  - [ ] 5.5: All links (internal and phone CTA) must be keyboard accessible with visible `:focus-visible` indicators
-  - [ ] 5.6: Touch targets on phone CTA and navigation links must be >= 44x44px on mobile (FR42)
-  - [ ] 5.7: Use `var(--body)` for body text, `var(--text)` for headings — never `var(--muted)` for essential text below 18px
-  - [ ] 5.8: Verify no horizontal scrolling at 320px viewport (FR43)
-  - [ ] 5.9: Images should have explicit `width` and `height` attributes (or aspect-ratio CSS) to prevent CLS (NFR2)
+- [x] **Task 5: Responsive layout and accessibility** (AC: #6)
+  - [x] 5.1: Both pages: on desktop (>= 900px), images can display in a 2-column grid or alongside text in a side-by-side layout. On mobile (< 900px), single column stack with images full-width
+  - [x] 5.2: Feature lists: use `<ul>` with `<li>` elements for semantic structure
+  - [x] 5.3: All images must have descriptive `alt` text — never empty `alt=""` (these are informational images, not decorative)
+  - [x] 5.4: Heading hierarchy per page: `<h1>` for page title, `<h2>` for sections, `<h3>` for subsections
+  - [x] 5.5: All links (internal and phone CTA) must be keyboard accessible with visible `:focus-visible` indicators
+  - [x] 5.6: Touch targets on phone CTA and navigation links must be >= 44x44px on mobile (FR42)
+  - [x] 5.7: Use `var(--body)` for body text, `var(--text)` for headings — never `var(--muted)` for essential text below 18px
+  - [x] 5.8: Verify no horizontal scrolling at 320px viewport (FR43)
+  - [x] 5.9: Images should have explicit `width` and `height` attributes (or aspect-ratio CSS) to prevent CLS (NFR2)
 
-- [ ] **Task 6: Add routes for both pages** (AC: all)
-  - [ ] 6.1: Verify or add route entries in `src/routes.ts` for:
+- [x] **Task 6: Add routes for both pages** (AC: all)
+  - [x] 6.1: Verify or add route entries in `src/routes.ts` for:
     - `/about/facility` → `pages/about/Facility.tsx`
     - `/about/youth-academy` → `pages/about/YouthAcademy.tsx`
-  - [ ] 6.2: Both routes should use PageLayout as their layout wrapper
+  - [x] 6.2: Both routes should use PageLayout as their layout wrapper
 
-- [ ] **Task 7: Verify compilation and rendering** (AC: all)
-  - [ ] 7.1: Run `npx tsc --noEmit` — zero TypeScript errors
-  - [ ] 7.2: Run `npm run dev` — Facility page renders at `/about/facility`, Youth Academy page renders at `/about/youth-academy`
-  - [ ] 7.3: Verify responsive layout at 320px, 768px, and 1024px+ for both pages
-  - [ ] 7.4: Verify JSON-LD is present in page source for both pages
-  - [ ] 7.5: Verify all images render with correct alt text
-  - [ ] 7.6: Verify internal links navigate correctly to target pages
-  - [ ] 7.7: Verify keyboard navigation through all interactive elements
+- [x] **Task 7: Verify compilation and rendering** (AC: all)
+  - [x] 7.1: Run `npx tsc --noEmit` — zero TypeScript errors
+  - [x] 7.2: Run `npm run dev` — Facility page renders at `/about/facility`, Youth Academy page renders at `/about/youth-academy`
+  - [x] 7.3: Verify responsive layout at 320px, 768px, and 1024px+ for both pages
+  - [x] 7.4: Verify JSON-LD is present in page source for both pages
+  - [x] 7.5: Verify all images render with correct alt text
+  - [x] 7.6: Verify internal links navigate correctly to target pages
+  - [x] 7.7: Verify keyboard navigation through all interactive elements
 
 ## Dev Notes
 
@@ -229,10 +229,71 @@ These two pages depend entirely on data created by Story 6.1 in `src/data/about.
 
 ### Agent Model Used
 
-_To be filled by dev agent_
+GPT-5 Codex
 
 ### Debug Log References
 
+- Senior review (2026-02-25): removed duplicate Facility/Youth JSON-LD emission by keeping structured data scripts in-page and removing route-level `meta.jsonLd`.
+- Senior review (2026-02-25): removed manual `useEffect` head/meta mutation from both pages and aligned metadata to route `meta` exports only.
+- Senior review (2026-02-25): enforced required internal links and mobile touch-target constraints in cross-navigation CTA blocks.
+- Senior review (2026-02-25): converted feature sections to semantic lists and added Story 6.2 regression tests for schema/meta/link/touch-target contracts.
+- Senior review (2026-02-25): fixed remaining SEO contract gaps by setting page-specific OG images and aligning Youth Academy title to the story requirement.
+
 ### Completion Notes List
 
+- Facility page (`/about/facility`) now delivers environment/location/amenities content from `facilityData`, with descriptive image alt text, contact details, semantic feature list, reviewer attribution, and required internal links.
+- Youth Academy page (`/about/youth-academy`) now delivers accredited academics continuity content from `youthAcademyData`, with descriptive image alt text, semantic feature list, reviewer attribution, and required internal links.
+- Both pages now emit in-page JSON-LD only:
+  - Facility: `MedicalOrganization` + `LocalBusiness`
+  - Youth Academy: `EducationalOrganization`
+- Both route metadata exports now provide unique canonical/OG URL pathing and page-specific OG images from page data.
+- Youth Academy metadata title now matches Story 6.2 requirement: `Silver State Youth Academy | On-Site Accredited Academics`.
+- Focused Story 6.2 regression tests validate:
+  - JSON-LD schema presence/type
+  - Required internal links
+  - Semantic list rendering
+  - 44px+ touch target styles on conversion CTAs
+  - Route metadata contract (no route-level ld+json, canonical/og path, OG image pathing)
+- Verification commands passed:
+  - `npx tsc --noEmit`
+  - `npx vitest run src/pages/about/FacilityYouth.test.tsx src/pages/about/Team.test.tsx src/data/about.test.ts`
+  - `npm run lint`
+  - `npm run format:check`
+
 ### File List
+
+- `src/pages/about/Facility.tsx` (modified -- removed head-side effects/route JSON-LD, semantic list + required links/touch targets, page-specific OG image in route meta)
+- `src/pages/about/YouthAcademy.tsx` (modified -- removed head-side effects/route JSON-LD, semantic list + required links/touch targets, page-specific OG image in route meta)
+- `src/data/about.ts` (modified -- Youth Academy meta title aligned to Story 6.2 requirement)
+- `src/pages/about/FacilityYouth.test.tsx` (added/updated -- Story 6.2 regression coverage for schema/link/touch-target/meta/OG image contracts)
+- `_bmad-output/implementation-artifacts/6-2-facility-and-youth-academy-pages.md` (modified -- review completion record)
+- `_bmad-output/implementation-artifacts/sprint-status.yaml` (modified -- story and epic status sync)
+
+## Change Log
+
+- 2026-02-24: Story 6.2 implementation added Facility and Youth Academy pages.
+- 2026-02-25: Senior code review completed -- fixed schema/meta/link/accessibility gaps, added Story 6.2 regression tests, and finalized story.
+
+### Senior Developer Review (AI)
+
+**Reviewer:** Silver  
+**Date:** 2026-02-25  
+**Outcome:** Approved (all high and medium findings fixed)
+
+**Findings**
+
+1. **HIGH:** Facility and Youth routes emitted duplicate JSON-LD via route `meta` plus in-page scripts.
+2. **HIGH:** Route metadata used shared default OG image instead of page-specific facility/academy images (AC #5 gap).
+3. **MEDIUM:** Youth Academy route title used `"On-Site Accredited Education"` instead of required `"On-Site Accredited Academics"`.
+4. **MEDIUM:** Facility/Youth pages used manual `useEffect` head/meta mutation, violating route-meta conventions.
+5. **MEDIUM:** Required program links and explicit 44px touch-target enforcement were missing in cross-navigation CTAs.
+6. **MEDIUM:** Story artifact remained `ready-for-dev` with empty dev record/file list and unsynced sprint status.
+
+**Fixes Applied**
+
+- Removed route-level JSON-LD output and retained structured data in page scripts only.
+- Added page-specific `ogImage` values to both Facility and Youth `meta` exports.
+- Updated Youth Academy metadata title to the exact story-required value.
+- Removed manual DOM head/meta side-effects and standardized on route metadata exports.
+- Added required `/programs/residential-treatment` links and explicit `minHeight` CTA constraints for mobile touch targets.
+- Added/updated Story 6.2 regression tests and synchronized story/sprint status to completion.

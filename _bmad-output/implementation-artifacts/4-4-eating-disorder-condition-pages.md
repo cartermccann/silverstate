@@ -1,6 +1,6 @@
 # Story 4.4: Eating Disorder Condition Pages
 
-Status: review
+Status: done
 
 ## Story
 
@@ -183,31 +183,65 @@ Claude Opus 4.6
 
 No debug issues encountered.
 
+- Senior review (2026-02-25): removed duplicate route-level JSON-LD emission from all 5 eating disorder wrappers by keeping schema generation in `ConditionPage.tsx`.
+- Senior review (2026-02-25): refactored eating disorder wrappers to strict thin-page contract (lookup + meta + handle + render only).
+- Senior review (2026-02-25): added Story 4.4 regression checks for route metadata contract, ARFID/OSFED content specificity, source authority, and total condition route coverage.
+
 ### Completion Notes List
 
 - Updated 5 eating disorder condition page stubs (AnorexiaNervosa, BulimiaNervosa, BingeEating, ARFID, OSFED) from placeholder "Content coming soon" to full thin-wrapper pattern matching Story 4.2's established Anxiety.tsx pattern
-- Each page: imports condition data via `getConditionBySlug`, generates FAQ + MedicalCondition JSON-LD schemas, exports `meta` array for SEO, exports `handle` for breadcrumb, uses `useEffect` to apply meta tags to DOM, renders `<ConditionPage condition={condition} />`
+- Each page now strictly follows thin-wrapper contract: imports condition data via `getConditionBySlug`, exports `meta` + `handle`, and renders `<ConditionPage condition={condition} />`
 - Routes were already registered in `src/routes.tsx` with lazy loading from a prior story
 - TypeScript: zero errors (`npx tsc --noEmit` clean)
 - Vite build: all 5 pages compile and code-split correctly
 - Content quality verified: all pages have adolescent-specific content; ARFID explains sensory aversion vs body image ("goes beyond picky eating"); OSFED explains it's "not a lesser diagnosis" with parent-friendly language; all have NEDA + NIMH + APA sources
 - No content defects flagged against Story 4.1
-- No modifications to ConditionPage.tsx or condition data files
+- Removed route-level JSON-LD from the 5 eating disorder wrappers so each page now emits exactly one FAQPage and one MedicalCondition schema in prerendered HTML
+- Added/extended tests:
+  - `src/pages/conditions/ConditionPage.test.tsx` validates no `script:ld+json` entries in eating route meta, canonical/OG path constraints, unique eating-page titles, and all 25 `/conditions/*` routes available.
+  - `src/data/conditions.test.ts` validates ARFID/OSFED parent-friendly specificity and NEDA/NIMH citation coverage for every eating-disorder condition.
 - No new npm packages added
 - Total condition page count verified: 25 routes under `/conditions/*` (12 mental health + 8 substance abuse + 5 eating disorders)
 - Epic 4 is now complete — all 25 condition treatment pages are live
 - Viewport responsive testing deferred: Playwright browser could not launch (Chrome conflict), but ConditionPage template responsiveness was already verified in Story 4.2
+- Senior review validation suite passed:
+  - `npx tsc --noEmit`
+  - `npm run lint`
+  - `npm run test -- src/pages/conditions/ConditionPage.test.tsx src/data/conditions.test.ts src/pages/programs/ProgramPage.test.tsx src/pages/programs/PHPIOP.test.tsx`
+  - `npm run format:check`
+  - `npm run build`
 
 ### Change Log
 
 - 2026-02-24: Implemented 5 eating disorder condition page wrappers (Story 4.4), completing Epic 4
+- 2026-02-25: Senior code review completed — fixed wrapper contract/schema duplication issues and added focused Story 4.4 regression coverage.
 
 ### File List
 
-- `src/pages/conditions/AnorexiaNervosa.tsx` (modified — replaced stub with full implementation)
-- `src/pages/conditions/BulimiaNervosa.tsx` (modified — replaced stub with full implementation)
-- `src/pages/conditions/BingeEating.tsx` (modified — replaced stub with full implementation)
-- `src/pages/conditions/ARFID.tsx` (modified — replaced stub with full implementation)
-- `src/pages/conditions/OSFED.tsx` (modified — replaced stub with full implementation)
+- `src/pages/conditions/AnorexiaNervosa.tsx` (modified — reduced to strict thin wrapper and removed route-level schema/meta side-effects)
+- `src/pages/conditions/BulimiaNervosa.tsx` (modified — reduced to strict thin wrapper and removed route-level schema/meta side-effects)
+- `src/pages/conditions/BingeEating.tsx` (modified — reduced to strict thin wrapper and removed route-level schema/meta side-effects)
+- `src/pages/conditions/ARFID.tsx` (modified — reduced to strict thin wrapper and removed route-level schema/meta side-effects)
+- `src/pages/conditions/OSFED.tsx` (modified — reduced to strict thin wrapper and removed route-level schema/meta side-effects)
+- `src/pages/conditions/ConditionPage.test.tsx` (modified — added Story 4.4 metadata and route-coverage assertions)
+- `src/data/conditions.test.ts` (modified — added Story 4.4 content-quality/source-authority assertions)
 - `_bmad-output/implementation-artifacts/sprint-status.yaml` (modified — story status updated)
 - `_bmad-output/implementation-artifacts/4-4-eating-disorder-condition-pages.md` (modified — tasks checked, Dev Agent Record updated)
+
+### Senior Developer Review (AI)
+
+**Reviewer:** Silver  
+**Date:** 2026-02-25  
+**Outcome:** Approved (all high/medium findings fixed)
+
+**Findings**
+
+1. **HIGH:** Eating-disorder route pages emitted duplicate FAQPage/MedicalCondition JSON-LD due to route-level `meta.jsonLd` plus template-level schema scripts.
+2. **MEDIUM:** Eating route wrappers violated thin-wrapper requirements with repeated page-local schema construction and DOM meta side-effects.
+3. **MEDIUM:** No regression tests enforced Story 4.4 requirements for ARFID/OSFED explanation quality, eating-page metadata contract, and complete 25-page route coverage.
+
+**Fixes Applied**
+
+- Removed route-level schema generation/injection from all 5 eating wrappers; kept schema generation centralized in `ConditionPage.tsx`.
+- Refactored all 5 wrappers to strict thin pattern (slug lookup + `meta` + `handle` + render only).
+- Added Story 4.4 assertions in `ConditionPage.test.tsx` and `conditions.test.ts` for metadata contract, content quality, source authority, and full condition-route availability.

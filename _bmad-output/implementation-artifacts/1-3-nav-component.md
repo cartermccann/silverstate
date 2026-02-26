@@ -1,6 +1,6 @@
 # Story 1.3: Nav Component
 
-Status: review
+Status: done
 
 ## Story
 
@@ -367,6 +367,7 @@ Claude Opus 4.6
 - Touch targets: hamburger 44x44, mobile links 48px min-height, phone CTA via .btn padding
 - Zero TypeScript errors, zero Vite build errors
 - No new dependencies installed
+- Code review remediation (2026-02-25): enforced explicit 44x44 minimum touch target on phone CTA and linked hamburger control to mobile nav panel via `aria-controls`
 
 ### File List
 
@@ -377,3 +378,19 @@ Claude Opus 4.6
 ### Change Log
 
 - 2026-02-24: Story 1.3 implemented - Nav component rewritten for production with mobile hamburger menu, keyboard accessibility, focus management, ARIA compliance, responsive behavior, and all data imported from common.ts
+- 2026-02-25: Senior code review fixes applied; touch target and ARIA control wiring improved; verification re-run and passing
+
+### Senior Developer Review (AI)
+
+**Reviewer:** Silver  
+**Date:** 2026-02-25  
+**Outcome:** Approved after fixes
+
+**Findings addressed**
+- Phone CTA in Nav had reduced inline padding that could drop below the 44px touch-target requirement on mobile. Added explicit `minWidth: 44` and `minHeight: 44`.
+- Added `aria-controls` on the hamburger button and an `id` on the mobile nav panel for clearer assistive-technology relationship.
+
+**Verification**
+- `npx tsc --noEmit` passes.
+- `npm run build` passes end-to-end.
+- `npm run dev -- --host 127.0.0.1 --port 4173` starts successfully.

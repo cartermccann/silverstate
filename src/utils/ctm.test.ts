@@ -1,11 +1,14 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest'
-import { loadCTMScript, initializeCTM, replaceCTMNumber, _resetCTM } from './ctm'
+import { loadCTMScript, initializeCTM, replaceCTMNumber, disableCTM, _resetCTM } from './ctm'
 
 vi.stubEnv('VITE_CTM_ID', '12345')
+vi.stubEnv('VITE_CTM_BASE_URL', '')
 
 describe('ctm', () => {
   beforeEach(() => {
-    document.querySelectorAll('script[src*="tctm.co"]').forEach((s) => s.remove())
+    vi.stubEnv('VITE_CTM_ID', '12345')
+    vi.stubEnv('VITE_CTM_BASE_URL', '')
+    document.querySelectorAll('#ss-ctm-script').forEach((s) => s.remove())
     _resetCTM()
     delete (window as Record<string, unknown>)._ctm
   })
@@ -13,7 +16,7 @@ describe('ctm', () => {
   describe('loadCTMScript', () => {
     it('injects CTM script with async attribute', () => {
       loadCTMScript()
-      const script = document.querySelector('script[src*="tctm.co"]') as HTMLScriptElement
+      const script = document.querySelector('#ss-ctm-script') as HTMLScriptElement
       expect(script).not.toBeNull()
       expect(script.async).toBe(true)
       expect(script.src).toContain('12345.tctm.co/t.js')
@@ -22,7 +25,7 @@ describe('ctm', () => {
     it('does not inject script twice', () => {
       loadCTMScript()
       loadCTMScript()
-      const scripts = document.querySelectorAll('script[src*="tctm.co"]')
+      const scripts = document.querySelectorAll('#ss-ctm-script')
       expect(scripts.length).toBe(1)
     })
 
@@ -30,7 +33,26 @@ describe('ctm', () => {
       vi.stubEnv('VITE_CTM_ID', '')
       _resetCTM()
       loadCTMScript()
-      expect(document.querySelector('script[src*="tctm.co"]')).toBeNull()
+      expect(document.querySelector('#ss-ctm-script')).toBeNull()
+    })
+
+    it('supports configurable CTM base URL with account placeholder', () => {
+      vi.stubEnv('VITE_CTM_BASE_URL', 'https://{ACCOUNT_ID}.example-ctm.test')
+      loadCTMScript()
+      const script = document.querySelector('#ss-ctm-script') as HTMLScriptElement
+      expect(script.src).toContain('https://12345.example-ctm.test/t.js')
+    })
+
+    it('retries after script load error', () => {
+      loadCTMScript()
+      const firstScript = document.querySelector('#ss-ctm-script') as HTMLScriptElement
+      expect(firstScript).not.toBeNull()
+      firstScript.dispatchEvent(new Event('error'))
+
+      loadCTMScript()
+      const secondScript = document.querySelector('#ss-ctm-script') as HTMLScriptElement
+      expect(secondScript).not.toBeNull()
+      expect(secondScript).not.toBe(firstScript)
     })
   })
 
@@ -39,8 +61,9 @@ describe('ctm', () => {
       vi.useFakeTimers()
       initializeCTM()
       // Script not loaded synchronously
-      expect(document.querySelector('script[src*="tctm.co"]')).toBeNull()
+      expect(document.querySelector('#ss-ctm-script')).toBeNull()
       vi.runAllTimers()
+      expect(document.querySelector('#ss-ctm-script')).not.toBeNull()
       vi.useRealTimers()
     })
   })
@@ -57,6 +80,15 @@ describe('ctm', () => {
     it('does not throw when _ctm is undefined', () => {
       const el = document.createElement('div')
       expect(() => replaceCTMNumber(el)).not.toThrow()
+    })
+  })
+
+  describe('disableCTM', () => {
+    it('removes CTM script and resets state', () => {
+      loadCTMScript()
+      expect(document.querySelector('#ss-ctm-script')).not.toBeNull()
+      disableCTM()
+      expect(document.querySelector('#ss-ctm-script')).toBeNull()
     })
   })
 })

@@ -6,6 +6,13 @@ export const config = {
   runtime: 'edge',
 }
 
+const ENV =
+  (
+    globalThis as {
+      process?: { env?: Record<string, string | undefined> }
+    }
+  ).process?.env ?? {}
+
 export default async function handler(req: Request): Promise<Response> {
   // Only accept GET requests
   if (req.method !== 'GET') {
@@ -17,7 +24,7 @@ export default async function handler(req: Request): Promise<Response> {
 
   // Get GA4 measurement ID from query parameter or server env
   const url = new URL(req.url)
-  const ga4Id = url.searchParams.get('id') || process.env.GA4_ID
+  const ga4Id = url.searchParams.get('id') || ENV.GA4_ID
 
   if (!ga4Id) {
     return new Response(JSON.stringify({ error: 'Missing measurement ID' }), {

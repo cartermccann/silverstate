@@ -1,6 +1,6 @@
 # Story 2.3: Homepage SEO, Schema & Conversion CTAs
 
-Status: review
+Status: done
 
 ## Story
 
@@ -166,24 +166,48 @@ Claude Opus 4.6
 
 - GSAP mocks required for Home.test.tsx — ScrollTrigger.register() runs at import time, `vi.mock` factory must be inline (no outer variable refs due to hoisting)
 - CharReveal/TextReveal split text into character spans; tests use `textContent` matching instead of `getByText`
+- Senior review (2026-02-25): removed duplicate JSON-LD emission (head + body), routing JSON-LD through meta-driven head injection for both prerender and SPA navigation
+- Senior review (2026-02-25): completed LocalBusiness schema parity by adding `aggregateRating` (`ratingValue`, `reviewCount`)
+- Senior review (2026-02-25): wired MedicalOrganization credentials from homepage accreditation data and completed condition-card internal linking (`/conditions/${slug}`)
 
 ### Completion Notes List
 
-- **Task 1:** Imported `generateMedicalOrganization` and `generateLocalBusiness` from `utils/schema.ts`. Both JSON-LD schemas rendered inline as `<script type="application/ld+json">` in the component JSX. Data sourced from `site` (common.ts) via the generator functions — no hardcoded values.
+- **Task 1:** Imported `generateMedicalOrganization` and `generateLocalBusiness` from `utils/schema.ts`. JSON-LD is emitted through route `meta` (`script:ld+json`) and injected into `<head>` (prerender + runtime SPA effect), avoiding duplicate script blocks in rendered body.
 - **Task 2:** Exported `meta` const using `generateMeta` helper. Title: "Teen Mental Health Treatment in Las Vegas | Silver State" (56 chars). Description includes phone and key differentiator (under 160 chars). Added `useEffect` for runtime meta tag injection (SPA mode). Includes canonical URL, OG tags, Twitter Card tags, and JSON-LD in meta array.
 - **Task 3:** Added Section 11 (Final CTA) — dark background with `CharReveal` headline, `TextReveal` body, `MagneticButton` phone CTA + `Link` to `/insurance`, address line with `IconMapPin`. Added `FinalCtaData` type and `finalCtaData` export in homepage.ts.
 - **Task 4:** Audited CTA arc: Hero (urgency) → Admissions (action) → Final CTA (commitment). All phone CTAs use `site.phoneTel` with `aria-label`. Added `aria-label` to admissions "Start the conversation" CTA.
-- **Task 5:** Verified program links (`/programs/{slug}`), insurance hub link (`/insurance`), final CTA insurance link. Added `<Link to="/admissions">` in admissions steps section. Condition `// TODO` comments present for Epic 4. All internal links use React Router `<Link>`.
-- **Task 6:** Build succeeds. Pre-render uses noscript fallback (not full SSR). Added TODO comment noting JSON-LD/meta need SSR-level pre-rendering to appear in static HTML.
-- **Task 7:** Zero TypeScript errors. All 36 tests pass (17 new + 19 existing). No regressions.
+- **Task 5:** Verified links to programs (`/programs/{slug}`), condition pages (`/conditions/{slug}`), insurance hub (`/insurance`), and admissions (`/admissions`). All internal links use React Router `<Link>`.
+- **Task 6:** Pre-render output verified as full HTML content with `<title>`, canonical/OG meta tags, and both JSON-LD schemas present in `<head>` of `dist/index.html`.
+- **Task 7:** Validation (2026-02-25): `npx tsc --noEmit`, `npm run lint`, `npm run format:check`, `npm run test -- src/pages/Home.test.tsx` (25/25), and `npm run build` all pass.
 
 ### Change Log
 
 - 2026-02-24: Story 2.3 implementation complete — JSON-LD, SEO meta, Section 11 Final CTA, CTA audit, internal link audit, pre-render verification
+- 2026-02-25: Senior code review completed — fixed schema/data-source gaps, removed duplicate JSON-LD emission, completed condition internal links, and revalidated build/lint/test gates.
 
 ### File List
 
-- `src/pages/Home.tsx` — Added JSON-LD script tags, meta export, useEffect for runtime meta injection, Section 11 Final CTA, admissions link, aria-labels
-- `src/pages/Home.test.tsx` — NEW: 17 tests covering JSON-LD, meta export, Section 11 rendering, aria-labels, internal links
+- `src/pages/Home.tsx` — Added meta export/useEffect-driven head injection, Section 11 Final CTA, admissions link, aria-labels; senior review removed inline JSON-LD body scripts and added condition links in CardStack
+- `src/pages/Home.test.tsx` — Story coverage for JSON-LD/meta/CTA/internal links; senior review updated assertions for head-injected schemas and condition link verification
 - `src/data/homepage.ts` — Added `FinalCtaData` import and `finalCtaData` export
 - `src/types.ts` — Added `FinalCtaData` interface
+- `src/utils/schema.ts` — Senior review: added input-driven credentials support for MedicalOrganization and `aggregateRating` support for LocalBusiness
+
+### Senior Developer Review (AI)
+
+**Reviewer:** Silver  
+**Date:** 2026-02-25  
+**Outcome:** Approved (all high/medium findings fixed)
+
+**Findings**
+- Resolved (AC #1 / Task 1.3): LocalBusiness schema omitted `aggregateRating` details.
+- Resolved (Task 1.5): MedicalOrganization credentials were not sourced from homepage accreditation data.
+- Resolved (AC #1 quality): homepage emitted duplicate JSON-LD scripts (route head + component body).
+- Resolved (AC #4): condition-card entries were still non-link text despite available `/conditions/*` routes.
+
+**Verification**
+- `npx tsc --noEmit` passed.
+- `npm run lint` passed.
+- `npm run format:check` passed.
+- `npm run test -- src/pages/Home.test.tsx` passed (25/25).
+- `npm run build` passed; prerendered homepage contains full body content, `<title>`, meta tags, canonical, OG tags, and both JSON-LD schemas in `<head>`.

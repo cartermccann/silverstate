@@ -1,6 +1,6 @@
 # Story 7.2: City Service Area Pages
 
-Status: review
+Status: done
 
 ## Story
 
@@ -253,41 +253,75 @@ Each city page must feel distinct, not templated. The `LocationData` entries fro
 
 ### Agent Model Used
 
-Claude Opus 4.6
+GPT-5 Codex
 
 ### Debug Log References
 
-None — clean implementation.
+- Senior review (2026-02-25): removed route-level LocalBusiness JSON-LD from all city wrapper `meta` exports to prevent duplicate schema emission.
+- Senior review (2026-02-25): removed manual `useEffect` head/meta DOM mutation from all five city wrapper pages.
+- Senior review (2026-02-25): aligned CityPage style constants to CSS tokens (`var(--font-display)`, `var(--warm)`).
+- Senior review (2026-02-25): added city-page OG image support to wrapper metadata using the shared facility image.
+- Senior review (2026-02-25): aligned city metadata titles to Story 7.2 requirements for North Las Vegas, Summerlin, and Clark County.
+- Senior review (2026-02-25): updated CityPage regression tests for in-page schema + route meta contract.
 
 ### Completion Notes List
 
 - Created `CityPage.tsx` reusable template component that accepts `LocationData` as a prop and renders: hero, proximity/directions, facility details (semantic `<address>`), local context, program links, condition links, phone CTA, and cross-navigation
 - Added `getLocationBySlug()` helper to `data/locations.ts` (consistent with `getInsuranceBySlug()` pattern)
 - Created all 5 city page wrappers: LasVegas.tsx, Henderson.tsx, NorthLasVegas.tsx, Summerlin.tsx, ClarkCounty.tsx — each uses `getLocationBySlug()!` with guard clause
-- Each wrapper exports unique `meta` (via `generateMeta()`) with city-specific title, description, canonical, and LocalBusiness JSON-LD scoped to that city's `areaServed`
+- Each wrapper exports unique `meta` (via `generateMeta()`) with city-specific title, description, canonical path, and shared facility OG image
 - Each wrapper exports `handle` with breadcrumb config (parent: `/locations`)
-- Each wrapper applies meta tags via `useEffect` (consistent with insurance page pattern)
+- Wrapper pages are route-meta-only (no manual `useEffect` head mutation)
 - CityPage template resolves `relatedPrograms` slugs via local mapping, `relatedConditions` slugs via `conditionPages` data from `data/conditions.ts`
 - Condition links use `{slug}-treatment` suffix pattern to match condition page slugs
 - Optional FAQ section renders with `FaqItem` + FAQPage JSON-LD when `faqEntries` present
 - Optional image renders with `loading="lazy"` when `location.image` present
 - Responsive: 2-column proximity/details on desktop, single column mobile; 4-column cross-nav on desktop
-- Touch targets >= 44px, semantic `<address>`, all `var(--body)`/`var(--text)` CSS tokens
+- Touch targets >= 44px, semantic `<address>`, and CSS token usage including `var(--font-display)` and `var(--warm)`
 - Routes already existed in `routes.tsx` — no changes needed
-- 19 new tests: getLocationBySlug, unique SEO per page (titles, canonicals, JSON-LD), template rendering (heading, distance, directions, context, address, phone, programs, conditions, cross-nav, JSON-LD), content differentiation
-- `npx tsc --noEmit` passes, `vite build` succeeds, all 76 tests pass (0 regressions)
+- 20 tests validate `getLocationBySlug`, unique per-page meta contracts, CityPage rendering, and content differentiation
+- Verification commands passed:
+  - `npx tsc --noEmit`
+  - `npx vitest run src/pages/locations/CityPage.test.tsx src/pages/locations/Index.test.tsx`
+  - `npm run lint`
+  - `npm run format:check`
 
 ### Change Log
 
 - 2026-02-24: Story 7.2 implemented — CityPage template, 5 city page wrappers, getLocationBySlug helper, per-page SEO/JSON-LD, 19 tests
+- 2026-02-25: Senior code review completed — removed duplicate schema/meta side-effects, aligned metadata/tokens, and finalized Story 7.2 regression coverage.
 
 ### File List
 
 - `src/data/locations.ts` (modified — added `getLocationBySlug()` helper)
 - `src/pages/locations/CityPage.tsx` (new — reusable template component)
-- `src/pages/locations/LasVegas.tsx` (modified — full implementation with meta + CityPage)
-- `src/pages/locations/Henderson.tsx` (modified — full implementation with meta + CityPage)
-- `src/pages/locations/NorthLasVegas.tsx` (modified — full implementation with meta + CityPage)
-- `src/pages/locations/Summerlin.tsx` (modified — full implementation with meta + CityPage)
-- `src/pages/locations/ClarkCounty.tsx` (modified — full implementation with meta + CityPage)
-- `src/pages/locations/CityPage.test.tsx` (new — 19 tests)
+- `src/pages/locations/LasVegas.tsx` (modified — removed head-side effects, route meta refined with shared OG image)
+- `src/pages/locations/Henderson.tsx` (modified — removed head-side effects, route meta refined with shared OG image)
+- `src/pages/locations/NorthLasVegas.tsx` (modified — removed head-side effects, route meta refined with shared OG image)
+- `src/pages/locations/Summerlin.tsx` (modified — removed head-side effects, route meta refined with shared OG image)
+- `src/pages/locations/ClarkCounty.tsx` (modified — removed head-side effects, route meta refined with shared OG image)
+- `src/pages/locations/CityPage.test.tsx` (updated — Story 7.2 route-meta/schema contract coverage)
+- `_bmad-output/implementation-artifacts/7-2-city-service-area-pages.md` (modified — review completion record)
+- `_bmad-output/implementation-artifacts/sprint-status.yaml` (modified — story/epic status sync)
+
+### Senior Developer Review (AI)
+
+**Reviewer:** Silver  
+**Date:** 2026-02-25  
+**Outcome:** Approved (all high and medium findings fixed)
+
+**Findings**
+
+1. **HIGH:** All city wrappers emitted duplicate LocalBusiness schema via route `meta.jsonLd` while CityPage already injected schema scripts.
+2. **HIGH:** All city wrappers used manual `useEffect` head/meta DOM mutation, bypassing route-meta conventions and risking inconsistent head state.
+3. **MEDIUM:** CityPage used hardcoded display/warm style constants instead of architecture token values.
+4. **MEDIUM:** City wrapper metadata lacked explicit OG image configuration.
+5. **MEDIUM:** Three city meta titles did not match Story 7.2 metadata contract examples.
+
+**Fixes Applied**
+
+- Removed route-level `jsonLd` from all five city wrapper `meta` exports and retained in-page schema scripts in CityPage.
+- Removed manual `useEffect` head/meta mutation from all city wrappers.
+- Replaced hardcoded CityPage constants with `var(--font-display)` and `var(--warm)`.
+- Added shared facility OG image to all city wrapper `meta` exports.
+- Updated North Las Vegas, Summerlin, and Clark County meta titles to Story 7.2 contract values and refreshed tests.

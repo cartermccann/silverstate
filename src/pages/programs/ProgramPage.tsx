@@ -20,6 +20,14 @@ const SAGE = '#5A7A6E'
 const WARM = '#F0EBE3'
 const DISPLAY = "'Space Grotesk', sans-serif"
 
+function formatConditionLabel(slug: string): string {
+  return slug
+    .replace(/-treatment$/, '')
+    .split('-')
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(' ')
+}
+
 export default function ProgramPage({ program }: ProgramPageProps) {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
 
@@ -32,13 +40,7 @@ export default function ProgramPage({ program }: ProgramPageProps) {
     description: program.overview,
     slug: program.slug,
     therapyType: 'Behavioral',
-    conditions: program.relatedConditions.map((slug) =>
-      slug
-        .replace(/-treatment$/, '')
-        .split('-')
-        .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-        .join(' '),
-    ),
+    conditions: program.relatedConditions.map((slug) => formatConditionLabel(slug)),
   })
 
   const scheduleHeading =
@@ -266,12 +268,7 @@ export default function ProgramPage({ program }: ProgramPageProps) {
               }}
             >
               {program.dailySchedule.map((item, i) => (
-                <TimelineRow
-                  key={i}
-                  time={item.time}
-                  activity={item.activity}
-                  desc={item.desc}
-                />
+                <TimelineRow key={i} time={item.time} activity={item.activity} desc={item.desc} />
               ))}
             </div>
           </AnimateIn>
@@ -304,6 +301,12 @@ export default function ProgramPage({ program }: ProgramPageProps) {
             {program.therapyModalities.map((slug) => {
               const therapy = therapyBySlug[slug]
               if (!therapy) return null
+
+              const relatedConditionSlug =
+                therapy.usedFor.find((conditionSlug) =>
+                  program.relatedConditions.includes(conditionSlug),
+                ) ?? therapy.usedFor[0]
+
               return (
                 <StaggerItem key={slug}>
                   <div className="bento-card" style={{ height: '100%' }}>
@@ -338,6 +341,23 @@ export default function ProgramPage({ program }: ProgramPageProps) {
                     >
                       {therapy.howItHelps}
                     </p>
+                    {relatedConditionSlug && (
+                      <Link
+                        to={`/conditions/${relatedConditionSlug}`}
+                        style={{
+                          marginTop: 16,
+                          color: 'var(--blue)',
+                          textDecoration: 'none',
+                          fontSize: '.85rem',
+                          fontWeight: 600,
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          minHeight: 44,
+                        }}
+                      >
+                        Learn More About {formatConditionLabel(relatedConditionSlug)} &rarr;
+                      </Link>
+                    )}
                   </div>
                 </StaggerItem>
               )
@@ -468,11 +488,7 @@ export default function ProgramPage({ program }: ProgramPageProps) {
                   </h3>
                   <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                     {program.relatedConditions.map((slug) => {
-                      const label = slug
-                        .replace(/-treatment$/, '')
-                        .split('-')
-                        .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-                        .join(' ')
+                      const label = formatConditionLabel(slug)
                       return (
                         <li key={slug} style={{ marginBottom: 8 }}>
                           <Link
@@ -500,7 +516,10 @@ export default function ProgramPage({ program }: ProgramPageProps) {
 
             {/* Insurance & Admissions CTAs */}
             <AnimateIn variant="fadeUp" delay={0.3}>
-              <div className="bento-card" style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+              <div
+                className="bento-card"
+                style={{ display: 'flex', flexDirection: 'column', gap: 16 }}
+              >
                 <h3
                   style={{
                     fontFamily: DISPLAY,
@@ -510,10 +529,18 @@ export default function ProgramPage({ program }: ProgramPageProps) {
                 >
                   Ready to Take the Next Step?
                 </h3>
-                <Link to="/insurance" className="btn btn-outline" style={{ textAlign: 'center' }}>
+                <Link
+                  to="/insurance"
+                  className="btn btn-outline"
+                  style={{ textAlign: 'center', minHeight: 44 }}
+                >
                   Verify Your Insurance Coverage
                 </Link>
-                <Link to="/admissions" className="btn btn-primary" style={{ textAlign: 'center', justifyContent: 'center' }}>
+                <Link
+                  to="/admissions"
+                  className="btn btn-primary"
+                  style={{ textAlign: 'center', justifyContent: 'center', minHeight: 44 }}
+                >
                   Start the Admissions Process
                 </Link>
                 <MagneticButton>
@@ -524,6 +551,7 @@ export default function ProgramPage({ program }: ProgramPageProps) {
                       width: '100%',
                       justifyContent: 'center',
                       textDecoration: 'none',
+                      minHeight: 44,
                     }}
                   >
                     <IconPhone style={{ width: 18, height: 18 }} />

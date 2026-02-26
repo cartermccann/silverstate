@@ -1,6 +1,6 @@
 # Story 1.8: SEO Utilities & Route Configuration
 
-Status: review
+Status: done
 
 ## Story
 
@@ -829,18 +829,25 @@ Claude Opus 4.6
 
 ### Debug Log References
 
-No debug issues encountered.
+- Initial `npm run build` failure during prerender SSR in `scripts/prerender.ts` due to unresolved lazy route modules and SSR-unfriendly GSAP imports.
+- Fixed by preloading lazy route modules before static render and by adding SSR-safe GSAP runtime resolution (`src/utils/gsap.ts`) used by animation components.
 
 ### Completion Notes List
 
 - Created `src/utils/schema.ts` — 8 JSON-LD generators (MedicalOrganization, LocalBusiness, MedicalCondition, MedicalTherapy, Physician, FAQPage, BreadcrumbList, WebPage) + `toJsonLdScript()` helper. All pure functions, typed inputs, SITE_URL from env var.
 - Created `src/utils/meta.ts` — `generateMeta()` returns array of meta tag objects (title, description, canonical, OG, Twitter, JSON-LD injection). Uses SITE_URL for absolute URLs.
-- Expanded `src/routes.tsx` — 56 routes total (homepage + 5 programs + 26 conditions + 10 insurance + 6 locations + 3 about + 2 admissions/contact + 1 privacy + 1 catch-all 404). All lazy-loaded. Exports `routePaths` for pre-rendering.
+- Expanded `src/routes.tsx` — 55 routes total (homepage + 5 programs + 26 conditions + 10 insurance + 6 locations + 3 about + 2 admissions/contact + 1 privacy + 1 catch-all 404). All lazy-loaded. Exports `routePaths` for pre-rendering.
 - Created 49 placeholder page files across programs/, conditions/, insurance/, locations/, about/, admissions/, and top-level pages/. Each is a minimal `export default function` with h1 and placeholder text.
 - Added hub pages for `/programs` and `/conditions` per confirmed project decisions.
 - Added `/programs/crisis-prevention-intervention` (CPI) per confirmed decision #3.
-- Updated `scripts/prerender.ts` with all 55 route paths (excluding catch-all).
+- Updated `scripts/prerender.ts` with all 54 route paths (excluding catch-all).
 - TypeScript zero errors, Vite build succeeds with all route chunks.
+- Senior review fixes (2026-02-25):
+  - Eliminated duplicate branded titles in `generateMeta()` by preserving already-branded titles instead of blindly appending a suffix.
+  - Normalized `schema.ts` URL generation to emit absolute canonical/schema URLs consistently.
+  - Normalized JSON-LD `telephone` output to E.164 (`+17255259897`) for schema correctness.
+  - Hardened prerender SSR compatibility by resolving GSAP imports for Node+tsx and preserving fully rendered lazy route HTML/head metadata.
+  - Verified no Suspense streaming artifacts are emitted in prerendered route HTML.
 
 ### File List
 
@@ -850,6 +857,14 @@ No debug issues encountered.
 | `src/utils/meta.ts` | CREATE |
 | `src/routes.tsx` | MODIFY |
 | `scripts/prerender.ts` | MODIFY |
+| `src/utils/gsap.ts` | CREATE |
+| `src/components/AnimateIn.tsx` | MODIFY |
+| `src/components/CountUp.tsx` | MODIFY |
+| `src/components/Parallax.tsx` | MODIFY |
+| `src/components/TextReveal.tsx` | MODIFY |
+| `src/components/SmoothScroll.tsx` | MODIFY |
+| `src/components/Marquee.tsx` | MODIFY |
+| `src/components/CardStack.tsx` | MODIFY |
 | `src/pages/programs/Index.tsx` | CREATE |
 | `src/pages/programs/Residential.tsx` | CREATE |
 | `src/pages/programs/PHP.tsx` | CREATE |
@@ -872,3 +887,24 @@ No debug issues encountered.
 ### Change Log
 
 - 2026-02-24: Story 1.8 implemented — SEO utilities (schema.ts, meta.ts), complete 56-route manifest, 49 placeholder pages, pre-render script updated with all paths
+- 2026-02-25: Senior code review fixes completed — SSR prerender now renders lazy routes without streaming artifacts, GSAP imports made SSR-safe, title suffix duplication resolved, schema URL/telephone normalization added
+
+### Senior Developer Review (AI)
+
+**Reviewer:** Silver  
+**Date:** 2026-02-25  
+**Outcome:** Approved (all high/medium issues fixed)
+
+**Findings**
+- Resolved: duplicate title suffix generation in route metadata (`... | Silver State | Silver State`).
+- Resolved: SSR prerender route hydration artifacts caused by lazy-loading/suspense path in static rendering.
+- Resolved: JSON-LD `telephone` emitted as display format instead of normalized E.164 format.
+- Resolved: schema URL generation now consistently normalizes relative paths to absolute site URLs.
+
+**Verification**
+- `npx tsc --noEmit` passes.
+- `npm run build` passes end-to-end (content/schema validation, sitemap generation, Vite build, prerender).
+- Spot checks in built HTML confirm:
+  - Correct `<title>`, canonical, OG/Twitter tags in `<head>` without duplicate branding.
+  - JSON-LD scripts emitted in `<head>` for page metadata and in content where intentionally rendered.
+  - No Suspense streaming artifacts (`<!--$?-->`, `<template id="B:0">`, `id="S:0"`).

@@ -3,18 +3,37 @@ import {
   getConsentState,
   setConsentState,
   initializeDefaultConsent,
+  updateGoogleConsent,
 } from '../utils/analytics'
-
-const BREAKPOINT = 900
+import { OPEN_CONSENT_EVENT } from '../utils/consentEvents'
+import useIsMobile from '../hooks/useIsMobile'
 
 export default function CookieConsent() {
-  const [showBanner, setShowBanner] = useState(() => {
-    initializeDefaultConsent()
-    return getConsentState() === 'pending'
-  })
+  const isMobile = useIsMobile()
+  const [showBanner, setShowBanner] = useState(
+    () => typeof window !== 'undefined' && getConsentState() === 'pending',
+  )
   const bannerRef = useRef<HTMLDivElement>(null)
 
-  // Focus the banner when it appears so keyboard users are aware
+  useEffect(() => {
+    initializeDefaultConsent()
+    const savedConsent = getConsentState()
+    if (savedConsent !== 'pending') {
+      updateGoogleConsent(savedConsent)
+    }
+  }, [])
+
+  useEffect(() => {
+    function openConsentPreferences() {
+      setShowBanner(true)
+    }
+
+    window.addEventListener(OPEN_CONSENT_EVENT, openConsentPreferences)
+    return () => {
+      window.removeEventListener(OPEN_CONSENT_EVENT, openConsentPreferences)
+    }
+  }, [])
+
   useEffect(() => {
     if (showBanner && bannerRef.current) {
       bannerRef.current.focus()
@@ -42,24 +61,42 @@ export default function CookieConsent() {
       tabIndex={-1}
       style={styles.banner}
     >
-      <div style={styles.inner}>
+      <div
+        style={{
+          ...styles.inner,
+          flexDirection: isMobile ? 'column' : 'row',
+          textAlign: isMobile ? 'center' : 'left',
+        }}
+      >
         <div style={styles.text}>
           <p style={styles.heading}>We value your privacy</p>
           <p style={styles.description}>
-            We use cookies to analyze site traffic and improve your experience.
-            No health information is collected through cookies.
+            We use cookies to analyze site traffic and improve your experience. No health
+            information is collected through cookies.
           </p>
         </div>
-        <div style={styles.buttons}>
+        <div
+          style={{
+            ...styles.buttons,
+            width: isMobile ? '100%' : 'auto',
+            flexDirection: isMobile ? 'column' : 'row',
+          }}
+        >
           <button
             type="button"
             onClick={handleAccept}
-            style={styles.acceptBtn}
+            style={{ ...styles.acceptBtn, width: isMobile ? '100%' : 'auto' }}
             onMouseEnter={(e) => {
-              Object.assign(e.currentTarget.style, { background: '#fff', color: 'var(--dark)' })
+              Object.assign(e.currentTarget.style, {
+                background: 'var(--white)',
+                color: 'var(--dark)',
+              })
             }}
             onMouseLeave={(e) => {
-              Object.assign(e.currentTarget.style, { background: 'var(--sage)', color: '#fff' })
+              Object.assign(e.currentTarget.style, {
+                background: 'var(--sage)',
+                color: 'var(--white)',
+              })
             }}
           >
             Accept Analytics
@@ -67,9 +104,9 @@ export default function CookieConsent() {
           <button
             type="button"
             onClick={handleDecline}
-            style={styles.declineBtn}
+            style={{ ...styles.declineBtn, width: isMobile ? '100%' : 'auto' }}
             onMouseEnter={(e) => {
-              Object.assign(e.currentTarget.style, { background: 'rgba(255,255,255,0.15)' })
+              Object.assign(e.currentTarget.style, { background: 'rgba(255, 255, 255, 0.15)' })
             }}
             onMouseLeave={(e) => {
               Object.assign(e.currentTarget.style, { background: 'transparent' })
@@ -91,7 +128,7 @@ const styles: Record<string, React.CSSProperties> = {
     right: 0,
     zIndex: 100,
     background: 'var(--dark)',
-    color: '#fff',
+    color: 'var(--white)',
     boxShadow: '0 -2px 16px rgba(0, 0, 0, 0.18)',
     padding: '20px 0',
     outline: 'none',
@@ -104,14 +141,14 @@ const styles: Record<string, React.CSSProperties> = {
     alignItems: 'center',
     justifyContent: 'space-between',
     gap: 24,
-    flexWrap: 'wrap' as const,
+    flexWrap: 'wrap',
   },
   text: {
     flex: '1 1 400px',
     minWidth: 0,
   },
   heading: {
-    fontFamily: "'Space Grotesk', sans-serif",
+    fontFamily: 'var(--font-display)',
     fontSize: '1.125rem',
     fontWeight: 600,
     margin: '0 0 6px 0',
@@ -129,13 +166,13 @@ const styles: Record<string, React.CSSProperties> = {
   },
   acceptBtn: {
     background: 'var(--sage)',
-    color: '#fff',
+    color: 'var(--white)',
     border: 'none',
     borderRadius: 'var(--radius)',
     padding: '12px 24px',
     fontSize: '0.9375rem',
     fontWeight: 600,
-    fontFamily: "'Space Grotesk', sans-serif",
+    fontFamily: 'var(--font-display)',
     cursor: 'pointer',
     minHeight: 44,
     minWidth: 44,
@@ -143,46 +180,16 @@ const styles: Record<string, React.CSSProperties> = {
   },
   declineBtn: {
     background: 'transparent',
-    color: '#fff',
-    border: '1px solid rgba(255, 255, 255, 0.4)',
+    color: 'var(--white)',
+    border: '1px solid var(--white)',
     borderRadius: 'var(--radius)',
     padding: '12px 24px',
     fontSize: '0.9375rem',
     fontWeight: 500,
-    fontFamily: "'Space Grotesk', sans-serif",
+    fontFamily: 'var(--font-display)',
     cursor: 'pointer',
     minHeight: 44,
     minWidth: 44,
     transition: 'background 0.2s',
   },
-}
-
-// Responsive styles via media query - inject once
-if (typeof document !== 'undefined') {
-  const styleId = 'cookie-consent-responsive'
-  if (!document.getElementById(styleId)) {
-    const style = document.createElement('style')
-    style.id = styleId
-    style.textContent = `
-      @media (max-width: ${BREAKPOINT}px) {
-        [aria-label="Cookie consent"] > div {
-          flex-direction: column !important;
-          text-align: center !important;
-        }
-        [aria-label="Cookie consent"] > div > div:last-child {
-          width: 100% !important;
-          flex-direction: column !important;
-        }
-        [aria-label="Cookie consent"] button {
-          width: 100% !important;
-        }
-      }
-      @media (prefers-reduced-motion: reduce) {
-        [aria-label="Cookie consent"] {
-          animation: none !important;
-        }
-      }
-    `
-    document.head.appendChild(style)
-  }
 }

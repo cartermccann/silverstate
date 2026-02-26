@@ -70,8 +70,7 @@ beforeAll(() => {
     thresholds = [0]
     takeRecords = vi.fn().mockReturnValue([])
   }
-  window.IntersectionObserver =
-    MockIntersectionObserver as unknown as typeof IntersectionObserver
+  window.IntersectionObserver = MockIntersectionObserver as unknown as typeof IntersectionObserver
 
   window.matchMedia = vi.fn().mockImplementation((query: string) => ({
     matches: false,
@@ -135,11 +134,17 @@ describe('city page meta exports — unique SEO per page', () => {
     expect(unique.size).toBe(5)
   })
 
-  it('each has JSON-LD with LocalBusiness type', () => {
+  it('keeps JSON-LD output in-page, not in route meta', () => {
     for (const { meta } of allMetas) {
-      const jsonLd = meta.find((t) => t['script:ld+json'])
-      expect(jsonLd).toBeDefined()
-      expect(jsonLd!['script:ld+json']!['@type']).toBe('LocalBusiness')
+      const jsonLd = meta.filter((t) => t['script:ld+json'])
+      expect(jsonLd).toHaveLength(0)
+    }
+  })
+
+  it('includes an OG image for each city page', () => {
+    for (const { meta } of allMetas) {
+      const ogImage = meta.find((t) => t.property === 'og:image')
+      expect(ogImage?.content).toContain('/facility/')
     }
   })
 })
@@ -218,6 +223,7 @@ describe('CityPage template — renders with Henderson data', () => {
     expect(scripts.length).toBeGreaterThanOrEqual(1)
     const parsed = JSON.parse(scripts[0].textContent!)
     expect(parsed['@type']).toBe('LocalBusiness')
+    expect(parsed['url']).toContain('/locations/henderson')
   })
 })
 

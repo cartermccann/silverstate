@@ -5,7 +5,7 @@
 import type { PrivacySection, NotFoundContent } from '../types'
 import { site } from './common'
 
-export const privacyLastUpdated = '2026-02-24'
+export const privacyLastUpdated: string = '2026-02-24'
 
 export const privacySections: PrivacySection[] = [
   {
@@ -51,7 +51,7 @@ export const privacySections: PrivacySection[] = [
     heading: '42 CFR Part 2 — Substance Use Disorder Records',
     content: [
       'Federal law under 42 CFR Part 2 provides additional protections for records related to substance use disorder (SUD) treatment. These protections are stricter than HIPAA and apply to any information that could identify an individual as having a substance use disorder.',
-      'Any future collection of SUD-related information through this website will require explicit written consent from the individual (or their legal guardian for minors). SUD treatment records cannot be re-disclosed to third parties without the patient\'s written consent, even if such disclosure would otherwise be permitted under HIPAA.',
+      "Any future collection of SUD-related information through this website will require explicit written consent from the individual (or their legal guardian for minors). SUD treatment records cannot be re-disclosed to third parties without the patient's written consent, even if such disclosure would otherwise be permitted under HIPAA.",
       'This section is included proactively to ensure compliance as our services and website capabilities evolve. Currently, all SUD-related communications occur through HIPAA-compliant, offline channels.',
     ],
   },
@@ -108,7 +108,7 @@ export const privacySections: PrivacySection[] = [
     content: [
       `${site.name} provides treatment for adolescents ages ${site.ages}. However, this website is directed at parents, guardians, and referring professionals — not at minors.`,
       'We do not knowingly collect personal information from children under 13 through this website. If we become aware that a child under 13 has submitted personal information through our contact form, we will promptly delete that information.',
-      'In compliance with the Children\'s Online Privacy Protection Act (COPPA), parents or guardians may contact us to review, delete, or refuse further collection of their child\'s personal information.',
+      "In compliance with the Children's Online Privacy Protection Act (COPPA), parents or guardians may contact us to review, delete, or refuse further collection of their child's personal information.",
     ],
   },
   {

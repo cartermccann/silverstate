@@ -16,6 +16,25 @@ declare global {
 }
 
 let ctmLoaded = false
+let ctmLoading = false
+const CTM_SCRIPT_ID = 'ss-ctm-script'
+
+function resolveCTMScriptUrl(accountId: string): string {
+  const encodedAccountId = encodeURIComponent(accountId)
+  const configuredBaseUrl = import.meta.env.VITE_CTM_BASE_URL?.trim()
+
+  if (!configuredBaseUrl) {
+    return `https://${encodedAccountId}.tctm.co/t.js`
+  }
+
+  // Supports placeholders like {ACCOUNT_ID} or {accountId}.
+  const baseUrl = configuredBaseUrl
+    .replaceAll('{ACCOUNT_ID}', encodedAccountId)
+    .replaceAll('{accountId}', encodedAccountId)
+    .replace(/\/+$/, '')
+
+  return baseUrl.endsWith('.js') ? baseUrl : `${baseUrl}/t.js`
+}
 
 /**
  * Load the CTM JavaScript snippet asynchronously.
@@ -25,7 +44,7 @@ let ctmLoaded = false
  */
 export function loadCTMScript(): void {
   if (typeof window === 'undefined') return
-  if (ctmLoaded) return
+  if (ctmLoaded || ctmLoading) return
 
   const accountId = import.meta.env.VITE_CTM_ID
   if (!accountId) {
@@ -35,13 +54,26 @@ export function loadCTMScript(): void {
     return
   }
 
-  const script = document.createElement('script')
-  script.async = true
-  // CTM script URL — confirm with CTM account setup
-  script.src = `https://${encodeURIComponent(accountId)}.tctm.co/t.js`
-  document.head.appendChild(script)
+  const existingScript = document.getElementById(CTM_SCRIPT_ID)
+  if (existingScript) return
 
-  ctmLoaded = true
+  const script = document.createElement('script')
+  script.id = CTM_SCRIPT_ID
+  script.async = true
+  // CTM script URL — confirm with CTM account setup.
+  // Optionally configurable via VITE_CTM_BASE_URL.
+  script.src = resolveCTMScriptUrl(accountId)
+  ctmLoading = true
+  script.addEventListener('load', () => {
+    ctmLoaded = true
+    ctmLoading = false
+  })
+  script.addEventListener('error', () => {
+    ctmLoaded = false
+    ctmLoading = false
+    script.remove()
+  })
+  document.head.appendChild(script)
 }
 
 /**
@@ -71,7 +103,24 @@ export function replaceCTMNumber(element: HTMLElement): void {
   }
 }
 
+/**
+ * Best-effort CTM teardown for consent revocation.
+ * Removes script and clears in-memory CTM state.
+ */
+export function disableCTM(): void {
+  if (typeof window === 'undefined') return
+  document.getElementById(CTM_SCRIPT_ID)?.remove()
+  delete window._ctm
+  ctmLoaded = false
+  ctmLoading = false
+}
+
 /** Reset CTM loaded state — test only */
 export function _resetCTM(): void {
+  document.getElementById(CTM_SCRIPT_ID)?.remove()
   ctmLoaded = false
+  ctmLoading = false
+  if (typeof window !== 'undefined') {
+    delete window._ctm
+  }
 }

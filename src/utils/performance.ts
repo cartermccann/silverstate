@@ -19,9 +19,7 @@ function sendToAnalytics(metric: Metric): void {
       page_path: pathname,
     })
   } else {
-    if (import.meta.env.DEV) {
-      console.debug(`[CWV] ${metric.name}:`, metric.value, `(${metric.rating})`, pathname)
-    }
+    console.debug(`[CWV] ${metric.name}:`, metric.value, `(${metric.rating})`, pathname)
   }
 }
 

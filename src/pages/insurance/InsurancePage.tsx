@@ -13,9 +13,9 @@ interface InsurancePageProps {
   provider: InsurancePageData
 }
 
-const DISPLAY = "'Space Grotesk', sans-serif"
-const WARM = '#F0EBE3'
-const SAGE = '#5A7A6E'
+const DISPLAY = 'var(--font-display)'
+const WARM = 'var(--warm)'
+const SAGE = 'var(--sage)'
 
 export default function InsurancePage({ provider }: InsurancePageProps) {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
@@ -85,8 +85,8 @@ export default function InsurancePage({ provider }: InsurancePageProps) {
                 lineHeight: 1.7,
               }}
             >
-              Silver State accepts {provider.name} for residential, PHP, and IOP treatment for
-              teens ages 11-17.
+              Silver State accepts {provider.name} for residential, PHP, and IOP treatment for teens
+              ages 11-17.
             </p>
           </AnimateIn>
         </div>
@@ -449,7 +449,7 @@ export default function InsurancePage({ provider }: InsurancePageProps) {
                 <Link
                   to="/admissions"
                   className="btn btn-primary"
-                  style={{ textAlign: 'center', justifyContent: 'center' }}
+                  style={{ textAlign: 'center', justifyContent: 'center', minHeight: 44 }}
                 >
                   Start the Admissions Process
                 </Link>
@@ -460,6 +460,7 @@ export default function InsurancePage({ provider }: InsurancePageProps) {
                     className="btn btn-dark"
                     style={{
                       width: '100%',
+                      minHeight: 44,
                       justifyContent: 'center',
                       textDecoration: 'none',
                     }}
@@ -513,6 +514,7 @@ export default function InsurancePage({ provider }: InsurancePageProps) {
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: 8,
+                    minHeight: 44,
                     textDecoration: 'none',
                     fontSize: '1.05rem',
                   }}

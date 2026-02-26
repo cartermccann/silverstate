@@ -15,9 +15,9 @@ interface ConditionPageProps {
   condition: ConditionData
 }
 
-const SAGE = '#5A7A6E'
-const WARM = '#F0EBE3'
-const DISPLAY = "'Space Grotesk', sans-serif"
+const SAGE = 'var(--sage)'
+const WARM = 'var(--warm)'
+const DISPLAY = 'var(--font-display)'
 
 const categoryLabels: Record<string, string> = {
   'mental-health': 'Mental Health',
@@ -58,7 +58,9 @@ export default function ConditionPage({ condition }: ConditionPageProps) {
       <section style={{ padding: '64px 0 48px', background: WARM }}>
         <div className="wrap" style={{ maxWidth: 800 }}>
           <AnimateIn variant="fadeUp">
-            <span className="section-label">{categoryLabels[condition.category] ?? condition.category}</span>
+            <span className="section-label">
+              {categoryLabels[condition.category] ?? condition.category}
+            </span>
           </AnimateIn>
 
           <CharReveal
@@ -125,11 +127,7 @@ export default function ConditionPage({ condition }: ConditionPageProps) {
             <h2 className="section-heading">Signs of {shortName} in Teens</h2>
           </AnimateIn>
 
-          <StaggerGroup
-            stagger={0.06}
-            variant="fadeUp"
-            style={{ marginTop: 24 }}
-          >
+          <StaggerGroup stagger={0.06} variant="fadeUp" style={{ marginTop: 24 }}>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
               {condition.symptoms.map((symptom, i) => (
                 <StaggerItem key={i}>
@@ -261,7 +259,8 @@ export default function ConditionPage({ condition }: ConditionPageProps) {
                 lineHeight: 1.6,
               }}
             >
-              Our admissions team is available 24/7 to answer your questions and help you take the first step.
+              Our admissions team is available 24/7 to answer your questions and help you take the
+              first step.
             </p>
           </AnimateIn>
 
@@ -276,6 +275,7 @@ export default function ConditionPage({ condition }: ConditionPageProps) {
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: 8,
+                    minHeight: 44,
                     textDecoration: 'none',
                     fontSize: '1.05rem',
                   }}
@@ -439,7 +439,10 @@ export default function ConditionPage({ condition }: ConditionPageProps) {
 
             {/* Insurance & Admissions CTAs */}
             <AnimateIn variant="fadeUp" delay={0.3}>
-              <div className="bento-card" style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+              <div
+                className="bento-card"
+                style={{ display: 'flex', flexDirection: 'column', gap: 16 }}
+              >
                 <h3
                   style={{
                     fontFamily: DISPLAY,
@@ -449,10 +452,18 @@ export default function ConditionPage({ condition }: ConditionPageProps) {
                 >
                   Ready to Take the Next Step?
                 </h3>
-                <Link to="/insurance" className="btn btn-outline" style={{ textAlign: 'center' }}>
+                <Link
+                  to="/insurance"
+                  className="btn btn-outline"
+                  style={{ textAlign: 'center', minHeight: 44 }}
+                >
                   Verify Your Insurance Coverage
                 </Link>
-                <Link to="/admissions" className="btn btn-primary" style={{ textAlign: 'center', justifyContent: 'center' }}>
+                <Link
+                  to="/admissions"
+                  className="btn btn-primary"
+                  style={{ textAlign: 'center', justifyContent: 'center', minHeight: 44 }}
+                >
                   Start the Admissions Process
                 </Link>
                 <MagneticButton>
@@ -462,6 +473,7 @@ export default function ConditionPage({ condition }: ConditionPageProps) {
                     aria-label={`Call Silver State at ${site.phone}`}
                     style={{
                       width: '100%',
+                      minHeight: 44,
                       justifyContent: 'center',
                       textDecoration: 'none',
                     }}

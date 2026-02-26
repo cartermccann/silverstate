@@ -9,7 +9,10 @@ import { writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { routePaths } from '../src/routes'
 
-const SITE_URL = process.env.VITE_SITE_URL || 'https://www.silverstatetreatment.com'
+const SITE_URL = (process.env.VITE_SITE_URL || 'https://www.silverstatetreatment.com').replace(
+  /\/+$/,
+  '',
+)
 
 function getPriority(path: string): string {
   if (path === '/') return '1.0'

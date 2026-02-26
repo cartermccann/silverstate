@@ -1,3 +1,5 @@
+import { CONSENT_CHANGED_EVENT } from './consentEvents'
+
 // Analytics utility — Google Consent Mode v2 + GA4 loading with two-zone tracking
 // Zone 1: Informational pages (GA4 allowed after consent)
 // Zone 2: Health form pages (zero analytics scripts regardless of consent)
@@ -52,8 +54,15 @@ export function setConsentState(state: 'granted' | 'denied'): void {
     // localStorage unavailable — consent still applies for this session
   }
   updateGoogleConsent(state)
+  if (typeof window !== 'undefined') {
+    window.dispatchEvent(new CustomEvent(CONSENT_CHANGED_EVENT, { detail: state }))
+  }
   if (state === 'granted') {
-    initializeGA4('zone1')
+    const pathname = typeof window !== 'undefined' ? window.location.pathname : '/'
+    const zone = getTrackingZone(pathname)
+    if (zone === 'zone1') {
+      initializeGA4('zone1')
+    }
   }
 }
 
@@ -125,8 +134,8 @@ export function initializeGA4(zone: TrackingZone): void {
  * For MVP, no Zone 2 pages exist — all current routes are Zone 1.
  */
 export function getTrackingZone(pathname: string): TrackingZone {
-  // TODO: Future Zone 2 routes — uncomment when health forms are added:
-  // if (pathname.startsWith('/forms/') || pathname === '/insurance/verify') return 'zone2'
-  void pathname // Prevent unused parameter warning
+  if (pathname.startsWith('/forms/') || pathname === '/insurance/verify') {
+    return 'zone2'
+  }
   return 'zone1'
 }

@@ -54,8 +54,7 @@ export const footerLinks: FooterLinkGroup[] = [
 ]
 
 export const accreditations: AccreditationEntry[] = [
-  { name: 'Joint Commission', logo: '/assets/joint-commission.webp' },
-  { name: 'LegitScript', logo: null },
-  { name: 'HIPAA Compliant', logo: null },
-  { name: 'NAATP', logo: null },
+  { name: 'Joint Commission Gold Seal', logo: '/assets/joint-commission.webp' },
+  { name: 'LegitScript Certified', logo: null },
+  { name: 'NAATP Member', logo: null },
 ]

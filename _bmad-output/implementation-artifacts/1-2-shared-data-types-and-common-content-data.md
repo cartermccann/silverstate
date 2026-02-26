@@ -1,6 +1,6 @@
 # Story 1.2: Shared Data Types & Common Content Data
 
-Status: review
+Status: done
 
 ## Story
 
@@ -774,12 +774,32 @@ None.
 - Updated Home.tsx: imports split across data/common, data/homepage, data/programs, data/conditions, data/therapies, data/about, data/insurance, data/admissions
 - Deprecated content.ts with reference comment
 - All verifications pass: tsc --noEmit (0 errors), npm run build (succeeds)
+- Code review remediation (2026-02-25): added missing explicit type annotations for remaining data exports, added explicit `ConditionPageData`/`LocationPageData` aliases, and aligned homepage condition slugs to real route paths
 
 ### Change Log
 
 - 2026-02-24: Story 1.2 implementation complete — types extended, data split, imports migrated
+- 2026-02-25: Senior code review fixes applied; type/build verification re-run and passing
+
+### Senior Developer Review (AI)
+
+**Reviewer:** Silver  
+**Date:** 2026-02-25  
+**Outcome:** Approved after fixes
+
+**Findings addressed**
+- Added explicit page-schema aliases in `types.ts` for `ConditionPageData` and `LocationPageData` to satisfy the story contract.
+- Added explicit type annotations to remaining implicit `src/data/*` exports to meet architecture rule “explicit on ALL data exports.”
+- Fixed invalid homepage condition slugs that did not map to actual route paths, preventing future broken links when those slugs are used for routing.
+
+**Verification**
+- `rg -n "data/content" src --glob '*.{ts,tsx}'` returns no matches.
+- `npx tsc --noEmit` passes.
+- `npm run build` passes end-to-end (content validation, schema validation, sitemap generation, Vite build, prerender).
 
 ### File List
 
 **Modified:** src/types.ts, src/components/Nav.tsx, src/components/Footer.tsx, src/pages/Home.tsx, src/data/content.ts (deprecated)
 **Created:** src/data/common.ts, src/data/homepage.ts, src/data/programs.ts, src/data/conditions.ts, src/data/insurance.ts, src/data/about.ts, src/data/admissions.ts, src/data/therapies.ts, src/data/locations.ts, src/data/index.ts
+
+**Modified during code review fixes (2026-02-25):** src/types.ts, src/data/homepage.ts, src/data/conditions.ts, src/data/about.ts, src/data/privacy.ts

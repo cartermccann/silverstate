@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { Link } from 'react-router'
 import { teamMembers, keyDifferentiators, clinicalReviewer } from '../../data/about'
 import { site } from '../../data/common'
@@ -8,29 +7,72 @@ import useIsMobile from '../../hooks/useIsMobile'
 import AnimateIn, { StaggerGroup, StaggerItem } from '../../components/AnimateIn'
 import { CharReveal } from '../../components/TextReveal'
 import MagneticButton from '../../components/MagneticButton'
-import { IconPhone, IconStar, IconUsers, IconHeart, IconGrad, IconShield } from '../../components/Icons'
+import {
+  IconPhone,
+  IconStar,
+  IconUsers,
+  IconHeart,
+  IconGrad,
+  IconShield,
+} from '../../components/Icons'
 
-const DISPLAY = "'Space Grotesk', sans-serif"
-const WARM = '#F0EBE3'
+const DISPLAY = 'var(--font-display)'
+const WARM = 'var(--warm)'
+const SITE_URL = (import.meta.env?.VITE_SITE_URL || 'https://www.silverstatetreatment.com').replace(
+  /\/+$/,
+  '',
+)
+
+function toAbsoluteImage(url: string): string {
+  if (/^https?:\/\//i.test(url)) {
+    return url
+  }
+
+  return `${SITE_URL}${url.startsWith('/') ? url : `/${url}`}`
+}
+
+function isPhysicianMember(member: (typeof teamMembers)[number]): boolean {
+  const combined = `${member.title} ${member.credentials}`
+  return /\b(md|do|psychiatrist|pmhnp)\b/i.test(combined)
+}
 
 // --- SEO Meta ---
 
-const physicianSchemas = teamMembers.map((m) =>
-  generatePhysician({
-    name: m.name,
-    credentials: m.credentials,
-    title: m.title,
-    description: m.professionalBackground,
-    image: m.photoUrl,
-  }),
-)
+const teamSchemas = teamMembers.map((member) => {
+  if (isPhysicianMember(member)) {
+    return generatePhysician({
+      name: member.name,
+      credentials: member.credentials,
+      title: member.title,
+      description: member.professionalBackground,
+      image: member.photoUrl,
+    })
+  }
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: member.name,
+    jobTitle: member.title,
+    description: member.professionalBackground,
+    image: toAbsoluteImage(member.photoUrl),
+    worksFor: {
+      '@type': 'MedicalOrganization',
+      name: site.name,
+      url: SITE_URL,
+    },
+    hasCredential: {
+      '@type': 'EducationalOccupationalCredential',
+      name: member.credentials,
+    },
+  }
+})
 
 export const meta = generateMeta({
-  title: 'Our Clinical Team',
+  title: 'Our Clinical Team | Silver State Adolescent Treatment Center',
   description:
-    'Meet Silver State\u2019s clinical leadership \u2014 board-certified psychiatrists, licensed therapists, and specialized adolescent treatment professionals. Joint Commission Gold Seal accredited.',
+    "Meet Silver State's clinical leadership -- board-certified psychiatrists, licensed therapists, and specialized adolescent treatment professionals. Joint Commission Gold Seal accredited.",
   path: '/about/our-team',
-  jsonLd: physicianSchemas,
 })
 
 export const handle = {
@@ -39,66 +81,15 @@ export const handle = {
 
 // --- Differentiator icon mapping ---
 
-const diffIcons = [
-  <IconStar style={{ width: 28, height: 28, color: 'var(--blue)' }} />,
-  <IconUsers style={{ width: 28, height: 28, color: 'var(--blue)' }} />,
-  <IconHeart style={{ width: 28, height: 28, color: 'var(--blue)' }} />,
-  <IconGrad style={{ width: 28, height: 28, color: 'var(--blue)' }} />,
-  <IconShield style={{ width: 28, height: 28, color: 'var(--blue)' }} />,
-]
+const diffIcons = [IconStar, IconUsers, IconHeart, IconGrad, IconShield] as const
 
 export default function Team() {
   const isMobile = useIsMobile()
 
-  useEffect(() => {
-    const prevTitle = document.title
-    const addedElements: HTMLElement[] = []
-
-    for (const tag of meta) {
-      if (tag.title) {
-        document.title = tag.title
-      } else if (tag.tagName === 'link' && tag.rel && tag.href) {
-        let el = document.querySelector<HTMLLinkElement>(`link[rel="${tag.rel}"]`)
-        if (!el) {
-          el = document.createElement('link')
-          el.rel = tag.rel
-          document.head.appendChild(el)
-          addedElements.push(el)
-        }
-        el.href = tag.href
-      } else if (tag.name) {
-        let el = document.querySelector<HTMLMetaElement>(`meta[name="${tag.name}"]`)
-        if (!el) {
-          el = document.createElement('meta')
-          el.name = tag.name
-          document.head.appendChild(el)
-          addedElements.push(el)
-        }
-        el.content = tag.content ?? ''
-      } else if (tag.property) {
-        let el = document.querySelector<HTMLMetaElement>(`meta[property="${tag.property}"]`)
-        if (!el) {
-          el = document.createElement('meta')
-          el.setAttribute('property', tag.property)
-          document.head.appendChild(el)
-          addedElements.push(el)
-        }
-        el.content = tag.content ?? ''
-      }
-    }
-
-    return () => {
-      document.title = prevTitle
-      for (const el of addedElements) {
-        el.remove()
-      }
-    }
-  }, [])
-
   return (
     <>
       {/* JSON-LD for each team member */}
-      {physicianSchemas.map((schema, i) => (
+      {teamSchemas.map((schema, i) => (
         <script
           key={i}
           type="application/ld+json"
@@ -163,53 +154,59 @@ export default function Team() {
               gap: 16,
             }}
           >
-            {keyDifferentiators.map((diff, i) => (
-              <StaggerItem key={diff.title}>
-                <div
-                  className="bento-card"
-                  style={{
-                    height: '100%',
-                    textAlign: 'center',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    gap: 8,
-                  }}
-                >
-                  {diffIcons[i]}
-                  <span
+            {keyDifferentiators.map((diff, i) => {
+              const DiffIcon = diffIcons[i]
+
+              return (
+                <StaggerItem key={diff.title}>
+                  <div
+                    className="bento-card"
                     style={{
-                      fontFamily: DISPLAY,
-                      fontSize: 'clamp(1.3rem, 2vw, 1.6rem)',
-                      fontWeight: 700,
-                      color: 'var(--blue)',
-                      lineHeight: 1.2,
+                      height: '100%',
+                      textAlign: 'center',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      gap: 8,
                     }}
                   >
-                    {diff.value}
-                  </span>
-                  <h3
-                    style={{
-                      fontFamily: DISPLAY,
-                      fontSize: '.85rem',
-                      fontWeight: 600,
-                      lineHeight: 1.3,
-                    }}
-                  >
-                    {diff.title}
-                  </h3>
-                  <p
-                    style={{
-                      fontSize: '.8rem',
-                      color: 'var(--body)',
-                      lineHeight: 1.5,
-                    }}
-                  >
-                    {diff.description}
-                  </p>
-                </div>
-              </StaggerItem>
-            ))}
+                    {DiffIcon ? (
+                      <DiffIcon style={{ width: 28, height: 28, color: 'var(--blue)' }} />
+                    ) : null}
+                    <span
+                      style={{
+                        fontFamily: DISPLAY,
+                        fontSize: 'clamp(1.3rem, 2vw, 1.6rem)',
+                        fontWeight: 700,
+                        color: 'var(--blue)',
+                        lineHeight: 1.2,
+                      }}
+                    >
+                      {diff.value}
+                    </span>
+                    <h3
+                      style={{
+                        fontFamily: DISPLAY,
+                        fontSize: '.85rem',
+                        fontWeight: 600,
+                        lineHeight: 1.3,
+                      }}
+                    >
+                      {diff.title}
+                    </h3>
+                    <p
+                      style={{
+                        fontSize: '.8rem',
+                        color: 'var(--body)',
+                        lineHeight: 1.5,
+                      }}
+                    >
+                      {diff.description}
+                    </p>
+                  </div>
+                </StaggerItem>
+              )
+            })}
           </StaggerGroup>
         </div>
       </section>
@@ -545,7 +542,7 @@ export default function Team() {
                 <Link
                   to="/admissions"
                   className="btn btn-primary"
-                  style={{ textAlign: 'center', justifyContent: 'center' }}
+                  style={{ textAlign: 'center', justifyContent: 'center', minHeight: 44 }}
                 >
                   Start the Admissions Process
                 </Link>
@@ -556,6 +553,9 @@ export default function Team() {
                     className="btn btn-dark"
                     style={{
                       width: '100%',
+                      minHeight: 44,
+                      display: 'inline-flex',
+                      alignItems: 'center',
                       justifyContent: 'center',
                       textDecoration: 'none',
                     }}

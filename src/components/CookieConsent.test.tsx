@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { act, render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router'
 import { describe, it, expect, beforeEach, vi } from 'vitest'
@@ -9,13 +9,21 @@ vi.mock('../utils/analytics', () => ({
   getConsentState: vi.fn(() => 'pending'),
   setConsentState: vi.fn(),
   initializeDefaultConsent: vi.fn(),
+  updateGoogleConsent: vi.fn(),
 }))
 
-import { getConsentState, setConsentState, initializeDefaultConsent } from '../utils/analytics'
+import {
+  getConsentState,
+  setConsentState,
+  initializeDefaultConsent,
+  updateGoogleConsent,
+} from '../utils/analytics'
+import { OPEN_CONSENT_EVENT } from '../utils/consentEvents'
 
 const mockGetConsentState = vi.mocked(getConsentState)
 const mockSetConsentState = vi.mocked(setConsentState)
 const mockInitializeDefaultConsent = vi.mocked(initializeDefaultConsent)
+const mockUpdateGoogleConsent = vi.mocked(updateGoogleConsent)
 
 function renderBanner() {
   return render(
@@ -29,11 +37,27 @@ describe('CookieConsent', () => {
   beforeEach(() => {
     vi.clearAllMocks()
     mockGetConsentState.mockReturnValue('pending')
+    window.matchMedia = vi.fn().mockImplementation((query: string) => ({
+      matches: false,
+      media: query,
+      onchange: null,
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+      addListener: vi.fn(),
+      removeListener: vi.fn(),
+      dispatchEvent: vi.fn(),
+    }))
   })
 
   it('calls initializeDefaultConsent on mount', () => {
     renderBanner()
     expect(mockInitializeDefaultConsent).toHaveBeenCalledOnce()
+  })
+
+  it('re-applies stored consent to Google Consent Mode on mount', () => {
+    mockGetConsentState.mockReturnValue('granted')
+    renderBanner()
+    expect(mockUpdateGoogleConsent).toHaveBeenCalledWith('granted')
   })
 
   it('shows the banner when consent is pending', () => {
@@ -108,5 +132,19 @@ describe('CookieConsent', () => {
     await user.tab()
     await user.keyboard('{Enter}')
     expect(mockSetConsentState).toHaveBeenCalledWith('granted')
+  })
+
+  it('reopens the banner when cookie preferences event is dispatched', () => {
+    mockGetConsentState.mockReturnValue('granted')
+    renderBanner()
+    expect(screen.queryByRole('dialog', { name: /cookie consent/i })).not.toBeInTheDocument()
+
+    act(() => {
+      window.dispatchEvent(new CustomEvent(OPEN_CONSENT_EVENT))
+    })
+
+    return waitFor(() => {
+      expect(screen.getByRole('dialog', { name: /cookie consent/i })).toBeInTheDocument()
+    })
   })
 })

@@ -1,6 +1,21 @@
-import type { TeamMember, AboutPageData, KeyDifferentiator, YouthAcademyFeature } from '../types'
+import type {
+  TeamMember,
+  AboutPageData,
+  KeyDifferentiator,
+  YouthAcademyFeature,
+  LeadershipEntry,
+} from '../types'
 
-const baseUrl = import.meta.env.VITE_R2_BASE_URL || '/assets'
+// Supports both browser runtime (import.meta.env) and Node build scripts (globalThis.process.env).
+const baseUrl =
+  (import.meta as ImportMeta & { env?: Record<string, string | undefined> }).env
+    ?.VITE_R2_BASE_URL ||
+  (
+    globalThis as {
+      process?: { env?: Record<string, string | undefined> }
+    }
+  ).process?.env?.VITE_R2_BASE_URL ||
+  '/assets'
 
 // --- Team Members ---
 
@@ -104,7 +119,7 @@ export const keyDifferentiators: KeyDifferentiator[] = [
     title: '4.8/5 Rating',
     value: '4.8',
     description:
-      '34 verified reviews from families who trust Silver State with their teen\'s mental health recovery.',
+      "34 verified reviews from families who trust Silver State with their teen's mental health recovery.",
   },
   {
     title: '4:1 Staff-to-Client Ratio',
@@ -157,20 +172,35 @@ export const facilityData: AboutPageData = {
     'Outdoor recreation facilities',
   ],
   images: [
-    { src: `${baseUrl}/facility/exterior.webp`, alt: 'Silver State Treatment Center exterior view' },
-    { src: `${baseUrl}/facility/bedroom.webp`, alt: 'Private apartment-style bedroom for adolescent residents' },
-    { src: `${baseUrl}/facility/therapy-room.webp`, alt: 'Dedicated therapy office for individual and group sessions' },
-    { src: `${baseUrl}/facility/recreation.webp`, alt: 'Recreation area with activities for teens' },
-    { src: `${baseUrl}/facility/classroom.webp`, alt: 'On-site classroom at Silver State Youth Academy' },
+    {
+      src: `${baseUrl}/facility/exterior.webp`,
+      alt: 'Silver State Treatment Center exterior view',
+    },
+    {
+      src: `${baseUrl}/facility/bedroom.webp`,
+      alt: 'Private apartment-style bedroom for adolescent residents',
+    },
+    {
+      src: `${baseUrl}/facility/therapy-room.webp`,
+      alt: 'Dedicated therapy office for individual and group sessions',
+    },
+    {
+      src: `${baseUrl}/facility/recreation.webp`,
+      alt: 'Recreation area with activities for teens',
+    },
+    {
+      src: `${baseUrl}/facility/classroom.webp`,
+      alt: 'On-site classroom at Silver State Youth Academy',
+    },
   ],
   metaTitle: 'Our Facility | Silver State Adolescent Treatment Center',
   metaDescription:
-    'Tour Silver State\'s therapeutic facility in Las Vegas — private bedrooms, therapy offices, recreation courts, on-site classrooms, and dining areas designed for adolescent recovery.',
+    "Tour Silver State's therapeutic facility in Las Vegas — private bedrooms, therapy offices, recreation courts, on-site classrooms, and dining areas designed for adolescent recovery.",
 }
 
 // --- Youth Academy Data (for Story 6.2) ---
 
-export const youthAcademyPageData: AboutPageData = {
+export const youthAcademyData: AboutPageData = {
   title: 'Silver State Youth Academy',
   slug: 'youth-academy',
   description:
@@ -184,13 +214,22 @@ export const youthAcademyPageData: AboutPageData = {
     'Emotional regulation and accountability development',
   ],
   images: [
-    { src: `${baseUrl}/academy/classroom.webp`, alt: 'Silver State Youth Academy classroom with small class sizes' },
-    { src: `${baseUrl}/academy/learning.webp`, alt: 'Student receiving personalized instruction at Youth Academy' },
+    {
+      src: `${baseUrl}/academy/classroom.webp`,
+      alt: 'Silver State Youth Academy classroom with small class sizes',
+    },
+    {
+      src: `${baseUrl}/academy/learning.webp`,
+      alt: 'Student receiving personalized instruction at Youth Academy',
+    },
   ],
-  metaTitle: 'Silver State Youth Academy | On-Site Accredited Education',
+  metaTitle: 'Silver State Youth Academy | On-Site Accredited Academics',
   metaDescription:
     "Silver State Youth Academy provides accredited, on-site education during treatment. Certified teachers, small class sizes, and full credit transfer so your teen doesn't fall behind.",
 }
+
+// Backward-compat alias used by existing about pages.
+export const youthAcademyPageData: AboutPageData = youthAcademyData
 
 // --- Youth Academy Features (used by homepage/about sections) ---
 
@@ -235,7 +274,7 @@ export const team: { clinical: string; members: string[] } = {
 
 // --- Legacy export for backward compat (homepage ProfileChip, etc.) ---
 
-export const leadership = teamMembers.map((m) => ({
+export const leadership: LeadershipEntry[] = teamMembers.map((m) => ({
   name: m.name,
   title: m.title,
   bio: m.professionalBackground,

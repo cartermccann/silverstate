@@ -1,99 +1,261 @@
 /**
- * Pre-rendering build script for Silver State SPA
+ * Server-side pre-rendering build script for Silver State SPA.
  *
- * Renders React routes to static HTML at build time for SEO.
- * Run after `vite build`: node --import tsx scripts/prerender.ts
- *
- * Extended in Story 1.9 with sitemap generation and validation.
+ * Renders each route to static HTML so crawlers receive full page content
+ * in the initial document.
  */
 
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs'
 import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { renderToString } from 'react-dom/server'
+import { Fragment, createElement, isValidElement, type ReactNode } from 'react'
+import {
+  createStaticHandler,
+  createStaticRouter,
+  StaticRouterProvider,
+  Outlet,
+  useLocation,
+  type RouteObject,
+} from 'react-router'
+import { routes, routePaths } from '../src/routes'
+import type { MetaTag } from '../src/utils/meta'
+import Nav from '../src/components/Nav'
+import ScrollProgress from '../src/components/ScrollProgress'
+import Breadcrumb from '../src/components/Breadcrumb'
+import ErrorBoundary from '../src/components/ErrorBoundary'
+import TrustBadges from '../src/components/TrustBadges'
+import CtaBand from '../src/components/CtaBand'
+import Footer from '../src/components/Footer'
+import CookieConsent from '../src/components/CookieConsent'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const distDir = join(__dirname, '..', 'dist')
+const siteUrl = (import.meta.env?.VITE_SITE_URL || 'https://www.silverstatetreatment.com').replace(
+  /\/+$/,
+  '',
+)
 
-// All routes to pre-render — must match src/routes.tsx manifest
-const routes = [
-  '/',
+function PrerenderLayout({ children }: { children: ReactNode }) {
+  const { pathname } = useLocation()
+  const isHomepage = pathname === '/'
 
-  // Programs
-  '/programs',
-  '/programs/residential-treatment',
-  '/programs/php',
-  '/programs/iop',
-  '/programs/crisis-prevention-intervention',
+  return createElement(
+    Fragment,
+    null,
+    createElement(ScrollProgress, { color: 'var(--sage)' }),
+    createElement(Nav, null),
+    !isHomepage ? createElement(Breadcrumb, null) : null,
+    createElement('main', { id: 'main-content' }, createElement(ErrorBoundary, null, children)),
+    createElement(TrustBadges, null),
+    createElement(CtaBand, null),
+    createElement(Footer, null),
+    createElement(CookieConsent, null),
+  )
+}
 
-  // Conditions — Mental Health
-  '/conditions',
-  '/conditions/anxiety-treatment',
-  '/conditions/depression-treatment',
-  '/conditions/trauma-ptsd-treatment',
-  '/conditions/suicidal-ideation-treatment',
-  '/conditions/ocd-treatment',
-  '/conditions/bipolar-disorder-treatment',
-  '/conditions/autism-spectrum-treatment',
-  '/conditions/oppositional-defiant-treatment',
-  '/conditions/conduct-disorder-treatment',
-  '/conditions/dmdd-treatment',
-  '/conditions/bpd-treatment',
-  '/conditions/adjustment-disorder-treatment',
-  '/conditions/dual-diagnosis-treatment',
+type LazyComponentType = {
+  _payload: unknown
+  _init: (payload: unknown) => unknown
+}
 
-  // Conditions — Substance Abuse
-  '/conditions/substance-abuse-treatment',
-  '/conditions/alcohol-abuse-treatment',
-  '/conditions/opioid-abuse-treatment',
-  '/conditions/benzodiazepine-abuse-treatment',
-  '/conditions/cocaine-abuse-treatment',
-  '/conditions/meth-abuse-treatment',
-  '/conditions/cannabis-abuse-treatment',
+type LazyPayload = {
+  _status: number
+  _result: unknown
+}
 
-  // Conditions — Eating Disorders
-  '/conditions/anorexia-nervosa-treatment',
-  '/conditions/bulimia-nervosa-treatment',
-  '/conditions/binge-eating-treatment',
-  '/conditions/arfid-treatment',
-  '/conditions/osfed-treatment',
+function isLazyComponentType(type: unknown): type is LazyComponentType {
+  return (
+    typeof type === 'object' &&
+    type !== null &&
+    '_payload' in type &&
+    '_init' in type &&
+    typeof (type as { _init: unknown })._init === 'function'
+  )
+}
 
-  // Insurance
-  '/insurance',
-  '/insurance/aetna',
-  '/insurance/cigna',
-  '/insurance/bcbs',
-  '/insurance/ambetter',
-  '/insurance/humana',
-  '/insurance/uhc',
-  '/insurance/tricare',
-  '/insurance/medicaid',
-  '/insurance/anthem',
+function unwrapSuspenseShell(element: RouteObject['element']): RouteObject['element'] {
+  if (!isValidElement(element)) {
+    return element
+  }
 
-  // Locations
-  '/locations',
-  '/locations/las-vegas',
-  '/locations/henderson',
-  '/locations/north-las-vegas',
-  '/locations/summerlin',
-  '/locations/clark-county',
+  const child = element.props?.children
+  if (isValidElement(child)) {
+    return child
+  }
 
-  // About
-  '/about/our-team',
-  '/about/facility',
-  '/about/youth-academy',
+  return element
+}
 
-  // Admissions & Contact
-  '/admissions',
-  '/contact',
+function buildSsrRoutes(routeList: RouteObject[]): RouteObject[] {
+  return routeList.map((route) => ({
+    ...route,
+    element: unwrapSuspenseShell(route.element),
+    children: route.children ? buildSsrRoutes(route.children) : route.children,
+  }))
+}
 
-  // Legal
-  '/privacy',
+async function preloadLazyType(lazyType: LazyComponentType): Promise<void> {
+  try {
+    lazyType._init(lazyType._payload)
+  } catch (thrown) {
+    if (thrown && typeof (thrown as { then?: unknown }).then === 'function') {
+      await thrown
+    } else {
+      throw thrown
+    }
+  }
+
+  // Second call returns the resolved module/component once loaded.
+  lazyType._init(lazyType._payload)
+}
+
+async function preloadLazyComponents(routeList: RouteObject[]): Promise<void> {
+  for (const route of routeList) {
+    if (isValidElement(route.element) && isLazyComponentType(route.element.type)) {
+      await preloadLazyType(route.element.type)
+    }
+
+    if (route.children) {
+      await preloadLazyComponents(route.children)
+    }
+  }
+}
+
+const ssrRoutes = buildSsrRoutes(routes)
+
+const dataRoutes: RouteObject[] = [
+  {
+    id: 'root',
+    path: '/',
+    element: createElement(PrerenderLayout, null, createElement(Outlet, null)),
+    children: ssrRoutes,
+  },
 ]
+
+const staticHandler = createStaticHandler(dataRoutes)
+
+function injectRenderedApp(template: string, appHtml: string): string {
+  return template.replace('<div id="root"></div>', `<div id="root">${appHtml}</div>`)
+}
+
+function escapeHtml(value: string): string {
+  return value
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+}
+
+function serializeHeadTags(meta: MetaTag[]): string {
+  const tags: string[] = []
+
+  for (const tag of meta) {
+    if (tag.title) {
+      tags.push(`<title>${escapeHtml(tag.title)}</title>`)
+      continue
+    }
+
+    if (tag.tagName === 'link' && tag.rel && tag.href) {
+      tags.push(`<link rel="${escapeHtml(tag.rel)}" href="${escapeHtml(tag.href)}" />`)
+      continue
+    }
+
+    if (tag.name && tag.content) {
+      tags.push(`<meta name="${escapeHtml(tag.name)}" content="${escapeHtml(tag.content)}" />`)
+      continue
+    }
+
+    if (tag.property && tag.content) {
+      tags.push(
+        `<meta property="${escapeHtml(tag.property)}" content="${escapeHtml(tag.content)}" />`,
+      )
+      continue
+    }
+
+    if (tag['script:ld+json']) {
+      tags.push(
+        `<script type="application/ld+json">${JSON.stringify(tag['script:ld+json'])}</script>`,
+      )
+    }
+  }
+
+  return tags.join('')
+}
+
+function injectHeadMeta(template: string, meta: MetaTag[]): string {
+  if (meta.length === 0) {
+    return template
+  }
+
+  const serialized = serializeHeadTags(meta)
+  if (!serialized) {
+    return template
+  }
+
+  const shouldReplaceDefaultTitle = meta.some((tag) => Boolean(tag.title))
+  const templateWithoutDefaultTitle = shouldReplaceDefaultTitle
+    ? template.replace(/<title>[\s\S]*?<\/title>/, '')
+    : template
+
+  return templateWithoutDefaultTitle.replace('</head>', `${serialized}</head>`)
+}
+
+function hasSuspenseArtifacts(html: string): boolean {
+  return (
+    html.includes('<!--$?-->') ||
+    html.includes('<template id="B:0"></template>') ||
+    html.includes('id="S:0"')
+  )
+}
+
+function isMetaTagArray(value: unknown): value is MetaTag[] {
+  return Array.isArray(value)
+}
+
+function findRoute(pathname: string): RouteObject | undefined {
+  return ssrRoutes.find((route) => route.path === pathname)
+}
+
+function readResolvedRouteMeta(pathname: string): MetaTag[] {
+  const route = findRoute(pathname) ?? findRoute('*')
+  if (!route || !isValidElement(route.element) || !isLazyComponentType(route.element.type)) {
+    return []
+  }
+
+  const payload = route.element.type._payload as LazyPayload
+  if (payload._status !== 1 || typeof payload._result !== 'object' || payload._result === null) {
+    return []
+  }
+
+  const moduleExports = payload._result as { meta?: unknown }
+  return isMetaTagArray(moduleExports.meta) ? moduleExports.meta : []
+}
+
+async function renderRoute(pathname: string): Promise<string> {
+  const request = new Request(`${siteUrl}${pathname}`)
+  const context = await staticHandler.query(request)
+
+  if (context instanceof Response) {
+    throw new Error(`Unexpected response while rendering "${pathname}" (${context.status})`)
+  }
+
+  const router = createStaticRouter(staticHandler.dataRoutes, context)
+  return renderToString(createElement(StaticRouterProvider, { router, context, hydrate: false }))
+}
 
 async function prerender() {
   const template = readFileSync(join(distDir, 'index.html'), 'utf-8')
+  await preloadLazyComponents(ssrRoutes)
 
-  for (const route of routes) {
+  for (const route of routePaths) {
+    const appHtml = await renderRoute(route)
+    if (hasSuspenseArtifacts(appHtml)) {
+      throw new Error(`Route "${route}" still contains Suspense streaming artifacts`)
+    }
+    const routeMeta = readResolvedRouteMeta(route)
+    const html = injectRenderedApp(injectHeadMeta(template, routeMeta), appHtml)
+
     const routePath = route === '/' ? '' : route
     const outDir = join(distDir, routePath)
     const outFile = join(outDir, 'index.html')
@@ -102,27 +264,20 @@ async function prerender() {
       mkdirSync(outDir, { recursive: true })
     }
 
-    // Add semantic content hints for crawlers
-    const html = template.replace(
-      '<div id="root"></div>',
-      `<div id="root"></div>
-    <noscript>
-      <h1>Silver State Adolescent Treatment Center</h1>
-      <p>Adolescent behavioral health treatment in Las Vegas, NV. Programs include residential treatment, partial hospitalization (PHP), and intensive outpatient (IOP) for teens ages 11-17.</p>
-      <p>Call (725) 525-9897 for a free consultation.</p>
-    </noscript>`,
-    )
-
     writeFileSync(outFile, html)
-    console.log(`  Pre-rendered: ${route} → ${outFile}`)
+    console.log(`  Pre-rendered: ${route} -> ${outFile}`)
   }
 
-  // Generate 404.html at dist root — Vercel serves this with HTTP 404 status automatically
+  // Render catch-all as /404 output for static hosts.
+  const notFoundHtml = injectRenderedApp(
+    injectHeadMeta(template, readResolvedRouteMeta('/__404__')),
+    await renderRoute('/__404__'),
+  )
   const notFoundFile = join(distDir, '404.html')
-  writeFileSync(notFoundFile, template)
-  console.log(`  Pre-rendered: 404 → ${notFoundFile}`)
+  writeFileSync(notFoundFile, notFoundHtml)
+  console.log(`  Pre-rendered: 404 -> ${notFoundFile}`)
 
-  console.log(`\n✓ Pre-rendered ${routes.length} route(s) + 404.html`)
+  console.log(`\n\u2713 Pre-rendered ${routePaths.length} route(s) + 404.html`)
 }
 
 prerender().catch((err) => {

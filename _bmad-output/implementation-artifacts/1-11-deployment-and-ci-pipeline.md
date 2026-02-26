@@ -1,6 +1,6 @@
 # Story 1.11: Deployment & CI Pipeline
 
-Status: review
+Status: in-progress
 
 ## Story
 
@@ -83,8 +83,7 @@ name: CI
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
+  pull_request: {}
 
 jobs:
   quality-gates:
@@ -123,11 +122,12 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: E2E & accessibility tests
+        id: playwright_e2e
         run: npm run test:e2e
 
       - name: Upload Playwright report
         uses: actions/upload-artifact@v4
-        if: ${{ !cancelled() }}
+        if: ${{ always() && steps.playwright_e2e.outcome == 'failure' && !cancelled() }}
         with:
           name: playwright-report
           path: playwright-report/
@@ -210,6 +210,15 @@ jobs:
       ]
     },
     {
+      "source": "/:path((?:[^.]+/?)*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache, no-store, must-revalidate"
+        }
+      ]
+    },
+    {
       "source": "/(.*).html",
       "headers": [
         {
@@ -245,7 +254,7 @@ jobs:
 
 | Content Type | Cache-Control Value | Rationale |
 |-------------|---------------------|-----------|
-| HTML documents (`.html`, `/`) | `no-cache, no-store, must-revalidate` | HTML must always be fresh — contains route entry points and may change on every deploy. Users must always get the latest version |
+| HTML documents (`.html`, `/`, clean URLs like `/contact`) | `no-cache, no-store, must-revalidate` | HTML must always be fresh — contains route entry points and may change on every deploy. Users must always get the latest version |
 | Hashed JS bundles (`.js`) | `public, max-age=31536000, immutable` | Vite generates content-hashed filenames (`index-abc123.js`). The hash changes when content changes, so files are safe to cache forever. `immutable` tells browsers to never revalidate |
 | CSS files (`.css`) | `public, max-age=31536000, immutable` | Same as JS — Vite content-hashes CSS files |
 | Static assets (`/assets/*`) | `public, max-age=31536000, immutable` | Images, fonts, and other static files in `/assets/` served with aggressive caching. For local dev assets; production images come from Cloudflare R2 with its own CDN caching |
@@ -425,25 +434,42 @@ These are manual steps performed in the Vercel dashboard — not automated:
 
 ### Agent Model Used
 
-Claude Opus 4.6
+GPT-5 Codex
 
 ### Debug Log References
 
 - Fixed 17 pre-existing ESLint errors across 6 files to enable CI lint gate to pass
 - Fixed 86 pre-existing Prettier formatting issues via `npm run format`
+- Senior review (2026-02-25): corrected CI artifact upload condition to run on failure only.
+- Senior review (2026-02-25): resolved new `nested-interactive` accessibility violation introduced during lint remediation by converting the lightbox image trigger to a single semantic button.
+- Senior review (2026-02-26): configured Playwright CI reporters to emit both GitHub annotations and HTML reports for artifact upload.
+- Senior review (2026-02-26): restricted Playwright artifact upload to E2E-step failures only using step outcome checks.
+- Senior review (2026-02-26): expanded `vercel.json` no-cache coverage to include clean URLs in addition to `/` and `.html`.
 
 ### Completion Notes List
 
 - Created `.github/workflows/ci.yml` with exact sequential quality gate pipeline matching story spec
 - Created `vercel.json` with trailing slash redirects (301), 5 security headers, cache strategy (immutable for hashed assets, no-cache for HTML), and `framework: null`
 - All CI-specific npm scripts already existed in `package.json` from Stories 1.9/1.10 — no changes needed
-- Local CI pipeline validation: tsc, lint, format:check, test (19/19 pass), build (54 routes pre-rendered) all pass
+- Local CI pipeline validation (2026-02-25): `npx tsc --noEmit`, `npm run lint`, `npm run format:check`, `npm run test` (153/153), `npm run build`, `npm run test:e2e` (8/8) all pass
 - Task 3 (Vercel dashboard verification) and Task 5 remote subtasks (5.2-5.5) are manual/deployment tasks that cannot be automated locally — deferred to deployment phase
-- Pre-existing lint fixes: replaced sync setState-in-effect patterns with derived state (Nav.tsx, useIsMobile.ts, CountUp.tsx), escaped JSX entities, added keyboard/role handlers for a11y
+- Senior review code fixes for CI-gate compliance:
+  - `src/components/Breadcrumb.tsx`, `src/components/CtaBand.tsx`, `src/components/TrustBadges.tsx` — removed empty interface declarations flagged by ESLint.
+  - `src/components/CookieConsent.tsx` — removed synchronous setState-in-effect pattern.
+  - `src/pages/about/Team.tsx` — removed JSX key warnings by rendering icon components from constructor references.
+  - `src/pages/Home.tsx` — corrected escaped apostrophe and refactored the lightbox trigger to avoid nested interactive controls.
+  - Prettier formatting drift cleared across 31 files.
+- Senior review fixes (2026-02-26):
+  - `.github/workflows/ci.yml` now uploads Playwright artifacts only when the E2E step fails (`always() && steps.playwright_e2e.outcome == 'failure'`).
+  - `playwright.config.ts` now emits an HTML report in CI (`playwright-report/`) alongside GitHub reporter output.
+  - `vercel.json` now applies HTML no-cache headers to clean URLs (e.g. `/contact`) via a no-extension route matcher.
+  - Validation passed: `npx tsc --noEmit`, `npm run lint`, `npm run format:check`, `npx playwright test --list`.
 
 ### Change Log
 
 - 2026-02-24: Created CI pipeline and Vercel deployment configuration. Fixed pre-existing lint/format issues for CI gate compliance.
+- 2026-02-25: Senior code review completed — fixed remaining lint/a11y blockers, aligned CI artifact upload behavior with story requirements, and re-validated full local CI sequence.
+- 2026-02-26: Senior review follow-up — fixed PR trigger scope, Playwright report generation/artifact gating behavior, and clean-URL HTML cache headers.
 
 ### File List
 
@@ -451,12 +477,39 @@ Claude Opus 4.6
 - `.github/workflows/ci.yml`
 - `vercel.json`
 
-**Modified (lint/format fixes for CI compliance):**
+**Modified:**
 - `src/hooks/useIsMobile.ts` — matchMedia in initializer, removed sync setState
 - `src/components/CountUp.tsx` — moved prefers-reduced-motion to useMemo, removed sync setState
 - `src/components/Nav.tsx` — replaced menuOpen effect with derived `effectiveMenuOpen` state
 - `src/components/ErrorBoundary.tsx` — escaped JSX entities
 - `src/components/Lightbox.tsx` — added keyboard handler, tabIndex, role on dialog overlay
-- `src/pages/Home.tsx` — escaped JSX entities, added keyboard handler + role to clickable div
+- `.github/workflows/ci.yml` — PR trigger now runs on all PRs; Playwright artifact upload now runs only when E2E step fails (`if: ${{ always() && steps.playwright_e2e.outcome == 'failure' && !cancelled() }}`).
+- `playwright.config.ts` — CI now uses `github` + `html` reporters so `playwright-report/` exists for artifact upload on failure.
+- `vercel.json` — added no-cache header rule for clean URLs (no extension), while keeping immutable caching for hashed assets.
+- `src/components/Breadcrumb.tsx`, `src/components/CtaBand.tsx`, `src/components/TrustBadges.tsx` — replaced empty interfaces with type aliases.
+- `src/components/CookieConsent.tsx` — removed synchronous setState-in-effect and derived banner visibility safely.
+- `src/pages/Home.tsx` — escaped JSX entity and converted lightbox trigger to a single semantic button (no nested interactive controls).
+- `src/pages/about/Team.tsx` — refactored differentiator icon rendering to satisfy `react/jsx-key`.
 - `src/pages/NotFound.tsx` — escaped JSX entities
 - *86 files reformatted by Prettier (no logic changes)*
+
+### Senior Developer Review (AI)
+
+**Reviewer:** Silver  
+**Date:** 2026-02-26  
+**Outcome:** Changes applied, external verification pending
+
+**Findings**
+- Resolved: CI artifact upload condition did not match requirement ("upload on failure").
+- Resolved: local CI sequence claim was stale; current branch had lint/format/a11y blockers that prevented green gates.
+- Resolved: accessibility regression (`nested-interactive`) introduced during lint remediation.
+- Resolved: PR trigger scope now matches AC wording ("all pull requests"), not only PRs targeting `main`.
+- Resolved: Playwright CI report artifact path is now produced reliably (`html` reporter enabled in CI).
+- Resolved: `vercel.json` no-cache behavior now covers clean URLs (e.g. `/contact`) in addition to root and explicit `.html`.
+- Remaining external/manual checks: Vercel dashboard linkage, environment variable setup confirmation, deployed header/redirect verification, and HTTPS/mixed-content confirmation.
+
+**Verification**
+- Local sequence passes in required order: `tsc -> lint -> format:check -> test -> build -> test:e2e`.
+- `test:e2e` passes with both projects (chromium + mobile-chrome) after accessibility fix.
+- Follow-up validation (2026-02-26): `npx tsc --noEmit`, `npm run lint`, `npm run format:check`, and `npx playwright test --list` all pass.
+- Story remains `in-progress` until deployment-only manual checks are completed.

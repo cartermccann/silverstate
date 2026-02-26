@@ -1,9 +1,6 @@
 import { useRef, useEffect, type ReactNode, type CSSProperties } from 'react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { gsap, ScrollTrigger } from '../utils/gsap'
 import type { AnimationVariant, AnimationPreset } from '../types'
-
-gsap.registerPlugin(ScrollTrigger)
 
 const isMobile = () => window.matchMedia('(max-width: 900px)').matches
 

@@ -18,7 +18,7 @@ import { site } from '../data/common'
 import {
   heroData,
   introData,
-  whoThisIsFor,
+  whoThisIsForData,
   facilityGalleryImages,
   programHighlightsData,
   conditionsOverviewData,
@@ -26,6 +26,7 @@ import {
   youthAcademyData,
   testimonialData,
   dailyScheduleData,
+  statsData,
   familySectionData,
   teamOverviewData,
   faqsData,
@@ -38,8 +39,13 @@ import { generateMeta } from '../utils/meta'
 import { generateMedicalOrganization, generateLocalBusiness } from '../utils/schema'
 
 /* -- JSON-LD structured data -- */
-const medicalOrgSchema = generateMedicalOrganization()
-const localBusinessSchema = generateLocalBusiness()
+const medicalOrgSchema = generateMedicalOrganization({
+  credentials: accreditationsOverviewData.map((entry) => entry.name),
+})
+const localBusinessSchema = generateLocalBusiness({
+  ratingValue: site.rating,
+  reviewCount: site.reviewCount,
+})
 
 /* -- SEO metadata -- */
 export const meta = generateMeta({
@@ -50,12 +56,12 @@ export const meta = generateMeta({
 })
 
 /* -- Palette -- */
-const SAGE = '#5A7A6E'
+const SAGE = 'var(--sage)'
 const SAGE_LIGHT = '#6d8e82'
-const CREAM = '#FAF7F2'
-const WARM = '#F0EBE3'
-const DARK = '#0f172a'
-const DISPLAY = "'Space Grotesk', sans-serif"
+const CREAM = 'var(--cream)'
+const WARM = 'var(--warm)'
+const DARK = 'var(--dark)'
+const DISPLAY = 'var(--font-display)'
 
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
@@ -67,7 +73,7 @@ export default function Home() {
     const prevTitle = document.title
     const addedElements: HTMLElement[] = []
 
-    for (const tag of meta) {
+    for (const [index, tag] of meta.entries()) {
       if (tag.title) {
         document.title = tag.title
       } else if (tag.tagName === 'link' && tag.rel && tag.href) {
@@ -97,6 +103,19 @@ export default function Home() {
           addedElements.push(el)
         }
         el.content = tag.content ?? ''
+      } else if (tag['script:ld+json']) {
+        const key = `home-jsonld-${index}`
+        let el = document.querySelector<HTMLScriptElement>(
+          `script[type="application/ld+json"][data-meta-key="${key}"]`,
+        )
+        if (!el) {
+          el = document.createElement('script')
+          el.type = 'application/ld+json'
+          el.dataset.metaKey = key
+          document.head.appendChild(el)
+          addedElements.push(el)
+        }
+        el.textContent = JSON.stringify(tag['script:ld+json'])
       }
     }
 
@@ -110,24 +129,13 @@ export default function Home() {
 
   return (
     <>
-      {/* -- JSON-LD Structured Data -- */}
-      {/* TODO: Verify JSON-LD and meta tags appear in pre-rendered HTML once SSR-level pre-rendering is implemented (current prerender.ts uses noscript fallback only) */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(medicalOrgSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
-      />
-
       {/* ----------------------------------------
           1. HERO — Full viewport with parallax zoom-out
       ---------------------------------------- */}
       <section
         style={{
           position: 'relative',
-          height: '85vh',
+          height: '100vh',
           minHeight: 540,
           display: 'flex',
           alignItems: 'center',
@@ -330,7 +338,7 @@ export default function Home() {
                   textWrap: 'balance',
                 }}
               >
-                {whoThisIsFor.headline}
+                {whoThisIsForData.headline}
               </CharReveal>
               <AnimateIn variant="blurUp" delay={0.2}>
                 <p
@@ -342,7 +350,7 @@ export default function Home() {
                     maxWidth: 400,
                   }}
                 >
-                  {whoThisIsFor.body}
+                  {whoThisIsForData.body}
                 </p>
               </AnimateIn>
             </div>
@@ -357,7 +365,7 @@ export default function Home() {
                 gap: 12,
               }}
             >
-              {whoThisIsFor.profiles.map((p) => (
+              {whoThisIsForData.profiles.map((p) => (
                 <StaggerItem key={p.label}>
                   <ProfileChip label={p.label} desc={p.desc} />
                 </StaggerItem>
@@ -366,7 +374,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
 
       {/* ----------------------------------------
           3. PROGRAMS — Scrollytelling
@@ -392,13 +399,16 @@ export default function Home() {
               overflow: 'hidden',
             }}
           >
-            <div
+            <img
+              src="/assets/teen-therapist.jpg"
+              alt="Teen participating in a therapy session"
+              loading="lazy"
               style={{
                 position: 'absolute',
                 inset: 0,
-                backgroundImage: 'url(/assets/teen-therapist.jpg)',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
               }}
             />
           </div>
@@ -522,7 +532,6 @@ export default function Home() {
         </div>
       </section>
 
-
       {/* ----------------------------------------
           4. WHAT WE TREAT & THERAPIES — Editorial Grid (CardStack)
       ---------------------------------------- */}
@@ -592,7 +601,9 @@ export default function Home() {
                 >
                   {cat.category}
                 </h3>
-                <div
+                <StaggerGroup
+                  variant="fadeUp"
+                  stagger={0.06}
                   style={{
                     display: 'grid',
                     gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
@@ -603,13 +614,19 @@ export default function Home() {
                 >
                   {cat.conditions.map((c) => (
                     <StaggerItem key={c.slug}>
-                      {/* TODO: Link to /conditions/${c.slug} when Epic 4 is complete */}
-                      <span style={{ fontSize: '1.05rem', color: 'var(--body)' }}>
+                      <Link
+                        to={`/conditions/${c.slug}`}
+                        style={{
+                          fontSize: '1.05rem',
+                          color: 'var(--body)',
+                          textDecoration: 'none',
+                        }}
+                      >
                         {c.name}
-                      </span>
+                      </Link>
                     </StaggerItem>
                   ))}
-                </div>
+                </StaggerGroup>
               </div>
             ))}
 
@@ -639,7 +656,9 @@ export default function Home() {
               >
                 Therapeutic Modalities
               </h3>
-              <div
+              <StaggerGroup
+                variant="fadeUp"
+                stagger={0.06}
                 style={{
                   display: 'grid',
                   gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
@@ -650,17 +669,14 @@ export default function Home() {
               >
                 {therapiesOverviewData.map((t) => (
                   <StaggerItem key={t}>
-                    <span style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,.9)' }}>
-                      {t}
-                    </span>
+                    <span style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,.9)' }}>{t}</span>
                   </StaggerItem>
                 ))}
-              </div>
+              </StaggerGroup>
             </div>
           </CardStack>
         </div>
       </section>
-
 
       {/* ----------------------------------------
           4b. YOUTH ACADEMY
@@ -845,7 +861,6 @@ export default function Home() {
         </div>
       </section>
 
-
       {/* ----------------------------------------
           5. TESTIMONIAL — Pull quote
       ---------------------------------------- */}
@@ -895,7 +910,6 @@ export default function Home() {
           </AnimateIn>
         </div>
       </section>
-
 
       {/* ----------------------------------------
           5b. A DAY IN TREATMENT — Timeline
@@ -967,7 +981,6 @@ export default function Home() {
         </div>
       </section>
 
-
       {/* ----------------------------------------
           6. NUMBERS STRIP — StaggerGroup + CountUp
       ---------------------------------------- */}
@@ -984,25 +997,24 @@ export default function Home() {
               textAlign: 'center',
             }}
           >
-            <StaggerItem>
-              <StatBlock value="24/7" label="Clinical Support" />
-            </StaggerItem>
-            <StaggerItem>
-              <StatBlock value="11–17" label="Ages Served" />
-            </StaggerItem>
-            <StaggerItem>
-              <StatBlock value="4:1" label="Staff-to-Client Ratio" />
-            </StaggerItem>
-            <StaggerItem>
-              <StatBlock
-                value={<CountUp end={4.8} suffix="/5" />}
-                label={`Average Review (${site.reviewCount} reviews)`}
-              />
-            </StaggerItem>
+            {statsData.map((stat) => {
+              const numericValue = Number(stat.value)
+              const value =
+                stat.suffix && Number.isFinite(numericValue) ? (
+                  <CountUp end={numericValue} suffix={stat.suffix} />
+                ) : (
+                  stat.value
+                )
+
+              return (
+                <StaggerItem key={`${stat.value}-${stat.label}`}>
+                  <StatBlock value={value} label={stat.label} />
+                </StaggerItem>
+              )
+            })}
           </StaggerGroup>
         </div>
       </section>
-
 
       {/* ----------------------------------------
           7. FAMILY BAND — Sage green with ClipReveal + Parallax
@@ -1022,9 +1034,19 @@ export default function Home() {
             {/* Image with ClipReveal + inner Parallax + Lightbox trigger */}
             <ClipReveal direction="up" duration={1.2}>
               <Parallax speed={0.25} overflow="visible">
-                <div
-                  style={{ position: 'relative', cursor: 'pointer' }}
+                <button
+                  type="button"
+                  aria-label="Open family involvement image in lightbox"
                   onClick={() => setLightboxIndex(0)}
+                  style={{
+                    position: 'relative',
+                    cursor: 'pointer',
+                    background: 'transparent',
+                    border: 0,
+                    padding: 0,
+                    width: '100%',
+                    textAlign: 'left',
+                  }}
                 >
                   <img
                     src="/assets/woman-on-phone.jpg"
@@ -1037,7 +1059,7 @@ export default function Home() {
                       objectFit: 'cover',
                     }}
                   />
-                  <button
+                  <span
                     style={{
                       position: 'absolute',
                       bottom: 16,
@@ -1051,18 +1073,13 @@ export default function Home() {
                       color: '#fff',
                       fontSize: '.78rem',
                       fontWeight: 600,
-                      cursor: 'pointer',
                       letterSpacing: '.02em',
-                      transition: 'background 0.2s',
                     }}
-                    onClick={(e) => {
-                      e.stopPropagation()
-                      setLightboxIndex(0)
-                    }}
+                    aria-hidden="true"
                   >
                     View Facility
-                  </button>
-                </div>
+                  </span>
+                </button>
               </Parallax>
             </ClipReveal>
 
@@ -1137,7 +1154,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
 
       {/* ----------------------------------------
           8. TREATMENT TEAM — Carousel
@@ -1275,7 +1291,6 @@ export default function Home() {
         </div>
       </section>
 
-
       {/* ----------------------------------------
           9. FAQs
       ---------------------------------------- */}
@@ -1336,7 +1351,6 @@ export default function Home() {
           </AnimateIn>
         </div>
       </section>
-
 
       {/* ----------------------------------------
           10. INSURANCE + ACCREDITATIONS
@@ -1505,7 +1519,6 @@ export default function Home() {
         </div>
       </section>
 
-
       {/* ----------------------------------------
           10b. HOW ADMISSIONS WORKS — Step cards
       ---------------------------------------- */}
@@ -1551,8 +1564,8 @@ export default function Home() {
                   margin: '12px auto 0',
                 }}
               >
-                We've simplified admissions so you can focus on your family. Most families complete
-                the process within 24-48 hours.
+                We&apos;ve simplified admissions so you can focus on your family. Most families
+                complete the process within 24-48 hours.
               </p>
             </AnimateIn>
           </div>
@@ -1613,7 +1626,6 @@ export default function Home() {
           </AnimateIn>
         </div>
       </section>
-
 
       {/* ----------------------------------------
           11. FINAL CTA — Dark closing conversion
@@ -1701,7 +1713,6 @@ export default function Home() {
         </div>
       </section>
 
-
       {/* -- Lightbox -- */}
       {lightboxIndex !== null && (
         <Lightbox
@@ -1714,7 +1725,6 @@ export default function Home() {
           }
         />
       )}
-
 
       {/* -- Scoped Styles -- */}
       <style>{`

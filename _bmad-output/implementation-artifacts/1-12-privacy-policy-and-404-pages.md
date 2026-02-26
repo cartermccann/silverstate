@@ -1,6 +1,6 @@
 # Story 1.12: Privacy Policy & 404 Pages
 
-Status: review
+Status: in-progress
 
 ## Story
 
@@ -83,10 +83,10 @@ So that I trust the site's handling of my information and am never stranded on a
   - [x] 5.8: Use inline styles with CSS design tokens
   - [x] 5.9: Ensure all links meet 44x44px touch target minimum on mobile (FR42)
 
-- [x] **Task 6: Configure routes and HTTP 404 status** (AC: #4, #7)
+- [ ] **Task 6: Configure routes and HTTP 404 status** (AC: #4, #7)
   - [x] 6.1: Add `/privacy` route to `routes.ts` pointing to `pages/Privacy.tsx`
   - [x] 6.2: Ensure catch-all `*` route in `routes.ts` points to `pages/NotFound.tsx`
-  - [x] 6.3: Configure the catch-all route to return HTTP 404 status via Vercel's `vercel.json` fallback configuration (see Dev Notes — 404 HTTP Status section). The React Router route renders the NotFound component; the HTTP status is handled at the hosting layer.
+  - [ ] 6.3: Configure the catch-all route to return HTTP 404 status via Vercel's `vercel.json` fallback configuration (see Dev Notes — 404 HTTP Status section). The React Router route renders the NotFound component; the HTTP status is handled at the hosting layer.
   - [x] 6.4: Add `/privacy` to the pre-render routes list in `react-router.config.ts`
   - [x] 6.5: Do NOT add the 404 page to sitemap generation (it should not be indexed)
 
@@ -406,11 +406,16 @@ Include a comment in `data/privacy.ts`:
 
 ### Agent Model Used
 
-Claude Opus 4.6
+GPT-5 Codex
 
 ### Debug Log References
 
 - Fixed unused imports in Privacy.tsx (site, toJsonLdScript) flagged by tsc --noEmit
+- Senior review (2026-02-25): normalized `VITE_SITE_URL` handling in Privacy JSON-LD URL generation to prevent `//privacy` URLs when env values include trailing slashes.
+- Senior review (2026-02-25): local preview check for unknown routes returned HTTP `200`, so production-host 404 status behavior still requires deployment verification.
+- Senior review (2026-02-26): wildcard-path breadcrumbs are now suppressed so 404 pages do not display misleading breadcrumb trails.
+- Senior review (2026-02-26): 404 suggestion links now enforce full 44x44 touch targets (`min-height` + `min-width`).
+- Senior review (2026-02-26): task-state correction applied for 6.3 (hosting-layer 404 status verification remains pending deployment validation).
 
 ### Completion Notes List
 
@@ -426,12 +431,18 @@ Claude Opus 4.6
 - Prerender script updated to generate `dist/404.html` at build time — Vercel automatically serves this with HTTP 404 status
 - Used `routes` in vercel.json approach was incompatible with existing `redirects`/`headers` config; `404.html` at dist root is the standard Vercel SPA approach
 - Footer already has Privacy Policy link (implemented in Story 1.4)
-- Build succeeds, tsc passes with zero errors
-- All links use 44px min-height for touch target compliance
+- Added page-level tests: `src/pages/Privacy.test.tsx` and `src/pages/NotFound.test.tsx`
+- Validation (2026-02-25): `npm run lint`, `npm run format:check`, `npm run test` (161/161), and `npm run build` all pass
+- Remaining manual/external verification: confirm deployed unknown-route responses return HTTP 404 on Vercel (local `vite preview` responds with 200 for SPA fallback)
+- All 404 suggestion links use full 44x44 touch-target minimums
+- Breadcrumb component now suppresses rendering on unknown paths so wildcard 404 pages show no breadcrumb (matches Task 8.7 option)
+- Follow-up validation (2026-02-26): `npx vitest run src/pages/NotFound.test.tsx src/pages/Privacy.test.tsx`, `npx tsc --noEmit`, `npm run lint`, and `npm run format:check` all pass
 
 ### Change Log
 
-- 2026-02-24: Implemented Privacy Policy and 404 pages (all 8 tasks complete)
+- 2026-02-24: Implemented Privacy Policy and 404 pages (initial delivery)
+- 2026-02-25: Senior code review completed — JSON-LD URL normalization fix, added Privacy/NotFound tests, and recorded outstanding deployment-level HTTP 404 verification
+- 2026-02-26: Senior review follow-up — fixed 404 breadcrumb behavior, tightened mobile touch targets on 404 suggestions, and corrected Task 6.3 completion state pending deployment verification
 
 ### File List
 
@@ -440,4 +451,28 @@ Claude Opus 4.6
 - `src/data/index.ts` (modified) — Added privacy.ts re-export
 - `src/pages/Privacy.tsx` (modified) — Full privacy policy page with SEO meta and JSON-LD
 - `src/pages/NotFound.tsx` (modified) — Helpful 404 page with navigation links and phone CTA
+- `src/components/Breadcrumb.tsx` (modified) — hides breadcrumb on unknown paths so wildcard 404 views omit breadcrumb
+- `src/pages/Privacy.test.tsx` (new) — Privacy page metadata/content regression tests
+- `src/pages/NotFound.test.tsx` (new) — NotFound metadata/content regression tests (includes breadcrumb + touch target checks)
 - `scripts/prerender.ts` (modified) — Added 404.html generation at dist root for Vercel HTTP 404 status
+
+### Senior Developer Review (AI)
+
+**Reviewer:** Silver  
+**Date:** 2026-02-26  
+**Outcome:** Changes applied, deployment verification pending
+
+**Findings**
+- Resolved: Privacy JSON-LD URL construction could generate malformed double-slash URLs depending on env formatting.
+- Resolved: Story lacked direct automated page-level regression tests for Privacy/NotFound behavior and metadata.
+- Resolved: 404 pages previously displayed generated breadcrumbs for unknown paths (e.g. `Home > Missing Page`), violating Task 8.7.
+- Resolved: 404 suggestion links did not fully guarantee 44x44 touch target compliance because `min-width` was not enforced.
+- Resolved: task audit mismatch corrected — Task 6.3 is now tracked as pending until hosting-layer 404 behavior is deployment-verified.
+- Remaining: AC #7 (HTTP 404 status verification) is not conclusively verifiable in local `vite preview` because unknown routes are served with SPA fallback (`200`).
+
+**Verification**
+- `npx vitest run src/pages/NotFound.test.tsx src/pages/Privacy.test.tsx` passes (9 tests).
+- `npx tsc --noEmit` passes.
+- `npm run lint` passes.
+- `npm run format:check` passes.
+- Story remains `in-progress` until deployed HTTP 404 status behavior is validated on hosting infrastructure.

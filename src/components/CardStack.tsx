@@ -1,5 +1,5 @@
 import { useRef, useEffect, Children, type ReactNode, type CSSProperties } from 'react'
-import gsap from 'gsap'
+import { gsap } from '../utils/gsap'
 import useIsMobile from '../hooks/useIsMobile'
 
 interface CardStackProps {

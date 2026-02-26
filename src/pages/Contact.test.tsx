@@ -64,8 +64,7 @@ beforeAll(() => {
     thresholds = [0]
     takeRecords = vi.fn().mockReturnValue([])
   }
-  window.IntersectionObserver =
-    MockIntersectionObserver as unknown as typeof IntersectionObserver
+  window.IntersectionObserver = MockIntersectionObserver as unknown as typeof IntersectionObserver
 
   window.matchMedia = vi.fn().mockImplementation((query: string) => ({
     matches: false,
@@ -120,11 +119,15 @@ describe('Contact — SEO meta export', () => {
     expect(ogDesc).toBeDefined()
   })
 
-  it('includes LocalBusiness JSON-LD', () => {
+  it('does not include route-level JSON-LD entries', () => {
     const jsonLdEntries = meta.filter((t) => t['script:ld+json'])
-    expect(jsonLdEntries.length).toBe(1)
-    const schema = jsonLdEntries[0]['script:ld+json'] as Record<string, unknown>
-    expect(schema['@type']).toBe('LocalBusiness')
+    expect(jsonLdEntries.length).toBe(0)
+  })
+
+  it('includes og:image with contact-specific value', () => {
+    const ogImageTag = meta.find((t) => t.property === 'og:image')
+    expect(ogImageTag).toBeDefined()
+    expect(ogImageTag!.content).toContain('/facility/')
   })
 })
 
@@ -137,13 +140,17 @@ describe('Contact — page rendering', () => {
 
   it('renders phone CTA with site.phone', () => {
     renderContact()
-    const phoneLinks = screen.getAllByRole('link', { name: new RegExp(site.phone.replace(/[()]/g, '\\$&')) })
+    const phoneLinks = screen.getAllByRole('link', {
+      name: new RegExp(site.phone.replace(/[()]/g, '\\$&')),
+    })
     expect(phoneLinks.length).toBeGreaterThanOrEqual(1)
   })
 
   it('renders phone CTA using site.phoneTel href', () => {
     renderContact()
-    const phoneLinks = screen.getAllByRole('link', { name: new RegExp(site.phone.replace(/[()]/g, '\\$&')) })
+    const phoneLinks = screen.getAllByRole('link', {
+      name: new RegExp(site.phone.replace(/[()]/g, '\\$&')),
+    })
     const ctaLink = phoneLinks.find((l) => l.getAttribute('href') === site.phoneTel)
     expect(ctaLink).toBeDefined()
   })
@@ -164,6 +171,15 @@ describe('Contact — page rendering', () => {
     expect(screen.getByRole('link', { name: /admissions/i })).toBeDefined()
     expect(screen.getByRole('link', { name: /programs/i })).toBeDefined()
     expect(screen.getByRole('link', { name: /insurance/i })).toBeDefined()
+  })
+
+  it('renders in-page LocalBusiness JSON-LD script', () => {
+    renderContact()
+    const script = document.querySelector('script[type="application/ld+json"]')
+    expect(script).not.toBeNull()
+    const schema = JSON.parse(script!.textContent ?? '{}') as Record<string, unknown>
+    expect(schema['@type']).toBe('LocalBusiness')
+    expect(schema.url).toContain('/contact')
   })
 })
 
@@ -208,6 +224,15 @@ describe('Contact — form structure & accessibility', () => {
     expect(screen.getByLabelText(/^phone$/i).getAttribute('autocomplete')).toBe('tel')
   })
 
+  it('keeps aria-describedby targets mounted for error announcement', () => {
+    renderContact()
+    expect(screen.getByLabelText(/name \*/i).getAttribute('aria-describedby')).toBe('name-error')
+    expect(screen.getByLabelText(/email \*/i).getAttribute('aria-describedby')).toBe('email-error')
+    expect(screen.getByLabelText(/message \*/i).getAttribute('aria-describedby')).toBe(
+      'message-error',
+    )
+  })
+
   it('renders "* Required" indicator', () => {
     renderContact()
     expect(screen.getByText('* Required')).toBeDefined()
@@ -233,7 +258,14 @@ describe('Contact — form structure & accessibility', () => {
     renderContact()
     const allInputs = screen.getAllByRole('textbox')
     const allNames = allInputs.map((i) => i.getAttribute('name'))
-    const phiFields = ['diagnosis', 'symptoms', 'medications', 'insurance', 'treatment', 'condition']
+    const phiFields = [
+      'diagnosis',
+      'symptoms',
+      'medications',
+      'insurance',
+      'treatment',
+      'condition',
+    ]
     for (const field of phiFields) {
       expect(allNames).not.toContain(field)
     }
@@ -268,7 +300,10 @@ describe('Contact — client-side validation', () => {
     renderContact()
     await user.type(screen.getByLabelText(/name \*/i), 'Test Name')
     await user.type(screen.getByLabelText(/email \*/i), 'notanemail')
-    await user.type(screen.getByLabelText(/message \*/i), 'This is a test message that is long enough')
+    await user.type(
+      screen.getByLabelText(/message \*/i),
+      'This is a test message that is long enough',
+    )
     await user.click(screen.getByRole('button', { name: /send message/i }))
     expect(screen.getByText('Please enter a valid email address')).toBeDefined()
   })
@@ -319,38 +354,49 @@ describe('Contact — client-side validation', () => {
 describe('Contact — form submission', () => {
   it('submits valid form and shows success message', async () => {
     const user = userEvent.setup()
-    const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce(
-      new Response(JSON.stringify({ success: true }), { status: 200 }),
-    )
+    const fetchSpy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValueOnce(new Response(JSON.stringify({ success: true }), { status: 200 }))
 
     renderContact()
     await user.type(screen.getByLabelText(/name \*/i), 'Test Name')
     await user.type(screen.getByLabelText(/email \*/i), 'test@example.com')
-    await user.type(screen.getByLabelText(/message \*/i), 'This is a valid test message for the form')
+    await user.type(
+      screen.getByLabelText(/message \*/i),
+      'This is a valid test message for the form',
+    )
     await user.click(screen.getByRole('button', { name: /send message/i }))
 
     await waitFor(() => {
       expect(screen.getByText(/thank you/i)).toBeDefined()
     })
 
-    expect(fetchSpy).toHaveBeenCalledWith('/api/contact', expect.objectContaining({
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-    }))
+    expect(fetchSpy).toHaveBeenCalledWith(
+      '/api/contact',
+      expect.objectContaining({
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+      }),
+    )
 
     fetchSpy.mockRestore()
   })
 
   it('shows error message on server error', async () => {
     const user = userEvent.setup()
-    const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce(
-      new Response(JSON.stringify({ error: 'Server error' }), { status: 500 }),
-    )
+    const fetchSpy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValueOnce(
+        new Response(JSON.stringify({ error: 'Server error' }), { status: 500 }),
+      )
 
     renderContact()
     await user.type(screen.getByLabelText(/name \*/i), 'Test Name')
     await user.type(screen.getByLabelText(/email \*/i), 'test@example.com')
-    await user.type(screen.getByLabelText(/message \*/i), 'This is a valid test message for the form')
+    await user.type(
+      screen.getByLabelText(/message \*/i),
+      'This is a valid test message for the form',
+    )
     await user.click(screen.getByRole('button', { name: /send message/i }))
 
     await waitFor(() => {
@@ -367,7 +413,10 @@ describe('Contact — form submission', () => {
     renderContact()
     await user.type(screen.getByLabelText(/name \*/i), 'Test Name')
     await user.type(screen.getByLabelText(/email \*/i), 'test@example.com')
-    await user.type(screen.getByLabelText(/message \*/i), 'This is a valid test message for the form')
+    await user.type(
+      screen.getByLabelText(/message \*/i),
+      'This is a valid test message for the form',
+    )
     await user.click(screen.getByRole('button', { name: /send message/i }))
 
     await waitFor(() => {
@@ -381,13 +430,19 @@ describe('Contact — form submission', () => {
     const user = userEvent.setup()
     let resolvePromise: (value: Response) => void
     const fetchSpy = vi.spyOn(globalThis, 'fetch').mockImplementationOnce(
-      () => new Promise((resolve) => { resolvePromise = resolve }),
+      () =>
+        new Promise((resolve) => {
+          resolvePromise = resolve
+        }),
     )
 
     renderContact()
     await user.type(screen.getByLabelText(/name \*/i), 'Test Name')
     await user.type(screen.getByLabelText(/email \*/i), 'test@example.com')
-    await user.type(screen.getByLabelText(/message \*/i), 'This is a valid test message for the form')
+    await user.type(
+      screen.getByLabelText(/message \*/i),
+      'This is a valid test message for the form',
+    )
     await user.click(screen.getByRole('button', { name: /send message/i }))
 
     expect(screen.getByRole('button', { name: /sending/i })).toBeDefined()
@@ -404,17 +459,22 @@ describe('Contact — form submission', () => {
 
   it('handles 400 validation errors from server', async () => {
     const user = userEvent.setup()
-    const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce(
-      new Response(
-        JSON.stringify({ error: 'Validation failed', errors: { email: 'Invalid email' } }),
-        { status: 400 },
-      ),
-    )
+    const fetchSpy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValueOnce(
+        new Response(
+          JSON.stringify({ error: 'Validation failed', errors: { email: 'Invalid email' } }),
+          { status: 400 },
+        ),
+      )
 
     renderContact()
     await user.type(screen.getByLabelText(/name \*/i), 'Test Name')
     await user.type(screen.getByLabelText(/email \*/i), 'test@example.com')
-    await user.type(screen.getByLabelText(/message \*/i), 'This is a valid test message for the form')
+    await user.type(
+      screen.getByLabelText(/message \*/i),
+      'This is a valid test message for the form',
+    )
     await user.click(screen.getByRole('button', { name: /send message/i }))
 
     await waitFor(() => {
@@ -426,9 +486,9 @@ describe('Contact — form submission', () => {
 
   it('clears form fields on successful submit', async () => {
     const user = userEvent.setup()
-    const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce(
-      new Response(JSON.stringify({ success: true }), { status: 200 }),
-    )
+    const fetchSpy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValueOnce(new Response(JSON.stringify({ success: true }), { status: 200 }))
 
     renderContact()
     const nameInput = screen.getByLabelText(/name \*/i) as HTMLInputElement

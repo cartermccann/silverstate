@@ -1,6 +1,6 @@
 # Story 1.1: Initialize Production Project from Mockup
 
-Status: review
+Status: done
 
 ## Story
 
@@ -320,10 +320,28 @@ None — no debug issues encountered.
 - Set up pre-rendering build script at `scripts/prerender.ts` using `tsx` — injects noscript fallback content for SEO. Full SSR pre-rendering to be expanded in Story 1.9
 - Updated page title from "Design Explorations" to "Silver State Adolescent Treatment Center"
 - All verification passed: npm install (0 errors), tsc --noEmit (0 TS errors), npm run dev (server starts), npm run build (succeeds with pre-rendering), pre-rendered HTML contains semantic content
+- Code review remediation (2026-02-25): fixed build-blocking data validation imports, aligned location schema validation with current types, and removed prerender route drift by sourcing routes from `src/routes.tsx`
 
 ### Change Log
 
 - 2026-02-23: Story 1.1 implementation complete — project initialized from mockup with production structure
+- 2026-02-25: Senior code review fixes applied; build/dev verification re-run and passing
+
+### Senior Developer Review (AI)
+
+**Reviewer:** Silver  
+**Date:** 2026-02-25  
+**Outcome:** Approved after fixes
+
+**Findings addressed**
+- Fixed build failure in validation scripts caused by direct `import.meta.env` access in `src/data/about.ts` when executed in Node.
+- Fixed schema drift in `scripts/validate-content.ts` (`locations` now validates `name` instead of nonexistent `city`).
+- Fixed prerender route drift by replacing the hardcoded route list in `scripts/prerender.ts` with `routePaths` from `src/routes.tsx`.
+
+**Verification**
+- `npx tsc --noEmit` passes.
+- `npm run build` passes end-to-end (content validation, schema validation, sitemap generation, Vite build, prerender).
+- `npm run dev -- --host 127.0.0.1 --port 4173` starts successfully (verified outside sandbox due local port restrictions in sandbox mode).
 
 ### File List
 
@@ -382,4 +400,9 @@ None — no debug issues encountered.
 - public/assets/bcbs.png
 - api/.gitkeep
 - e2e/.gitkeep
+- scripts/prerender.ts
+
+**Modified during code review fixes (2026-02-25):**
+- src/data/about.ts
+- scripts/validate-content.ts
 - scripts/prerender.ts

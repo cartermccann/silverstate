@@ -1,12 +1,11 @@
 import { Component } from 'react'
 import type { CSSProperties, ReactNode, ErrorInfo } from 'react'
 import { site } from '../data/common'
+import type { BaseComponentProps } from '../types'
 
-interface ErrorBoundaryProps {
+interface ErrorBoundaryProps extends BaseComponentProps {
   children: ReactNode
   fallback?: ReactNode
-  className?: string
-  style?: CSSProperties
 }
 
 interface ErrorBoundaryState {
@@ -37,10 +36,12 @@ const bodyStyle: CSSProperties = {
 }
 
 const ctaStyle: CSSProperties = {
-  display: 'inline-block',
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
   padding: '14px 32px',
   backgroundColor: 'var(--blue)',
-  color: '#fff',
+  color: 'var(--white)',
   borderRadius: 'var(--radius)',
   textDecoration: 'none',
   fontFamily: 'var(--font-display)',
@@ -89,7 +90,11 @@ export default class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBo
             We&apos;re sorry — this page isn&apos;t loading correctly right now. Please try
             refreshing, or reach out to us directly. We&apos;re here to help 24/7.
           </p>
-          <a href={site.phoneTel} style={ctaStyle}>
+          <a
+            href={site.phoneTel}
+            aria-label={`Call Silver State at ${site.phone}`}
+            style={ctaStyle}
+          >
             Call {site.phone}
           </a>
           <br />

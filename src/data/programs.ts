@@ -49,7 +49,7 @@ export const residentialProgram: ProgramPageData = {
   metaTitle: 'Residential Treatment for Teens | Silver State Treatment Center',
   metaDescription:
     'Our residential program provides 24/7 therapeutic support for adolescents 11\u201317. Evidence-based therapies, academic continuity, and family programming in a structured, safe environment.',
-  heroImage: '/assets/hero-residential.webp',
+  heroImage: '/assets/teen-therapist.jpg',
   overview:
     'Our residential program provides 24/7 therapeutic support in a structured, safe environment. Teens receive individualized treatment combining evidence-based therapies, academic continuity through Silver State Youth Academy, and comprehensive family programming designed for lasting change. Each adolescent works with a dedicated care team that develops a personalized treatment plan addressing their unique mental health needs, family dynamics, and educational goals.',
   approach:
@@ -182,7 +182,7 @@ export const phpProgram: ProgramPageData = {
   metaTitle: 'Partial Hospitalization Program (PHP) for Teens | Silver State',
   metaDescription:
     'Our PHP provides full-day clinical intensity with the flexibility to return home each evening. A structured bridge between residential care and independent living for teens 11\u201317.',
-  heroImage: '/assets/hero-php.webp',
+  heroImage: '/assets/woman-on-phone.jpg',
   overview:
     'Our Partial Hospitalization Program provides full clinical intensity during the day with the flexibility to return home each evening. PHP serves as a critical bridge between residential care and independent living, helping teens practice newly learned skills in real-world settings while maintaining the therapeutic structure they need. Teens attend programming five days per week and receive the same evidence-based therapies as our residential program in a supportive, structured environment.',
   approach:
@@ -290,7 +290,7 @@ export const iopProgram: ProgramPageData = {
   metaTitle: 'Intensive Outpatient Program (IOP) for Teens | Silver State',
   metaDescription:
     'Our IOP offers targeted therapeutic sessions several times per week for teens 11\u201317. Maintain school and daily routines while receiving evidence-based mental health treatment.',
-  heroImage: '/assets/hero-iop.webp',
+  heroImage: '/assets/hero-youth.webp',
   overview:
     'Our Intensive Outpatient Program offers targeted therapeutic sessions several times per week, designed for teens who need focused clinical support while maintaining their school schedule, friendships, and daily routines. IOP is ideal for adolescents stepping down from higher levels of care or those whose needs exceed traditional weekly outpatient therapy. Teens build on coping skills, emotional regulation, and family communication in a supportive peer group environment.',
   approach:
@@ -325,13 +325,7 @@ export const iopProgram: ProgramPageData = {
       desc: 'Session summary, at-home practice assignments, and coordination with parents on progress.',
     },
   ],
-  therapyModalities: [
-    'cbt',
-    'dbt',
-    'individual-therapy',
-    'group-therapy',
-    'family-therapy',
-  ],
+  therapyModalities: ['cbt', 'dbt', 'individual-therapy', 'group-therapy', 'family-therapy'],
   features: [
     'After-school sessions (3 days per week)',
     'Maintain school enrollment and daily routines',

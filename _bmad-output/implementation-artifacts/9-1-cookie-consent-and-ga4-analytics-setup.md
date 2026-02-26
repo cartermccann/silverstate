@@ -1,6 +1,6 @@
 # Story 9.1: Cookie Consent & GA4 Analytics Setup
 
-Status: review
+Status: done
 
 ## Story
 
@@ -181,33 +181,65 @@ If the user declines, the GA4 script never loads. Google Consent Mode v2 still r
 
 ### Agent Model Used
 
-Claude Opus 4.6
+GPT-5 Codex
 
 ### Debug Log References
 
-- Initial test run had 2 failures in `initializeGA4` tests due to module-scoped `ga4Loaded` flag not resetting between tests. Fixed by adding `_resetGA4()` test helper.
-- ESLint flagged `setState` inside `useEffect` in CookieConsent. Refactored to use lazy `useState` initializer instead, which is both lint-clean and more correct (synchronous initialization).
+- Senior review (2026-02-25): fixed zone leak where `setConsentState('granted')` could initialize GA4 without checking the current page zone.
+- Senior review (2026-02-25): replaced CookieConsent runtime CSS injection side-effect with component-driven responsive styles.
+- Senior review (2026-02-25): implemented real future Zone 2 route detection patterns (`/forms/*`, `/insurance/verify`) and added regression tests.
+- Senior review (2026-02-25): added explicit serverless proxy test coverage for `api/gtm.ts`.
+- Senior review (2026-02-25): adjusted CookieConsent tests to include `matchMedia` mocking for `useIsMobile` compatibility.
 
 ### Completion Notes List
 
-- **Task 1:** Created `src/utils/analytics.ts` with full Google Consent Mode v2 support. Implements `ConsentState` and `TrackingZone` types, gtag shim, consent read/write with localStorage (`ss_consent` key), default consent initialization, zone-aware GA4 loading via `/api/gtm` proxy, and `getTrackingZone()` with Zone 2 TODO placeholder. All functions are pure (no React imports). `ad_storage` always `'denied'`. Graceful localStorage fallback for private browsing.
-- **Task 2:** Created `api/gtm.ts` as Vercel Edge serverless function. Proxies GA4 `gtag.js` script from `googletagmanager.com` through the site's own domain. Accepts GET with `?id=` query param or falls back to `process.env.GA4_ID`. Returns 405 for non-GET, 502 for upstream failures. 1-hour cache headers.
-- **Task 3:** Created `src/components/CookieConsent.tsx` with named default export. Banner uses `var(--dark)` background, `#fff` text, `var(--sage)` accept button. Fixed to bottom viewport with `z-index: 100`. Responsive layout stacks vertically at 900px breakpoint. Heading uses `<p>` (not `<h1>`), privacy-reassuring copy, "Accept Analytics" / "Decline" buttons.
-- **Task 4:** Full accessibility: `role="dialog"`, `aria-label="Cookie consent"`, `aria-modal="false"`, `<button>` elements with 44px min touch targets, keyboard navigation (Tab reaches both buttons, Enter/Space activates), `useRef`+`useEffect` focus management on banner appearance, `tabIndex={-1}` for programmatic focus, no focus trap, `prefers-reduced-motion` media query.
-- **Task 5:** Wired into `PageLayout.tsx` — `<CookieConsent />` renders after Footer. `useEffect` with `pathname` dependency calls `getTrackingZone()` and `initializeGA4()` on route changes when consent is granted and zone is 1.
-- **Task 6:** TypeScript check (zero errors), ESLint (zero errors), full Vitest suite (141 tests pass, zero regressions). Tasks 6.2-6.9 are manual verification items for the reviewer.
+- Consent flow now enforces zone rules both on route change and at consent grant time:
+  - `setConsentState('granted')` checks `getTrackingZone(window.location.pathname)` before any GA4 initialization.
+  - prevents accidental script load on future Zone 2 routes.
+- `getTrackingZone()` now has executable future-safe matching for `/forms/*` and `/insurance/verify` (Zone 2), while current production routes still resolve to Zone 1.
+- CookieConsent responsive behavior moved fully into component state/style logic with `useIsMobile(900)`; removed module-level `<style>` injection side effect.
+- Banner visuals/token usage standardized (`var(--font-display)`, `var(--white)`), and accessibility behavior remains intact (`role="dialog"`, focus management, keyboard interaction).
+- Added API proxy regression coverage in `api/gtm.test.ts` for method gating, missing ID handling, upstream success, env fallback, and upstream failure behavior.
+- Validation commands passed:
+  - `npx vitest run src/utils/analytics.test.ts src/components/CookieConsent.test.tsx api/gtm.test.ts`
+  - `npx tsc --noEmit`
+  - `npm run lint`
+  - `npm run format:check`
 
 ### File List
 
-- `src/utils/analytics.ts` (new) — Consent management, Google Consent Mode v2, GA4 loading, zone model
-- `src/utils/analytics.test.ts` (new) — 18 unit tests for analytics utility
-- `api/gtm.ts` (new) — Vercel Edge serverless function for GA4 first-party script proxy
-- `src/components/CookieConsent.tsx` (new) — Cookie consent banner UI component
-- `src/components/CookieConsent.test.tsx` (new) — 11 unit tests for CookieConsent component
-- `src/layouts/PageLayout.tsx` (modified) — Added CookieConsent + GA4 initialization on route changes
-- `.env.example` (modified) — Added `GA4_ID` server-side environment variable
-- `_bmad-output/implementation-artifacts/sprint-status.yaml` (modified) — Status updated
+- `src/utils/analytics.ts` (modified — zone-aware consent grant path + future Zone 2 route matching)
+- `src/utils/analytics.test.ts` (modified — added Zone 2 routing/consent regression checks)
+- `src/components/CookieConsent.tsx` (modified — removed runtime style injection, tokenized styles, responsive layout via `useIsMobile`)
+- `src/components/CookieConsent.test.tsx` (modified — added `matchMedia` mock compatibility)
+- `api/gtm.ts` (modified earlier in review stream — server env access aligned for shared typecheck)
+- `api/gtm.test.ts` (added — serverless GA4 proxy behavior coverage)
+- `_bmad-output/implementation-artifacts/sprint-status.yaml` (modified — Story 9.1 status sync to `done`)
+- `_bmad-output/implementation-artifacts/9-1-cookie-consent-and-ga4-analytics-setup.md` (modified — senior review closure)
 
 ## Change Log
 
 - **2026-02-24:** Story 9.1 implemented — Cookie consent banner with Google Consent Mode v2, GA4 loading via server-side proxy, two-zone tracking model (Zone 1 informational / Zone 2 health forms), full WCAG AA accessibility, 29 new tests added (141 total pass)
+- **2026-02-25:** Senior code review completed — fixed zone-gating gap on consent grant, implemented future Zone 2 detection, removed runtime style injection side effect, and added API proxy regression tests.
+
+### Senior Developer Review (AI)
+
+**Reviewer:** Silver  
+**Date:** 2026-02-25  
+**Outcome:** Approved (all high/medium findings fixed)
+
+**Findings**
+
+1. **HIGH:** `setConsentState('granted')` initialized GA4 directly without checking current route zone, creating a future FR34 compliance leak for Zone 2 pages.
+2. **MEDIUM:** `getTrackingZone()` returned Zone 1 for every path, so future Zone 2 behavior was only comments and not executable logic.
+3. **MEDIUM:** CookieConsent injected responsive CSS via module-level DOM side-effect (`document.createElement('style')`), increasing global coupling and test/runtime fragility.
+4. **MEDIUM:** CookieConsent still used hardcoded font/color values in several style entries instead of tokenized values.
+5. **MEDIUM:** No direct automated tests existed for `api/gtm.ts` behavior (method, upstream fail, env fallback).
+
+**Fixes Applied**
+
+- Added zone check inside `setConsentState('granted')` before any GA4 initialization.
+- Implemented concrete Zone 2 route matching (`/forms/*`, `/insurance/verify`) in `getTrackingZone()`.
+- Refactored CookieConsent responsive behavior to component-level layout styles driven by `useIsMobile(900)`, removing runtime style injection.
+- Tokenized CookieConsent font/color styles where hardcoded values existed.
+- Added `api/gtm.test.ts` and validated proxy behavior across success/failure paths.

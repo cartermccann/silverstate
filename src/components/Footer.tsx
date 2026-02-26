@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'react'
 import { Link } from 'react-router'
 import { IconMapPin, IconPhone, IconMail } from './Icons'
+import { OPEN_CONSENT_EVENT } from '../utils/consentEvents'
 import { footerLinks, site, accreditations } from '../data/common'
 
 const columnHeadingStyle: CSSProperties = {
@@ -35,6 +36,11 @@ const contactRowStyle: CSSProperties = {
 export default function Footer() {
   const phoneAriaLabel = `Call Silver State at ${site.phone}`
   const emailAriaLabel = `Email Silver State at ${site.email}`
+  const cookiePrefsAriaLabel = 'Open cookie preferences'
+
+  function openCookiePreferences() {
+    window.dispatchEvent(new CustomEvent(OPEN_CONSENT_EVENT))
+  }
 
   return (
     <footer
@@ -162,6 +168,25 @@ export default function Footer() {
           >
             Privacy Policy
           </Link>
+          <button
+            type="button"
+            onClick={openCookiePreferences}
+            aria-label={cookiePrefsAriaLabel}
+            style={{
+              color: 'var(--body)',
+              minHeight: 44,
+              display: 'flex',
+              alignItems: 'center',
+              background: 'none',
+              border: 'none',
+              padding: 0,
+              cursor: 'pointer',
+              fontSize: '0.75rem',
+              textDecoration: 'underline',
+            }}
+          >
+            Cookie Preferences
+          </button>
         </div>
       </div>
 

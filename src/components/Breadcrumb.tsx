@@ -1,10 +1,9 @@
 import { useLocation, Link } from 'react-router'
 import type { CSSProperties } from 'react'
+import type { BaseComponentProps } from '../types'
+import { routePaths } from '../routes'
 
-interface BreadcrumbProps {
-  className?: string
-  style?: CSSProperties
-}
+type BreadcrumbProps = BaseComponentProps
 
 const SEGMENT_LABELS: Record<string, string> = {
   programs: 'Programs',
@@ -26,6 +25,7 @@ const SEGMENT_LABELS: Record<string, string> = {
   'ocd-treatment': 'OCD Treatment',
   'bipolar-disorder-treatment': 'Bipolar Disorder Treatment',
   'autism-spectrum-treatment': 'Autism Spectrum Treatment',
+  'oppositional-defiant-disorder-treatment': 'Oppositional Defiant Disorder Treatment',
   'oppositional-defiant-treatment': 'Oppositional Defiant Treatment',
   'conduct-disorder-treatment': 'Conduct Disorder Treatment',
   'dmdd-treatment': 'DMDD Treatment',
@@ -41,6 +41,7 @@ const SEGMENT_LABELS: Record<string, string> = {
   'cannabis-abuse-treatment': 'Cannabis Abuse Treatment',
   'anorexia-nervosa-treatment': 'Anorexia Nervosa Treatment',
   'bulimia-nervosa-treatment': 'Bulimia Nervosa Treatment',
+  'binge-eating-disorder-treatment': 'Binge Eating Disorder Treatment',
   'binge-eating-treatment': 'Binge Eating Treatment',
   'arfid-treatment': 'ARFID Treatment',
   'osfed-treatment': 'OSFED Treatment',
@@ -74,7 +75,8 @@ function segmentToLabel(segment: string): string {
 }
 
 function generateBreadcrumbJsonLd(crumbs: Array<{ label: string; path: string }>): string {
-  const siteUrl = import.meta.env.VITE_SITE_URL || ''
+  const rawSiteUrl = import.meta.env?.VITE_SITE_URL || 'https://www.silverstatetreatment.com'
+  const siteUrl = rawSiteUrl.replace(/\/+$/, '')
 
   return JSON.stringify({
     '@context': 'https://schema.org',
@@ -83,7 +85,7 @@ function generateBreadcrumbJsonLd(crumbs: Array<{ label: string; path: string }>
       '@type': 'ListItem',
       position: index + 1,
       name: crumb.label,
-      item: `${siteUrl}${crumb.path}`,
+      item: crumb.path === '/' ? `${siteUrl}/` : `${siteUrl}${crumb.path}`,
     })),
   })
 }
@@ -110,6 +112,10 @@ const separatorStyle: CSSProperties = {
 }
 
 const linkStyle: CSSProperties = {
+  display: 'inline-flex',
+  alignItems: 'center',
+  minHeight: 44,
+  padding: '4px 6px',
   color: 'var(--blue)',
   textDecoration: 'none',
 }
@@ -123,6 +129,9 @@ export default function Breadcrumb({ className, style }: BreadcrumbProps) {
   const { pathname } = useLocation()
 
   if (pathname === '/') return null
+
+  // Hide breadcrumb for unknown paths rendered by the wildcard 404 route.
+  if (!routePaths.includes(pathname)) return null
 
   const segments = pathname.split('/').filter(Boolean)
   const crumbs = [

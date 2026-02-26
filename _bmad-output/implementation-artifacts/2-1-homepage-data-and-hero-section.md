@@ -1,6 +1,6 @@
 # Story 2.1: Homepage Data & Hero Section
 
-Status: review
+Status: done
 
 ## Story
 
@@ -169,28 +169,55 @@ Claude Opus 4.6
 
 ### Debug Log References
 
-- Replaced 1788-line monolithic Home.tsx (mockup copy) with clean 230-line production file covering only Story 2.1 scope
+- Replaced 1788-line monolithic Home.tsx (mockup copy) with clean 230-line production file for initial Story 2.1 scope
+- Senior review (2026-02-25): fixed task-compliance drift in `homepage.ts` type placement and export naming, aligned hero viewport/token usage, and added targeted Story 2.1 tests
 
 ### Completion Notes List
 
 - Added `HeroData` and `IntroData` interfaces to types.ts
 - Restructured homepage.ts: added `heroData` (with CTAs + background image), `introData` (paragraph + credibility line), `facilityGalleryImages` (LightboxImage[]); kept legacy `hero` export for backward compat
-- Rewrote Home.tsx with only 3 sections: hero, intro, "Who This Is For" — Stories 2.2/2.3 will add remaining sections
+- Rewrote Home.tsx with initial 3 sections (hero, intro, "Who This Is For"); subsequent stories extended the same file as planned
 - Removed direct Nav/Footer rendering (PageLayout handles via route config)
-- Replaced all hardcoded colors with CSS tokens: `var(--font-display)`, `var(--sage)`, `var(--body)`, `var(--text)`
+- Updated page-level color/font constants to use CSS token references where available: `var(--font-display)`, `var(--sage)`, `var(--cream)`, `var(--warm)`, `var(--dark)`
 - Converted `href="#programs"` hash link to `<Link to="/programs/residential-treatment">`
 - Added `fetchPriority="high"`, `loading="eager"`, `width={1920}`, `height={1080}` to hero image for LCP optimization
 - Added `aria-label` on phone CTA: "Call Silver State at (725) 525-9897"
 - All animation components (Parallax, CharReveal, TextReveal, AnimateIn, MagneticButton) already handle prefers-reduced-motion
-- Responsive: clamp() font sizes, flexWrap CTAs, sticky sidebar unsticks at 900px, .btn provides 44px touch targets
-- tsc --noEmit: zero errors; vite build: success (Home.js 12.38KB, down from ~49KB)
+- Responsive: clamp() font sizes, flexWrap CTAs, sticky sidebar unsticks at 900px, .btn provides 44px touch targets; hero restored to full viewport (`height: 100vh`)
+- Senior review updates:
+  - moved new homepage interfaces from `src/data/homepage.ts` into `src/types.ts` per architecture/story rule (`LegacyHeroData`, `HomepageStatItem`, `HomepageTestimonialData`, `WhoThisIsForData`)
+  - added `whoThisIsForData` export alias to satisfy task naming contract while preserving existing imports
+  - added Story 2.1-focused tests for hero LCP attributes and data-sourced content rendering
+- Validation (2026-02-25): `npx tsc --noEmit`, `npm run lint`, `npm run format:check`, `npm run test -- src/pages/Home.test.tsx`, and `npm run build` all pass
 
 ### Change Log
 
 - 2026-02-24: Implemented homepage hero, intro, and "Who This Is For" sections (all 8 tasks complete)
+- 2026-02-25: Senior code review completed — resolved task-compliance gaps, added Story 2.1 coverage, and revalidated build/lint/test gates.
 
 ### File List
 
-- `src/types.ts` (modified) — Added HeroData, IntroData interfaces
-- `src/data/homepage.ts` (modified) — Added heroData, introData, facilityGalleryImages; explicit type annotations on all exports
-- `src/pages/Home.tsx` (modified) — Production rewrite: hero + intro + who-this-is-for only, CSS tokens, data-driven, no Nav/Footer
+- `src/types.ts` (modified) — Added HeroData/IntroData initially; senior review added `LegacyHeroData`, `HomepageStatItem`, `HomepageTestimonialData`, `WhoThisIsForData`
+- `src/data/homepage.ts` (modified) — Added hero/intro/facility data; senior review moved inline interfaces to `types.ts` and added `whoThisIsForData` alias export
+- `src/data/index.ts` (modified) — Added `homepage.ts` re-export
+- `src/pages/Home.tsx` (modified) — Homepage implementation; senior review aligned hero to full viewport and token-based constants
+- `src/pages/Home.test.tsx` (modified) — Senior review tests for hero LCP attributes and data-driven Story 2.1 sections
+
+### Senior Developer Review (AI)
+
+**Reviewer:** Silver  
+**Date:** 2026-02-25  
+**Outcome:** Approved (all high/medium findings fixed)
+
+**Findings**
+- Resolved (Task 1.7 compliance): new interfaces remained in `src/data/homepage.ts` instead of `src/types.ts`.
+- Resolved (Task 1.4 naming contract): `whoThisIsForData` export was missing.
+- Resolved (Task 2.5 + styling guidance): hero section was not full viewport (`85vh`) and page constants still used hardcoded values where tokens exist.
+- Resolved (test quality gap): no direct assertions for hero LCP attributes and data-driven section copy for Story 2.1 scope.
+
+**Verification**
+- `npx tsc --noEmit` passed.
+- `npm run lint` passed.
+- `npm run format:check` passed.
+- `npm run test -- src/pages/Home.test.tsx` passed (20/20).
+- `npm run build` passed, including content/schema validation and prerender.

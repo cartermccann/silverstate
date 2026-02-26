@@ -1,10 +1,13 @@
 import type {
   WhyChooseEntry,
-  ProfileEntry,
   DailyScheduleEntry,
   HeroData,
   IntroData,
   LightboxImage,
+  LegacyHeroData,
+  HomepageStatItem,
+  HomepageTestimonialData,
+  WhoThisIsForData,
   HomepageProgramHighlight,
   ConditionOverviewCategory,
   YouthAcademyFeature,
@@ -27,7 +30,7 @@ export const heroData: HeroData = {
 }
 
 // Keep legacy shape for backward compatibility during migration
-export const hero = {
+export const hero: LegacyHeroData = {
   refined: {
     label: "Nevada's Leading Teen Treatment Center",
     headline: 'We guide teens toward a brighter future',
@@ -41,7 +44,7 @@ export const hero = {
 
 export const introData: IntroData = {
   paragraph:
-    "We believe adolescent treatment should feel like a turning point \u2014 not a dead end. Our clinical team works alongside your family to build a treatment plan that honors your teen\u2019s story, not just their diagnosis.",
+    'We believe adolescent treatment should feel like a turning point \u2014 not a dead end. Our clinical team works alongside your family to build a treatment plan that honors your teen\u2019s story, not just their diagnosis.',
   credibilityLine:
     'Joint Commission Gold Seal accredited. LegitScript approved. HIPAA compliant. Serving Nevada families since day one.',
 }
@@ -64,15 +67,15 @@ export const facilityGalleryImages: LightboxImage[] = [
   },
 ]
 
-export const stats = [
+export const stats: HomepageStatItem[] = [
   { value: '24/7', label: 'Clinical support' },
   { value: '11\u201317', label: 'Ages served' },
+  { value: '4:1', label: 'Staff-to-client ratio' },
   { value: '4.8', label: 'Average rating (34 reviews)', suffix: '/5' },
-  { value: 'Joint Commission', label: 'Gold Seal accredited' },
 ]
 
 // Alias for story 2.2 naming convention
-export const statsData = stats
+export const statsData: HomepageStatItem[] = stats
 
 export const whyChoose: WhyChooseEntry[] = [
   {
@@ -93,25 +96,28 @@ export const whyChoose: WhyChooseEntry[] = [
   },
 ]
 
-export const testimonial = {
+export const testimonial: HomepageTestimonialData = {
   quote:
     'We were terrified when our son entered treatment. Within two weeks, we saw a different kid \u2014 calmer, more communicative, actually hopeful. The family sessions changed everything for us too.',
   author: 'Parent of a former resident',
   detail: 'Residential program',
 }
 
-export const whoThisIsFor = {
+export const whoThisIsFor: WhoThisIsForData = {
   headline: 'This isn\'t just for "troubled teens"',
-  body: "Many teens who benefit from our program are anxious, overwhelmed, or withdrawn \u2014 not defiant or aggressive. If your child is struggling and outpatient care isn\u2019t enough, this may be the right step.",
+  body: 'Many teens who benefit from our program are anxious, overwhelmed, or withdrawn \u2014 not defiant or aggressive. If your child is struggling and outpatient care isn\u2019t enough, this may be the right step.',
   profiles: [
-    { label: 'The anxious teen', desc: "who can\u2019t make it through a school day" },
+    { label: 'The anxious teen', desc: 'who can\u2019t make it through a school day' },
     { label: 'The withdrawn teen', desc: 'who has stopped talking to family and friends' },
     { label: 'The overwhelmed teen', desc: 'whose emotions feel too big to manage' },
-    { label: 'The teen in crisis', desc: "whose safety you\u2019re worried about every day" },
-    { label: "The teen who\u2019s tried everything", desc: 'and nothing has stuck' },
+    { label: 'The teen in crisis', desc: 'whose safety you\u2019re worried about every day' },
+    { label: 'The teen who\u2019s tried everything', desc: 'and nothing has stuck' },
     { label: 'The teen masking pain', desc: 'behind substances, screens, or silence' },
-  ] as ProfileEntry[],
+  ],
 }
+
+// Story 2.1 naming contract (alias retained with canonical export)
+export const whoThisIsForData: WhoThisIsForData = whoThisIsFor
 
 export const dailySchedule: DailyScheduleEntry[] = [
   {
@@ -167,8 +173,8 @@ export const dailySchedule: DailyScheduleEntry[] = [
 ]
 
 // Alias for story 2.2 naming convention
-export const dailyScheduleData = dailySchedule
-export const testimonialData = testimonial
+export const dailyScheduleData: DailyScheduleEntry[] = dailySchedule
+export const testimonialData: HomepageTestimonialData = testimonial
 
 // --- Story 2.2: Homepage content section data ---
 
@@ -226,7 +232,10 @@ export const conditionsOverviewData: ConditionOverviewCategory[] = [
       { name: 'OCD', slug: 'ocd-treatment' },
       { name: 'Bipolar Disorder', slug: 'bipolar-disorder-treatment' },
       { name: 'Autism Spectrum (ASD)', slug: 'autism-spectrum-treatment' },
-      { name: 'Oppositional Defiant Disorder (ODD)', slug: 'odd-treatment' },
+      {
+        name: 'Oppositional Defiant Disorder (ODD)',
+        slug: 'oppositional-defiant-disorder-treatment',
+      },
       { name: 'Conduct Disorder', slug: 'conduct-disorder-treatment' },
       { name: 'DMDD', slug: 'dmdd-treatment' },
       { name: 'BPD', slug: 'bpd-treatment' },
@@ -241,7 +250,7 @@ export const conditionsOverviewData: ConditionOverviewCategory[] = [
       { name: 'Opioids', slug: 'opioid-abuse-treatment' },
       { name: 'Benzodiazepines', slug: 'benzodiazepine-abuse-treatment' },
       { name: 'Cocaine', slug: 'cocaine-abuse-treatment' },
-      { name: 'Crystal Meth', slug: 'crystal-meth-abuse-treatment' },
+      { name: 'Crystal Meth', slug: 'meth-abuse-treatment' },
       { name: 'Cannabis', slug: 'cannabis-abuse-treatment' },
     ],
   },
@@ -250,10 +259,9 @@ export const conditionsOverviewData: ConditionOverviewCategory[] = [
     conditions: [
       { name: 'Anorexia Nervosa', slug: 'anorexia-nervosa-treatment' },
       { name: 'Bulimia Nervosa', slug: 'bulimia-nervosa-treatment' },
-      { name: 'Binge Eating', slug: 'binge-eating-treatment' },
+      { name: 'Binge Eating', slug: 'binge-eating-disorder-treatment' },
       { name: 'ARFID', slug: 'arfid-treatment' },
       { name: 'OSFED', slug: 'osfed-treatment' },
-      { name: 'Compulsive Eating', slug: 'compulsive-eating-treatment' },
     ],
   },
 ]
@@ -282,13 +290,22 @@ export const youthAcademyData: {
   director: { name: string; title: string; bio: string }
 } = {
   label: 'Silver State Youth Academy',
-  headline: "Treatment shouldn\u2019t mean falling behind in school",
+  headline: 'Treatment shouldn\u2019t mean falling behind in school',
   body: 'Our on-site, fully accredited academic program means your teen continues their education alongside treatment \u2014 not instead of it. Certified teachers deliver personalized instruction in small class sizes, with all credits transferring back to their home school.',
   features: [
-    { title: 'Accredited Curriculum', desc: 'Standards-based instruction aligned with public school expectations' },
-    { title: 'Small Class Sizes', desc: 'Personalized attention from certified, trauma-informed teachers' },
+    {
+      title: 'Accredited Curriculum',
+      desc: 'Standards-based instruction aligned with public school expectations',
+    },
+    {
+      title: 'Small Class Sizes',
+      desc: 'Personalized attention from certified, trauma-informed teachers',
+    },
     { title: 'Credit Transfer', desc: 'Full transcript coordination so no academic year is lost' },
-    { title: 'Skill Building', desc: 'Time management, organization, emotional regulation, and accountability' },
+    {
+      title: 'Skill Building',
+      desc: 'Time management, organization, emotional regulation, and accountability',
+    },
   ],
   director: {
     name: 'Karel Saquing',
@@ -298,7 +315,7 @@ export const youthAcademyData: {
 }
 
 export const teamOverviewData: HomepageTeamOverview = {
-  clinical: 'Cameron Diaz, PhD \u2014 Chief Clinical Director',
+  clinical: 'Dr. Russ Park and Arianne Smith',
   members: [
     'Psychiatrist',
     'Individual Therapist',
@@ -332,9 +349,9 @@ export const accreditationsOverviewData: AccreditationEntry[] = [
 
 export const familySectionData: FamilySectionData = {
   heading: 'Your family is part of the treatment team',
-  body: "Healing doesn\u2019t happen in isolation. We involve parents and guardians from the very first day because lasting change requires a family working together. Through structured therapy sessions, educational workshops, and consistent communication, we ensure your family is equipped to support your teen long after discharge.",
+  body: 'Healing doesn\u2019t happen in isolation. We involve parents and guardians from the very first day because lasting change requires a family working together. Through structured therapy sessions, educational workshops, and consistent communication, we ensure your family is equipped to support your teen long after discharge.',
   bulletPoints: [
-    "Weekly progress updates from your teen\u2019s care team",
+    'Weekly progress updates from your teen\u2019s care team',
     'Family therapy integrated into every treatment plan',
     'Parent education workshops and support groups',
     'Comprehensive discharge and transition planning',
@@ -356,15 +373,15 @@ export const faqsData: FaqEntry[] = [
   },
   {
     q: 'How do I know if my teen needs residential treatment?',
-    a: "If outpatient care isn\u2019t enough and your teen\u2019s mental health is interfering with daily life, relationships, or safety, residential treatment may be appropriate.",
+    a: 'If outpatient care isn\u2019t enough and your teen\u2019s mental health is interfering with daily life, relationships, or safety, residential treatment may be appropriate.',
   },
   {
-    q: "I\u2019ve never done this before. Where do I start?",
-    a: "Call us. We\u2019ll walk you through everything step by step with zero judgment.",
+    q: 'I\u2019ve never done this before. Where do I start?',
+    a: 'Call us. We\u2019ll walk you through everything step by step with zero judgment.',
   },
   {
     q: 'What if my teen doesn\u2019t look "sick enough" for treatment?',
-    a: "If you\u2019re worried, that\u2019s enough to call. We assess every situation carefully.",
+    a: 'If you\u2019re worried, that\u2019s enough to call. We assess every situation carefully.',
   },
   {
     q: 'What if I\u2019ve tried everything and nothing has worked?',
@@ -376,7 +393,7 @@ export const admissionsOverviewData: HomepageAdmissionsStep[] = [
   {
     step: 1,
     title: 'Call our team',
-    desc: "Speak with an admissions counselor 24/7. No waitlists, no judgment. We\u2019ll ask about your teen\u2019s situation and answer every question you have.",
+    desc: 'Speak with an admissions counselor 24/7. No waitlists, no judgment. We\u2019ll ask about your teen\u2019s situation and answer every question you have.',
   },
   {
     step: 2,
@@ -386,7 +403,7 @@ export const admissionsOverviewData: HomepageAdmissionsStep[] = [
   {
     step: 3,
     title: 'Clinical assessment',
-    desc: "A licensed clinician conducts a comprehensive evaluation to determine the right level of care \u2014 residential, PHP, or IOP \u2014 tailored to your teen\u2019s needs.",
+    desc: 'A licensed clinician conducts a comprehensive evaluation to determine the right level of care \u2014 residential, PHP, or IOP \u2014 tailored to your teen\u2019s needs.',
   },
   {
     step: 4,

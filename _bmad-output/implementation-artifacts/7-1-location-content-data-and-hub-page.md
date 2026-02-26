@@ -1,6 +1,6 @@
 # Story 7.1: Location Content Data & Hub Page
 
-Status: review
+Status: done
 
 ## Story
 
@@ -277,11 +277,15 @@ The Locations hub page and `locations.ts` data file serve two purposes:
 
 ### Agent Model Used
 
-Claude Opus 4.6
+GPT-5 Codex
 
 ### Debug Log References
 
-None — clean implementation with no blocking issues.
+- Senior review (2026-02-25): removed duplicate LocalBusiness schema emission by keeping JSON-LD script output in-page and removing route-level `meta.jsonLd`.
+- Senior review (2026-02-25): aligned Locations hub styling constants to CSS token values (`var(--font-display)`, `var(--warm)`).
+- Senior review (2026-02-25): added explicit 44px touch-target enforcement on cross-navigation admissions/call CTAs.
+- Senior review (2026-02-25): set a page-specific OG image for `/locations` metadata.
+- Senior review (2026-02-25): updated Story 7.1 tests to validate no route-level ld+json and page-specific OG image behavior.
 
 ### Completion Notes List
 
@@ -290,21 +294,48 @@ None — clean implementation with no blocking issues.
 - Added `locationsBySlug` lookup map and `locationHubContent` hub page content export
 - Built full `LocationsHub` page following Insurance hub pattern: hero section with CharReveal, facility details callout with semantic `<address>` element, service area card grid with fully-clickable `<Link>` wrapping, phone CTA section, and cross-navigation links
 - LocalBusiness JSON-LD injected via `generateLocalBusiness()` from `utils/schema.ts` (already supports `areaServed`)
-- SEO meta exported via `generateMeta()` with JSON-LD included in meta tags
+- SEO meta exported via `generateMeta()` with unique canonical/OG tags and page-specific OG image for the locations hub
 - Responsive layout: 3-column grid on desktop (>=900px), single column on mobile
-- All CSS tokens used correctly: `var(--body)`, `var(--text)`, `var(--sage-soft)`, `var(--blue)`
-- Touch targets >= 44px on all interactive elements
-- 21 new tests covering data validation, SEO meta, and page rendering
-- `npx tsc --noEmit` passes, `vite build` succeeds, all 57 tests pass (0 regressions)
+- All CSS tokens used correctly: `var(--font-display)`, `var(--warm)`, `var(--body)`, `var(--text)`, `var(--sage-soft)`, `var(--blue)`
+- Touch targets >= 44px on all interactive elements, including cross-nav conversion CTAs
+- 22 tests cover data validation, SEO/meta contract, and hub rendering
+- Verification commands passed:
+  - `npx tsc --noEmit`
+  - `npx vitest run src/pages/locations/Index.test.tsx src/pages/locations/CityPage.test.tsx`
+  - `npm run lint`
+  - `npm run format:check`
 - Route `/locations` already existed in `routes.tsx`; barrel re-export already in `data/index.ts`
 
 ### Change Log
 
 - 2026-02-24: Story 7.1 implemented — LocationData interface expanded, locations.ts data created for 5 service areas, LocationsHub page built with JSON-LD, SEO, responsive layout, and 21 tests
+- 2026-02-25: Senior code review completed — fixed duplicate schema/meta contract, OG image specificity, token compliance, touch-target enforcement, and updated regression tests.
 
 ### File List
 
 - `src/types.ts` (modified — expanded LocationData interface)
 - `src/data/locations.ts` (modified — populated with 5 locations + hub content + locationsBySlug)
-- `src/pages/locations/Index.tsx` (modified — full LocationsHub page implementation)
-- `src/pages/locations/Index.test.tsx` (new — 21 tests for data + SEO + rendering)
+- `src/pages/locations/Index.tsx` (modified — removed route-level schema emission, tokenized style constants, page-specific OG image, cross-nav touch-target enforcement)
+- `src/pages/locations/Index.test.tsx` (updated — Story 7.1 metadata/schema/touch-target regression coverage)
+- `_bmad-output/implementation-artifacts/7-1-location-content-data-and-hub-page.md` (modified — review completion record)
+- `_bmad-output/implementation-artifacts/sprint-status.yaml` (modified — story status sync)
+
+### Senior Developer Review (AI)
+
+**Reviewer:** Silver  
+**Date:** 2026-02-25  
+**Outcome:** Approved (all high and medium findings fixed)
+
+**Findings**
+
+1. **HIGH:** Locations hub emitted duplicate `LocalBusiness` structured data via route meta (`jsonLd`) and in-page script.
+2. **MEDIUM:** Route metadata used default OG image instead of a location/facility-specific image.
+3. **MEDIUM:** Locations hub used hardcoded display font and warm background values instead of CSS tokens.
+4. **MEDIUM:** Cross-navigation admissions/call CTAs lacked explicit 44px touch-target enforcement.
+
+**Fixes Applied**
+
+- Removed route-level `jsonLd` from `meta` and retained `LocalBusiness` structured data in page script output.
+- Added page-specific `ogImage` to locations route metadata.
+- Replaced hardcoded style constants with design-token values.
+- Added explicit `minHeight` and alignment styles for cross-nav conversion CTAs and updated tests accordingly.

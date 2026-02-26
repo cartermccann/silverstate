@@ -8,6 +8,14 @@ export const config = {
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const PHONE_REGEX = /^[\d\s\-()+]+$/
+const DEFAULT_SITE_ORIGIN = 'https://www.silverstatetreatment.com'
+
+const ENV =
+  (
+    globalThis as {
+      process?: { env?: Record<string, string | undefined> }
+    }
+  ).process?.env ?? {}
 
 function stripHtml(str: string): string {
   return str.replace(/<[^>]*>/g, '')
@@ -20,6 +28,23 @@ function escapeHtml(str: string): string {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;')
+}
+
+function normalizeOrigin(value: string): string {
+  return value.trim().replace(/\/+$/, '')
+}
+
+function getAllowedOrigin(req: Request): string {
+  const fromEnv = ENV.SITE_URL || ENV.VITE_SITE_URL
+  if (fromEnv) {
+    return normalizeOrigin(fromEnv)
+  }
+
+  try {
+    return normalizeOrigin(new URL(req.url).origin)
+  } catch {
+    return DEFAULT_SITE_ORIGIN
+  }
 }
 
 interface ContactBody {
@@ -77,19 +102,35 @@ function validate(body: ContactBody): ValidationErrors | null {
 }
 
 export default async function handler(req: Request): Promise<Response> {
-  // CORS — only allow requests from the site's own origin
-  const allowedOrigin = process.env.VITE_SITE_URL || 'https://www.silverstatetreatment.com'
-  const origin = req.headers.get('origin') || ''
+  const allowedOrigin = getAllowedOrigin(req)
+  const origin = normalizeOrigin(req.headers.get('origin') || '')
 
   const corsHeaders: Record<string, string> = {
-    'Access-Control-Allow-Origin': origin === allowedOrigin ? allowedOrigin : '',
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type',
+    Vary: 'Origin',
   }
 
-  // Handle preflight
+  if (origin === allowedOrigin) {
+    corsHeaders['Access-Control-Allow-Origin'] = allowedOrigin
+  }
+
   if (req.method === 'OPTIONS') {
+    if (origin !== allowedOrigin) {
+      return new Response(JSON.stringify({ error: 'Forbidden origin' }), {
+        status: 403,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      })
+    }
+
     return new Response(null, { status: 204, headers: corsHeaders })
+  }
+
+  if (origin !== allowedOrigin) {
+    return new Response(JSON.stringify({ error: 'Forbidden origin' }), {
+      status: 403,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    })
   }
 
   // Only accept POST
@@ -106,24 +147,29 @@ export default async function handler(req: Request): Promise<Response> {
     // Validate
     const validationErrors = validate(body)
     if (validationErrors) {
-      return new Response(JSON.stringify({ error: 'Validation failed', errors: validationErrors }), {
-        status: 400,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      })
+      return new Response(
+        JSON.stringify({ error: 'Validation failed', errors: validationErrors }),
+        {
+          status: 400,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        },
+      )
     }
 
     // Sanitize inputs
     const name = escapeHtml(stripHtml((body.name as string).trim()))
     const email = stripHtml((body.email as string).trim())
-    const phone = body.phone && typeof body.phone === 'string' && body.phone.trim()
-      ? escapeHtml(stripHtml(body.phone.trim()))
-      : ''
+    const safeEmail = escapeHtml(email)
+    const phone =
+      body.phone && typeof body.phone === 'string' && body.phone.trim()
+        ? escapeHtml(stripHtml(body.phone.trim()))
+        : ''
     const message = escapeHtml(stripHtml((body.message as string).trim()))
 
     // Environment variables
-    const resendApiKey = process.env.RESEND_API_KEY
-    const contactEmail = process.env.CONTACT_EMAIL || 'admissions@silverstatetreatment.com'
-    const fromEmail = process.env.FROM_EMAIL || 'noreply@silverstatetreatment.com'
+    const resendApiKey = ENV.RESEND_API_KEY
+    const contactEmail = ENV.CONTACT_EMAIL || 'admissions@silverstatetreatment.com'
+    const fromEmail = ENV.FROM_EMAIL || 'noreply@silverstatetreatment.com'
 
     if (!resendApiKey) {
       return new Response(
@@ -139,7 +185,7 @@ export default async function handler(req: Request): Promise<Response> {
     const emailBody = [
       `<h2>New Contact Inquiry</h2>`,
       `<p><strong>Name:</strong> ${name}</p>`,
-      `<p><strong>Email:</strong> ${email}</p>`,
+      `<p><strong>Email:</strong> ${safeEmail}</p>`,
       phone ? `<p><strong>Phone:</strong> ${phone}</p>` : '',
       `<hr />`,
       `<p><strong>Message:</strong></p>`,

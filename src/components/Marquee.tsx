@@ -1,5 +1,5 @@
 import { useRef, useEffect, type ReactNode, type CSSProperties } from 'react'
-import { gsap } from 'gsap'
+import { gsap } from '../utils/gsap'
 
 interface MarqueeProps {
   children?: ReactNode
