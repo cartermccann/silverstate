@@ -91,4 +91,23 @@ describe('Breadcrumb', () => {
     const homeLink = screen.getByText('Home')
     expect(homeLink.closest('a')).toHaveAttribute('href', '/')
   })
+
+  it('uses a valid About parent link for /about/facility', () => {
+    render(
+      <MemoryRouter initialEntries={['/about/facility']}>
+        <Breadcrumb />
+      </MemoryRouter>,
+    )
+    const aboutLink = screen.getByText('About').closest('a')
+    expect(aboutLink).toHaveAttribute('href', '/about/our-team')
+  })
+
+  it('does not render a broken /about breadcrumb link', () => {
+    const { container } = render(
+      <MemoryRouter initialEntries={['/about/facility']}>
+        <Breadcrumb />
+      </MemoryRouter>,
+    )
+    expect(container.querySelector('a[href="/about"]')).toBeNull()
+  })
 })

@@ -64,6 +64,10 @@ const SEGMENT_LABELS: Record<string, string> = {
   'clark-county': 'Clark County',
 }
 
+const SECTION_ROOT_ALIASES: Record<string, string> = {
+  about: '/about/our-team',
+}
+
 function segmentToLabel(segment: string): string {
   return (
     SEGMENT_LABELS[segment] ||
@@ -134,13 +138,25 @@ export default function Breadcrumb({ className, style }: BreadcrumbProps) {
   if (!routePaths.includes(pathname)) return null
 
   const segments = pathname.split('/').filter(Boolean)
-  const crumbs = [
-    { label: 'Home', path: '/' },
-    ...segments.map((segment, index) => ({
-      label: segmentToLabel(segment),
-      path: '/' + segments.slice(0, index + 1).join('/'),
-    })),
-  ]
+  const segmentCrumbs: Array<{ label: string; path: string }> = []
+
+  for (const [index, segment] of segments.entries()) {
+    const basePath = '/' + segments.slice(0, index + 1).join('/')
+    const path =
+      index === 0 && SECTION_ROOT_ALIASES[segment] ? SECTION_ROOT_ALIASES[segment] : basePath
+    const label = segmentToLabel(segment)
+    const previous = segmentCrumbs[segmentCrumbs.length - 1]
+
+    // Collapse duplicate paths (e.g. /about + /about/our-team aliasing) and keep the most specific label.
+    if (previous && previous.path === path) {
+      previous.label = label
+      continue
+    }
+
+    segmentCrumbs.push({ label, path })
+  }
+
+  const crumbs = [{ label: 'Home', path: '/' }, ...segmentCrumbs]
 
   const jsonLd = generateBreadcrumbJsonLd(crumbs)
 
