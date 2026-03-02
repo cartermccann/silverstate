@@ -22,5 +22,5 @@
     "noUncheckedIndexedAccess": true
   },
   "include": ["src", "api"],
-  "exclude": ["src/**/*.test.ts", "src/**/*.test.tsx", "api/**/*.test.ts"]
+  "exclude": ["src/**/*.test.ts", "src/**/*.test.tsx", "src/test", "api/**/*.test.ts"]
 }
