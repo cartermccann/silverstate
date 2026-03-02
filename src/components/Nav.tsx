@@ -261,7 +261,7 @@ export default function Nav() {
                         style={{
                           position: 'absolute',
                           top: '100%',
-                          right: 0,
+                          left: 0,
                           zIndex: 99,
                           width: 620,
                           marginTop: 8,
