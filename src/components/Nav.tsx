@@ -259,31 +259,27 @@ export default function Nav() {
                         className="mega-dropdown"
                         role="menu"
                         style={{
-                          position: 'fixed',
-                          top: 64,
-                          left: 0,
+                          position: 'absolute',
+                          top: '100%',
                           right: 0,
                           zIndex: 99,
+                          width: 620,
+                          marginTop: 8,
                           animation: 'mega-fade-in .2s ease-out',
+                          background: 'rgba(255,255,255,.97)',
+                          backdropFilter: 'blur(20px)',
+                          WebkitBackdropFilter: 'blur(20px)',
+                          border: '1px solid var(--border)',
+                          boxShadow: '0 12px 40px rgba(0,0,0,.1)',
+                          borderRadius: 12,
+                          padding: '24px 28px',
                         }}
                       >
-                        <div
-                          style={{
-                            background: 'rgba(255,255,255,.96)',
-                            backdropFilter: 'blur(20px)',
-                            WebkitBackdropFilter: 'blur(20px)',
-                            borderBottom: '1px solid var(--border)',
-                            boxShadow: '0 8px 32px rgba(0,0,0,.08)',
-                            borderRadius: '0 0 12px 12px',
-                          }}
-                        >
                           <div
-                            className="wrap"
                             style={{
                               display: 'grid',
                               gridTemplateColumns: 'repeat(3, 1fr)',
-                              gap: 32,
-                              padding: '28px 0',
+                              gap: 24,
                             }}
                           >
                             {link.dropdown.map((col) => (
@@ -342,7 +338,6 @@ export default function Nav() {
                               </div>
                             ))}
                           </div>
-                        </div>
                       </div>
                     )}
                   </div>
