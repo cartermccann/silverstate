@@ -68,6 +68,11 @@ export default function PageLayout({ children }: PageLayoutProps) {
     }
   }, [pathname])
 
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+
   // Initialize Core Web Vitals monitoring once (runs regardless of consent)
   useEffect(() => {
     initializePerformanceMonitoring()
