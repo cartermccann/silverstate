@@ -19,6 +19,7 @@ export const conditionNamesByCategory: Record<
     'BPD',
     'Adjustment Disorder',
     'Dual Diagnosis',
+    'School Refusal',
   ],
   substanceAbuse: ['Alcohol', 'Opioids', 'Benzodiazepines', 'Cocaine', 'Crystal Meth', 'Cannabis'],
   eatingDisorders: [
@@ -774,6 +775,66 @@ export const conditions: ConditionData[] = [
     ],
   },
   {
+    slug: 'school-refusal-treatment',
+    name: 'School Refusal Treatment',
+    headline: 'Adolescent School Refusal Treatment at Silver State',
+    category: 'mental-health',
+    description:
+      'School refusal is more than truancy — it is an anxiety-driven inability to attend school that affects approximately 2–5% of school-age children and peaks during adolescence. Teens with school refusal may experience intense fear, physical symptoms like nausea or headaches, or complete emotional shutdown at the thought of going to school.\n\nAt Silver State, we treat school refusal in teens ages 11–17 by addressing the underlying anxiety, depression, or social difficulties driving the avoidance. Our program combines clinical therapy with on-site academics, allowing teens to re-engage with school in a structured, supportive environment.',
+    symptoms: [
+      'Frequent absences or tardiness with emotional distress about attending school',
+      'Physical complaints (stomachaches, headaches, nausea) that appear on school mornings',
+      'Severe anxiety, crying, or tantrums when it is time to leave for school',
+      'Staying home with parents knowledge but refusing to attend classes',
+      'Social withdrawal and increasing isolation from peers',
+      'Declining academic performance despite adequate ability',
+      'Sleep disturbances or difficulty waking for school',
+    ],
+    therapies: [
+      'Cognitive Behavioral Therapy (CBT)',
+      'Exposure and Response Prevention (ERP)',
+      'Family Therapy',
+      'Social Skills Training',
+    ],
+    approach:
+      "Silver State treats school refusal through a gradual, therapeutic re-engagement process. Our Residential and PHP programs provide daily structure including on-site academics, so your teen can practice attending classes in a safe environment. Individual CBT helps identify and challenge the thoughts driving avoidance, while exposure therapy systematically builds tolerance for school-related situations. Family therapy addresses family dynamics that may inadvertently maintain the refusal pattern. Our 4:1 staff ratio ensures personalized support throughout the process.",
+    faqs: [
+      {
+        q: 'Is school refusal the same as truancy?',
+        a: 'No. Truancy involves willful absence, often without parental knowledge. School refusal is anxiety-driven — teens genuinely want to attend but feel unable to. The distinction matters because the treatment approaches are completely different.',
+      },
+      {
+        q: 'Will my teen fall behind academically during treatment?',
+        a: 'Silver State provides on-site academics through our Youth Academy, staffed by certified teachers. Your teen continues their coursework during treatment, and we coordinate with their home school to ensure a smooth transition back.',
+      },
+      {
+        q: 'What causes school refusal in adolescents?',
+        a: 'School refusal is typically driven by anxiety (social, separation, or generalized), depression, bullying, learning difficulties, or a traumatic event. Our clinical assessment identifies the specific factors affecting your teen so we can target treatment effectively.',
+      },
+    ],
+    relatedPrograms: ['residential-treatment', 'php', 'iop'],
+    relatedConditions: ['anxiety-treatment', 'depression-treatment', 'autism-spectrum-treatment'],
+    metaTitle: 'Adolescent School Refusal Treatment | Silver State',
+    metaDescription:
+      'Evidence-based school refusal treatment for teens ages 11-17 at Silver State in Las Vegas. CBT, gradual exposure therapy, and on-site Youth Academy academics.',
+    reviewedBy: 'Dr. Russ Park, MD',
+    reviewDate: '2026-02-01',
+    sources: [
+      {
+        label: 'AACAP: School Refusal',
+        url: 'https://www.aacap.org/aacap/families_and_youth/facts_for_families/fff-guide/Children-Who-Wont-Go-To-School-Separation-Anxiety-007.aspx',
+      },
+      {
+        label: 'APA: School Avoidance',
+        url: 'https://www.apa.org/topics/schools-classrooms',
+      },
+      {
+        label: 'NIMH: Anxiety Disorders',
+        url: 'https://www.nimh.nih.gov/health/topics/anxiety-disorders',
+      },
+    ],
+  },
+  {
     slug: 'substance-abuse-treatment',
     name: 'Substance Abuse Treatment',
     headline: 'Adolescent Substance Abuse Treatment at Silver State',
@@ -1484,6 +1545,70 @@ export const conditions: ConditionData[] = [
         url: 'https://www.nimh.nih.gov/health/topics/eating-disorders',
       },
       { label: 'APA: Eating Disorders', url: 'https://www.apa.org/topics/eating-disorders' },
+    ],
+  },
+  {
+    slug: 'compulsive-eating-treatment',
+    name: 'Compulsive Eating Treatment',
+    headline: 'Adolescent Compulsive Eating Treatment at Silver State',
+    category: 'eating-disorders',
+    description:
+      'Compulsive eating in adolescents involves a persistent pattern of eating beyond hunger, often driven by emotional distress, boredom, or a need for comfort. Unlike binge eating disorder, compulsive eating may not involve distinct binge episodes but rather a continuous pattern of overeating that the teen feels unable to control.\n\nAt Silver State, we treat compulsive eating in teens ages 11–17 by addressing the emotional triggers and developing healthier coping strategies. Our program combines clinical therapy with nutritional support to help your teen develop a balanced, non-restrictive relationship with food.',
+    symptoms: [
+      'Eating when not physically hungry or eating past the point of fullness',
+      'Using food to cope with stress, anxiety, boredom, or sadness',
+      'Feeling out of control around food or unable to stop eating',
+      'Eating in secret or hiding food wrappers or containers',
+      'Shame or guilt after eating episodes',
+      'Weight gain or fluctuations causing emotional distress',
+      'Preoccupation with food throughout the day',
+    ],
+    therapies: [
+      'Cognitive Behavioral Therapy for Eating Disorders (CBT-E)',
+      'Dialectical Behavior Therapy (DBT)',
+      'Nutritional Counseling',
+      'Mindfulness-Based Eating Awareness',
+    ],
+    approach:
+      "Silver State's compulsive eating treatment focuses on understanding the emotional function of overeating and developing alternative coping strategies. Through Residential, PHP, and IOP, your teen participates in individual therapy to identify triggers, group sessions to reduce shame, and structured meals with nutritional support. Our clinical team addresses co-occurring conditions like anxiety and depression that often drive compulsive eating patterns. Our 4:1 staff ratio ensures your teen receives personalized attention and support throughout treatment.",
+    faqs: [
+      {
+        q: 'Is compulsive eating the same as binge eating disorder?',
+        a: 'They are related but distinct. Binge eating disorder involves discrete binge episodes with a sense of loss of control. Compulsive eating may involve continuous overeating patterns without clear binge episodes. Both respond to evidence-based treatment.',
+      },
+      {
+        q: 'Will treatment involve dieting or food restriction?',
+        a: 'No. Our approach is non-diet and non-restrictive. We help teens develop a balanced relationship with food through structured meals, nutritional education, and emotional coping skills — not by restricting what they eat.',
+      },
+      {
+        q: 'What if my teen also has anxiety or depression?',
+        a: 'Co-occurring conditions are common with compulsive eating. Our treatment plans address all diagnoses simultaneously through our dual diagnosis approach, ensuring your teen receives comprehensive care.',
+      },
+    ],
+    relatedPrograms: ['residential-treatment', 'php', 'iop'],
+    relatedConditions: [
+      'binge-eating-disorder-treatment',
+      'depression-treatment',
+      'anxiety-treatment',
+    ],
+    metaTitle: 'Adolescent Compulsive Eating Treatment | Silver State',
+    metaDescription:
+      'Specialized compulsive eating treatment for teens ages 11-17 at Silver State in Las Vegas. Non-restrictive, evidence-based care for emotional eating patterns.',
+    reviewedBy: 'Dr. Russ Park, MD',
+    reviewDate: '2026-02-01',
+    sources: [
+      {
+        label: 'NEDA: Compulsive Overeating',
+        url: 'https://www.nationaleatingdisorders.org/compulsive-overeating/',
+      },
+      {
+        label: 'NIMH: Eating Disorders',
+        url: 'https://www.nimh.nih.gov/health/topics/eating-disorders',
+      },
+      {
+        label: 'APA: Eating Disorders',
+        url: 'https://www.apa.org/topics/eating-disorders',
+      },
     ],
   },
 ]

@@ -12,6 +12,23 @@ const Residential = lazy(() => import('./pages/programs/Residential'))
 const PHP = lazy(() => import('./pages/programs/PHP'))
 const IOP = lazy(() => import('./pages/programs/IOP'))
 const CPI = lazy(() => import('./pages/programs/CPI'))
+const TherapiesIndex = lazy(() => import('./pages/programs/TherapiesIndex'))
+const CBTPage = lazy(() => import('./pages/programs/CBTPage'))
+const DBTPage = lazy(() => import('./pages/programs/DBTPage'))
+const EMDRPage = lazy(() => import('./pages/programs/EMDRPage'))
+const TFCBTPage = lazy(() => import('./pages/programs/TFCBTPage'))
+const SomaticExperiencing = lazy(() => import('./pages/programs/SomaticExperiencing'))
+const MotivationalInterviewing = lazy(() => import('./pages/programs/MotivationalInterviewing'))
+const FamilyTherapy = lazy(() => import('./pages/programs/FamilyTherapy'))
+const GroupTherapy = lazy(() => import('./pages/programs/GroupTherapy'))
+const IndividualTherapy = lazy(() => import('./pages/programs/IndividualTherapy'))
+const ArtMusicTherapy = lazy(() => import('./pages/programs/ArtMusicTherapy'))
+const AdventureTherapy = lazy(() => import('./pages/programs/AdventureTherapy'))
+const MeditationTherapy = lazy(() => import('./pages/programs/MeditationTherapy'))
+const MedicationManagement = lazy(() => import('./pages/programs/MedicationManagement'))
+const LGBTQIACare = lazy(() => import('./pages/programs/LGBTQIACare'))
+const HolisticTreatment = lazy(() => import('./pages/programs/HolisticTreatment'))
+const TraumaInformedCare = lazy(() => import('./pages/programs/TraumaInformedCare'))
 
 // Conditions
 const ConditionsIndex = lazy(() => import('./pages/conditions/Index'))
@@ -40,6 +57,8 @@ const BulimiaNervosa = lazy(() => import('./pages/conditions/BulimiaNervosa'))
 const BingeEating = lazy(() => import('./pages/conditions/BingeEating'))
 const ARFID = lazy(() => import('./pages/conditions/ARFID'))
 const OSFED = lazy(() => import('./pages/conditions/OSFED'))
+const SchoolRefusal = lazy(() => import('./pages/conditions/SchoolRefusal'))
+const CompulsiveEating = lazy(() => import('./pages/conditions/CompulsiveEating'))
 
 // Insurance
 const InsuranceIndex = lazy(() => import('./pages/insurance/Index'))
@@ -69,6 +88,11 @@ const YouthAcademy = lazy(() => import('./pages/about/YouthAcademy'))
 // Admissions & Contact
 const Process = lazy(() => import('./pages/admissions/Process'))
 const Contact = lazy(() => import('./pages/Contact'))
+
+// Standalone
+const OurApproach = lazy(() => import('./pages/OurApproach'))
+const FAQ = lazy(() => import('./pages/FAQ'))
+const HIPAA = lazy(() => import('./pages/HIPAA'))
 
 // Legal & Utility
 const Privacy = lazy(() => import('./pages/Privacy'))
@@ -129,6 +153,144 @@ export const routes: RouteObject[] = [
     element: (
       <S>
         <CPI />
+      </S>
+    ),
+  },
+
+  // Therapy Programs
+  {
+    path: '/programs/therapy-programs',
+    element: (
+      <S>
+        <TherapiesIndex />
+      </S>
+    ),
+  },
+  {
+    path: '/programs/cbt',
+    element: (
+      <S>
+        <CBTPage />
+      </S>
+    ),
+  },
+  {
+    path: '/programs/dbt',
+    element: (
+      <S>
+        <DBTPage />
+      </S>
+    ),
+  },
+  {
+    path: '/programs/emdr',
+    element: (
+      <S>
+        <EMDRPage />
+      </S>
+    ),
+  },
+  {
+    path: '/programs/tf-cbt',
+    element: (
+      <S>
+        <TFCBTPage />
+      </S>
+    ),
+  },
+  {
+    path: '/programs/somatic-experiencing',
+    element: (
+      <S>
+        <SomaticExperiencing />
+      </S>
+    ),
+  },
+  {
+    path: '/programs/motivational-interviewing',
+    element: (
+      <S>
+        <MotivationalInterviewing />
+      </S>
+    ),
+  },
+  {
+    path: '/programs/family-therapy',
+    element: (
+      <S>
+        <FamilyTherapy />
+      </S>
+    ),
+  },
+  {
+    path: '/programs/group-therapy',
+    element: (
+      <S>
+        <GroupTherapy />
+      </S>
+    ),
+  },
+  {
+    path: '/programs/individual-therapy',
+    element: (
+      <S>
+        <IndividualTherapy />
+      </S>
+    ),
+  },
+  {
+    path: '/programs/art-music-therapy',
+    element: (
+      <S>
+        <ArtMusicTherapy />
+      </S>
+    ),
+  },
+  {
+    path: '/programs/adventure-therapy',
+    element: (
+      <S>
+        <AdventureTherapy />
+      </S>
+    ),
+  },
+  {
+    path: '/programs/meditation-mindfulness',
+    element: (
+      <S>
+        <MeditationTherapy />
+      </S>
+    ),
+  },
+  {
+    path: '/programs/medication-management',
+    element: (
+      <S>
+        <MedicationManagement />
+      </S>
+    ),
+  },
+  {
+    path: '/programs/lgbtqia-affirming-care',
+    element: (
+      <S>
+        <LGBTQIACare />
+      </S>
+    ),
+  },
+  {
+    path: '/programs/holistic-treatment',
+    element: (
+      <S>
+        <HolisticTreatment />
+      </S>
+    ),
+  },
+  {
+    path: '/programs/trauma-informed-care',
+    element: (
+      <S>
+        <TraumaInformedCare />
       </S>
     ),
   },
@@ -346,6 +508,22 @@ export const routes: RouteObject[] = [
       </S>
     ),
   },
+  {
+    path: '/conditions/school-refusal-treatment',
+    element: (
+      <S>
+        <SchoolRefusal />
+      </S>
+    ),
+  },
+  {
+    path: '/conditions/compulsive-eating-treatment',
+    element: (
+      <S>
+        <CompulsiveEating />
+      </S>
+    ),
+  },
 
   // Insurance
   {
@@ -519,6 +697,32 @@ export const routes: RouteObject[] = [
     element: (
       <S>
         <Contact />
+      </S>
+    ),
+  },
+
+  // Standalone
+  {
+    path: '/our-approach',
+    element: (
+      <S>
+        <OurApproach />
+      </S>
+    ),
+  },
+  {
+    path: '/faq',
+    element: (
+      <S>
+        <FAQ />
+      </S>
+    ),
+  },
+  {
+    path: '/hipaa-notice',
+    element: (
+      <S>
+        <HIPAA />
       </S>
     ),
   },

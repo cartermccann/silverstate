@@ -1,4 +1,5 @@
 import { useEffect, useRef, type ReactNode } from 'react'
+import { useLocation } from 'react-router'
 import Lenis from 'lenis'
 import { gsap, ScrollTrigger } from '../utils/gsap'
 import { isTouchDevice } from '../hooks/useIsMobile'
@@ -9,6 +10,7 @@ interface SmoothScrollProps {
 
 export default function SmoothScroll({ children }: SmoothScrollProps) {
   const lenisRef = useRef<Lenis | null>(null)
+  const { pathname } = useLocation()
 
   useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -43,6 +45,13 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
       lenisRef.current = null
     }
   }, [])
+
+  // Scroll Lenis to top on route change
+  useEffect(() => {
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(0, { immediate: true })
+    }
+  }, [pathname])
 
   return <>{children}</>
 }

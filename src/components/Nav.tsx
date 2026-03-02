@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
-import { Link } from 'react-router'
-import { IconPhone, IconMenu, IconClose } from './Icons'
-import type { NavLinkItem } from '../types'
+import { Link, useLocation } from 'react-router'
+import { IconPhone, IconMenu, IconClose, IconChevronDown } from './Icons'
+import type { NavLinkItemWithDropdown } from '../types'
 import { navLinks, site } from '../data/common'
 import useIsMobile from '../hooks/useIsMobile'
 
@@ -10,11 +10,28 @@ export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const isMobile = useIsMobile()
+  const location = useLocation()
+
+  // Desktop dropdown state
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null)
+  const enterTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const leaveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  // Mobile accordion state
+  const [mobileAccordion, setMobileAccordion] = useState<string | null>(null)
 
   const hamburgerRef = useRef<HTMLButtonElement>(null)
-  const firstLinkRef = useRef<HTMLAnchorElement>(null)
+  const firstLinkRef = useRef<HTMLAnchorElement | HTMLButtonElement>(null)
   const lastLinkRef = useRef<HTMLAnchorElement>(null)
   const phoneCTARef = useRef<HTMLAnchorElement>(null)
+  const triggerRefs = useRef<Record<string, HTMLButtonElement | null>>({})
+
+  // Close dropdowns on route change
+  useEffect(() => {
+    setOpenDropdown(null)
+    setMenuOpen(false)
+    setMobileAccordion(null)
+  }, [location.pathname])
 
   // Scroll detection
   useEffect(() => {
@@ -47,23 +64,25 @@ export default function Nav() {
     }
   }, [effectiveMenuOpen])
 
-  // Escape key handler
+  // Escape key handler — close dropdown (desktop) or mobile menu
   useEffect(() => {
-    if (!effectiveMenuOpen) return
-
     function handleKeyDown(e: KeyboardEvent) {
       if (e.key === 'Escape') {
-        setMenuOpen(false)
-        hamburgerRef.current?.focus()
+        if (openDropdown) {
+          const trigger = triggerRefs.current[openDropdown]
+          setOpenDropdown(null)
+          trigger?.focus()
+        } else if (effectiveMenuOpen) {
+          setMenuOpen(false)
+          hamburgerRef.current?.focus()
+        }
       }
     }
     document.addEventListener('keydown', handleKeyDown)
     return () => document.removeEventListener('keydown', handleKeyDown)
-  }, [effectiveMenuOpen])
+  }, [effectiveMenuOpen, openDropdown])
 
   // Focus trap inside mobile menu
-  // DOM order: Phone CTA -> Hamburger -> First link -> ... -> Last link
-  // Trap cycle: Phone CTA -> Hamburger -> First link -> ... -> Last link -> (wrap) Phone CTA
   useEffect(() => {
     if (!effectiveMenuOpen) return
 
@@ -71,13 +90,11 @@ export default function Nav() {
       if (e.key !== 'Tab') return
 
       if (e.shiftKey) {
-        // Shift+Tab on Phone CTA -> wrap to last nav link
         if (document.activeElement === phoneCTARef.current) {
           e.preventDefault()
           lastLinkRef.current?.focus()
         }
       } else {
-        // Tab on last nav link -> wrap to Phone CTA
         if (document.activeElement === lastLinkRef.current) {
           e.preventDefault()
           phoneCTARef.current?.focus()
@@ -88,6 +105,27 @@ export default function Nav() {
     return () => document.removeEventListener('keydown', handleFocusTrap)
   }, [effectiveMenuOpen])
 
+  // Close desktop dropdown on outside click
+  useEffect(() => {
+    if (!openDropdown) return
+    function handleClick(e: MouseEvent) {
+      const target = e.target as HTMLElement
+      if (!target.closest('.nav-dropdown-wrapper')) {
+        setOpenDropdown(null)
+      }
+    }
+    document.addEventListener('click', handleClick)
+    return () => document.removeEventListener('click', handleClick)
+  }, [openDropdown])
+
+  // Clear timers on unmount
+  useEffect(() => {
+    return () => {
+      if (enterTimerRef.current) clearTimeout(enterTimerRef.current)
+      if (leaveTimerRef.current) clearTimeout(leaveTimerRef.current)
+    }
+  }, [])
+
   const handleMenuClose = useCallback(() => {
     setMenuOpen(false)
     hamburgerRef.current?.focus()
@@ -97,9 +135,42 @@ export default function Nav() {
     if (effectiveMenuOpen) {
       setMenuOpen(false)
     }
+    setOpenDropdown(null)
   }, [effectiveMenuOpen])
 
+  // Desktop hover handlers
+  const handleMouseEnter = useCallback((label: string) => {
+    if (leaveTimerRef.current) {
+      clearTimeout(leaveTimerRef.current)
+      leaveTimerRef.current = null
+    }
+    enterTimerRef.current = setTimeout(() => {
+      setOpenDropdown(label)
+    }, 150)
+  }, [])
+
+  const handleMouseLeave = useCallback(() => {
+    if (enterTimerRef.current) {
+      clearTimeout(enterTimerRef.current)
+      enterTimerRef.current = null
+    }
+    leaveTimerRef.current = setTimeout(() => {
+      setOpenDropdown(null)
+    }, 200)
+  }, [])
+
+  // Mobile accordion toggle
+  const toggleMobileAccordion = useCallback((label: string) => {
+    setMobileAccordion((prev) => (prev === label ? null : label))
+  }, [])
+
   const phoneAriaLabel = `Call Silver State at ${site.phone}`
+
+  // Track last simple link index for mobile focus trap
+  let mobileLastLinkIndex = -1
+  navLinks.forEach((l, i) => {
+    if (!l.dropdown) mobileLastLinkIndex = i
+  })
 
   return (
     <>
@@ -131,28 +202,167 @@ export default function Nav() {
             height: '100%',
           }}
         >
-          <Link to="/" aria-label="Silver State — Home">
+          <Link to="/" aria-label="Silver State — Home" onClick={handleLinkClick}>
             <img src="/assets/logo.png" alt="" style={{ height: isMobile ? 40 : 56 }} />
           </Link>
 
           {!isMobile && (
-            <nav aria-label="Main navigation" style={{ display: 'flex', gap: 28 }}>
-              {navLinks.map((link: NavLinkItem) => (
-                <Link
-                  key={link.label}
-                  to={link.href}
-                  style={{
-                    fontSize: '.875rem',
-                    fontWeight: 600,
-                    color: 'var(--body)',
-                    position: 'relative',
-                    borderRadius: 4,
-                    padding: '4px 8px',
-                  }}
-                >
-                  {link.label}
-                </Link>
-              ))}
+            <nav aria-label="Main navigation" style={{ display: 'flex', gap: 4 }}>
+              {navLinks.map((link: NavLinkItemWithDropdown) =>
+                link.dropdown ? (
+                  <div
+                    key={link.label}
+                    className="nav-dropdown-wrapper"
+                    onMouseEnter={() => handleMouseEnter(link.label)}
+                    onMouseLeave={handleMouseLeave}
+                    style={{ position: 'relative' }}
+                  >
+                    <button
+                      type="button"
+                      ref={(el) => {
+                        triggerRefs.current[link.label] = el
+                      }}
+                      aria-haspopup="true"
+                      aria-expanded={openDropdown === link.label}
+                      onClick={() =>
+                        setOpenDropdown((prev) => (prev === link.label ? null : link.label))
+                      }
+                      className="nav-trigger-btn"
+                      style={{
+                        fontSize: '.875rem',
+                        fontWeight: 600,
+                        color: 'var(--body)',
+                        position: 'relative',
+                        borderRadius: 4,
+                        padding: '4px 8px',
+                        background: 'none',
+                        border: 'none',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 4,
+                        fontFamily: 'inherit',
+                      }}
+                    >
+                      {link.label}
+                      <IconChevronDown
+                        style={{
+                          transition: 'transform .2s',
+                          transform:
+                            openDropdown === link.label ? 'rotate(180deg)' : 'rotate(0deg)',
+                        }}
+                      />
+                    </button>
+
+                    {openDropdown === link.label && (
+                      <div
+                        className="mega-dropdown"
+                        role="menu"
+                        style={{
+                          position: 'fixed',
+                          top: 64,
+                          left: 0,
+                          right: 0,
+                          zIndex: 99,
+                          animation: 'mega-fade-in .2s ease-out',
+                        }}
+                      >
+                        <div
+                          style={{
+                            background: 'rgba(255,255,255,.96)',
+                            backdropFilter: 'blur(20px)',
+                            WebkitBackdropFilter: 'blur(20px)',
+                            borderBottom: '1px solid var(--border)',
+                            boxShadow: '0 8px 32px rgba(0,0,0,.08)',
+                            borderRadius: '0 0 12px 12px',
+                          }}
+                        >
+                          <div
+                            className="wrap"
+                            style={{
+                              display: 'grid',
+                              gridTemplateColumns: 'repeat(3, 1fr)',
+                              gap: 32,
+                              padding: '28px 0',
+                            }}
+                          >
+                            {link.dropdown.map((col) => (
+                              <div key={col.heading}>
+                                <div
+                                  style={{
+                                    fontSize: '.7rem',
+                                    fontWeight: 600,
+                                    textTransform: 'uppercase',
+                                    letterSpacing: '.08em',
+                                    color: 'var(--body)',
+                                    opacity: 0.5,
+                                    marginBottom: 12,
+                                  }}
+                                >
+                                  {col.heading}
+                                </div>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                                  {col.links.map((item) => (
+                                    <Link
+                                      key={item.href}
+                                      to={item.href}
+                                      role="menuitem"
+                                      onClick={handleLinkClick}
+                                      className="mega-link"
+                                      style={{
+                                        fontSize: '.85rem',
+                                        color: 'var(--body)',
+                                        padding: '5px 8px',
+                                        borderRadius: 6,
+                                        display: 'block',
+                                      }}
+                                    >
+                                      {item.label}
+                                    </Link>
+                                  ))}
+                                  {col.viewAll && (
+                                    <Link
+                                      to={col.viewAll.href}
+                                      role="menuitem"
+                                      onClick={handleLinkClick}
+                                      className="mega-view-all"
+                                      style={{
+                                        fontSize: '.8rem',
+                                        fontWeight: 600,
+                                        color: 'var(--blue)',
+                                        padding: '8px 8px 4px',
+                                        display: 'block',
+                                        marginTop: 4,
+                                      }}
+                                    >
+                                      {col.viewAll.label} →
+                                    </Link>
+                                  )}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <Link
+                    key={link.label}
+                    to={link.href}
+                    style={{
+                      fontSize: '.875rem',
+                      fontWeight: 600,
+                      color: 'var(--body)',
+                      position: 'relative',
+                      borderRadius: 4,
+                      padding: '4px 8px',
+                    }}
+                  >
+                    {link.label}
+                  </Link>
+                ),
+              )}
             </nav>
           )}
 
@@ -225,26 +435,131 @@ export default function Nav() {
             overflowY: 'auto',
           }}
         >
-          {navLinks.map((link: NavLinkItem, i: number) => (
-            <Link
-              key={link.label}
-              to={link.href}
-              ref={i === 0 ? firstLinkRef : i === navLinks.length - 1 ? lastLinkRef : undefined}
-              onClick={handleLinkClick}
-              style={{
-                minHeight: 48,
-                display: 'flex',
-                alignItems: 'center',
-                padding: '12px 24px',
-                fontSize: '1rem',
-                fontWeight: 600,
-                color: 'var(--text)',
-                borderBottom: '1px solid var(--border)',
-              }}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link: NavLinkItemWithDropdown, i: number) =>
+            link.dropdown ? (
+              <div key={link.label}>
+                <button
+                  type="button"
+                  ref={i === 0 ? (firstLinkRef as React.Ref<HTMLButtonElement>) : undefined}
+                  aria-expanded={mobileAccordion === link.label}
+                  onClick={() => toggleMobileAccordion(link.label)}
+                  style={{
+                    width: '100%',
+                    minHeight: 48,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    padding: '12px 24px',
+                    fontSize: '1rem',
+                    fontWeight: 600,
+                    color: 'var(--text)',
+                    borderBottom: '1px solid var(--border)',
+                    background: 'none',
+                    border: 'none',
+                    borderBottomWidth: 1,
+                    borderBottomStyle: 'solid',
+                    borderBottomColor: 'var(--border)',
+                    cursor: 'pointer',
+                    fontFamily: 'inherit',
+                    textAlign: 'left',
+                  }}
+                >
+                  {link.label}
+                  <IconChevronDown
+                    width={14}
+                    height={14}
+                    style={{
+                      transition: 'transform .2s',
+                      transform:
+                        mobileAccordion === link.label ? 'rotate(180deg)' : 'rotate(0deg)',
+                    }}
+                  />
+                </button>
+                {mobileAccordion === link.label && (
+                  <div
+                    style={{
+                      background: 'rgba(0,0,0,.02)',
+                      borderBottom: '1px solid var(--border)',
+                    }}
+                  >
+                    {link.dropdown.map((col) => (
+                      <div key={col.heading} style={{ padding: '12px 24px 8px' }}>
+                        <div
+                          style={{
+                            fontSize: '.7rem',
+                            fontWeight: 600,
+                            textTransform: 'uppercase',
+                            letterSpacing: '.08em',
+                            color: 'var(--body)',
+                            opacity: 0.5,
+                            marginBottom: 8,
+                          }}
+                        >
+                          {col.heading}
+                        </div>
+                        {col.links.map((item) => (
+                          <Link
+                            key={item.href}
+                            to={item.href}
+                            onClick={handleLinkClick}
+                            style={{
+                              display: 'block',
+                              padding: '6px 0',
+                              fontSize: '.9rem',
+                              color: 'var(--body)',
+                            }}
+                          >
+                            {item.label}
+                          </Link>
+                        ))}
+                        {col.viewAll && (
+                          <Link
+                            to={col.viewAll.href}
+                            onClick={handleLinkClick}
+                            style={{
+                              display: 'block',
+                              padding: '6px 0 2px',
+                              fontSize: '.85rem',
+                              fontWeight: 600,
+                              color: 'var(--blue)',
+                              marginTop: 2,
+                            }}
+                          >
+                            {col.viewAll.label} →
+                          </Link>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <Link
+                key={link.label}
+                to={link.href}
+                ref={
+                  i === 0
+                    ? (firstLinkRef as React.Ref<HTMLAnchorElement>)
+                    : i === mobileLastLinkIndex
+                      ? lastLinkRef
+                      : undefined
+                }
+                onClick={handleLinkClick}
+                style={{
+                  minHeight: 48,
+                  display: 'flex',
+                  alignItems: 'center',
+                  padding: '12px 24px',
+                  fontSize: '1rem',
+                  fontWeight: 600,
+                  color: 'var(--text)',
+                  borderBottom: '1px solid var(--border)',
+                }}
+              >
+                {link.label}
+              </Link>
+            ),
+          )}
         </nav>
       )}
 
@@ -259,6 +574,9 @@ export default function Nav() {
           .mobile-nav-panel {
             animation: none !important;
           }
+          .mega-dropdown {
+            animation: none !important;
+          }
         }
         .mobile-nav-panel {
           animation: nav-slide-in 0.3s cubic-bezier(0.2, 0.6, 0.3, 1);
@@ -267,8 +585,25 @@ export default function Nav() {
           from { transform: translateX(100%); }
           to { transform: translateX(0); }
         }
+        @keyframes mega-fade-in {
+          from { opacity: 0; transform: translateY(-8px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
         @media (max-width: 480px) {
           .phone-text { display: none; }
+        }
+        .nav-trigger-btn:hover,
+        .nav-trigger-btn:focus-visible {
+          color: var(--blue) !important;
+        }
+        .mega-link:hover,
+        .mega-link:focus-visible {
+          background: rgba(0,0,0,.04);
+          color: var(--blue) !important;
+        }
+        .mega-view-all:hover,
+        .mega-view-all:focus-visible {
+          opacity: .8;
         }
       `}</style>
     </>

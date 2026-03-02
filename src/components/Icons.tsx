@@ -328,6 +328,25 @@ export function IconClose(props: SVGProps<SVGSVGElement>) {
   )
 }
 
+export function IconChevronDown(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="10"
+      height="10"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      <path d="M6 9l6 6 6-6" />
+    </svg>
+  )
+}
+
 export function IconAward(props: SVGProps<SVGSVGElement>) {
   return (
     <svg

@@ -183,6 +183,21 @@ export interface NavLinkItem {
   href: string
 }
 
+export interface NavDropdownLink {
+  label: string
+  href: string
+}
+
+export interface NavDropdownColumn {
+  heading: string
+  links: NavDropdownLink[]
+  viewAll?: NavDropdownLink
+}
+
+export interface NavLinkItemWithDropdown extends NavLinkItem {
+  dropdown?: NavDropdownColumn[]
+}
+
 export interface FooterLinkGroup {
   heading: string
   links: NavLinkItem[]
