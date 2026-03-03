@@ -115,6 +115,7 @@ export const navLinks: NavLinkItemWithDropdown[] = [
         links: [
           { label: 'Humana', href: '/insurance/humana' },
           { label: 'UHC', href: '/insurance/uhc' },
+          { label: 'HPN', href: '/insurance/hpn' },
           { label: 'TRICARE', href: '/insurance/tricare' },
           { label: 'Medicaid', href: '/insurance/medicaid' },
         ],
@@ -169,6 +170,5 @@ export const footerLinks: FooterLinkGroup[] = [
 
 export const accreditations: AccreditationEntry[] = [
   { name: 'Joint Commission Gold Seal', logo: '/assets/joint-commission.webp' },
-  { name: 'LegitScript Certified', logo: null },
-  { name: 'NAATP Member', logo: null },
+  { name: 'LegitScript Certified', logo: '/assets/badges/legitscript.png' },
 ]

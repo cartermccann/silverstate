@@ -237,6 +237,7 @@ export interface ConditionData {
   reviewedBy?: string
   reviewDate?: string
   sources: SourceCitation[]
+  heroImage?: string
 }
 
 /** @alias Explicit page schema name per story contract */
@@ -301,6 +302,7 @@ export interface TherapyModality {
   howItHelps: string
   usedFor: string[]
   evidenceBasis?: string
+  heroImage?: string
 }
 
 export interface ProgramPageData {
