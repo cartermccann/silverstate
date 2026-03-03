@@ -111,6 +111,18 @@ const faqSections = [
         q: 'How do I know if my teen needs residential vs. outpatient care?',
         a: `That's exactly what our free clinical assessment determines. Our admissions team evaluates your teen's symptoms, safety concerns, daily functioning, and treatment history to recommend the appropriate level of care. There is no obligation \u2014 call ${site.phone} to start the conversation.`,
       },
+      {
+        q: 'Do you offer self-harm treatment for teens?',
+        a: `Yes. Teen self-harm treatment is a core focus at Silver State. Our clinical team uses DBT, safety planning, and individualized crisis intervention to help adolescents who are cutting, burning, or engaging in other self-harm behaviors. We address the emotional pain driving self-harm while teaching healthier coping strategies. Call ${site.phone} to discuss your teen's situation.`,
+      },
+      {
+        q: 'Is Silver State a lockdown facility?',
+        a: 'Silver State is not a lockdown adolescent treatment center. We are a licensed, voluntary residential treatment facility. Our program is structured and supervised 24/7 with a 4:1 staff-to-client ratio, but we focus on creating a therapeutic environment built on trust and engagement rather than physical restriction. Teens participate willingly in treatment and are encouraged to take ownership of their recovery.',
+      },
+      {
+        q: 'Are same-day admissions available?',
+        a: `Yes. Silver State offers same-day admissions when clinically appropriate. Our 24/7 admissions team can complete insurance verification, conduct a clinical assessment, and coordinate intake the same day you call. If your teen is in crisis and needs immediate mental health treatment, call ${site.phone} \u2014 we move quickly to get your family the help you need.`,
+      },
     ],
   },
 ]

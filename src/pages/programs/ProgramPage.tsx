@@ -65,6 +65,26 @@ export default function ProgramPage({ program }: ProgramPageProps) {
       {/* ── 1. HERO / HEADER ── */}
       <section style={{ padding: '64px 0 48px', background: WARM }}>
         <div className="wrap" style={{ maxWidth: 800 }}>
+          {program.heroImage && (
+            <AnimateIn variant="fadeUp">
+              <img
+                src={program.heroImage}
+                alt={`${program.label} at Silver State`}
+                loading="eager"
+                width={800}
+                height={360}
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  aspectRatio: '800 / 360',
+                  objectFit: 'cover',
+                  borderRadius: 'var(--radius-lg)',
+                  marginBottom: 24,
+                }}
+              />
+            </AnimateIn>
+          )}
+
           <AnimateIn variant="fadeUp">
             <span className="section-label">{program.label}</span>
           </AnimateIn>
@@ -230,6 +250,27 @@ export default function ProgramPage({ program }: ProgramPageProps) {
               </StaggerItem>
             ))}
           </StaggerGroup>
+
+          {program.sectionImages?.[0] && (
+            <AnimateIn variant="fadeUp" delay={0.2}>
+              <img
+                src={program.sectionImages[0]}
+                alt={`${program.label} at Silver State`}
+                loading="lazy"
+                width={800}
+                height={450}
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  aspectRatio: '16 / 9',
+                  objectFit: 'cover',
+                  borderRadius: 'var(--radius-lg)',
+                  marginTop: 32,
+                  maxWidth: 700,
+                }}
+              />
+            </AnimateIn>
+          )}
         </div>
       </section>
 
@@ -294,7 +335,7 @@ export default function ProgramPage({ program }: ProgramPageProps) {
             variant="fadeUp"
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
+              gridTemplateColumns: 'repeat(3, 1fr)',
               gap: 20,
             }}
           >
@@ -564,23 +605,6 @@ export default function ProgramPage({ program }: ProgramPageProps) {
         </div>
       </section>
 
-      {/* ── 7. CLINICAL REVIEWER ATTRIBUTION ── */}
-      {program.reviewedBy && (
-        <section style={{ padding: '0 0 48px' }}>
-          <div className="wrap">
-            <p
-              style={{
-                fontSize: '.8rem',
-                color: 'var(--muted)',
-                textAlign: 'center',
-              }}
-            >
-              Clinically Reviewed by {program.reviewedBy}
-              {program.reviewDate && <> &middot; Last updated {program.reviewDate}</>}
-            </p>
-          </div>
-        </section>
-      )}
     </>
   )
 }

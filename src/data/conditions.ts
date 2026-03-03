@@ -38,6 +38,8 @@ export const conditions: ConditionData[] = [
   {
     slug: 'anxiety-treatment',
     name: 'Anxiety Treatment',
+    heroImage: '/Photos/ULC09136.webp',
+    sectionImages: ['/assets/stock/psychologist-with-teen.jpg', '/assets/stock/group-therapy-session.jpg'],
     headline: 'Adolescent Anxiety Treatment at Silver State',
     category: 'mental-health',
     description:
@@ -95,6 +97,8 @@ export const conditions: ConditionData[] = [
   {
     slug: 'depression-treatment',
     name: 'Depression Treatment',
+    heroImage: '/Photos/ULC09112.webp',
+    sectionImages: ['/assets/stock/teen-depression-therapy.jpg', '/assets/stock/family-therapy-session.jpg'],
     headline: 'Adolescent Depression Treatment at Silver State',
     category: 'mental-health',
     description:
@@ -154,6 +158,8 @@ export const conditions: ConditionData[] = [
   {
     slug: 'trauma-ptsd-treatment',
     name: 'Trauma & PTSD Treatment',
+    heroImage: '/Photos/ULC09135.webp',
+    sectionImages: ['/assets/stock/individual-therapy-pink.jpg', '/assets/stock/family-art-therapy.jpg'],
     headline: 'Adolescent Trauma & PTSD Treatment at Silver State',
     category: 'mental-health',
     description:
@@ -208,10 +214,12 @@ export const conditions: ConditionData[] = [
   {
     slug: 'suicidal-ideation-treatment',
     name: 'Suicidal Ideation Treatment',
+    heroImage: '/Photos/ULC09138.webp',
+    sectionImages: ['/assets/stock/psychologist-with-teen.jpg', '/assets/stock/treatment-plan-doctor.jpg'],
     headline: 'Adolescent Suicidal Ideation Treatment at Silver State',
     category: 'mental-health',
     description:
-      "Suicidal ideation — persistent thoughts about ending one's life — is a mental health crisis that requires immediate, compassionate intervention. Suicide is the second leading cause of death among adolescents, and warning signs must never be dismissed as typical teen behavior.\n\nAt Silver State, we provide intensive, evidence-based treatment for teens ages 11–17 who are experiencing suicidal thoughts. Our crisis-trained clinical team creates a safe environment where your child can express their pain, develop safety plans, and learn healthier ways to cope with overwhelming emotions. We believe every teen deserves to find hope again.",
+      "Suicidal ideation — persistent thoughts about ending one's life — is a mental health crisis that requires immediate, compassionate intervention. Suicide is the second leading cause of death among adolescents, and warning signs including self-harm must never be dismissed as typical teen behavior.\n\nAt Silver State, we provide intensive, evidence-based teen self-harm treatment and suicidal ideation care for adolescents ages 11–17. Our crisis-trained clinical team creates a safe environment where your child can express their pain, develop safety plans, and learn healthier ways to cope with overwhelming emotions. We believe every teen deserves to find hope again.",
     symptoms: [
       'Talking or writing about wanting to die or feeling like a burden',
       'Withdrawal from friends, family, and activities',
@@ -245,9 +253,9 @@ export const conditions: ConditionData[] = [
     ],
     relatedPrograms: ['residential-treatment', 'php', 'iop'],
     relatedConditions: ['depression-treatment', 'trauma-ptsd-treatment', 'bpd-treatment'],
-    metaTitle: 'Teen Suicidal Ideation Treatment | Silver State',
+    metaTitle: 'Teen Self-Harm & Suicidal Ideation Treatment | Silver State',
     metaDescription:
-      'Compassionate adolescent suicidal ideation treatment at Silver State in Las Vegas. 24/7 safety, DBT, crisis intervention, and support for teens ages 11-17.',
+      'Teen self-harm treatment and suicidal ideation care at Silver State in Las Vegas. 24/7 safety, DBT, and crisis intervention for adolescents ages 11-17.',
     reviewedBy: 'Dr. Russ Park, MD',
     reviewDate: '2026-02-01',
     sources: [
@@ -262,6 +270,8 @@ export const conditions: ConditionData[] = [
   {
     slug: 'ocd-treatment',
     name: 'OCD Treatment',
+    heroImage: '/assets/facility/therapy-room.webp',
+    sectionImages: ['/assets/stock/holistic-therapy.jpg', '/assets/stock/group-therapy-session.jpg'],
     headline: 'Adolescent OCD Treatment at Silver State',
     category: 'mental-health',
     description:
@@ -318,6 +328,8 @@ export const conditions: ConditionData[] = [
   {
     slug: 'bipolar-disorder-treatment',
     name: 'Bipolar Disorder Treatment',
+    heroImage: '/Photos/ULC09137.webp',
+    sectionImages: ['/assets/stock/bipolar-occupational.jpg', '/assets/stock/treatment-plan-doctor.jpg'],
     headline: 'Adolescent Bipolar Disorder Treatment at Silver State',
     category: 'mental-health',
     description:
@@ -372,6 +384,8 @@ export const conditions: ConditionData[] = [
   {
     slug: 'autism-spectrum-treatment',
     name: 'Autism Spectrum Treatment',
+    heroImage: '/Photos/ULC09126.webp',
+    sectionImages: ['/assets/stock/music-therapy-piano.jpg', '/assets/stock/family-art-therapy.jpg'],
     headline: 'Adolescent Autism Spectrum Support at Silver State',
     category: 'mental-health',
     description:
@@ -432,6 +446,8 @@ export const conditions: ConditionData[] = [
   {
     slug: 'oppositional-defiant-disorder-treatment',
     name: 'Oppositional Defiant Disorder Treatment',
+    heroImage: '/Photos/ULC09129.webp',
+    sectionImages: ['/assets/stock/odd-occupational.jpg', '/assets/stock/family-therapy-session.jpg'],
     headline: 'Adolescent ODD Treatment at Silver State',
     category: 'mental-health',
     description:
@@ -489,6 +505,8 @@ export const conditions: ConditionData[] = [
   {
     slug: 'conduct-disorder-treatment',
     name: 'Conduct Disorder Treatment',
+    heroImage: '/Photos/ULC09122.webp',
+    sectionImages: ['/assets/stock/conduct-occupational.jpg', '/assets/stock/individual-therapy-pink.jpg'],
     headline: 'Adolescent Conduct Disorder Treatment at Silver State',
     category: 'mental-health',
     description:
@@ -546,6 +564,8 @@ export const conditions: ConditionData[] = [
   {
     slug: 'dmdd-treatment',
     name: 'DMDD Treatment',
+    heroImage: '/assets/facility/common-area.webp',
+    sectionImages: ['/assets/stock/dmdd-occupational.jpg', '/assets/stock/group-therapy-session.jpg'],
     headline: 'Adolescent DMDD Treatment at Silver State',
     category: 'mental-health',
     description:
@@ -606,6 +626,8 @@ export const conditions: ConditionData[] = [
   {
     slug: 'bpd-treatment',
     name: 'Borderline Personality Disorder Treatment',
+    heroImage: '/Photos/ULC09149.webp',
+    sectionImages: ['/assets/stock/bpd-occupational.jpg', '/assets/stock/psychologist-with-teen.jpg'],
     headline: 'Adolescent BPD Treatment at Silver State',
     category: 'mental-health',
     description:
@@ -667,6 +689,8 @@ export const conditions: ConditionData[] = [
   {
     slug: 'adjustment-disorder-treatment',
     name: 'Adjustment Disorder Treatment',
+    heroImage: '/Photos/ULC09123.webp',
+    sectionImages: ['/assets/stock/adjustment-therapy.jpg', '/assets/stock/holistic-therapy.jpg'],
     headline: 'Adolescent Adjustment Disorder Treatment at Silver State',
     category: 'mental-health',
     description:
@@ -721,6 +745,8 @@ export const conditions: ConditionData[] = [
   {
     slug: 'dual-diagnosis-treatment',
     name: 'Dual Diagnosis Treatment',
+    heroImage: '/Photos/ULC09131.webp',
+    sectionImages: ['/assets/stock/dual-diagnosis-therapy.jpg', '/assets/stock/treatment-plan-doctor.jpg'],
     headline: 'Adolescent Dual Diagnosis Treatment at Silver State',
     category: 'substance-abuse',
     description:
@@ -777,6 +803,8 @@ export const conditions: ConditionData[] = [
   {
     slug: 'school-refusal-treatment',
     name: 'School Refusal Treatment',
+    heroImage: '/Photos/ULC09125.webp',
+    sectionImages: ['/assets/stock/school-refusal-therapy.jpg', '/assets/stock/family-therapy-session.jpg'],
     headline: 'Adolescent School Refusal Treatment at Silver State',
     category: 'mental-health',
     description:
@@ -837,6 +865,8 @@ export const conditions: ConditionData[] = [
   {
     slug: 'substance-abuse-treatment',
     name: 'Substance Abuse Treatment',
+    heroImage: '/Photos/ULC09130.webp',
+    sectionImages: ['/assets/stock/individual-therapy-pink.jpg', '/assets/stock/holistic-therapy.jpg'],
     headline: 'Adolescent Substance Abuse Treatment at Silver State',
     category: 'substance-abuse',
     description:
@@ -898,6 +928,8 @@ export const conditions: ConditionData[] = [
   {
     slug: 'alcohol-abuse-treatment',
     name: 'Alcohol Abuse Treatment',
+    heroImage: '/Photos/ULC09132.webp',
+    sectionImages: ['/assets/stock/alcohol-therapy.jpg', '/assets/stock/group-therapy-session.jpg'],
     headline: 'Adolescent Alcohol Abuse Treatment at Silver State',
     category: 'substance-abuse',
     description:
@@ -952,6 +984,8 @@ export const conditions: ConditionData[] = [
   {
     slug: 'opioid-abuse-treatment',
     name: 'Opioid Abuse Treatment',
+    heroImage: '/Photos/ULC09134.webp',
+    sectionImages: ['/assets/stock/opioid-therapy.jpg', '/assets/stock/treatment-plan-doctor.jpg'],
     headline: 'Adolescent Opioid Abuse Treatment at Silver State',
     category: 'substance-abuse',
     description:
@@ -1009,6 +1043,8 @@ export const conditions: ConditionData[] = [
   {
     slug: 'benzodiazepine-abuse-treatment',
     name: 'Benzodiazepine Abuse Treatment',
+    heroImage: '/Photos/ULC09133.webp',
+    sectionImages: ['/assets/stock/benzo-therapy.jpg', '/assets/stock/family-therapy-session.jpg'],
     headline: 'Adolescent Benzodiazepine Abuse Treatment at Silver State',
     category: 'substance-abuse',
     description:
@@ -1072,6 +1108,8 @@ export const conditions: ConditionData[] = [
   {
     slug: 'cocaine-abuse-treatment',
     name: 'Cocaine Abuse Treatment',
+    heroImage: '/Photos/ULC09140.webp',
+    sectionImages: ['/assets/stock/cocaine-therapy.jpg', '/assets/stock/behavioral-therapy-cocaine.jpg'],
     headline: 'Adolescent Cocaine Abuse Treatment at Silver State',
     category: 'substance-abuse',
     description:
@@ -1129,6 +1167,8 @@ export const conditions: ConditionData[] = [
   {
     slug: 'meth-abuse-treatment',
     name: 'Methamphetamine Abuse Treatment',
+    heroImage: '/Photos/ULC09139.webp',
+    sectionImages: ['/assets/stock/meth-therapy.jpg', '/assets/stock/holistic-therapy-cocaine.jpg'],
     headline: 'Adolescent Methamphetamine Treatment at Silver State',
     category: 'substance-abuse',
     description:
@@ -1189,6 +1229,8 @@ export const conditions: ConditionData[] = [
   {
     slug: 'cannabis-abuse-treatment',
     name: 'Cannabis Abuse Treatment',
+    heroImage: '/Photos/ULC09113.webp',
+    sectionImages: ['/assets/stock/cannabis-therapy.jpg', '/assets/stock/family-art-therapy.jpg'],
     headline: 'Adolescent Cannabis Abuse Treatment at Silver State',
     category: 'substance-abuse',
     description:
@@ -1247,6 +1289,8 @@ export const conditions: ConditionData[] = [
   {
     slug: 'anorexia-nervosa-treatment',
     name: 'Anorexia Nervosa Treatment',
+    heroImage: '/assets/facility/dining-area.webp',
+    sectionImages: ['/assets/stock/anorexia-therapy.jpg', '/assets/stock/treatment-plan-doctor.jpg'],
     headline: 'Adolescent Anorexia Nervosa Treatment at Silver State',
     category: 'eating-disorders',
     description:
@@ -1313,6 +1357,8 @@ export const conditions: ConditionData[] = [
   {
     slug: 'bulimia-nervosa-treatment',
     name: 'Bulimia Nervosa Treatment',
+    heroImage: '/assets/facility/medical-office.webp',
+    sectionImages: ['/assets/stock/bulimia-therapy.jpg', '/assets/stock/group-therapy-session.jpg'],
     headline: 'Adolescent Bulimia Nervosa Treatment at Silver State',
     category: 'eating-disorders',
     description:
@@ -1373,6 +1419,8 @@ export const conditions: ConditionData[] = [
   {
     slug: 'binge-eating-disorder-treatment',
     name: 'Binge Eating Disorder Treatment',
+    heroImage: '/Photos/ULC09115.webp',
+    sectionImages: ['/assets/stock/binge-eating-therapy.jpg', '/assets/stock/family-therapy-session.jpg'],
     headline: 'Adolescent Binge Eating Disorder Treatment at Silver State',
     category: 'eating-disorders',
     description:
@@ -1429,6 +1477,8 @@ export const conditions: ConditionData[] = [
   {
     slug: 'arfid-treatment',
     name: 'ARFID Treatment',
+    heroImage: '/Photos/ULC09128.webp',
+    sectionImages: ['/assets/stock/arfid-therapy.jpg', '/assets/stock/holistic-therapy.jpg'],
     headline: 'Adolescent ARFID Treatment at Silver State',
     category: 'eating-disorders',
     description:
@@ -1489,6 +1539,8 @@ export const conditions: ConditionData[] = [
   {
     slug: 'osfed-treatment',
     name: 'OSFED Treatment',
+    heroImage: '/assets/facility/medical-office.webp',
+    sectionImages: ['/assets/stock/osfed-therapy.jpg', '/assets/stock/individual-therapy-pink.jpg'],
     headline: 'Adolescent OSFED Treatment at Silver State',
     category: 'eating-disorders',
     description:
@@ -1550,6 +1602,8 @@ export const conditions: ConditionData[] = [
   {
     slug: 'compulsive-eating-treatment',
     name: 'Compulsive Eating Treatment',
+    heroImage: '/assets/facility/bedroom-welcome.webp',
+    sectionImages: ['/assets/stock/compulsive-eating-therapy.jpg', '/assets/stock/psychologist-with-teen.jpg'],
     headline: 'Adolescent Compulsive Eating Treatment at Silver State',
     category: 'eating-disorders',
     description:

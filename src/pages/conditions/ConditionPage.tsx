@@ -57,6 +57,26 @@ export default function ConditionPage({ condition }: ConditionPageProps) {
       {/* ── 1. HERO / HEADER ── */}
       <section style={{ padding: '64px 0 48px', background: WARM }}>
         <div className="wrap" style={{ maxWidth: 800 }}>
+          {condition.heroImage && (
+            <AnimateIn variant="fadeUp">
+              <img
+                src={condition.heroImage}
+                alt={`${condition.name} treatment at Silver State`}
+                loading="eager"
+                width={800}
+                height={360}
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  aspectRatio: '800 / 360',
+                  objectFit: 'cover',
+                  borderRadius: 'var(--radius-lg)',
+                  marginBottom: 24,
+                }}
+              />
+            </AnimateIn>
+          )}
+
           <AnimateIn variant="fadeUp">
             <span className="section-label">
               {categoryLabels[condition.category] ?? condition.category}
@@ -77,22 +97,6 @@ export default function ConditionPage({ condition }: ConditionPageProps) {
             {condition.headline}
           </CharReveal>
 
-          {/* Clinical Reviewer Attribution */}
-          {condition.reviewedBy && (
-            <AnimateIn variant="blurUp" delay={0.2}>
-              <p
-                style={{
-                  marginTop: 16,
-                  fontSize: '.85rem',
-                  color: SAGE,
-                  fontWeight: 500,
-                }}
-              >
-                Clinically reviewed by {condition.reviewedBy}
-                {condition.reviewDate && <> &middot; Last updated {condition.reviewDate}</>}
-              </p>
-            </AnimateIn>
-          )}
         </div>
       </section>
 
@@ -117,6 +121,26 @@ export default function ConditionPage({ condition }: ConditionPageProps) {
               </p>
             </AnimateIn>
           ))}
+
+          {condition.sectionImages?.[0] && (
+            <AnimateIn variant="fadeUp" delay={0.3}>
+              <img
+                src={condition.sectionImages[0]}
+                alt={`${shortName} treatment session at Silver State`}
+                loading="lazy"
+                width={800}
+                height={450}
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  aspectRatio: '16 / 9',
+                  objectFit: 'cover',
+                  borderRadius: 'var(--radius-lg)',
+                  marginTop: 32,
+                }}
+              />
+            </AnimateIn>
+          )}
         </div>
       </section>
 
@@ -233,6 +257,26 @@ export default function ConditionPage({ condition }: ConditionPageProps) {
               {condition.approach}
             </p>
           </AnimateIn>
+
+          {condition.sectionImages?.[1] && (
+            <AnimateIn variant="fadeUp" delay={0.2}>
+              <img
+                src={condition.sectionImages[1]}
+                alt={`Evidence-based therapy for ${shortName} at Silver State`}
+                loading="lazy"
+                width={800}
+                height={450}
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  aspectRatio: '16 / 9',
+                  objectFit: 'cover',
+                  borderRadius: 'var(--radius-lg)',
+                  marginTop: 24,
+                }}
+              />
+            </AnimateIn>
+          )}
         </div>
       </section>
 

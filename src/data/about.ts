@@ -23,7 +23,7 @@ export const teamMembers: TeamMember[] = [
   {
     name: 'Dr. Russ Park',
     slug: 'dr-russ-park',
-    photoUrl: `${baseUrl}/team/dr-russ-park.webp`,
+    photoUrl: `${baseUrl}/team/dr-russ-park.jpg`,
     title: 'Executive Director',
     credentials: 'DNP, APRN, PMHNP-BC',
     licenseNumbers: ['NV APRN License'],
@@ -41,7 +41,7 @@ export const teamMembers: TeamMember[] = [
   {
     name: 'Arianne Smith',
     slug: 'arianne-smith',
-    photoUrl: `${baseUrl}/team/arianne-smith.webp`,
+    photoUrl: `${baseUrl}/team/arianne-smith.jpg`,
     title: 'Clinical Director',
     credentials: 'LMFT',
     licenseNumbers: ['NV LMFT License'],
@@ -59,7 +59,7 @@ export const teamMembers: TeamMember[] = [
   {
     name: 'Karel Saquing',
     slug: 'karel-saquing',
-    photoUrl: `${baseUrl}/team/karel-saquing.webp`,
+    photoUrl: `${baseUrl}/team/karel-saquing.jpg`,
     title: 'School Director',
     credentials: 'B.A.',
     licenseNumbers: [],
@@ -77,7 +77,7 @@ export const teamMembers: TeamMember[] = [
   {
     name: 'Alexa Adair',
     slug: 'alexa-adair',
-    photoUrl: `${baseUrl}/team/alexa-adair.webp`,
+    photoUrl: `${baseUrl}/team/alexa-adair.jpg`,
     title: 'Director of Performance Improvement',
     credentials: 'B.S.',
     licenseNumbers: [],
@@ -94,7 +94,7 @@ export const teamMembers: TeamMember[] = [
   {
     name: 'Marlon Duran',
     slug: 'marlon-duran',
-    photoUrl: `${baseUrl}/team/marlon-duran.webp`,
+    photoUrl: `${baseUrl}/team/marlon-duran.jpg`,
     title: 'Executive Chef',
     credentials: 'Culinary Professional',
     licenseNumbers: [],
@@ -161,7 +161,7 @@ export const facilityData: AboutPageData = {
   title: 'Our Facility',
   slug: 'facility',
   description:
-    'Silver State Adolescent Treatment Center is located in Las Vegas, Nevada, offering a safe, therapeutic environment designed specifically for adolescents ages 11-17. Our facility features private apartment-style bedrooms, dedicated therapy offices, recreation areas, and on-site classrooms for uninterrupted academic progress.',
+    'Silver State Adolescent Treatment Center is located in Las Vegas, Nevada, offering a safe, therapeutic environment designed specifically for adolescent mental wellness. Our facility serves teens ages 11-17 and features private apartment-style bedrooms, dedicated therapy offices, recreation areas, and on-site classrooms for uninterrupted academic progress.',
   features: [
     'Private apartment-style bedrooms',
     'Common areas with recreation',
@@ -173,11 +173,15 @@ export const facilityData: AboutPageData = {
   ],
   images: [
     {
-      src: `${baseUrl}/facility/exterior.webp`,
-      alt: 'Silver State Treatment Center exterior view',
+      src: `${baseUrl}/facility/exterior-sign.webp`,
+      alt: 'Silver State Treatment Center building sign and exterior',
     },
     {
-      src: `${baseUrl}/facility/bedroom.webp`,
+      src: `${baseUrl}/facility/lobby-reception.webp`,
+      alt: 'Main lobby and reception area with branded sign',
+    },
+    {
+      src: `${baseUrl}/facility/bedroom-twin.webp`,
       alt: 'Private apartment-style bedroom for adolescent residents',
     },
     {
@@ -185,17 +189,13 @@ export const facilityData: AboutPageData = {
       alt: 'Dedicated therapy office for individual and group sessions',
     },
     {
-      src: `${baseUrl}/facility/recreation.webp`,
-      alt: 'Recreation area with activities for teens',
-    },
-    {
-      src: `${baseUrl}/facility/classroom.webp`,
-      alt: 'On-site classroom at Silver State Youth Academy',
+      src: `${baseUrl}/facility/courtyard-basketball.webp`,
+      alt: 'Outdoor courtyard with basketball court for recreation',
     },
   ],
   metaTitle: 'Our Facility | Silver State Adolescent Treatment Center',
   metaDescription:
-    "Tour Silver State's therapeutic facility in Las Vegas — private bedrooms, therapy offices, recreation courts, on-site classrooms, and dining areas designed for adolescent recovery.",
+    "Tour Silver State's therapeutic facility in Las Vegas — private bedrooms, therapy offices, recreation courts, on-site classrooms, and dining areas designed for adolescent mental wellness and recovery.",
 }
 
 // --- Youth Academy Data (for Story 6.2) ---
@@ -215,12 +215,12 @@ export const youthAcademyData: AboutPageData = {
   ],
   images: [
     {
-      src: `${baseUrl}/academy/classroom.webp`,
+      src: `${baseUrl}/facility/classroom.webp`,
       alt: 'Silver State Youth Academy classroom with small class sizes',
     },
     {
-      src: `${baseUrl}/academy/learning.webp`,
-      alt: 'Student receiving personalized instruction at Youth Academy',
+      src: `${baseUrl}/facility/hallway-rooms.webp`,
+      alt: 'Academy hallway with numbered room doors',
     },
   ],
   metaTitle: 'Silver State Youth Academy | On-Site Accredited Academics',

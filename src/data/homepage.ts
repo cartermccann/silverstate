@@ -23,7 +23,7 @@ import { site } from './common'
 
 export const heroData: HeroData = {
   headline: 'The path forward starts with one conversation',
-  body: 'Residential and outpatient treatment for adolescents 11\u201317. Evidence-based care rooted in family, built for lasting change.',
+  body: 'Residential and outpatient mental health treatment for youth ages 11\u201317. Evidence-based care rooted in family, built for lasting change.',
   ctaPrimary: { label: `Call ${site.phone}`, href: site.phoneTel },
   ctaSecondary: { label: 'Learn More', href: '/programs/residential-treatment' },
   backgroundImage: { src: '/assets/hero-youth.webp', alt: 'Adolescent treatment at Silver State' },
@@ -46,24 +46,39 @@ export const introData: IntroData = {
   paragraph:
     'We believe adolescent treatment should feel like a turning point \u2014 not a dead end. Our clinical team works alongside your family to build a treatment plan that honors your teen\u2019s story, not just their diagnosis.',
   credibilityLine:
-    'Joint Commission Gold Seal accredited. LegitScript approved. HIPAA compliant. Serving Nevada families since day one.',
+    'Joint Commission Gold Seal accredited. LegitScript approved. HIPAA compliant. Same-day admissions available. Serving Nevada families since day one.',
 }
 
 export const facilityGalleryImages: LightboxImage[] = [
   {
-    src: '/assets/woman-on-phone.jpg',
-    alt: 'Family involvement',
-    caption: 'Family-centered treatment environment',
+    src: '/assets/facility/lobby-reception.webp',
+    alt: 'Main lobby and reception area',
+    caption: 'Welcoming lobby and reception at Silver State',
   },
   {
-    src: '/assets/hero-youth.webp',
-    alt: 'Youth activities',
-    caption: 'Structured therapeutic programming',
+    src: '/assets/facility/courtyard-basketball.webp',
+    alt: 'Outdoor courtyard with basketball court',
+    caption: 'Outdoor recreation and courtyard activities',
   },
   {
-    src: '/assets/teen-therapist.jpg',
-    alt: 'Therapy sessions',
-    caption: 'Individual and group therapy spaces',
+    src: '/assets/facility/bedroom-twin.webp',
+    alt: 'Private apartment-style bedroom',
+    caption: 'Private bedrooms designed for comfort and safety',
+  },
+  {
+    src: '/assets/facility/therapy-room.webp',
+    alt: 'Cozy therapy room with seating',
+    caption: 'Dedicated therapy rooms for individual sessions',
+  },
+  {
+    src: '/assets/facility/game-room.webp',
+    alt: 'Recreation room with activities',
+    caption: 'Recreation and social spaces for teens',
+  },
+  {
+    src: '/assets/facility/exterior-sign.webp',
+    alt: 'Silver State building exterior and sign',
+    caption: 'Our facility in Las Vegas, Nevada',
   },
 ]
 
@@ -105,12 +120,12 @@ export const testimonial: HomepageTestimonialData = {
 
 export const whoThisIsFor: WhoThisIsForData = {
   headline: 'This isn\'t just for "troubled teens"',
-  body: 'Many teens who benefit from our program are anxious, overwhelmed, or withdrawn \u2014 not defiant or aggressive. If your child is struggling and outpatient care isn\u2019t enough, this may be the right step.',
+  body: 'Many teens who benefit from our program are anxious, overwhelmed, or withdrawn \u2014 not defiant or aggressive. Whether your child is dealing with self-harm, emotional crises, or declining adolescent mental wellness, if outpatient care isn\u2019t enough, this may be the right step.',
   profiles: [
     { label: 'The anxious teen', desc: 'who can\u2019t make it through a school day' },
     { label: 'The withdrawn teen', desc: 'who has stopped talking to family and friends' },
     { label: 'The overwhelmed teen', desc: 'whose emotions feel too big to manage' },
-    { label: 'The teen in crisis', desc: 'whose safety you\u2019re worried about every day' },
+    { label: 'The teen in crisis', desc: 'whose self-harm or safety you\u2019re worried about every day' },
     { label: 'The teen who\u2019s tried everything', desc: 'and nothing has stuck' },
     { label: 'The teen masking pain', desc: 'behind substances, screens, or silence' },
   ],
@@ -333,18 +348,17 @@ export const teamOverviewData: HomepageTeamOverview = {
 }
 
 export const insuranceOverviewData: InsuranceEntry[] = [
-  { name: 'United Healthcare', logo: null },
-  { name: 'Aetna', logo: '/assets/aetna.png' },
-  { name: 'Cigna', logo: '/assets/cigna.png' },
-  { name: 'BCBS', logo: '/assets/bcbs.png' },
-  { name: 'HPN', logo: null },
+  { name: 'United Healthcare', logo: '/assets/insurance/uhc.svg' },
+  { name: 'Aetna', logo: '/assets/insurance/aetna.png' },
+  { name: 'Cigna', logo: '/assets/insurance/cigna.png' },
+  { name: 'BCBS', logo: '/assets/insurance/bcbs.png' },
+  { name: 'HPN', logo: '/assets/insurance/hpn.svg' },
 ]
 
 export const accreditationsOverviewData: AccreditationEntry[] = [
   { name: 'Joint Commission', logo: '/assets/joint-commission.webp' },
-  { name: 'LegitScript', logo: null },
-  { name: 'HIPAA Compliant', logo: null },
-  { name: 'NAATP', logo: null },
+  { name: 'LegitScript', logo: '/assets/badges/legitscript.png' },
+  { name: 'HIPAA Compliant', logo: '/assets/badges/hipaa.png' },
 ]
 
 export const familySectionData: FamilySectionData = {
@@ -393,7 +407,7 @@ export const admissionsOverviewData: HomepageAdmissionsStep[] = [
   {
     step: 1,
     title: 'Call our team',
-    desc: 'Speak with an admissions counselor 24/7. No waitlists, no judgment. We\u2019ll ask about your teen\u2019s situation and answer every question you have.',
+    desc: 'Speak with an admissions counselor 24/7. Same-day admissions available. No waitlists, no judgment. We\u2019ll ask about your teen\u2019s situation and answer every question you have.',
   },
   {
     step: 2,
@@ -414,7 +428,7 @@ export const admissionsOverviewData: HomepageAdmissionsStep[] = [
 
 export const finalCtaData: FinalCtaData = {
   headline: 'One call can change everything',
-  body: 'Our admissions team is available 24/7. No waitlists, no judgment \u2014 just a conversation about what your family needs.',
+  body: 'Our admissions team is available 24/7 with same-day admissions. No waitlists, no judgment \u2014 just a conversation about what your family needs.',
   primaryCtaLabel: `Call ${site.phone}`,
   secondaryCtaLabel: 'Verify Insurance',
   secondaryCtaHref: '/insurance',

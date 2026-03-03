@@ -7,7 +7,7 @@ const therapy = therapyBySlug['lgbtqia-affirming-care']!
 export const meta = generateMeta({
   title: 'LGBTQIA+ Affirming Care for Teens | Silver State',
   description:
-    'Adolescent LGBTQIA+ affirming care at Silver State in Las Vegas ensures every teen receives treatment that respects and validates their identity.',
+    'LGBTQIA+ affirming mental health for trans teens and gender-diverse youth at Silver State in Las Vegas. Treatment that respects and validates identity.',
   path: `/programs/${therapy.slug}`,
 })
 
@@ -27,6 +27,10 @@ const faqs = [
   {
     q: 'How are roommates and living arrangements handled for LGBTQIA+ teens?',
     a: 'Roommate assignments are made thoughtfully with input from the teen, clinical staff, and family when appropriate. We prioritize each adolescent\u2019s comfort and safety, and all living arrangements are handled with sensitivity to gender identity. Our goal is to ensure every teen feels safe and respected in their living space.',
+  },
+  {
+    q: 'Do you provide mental health treatment for trans teens?',
+    a: 'Yes. Silver State provides specialized mental health for trans teens within our affirming care program. Transgender and gender-diverse adolescents receive treatment that validates their identity while addressing anxiety, depression, trauma, or other mental health challenges. Our clinicians are trained in gender-affirming practices and collaborate with each teen\u2019s existing care providers.',
   },
 ]
 

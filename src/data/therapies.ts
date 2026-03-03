@@ -24,6 +24,7 @@ export const therapyModalities: TherapyModality[] = [
     slug: 'cbt',
     name: 'Cognitive Behavioral Therapy (CBT)',
     shortName: 'CBT',
+    heroImage: '/assets/facility/therapy-room.webp',
     description:
       'Cognitive Behavioral Therapy helps teens identify and change negative thought patterns and behaviors. Through structured sessions, adolescents learn to recognize distorted thinking, develop healthier coping strategies, and build practical problem-solving skills they can use in everyday life.',
     howItHelps:
@@ -42,6 +43,7 @@ export const therapyModalities: TherapyModality[] = [
     slug: 'dbt',
     name: 'Dialectical Behavior Therapy (DBT)',
     shortName: 'DBT',
+    heroImage: '/Photos/ULC09141.webp',
     description:
       'Dialectical Behavior Therapy combines cognitive-behavioral techniques with mindfulness practices to help teens manage intense emotions, improve interpersonal relationships, and reduce self-destructive behaviors. DBT teaches four core skill areas: mindfulness, distress tolerance, emotion regulation, and interpersonal effectiveness.',
     howItHelps:
@@ -60,6 +62,7 @@ export const therapyModalities: TherapyModality[] = [
     slug: 'emdr',
     name: 'Eye Movement Desensitization and Reprocessing (EMDR)',
     shortName: 'EMDR',
+    heroImage: '/Photos/ULC09136.webp',
     description:
       'EMDR is a specialized therapy that helps the brain process and heal from traumatic memories. Using bilateral stimulation (such as guided eye movements), EMDR allows teens to reprocess distressing experiences so they no longer trigger overwhelming emotional responses.',
     howItHelps:
@@ -72,6 +75,7 @@ export const therapyModalities: TherapyModality[] = [
     slug: 'tf-cbt',
     name: 'Trauma-Focused Cognitive Behavioral Therapy (TF-CBT)',
     shortName: 'TF-CBT',
+    heroImage: '/Photos/ULC09135.webp',
     description:
       'TF-CBT is a structured, evidence-based treatment designed specifically for children and adolescents who have experienced trauma. It integrates trauma-sensitive interventions with cognitive behavioral principles and includes a significant family component to support healing.',
     howItHelps:
@@ -84,6 +88,7 @@ export const therapyModalities: TherapyModality[] = [
     slug: 'somatic-experiencing',
     name: 'Somatic Experiencing',
     shortName: 'Somatic',
+    heroImage: '/Photos/ULC09116.webp',
     description:
       'Somatic Experiencing is a body-oriented approach to healing trauma and stress-related disorders. It focuses on the connection between physical sensations and emotional states, helping teens release stored tension and complete the body\u2019s natural stress response cycle.',
     howItHelps:
@@ -96,6 +101,7 @@ export const therapyModalities: TherapyModality[] = [
     slug: 'motivational-interviewing',
     name: 'Motivational Interviewing (MI)',
     shortName: 'MI',
+    heroImage: '/Photos/ULC09137.webp',
     description:
       'Motivational Interviewing is a collaborative, goal-oriented communication style that strengthens a teen\u2019s own motivation and commitment to change. Rather than telling teens what to do, MI helps them explore their own reasons for wanting change and resolve ambivalence.',
     howItHelps:
@@ -107,6 +113,7 @@ export const therapyModalities: TherapyModality[] = [
   {
     slug: 'family-therapy',
     name: 'Family Therapy',
+    heroImage: '/assets/facility/lobby-reception.webp',
     shortName: 'Family',
     description:
       'Family therapy involves parents, siblings, and other family members in the treatment process. It addresses family dynamics, communication patterns, and relational issues that may contribute to or result from a teen\u2019s mental health challenges.',
@@ -124,6 +131,7 @@ export const therapyModalities: TherapyModality[] = [
   {
     slug: 'group-therapy',
     name: 'Group Therapy',
+    heroImage: '/Photos/ULC09143.webp',
     shortName: 'Group',
     description:
       'Group therapy brings together a small number of teens under the guidance of a licensed therapist. Participants share experiences, practice interpersonal skills, and provide mutual support in a structured, confidential setting.',
@@ -134,6 +142,7 @@ export const therapyModalities: TherapyModality[] = [
   {
     slug: 'individual-therapy',
     name: 'Individual Therapy',
+    heroImage: '/Photos/ULC09138.webp',
     shortName: 'Individual',
     description:
       'Individual therapy provides one-on-one sessions between a teen and their assigned therapist. These sessions are tailored to the adolescent\u2019s specific needs and may incorporate multiple therapeutic approaches including CBT, DBT, and trauma-focused interventions.',
@@ -150,6 +159,7 @@ export const therapyModalities: TherapyModality[] = [
   {
     slug: 'art-music-therapy',
     name: 'Art & Music Therapy',
+    heroImage: '/Photos/ULC09144.webp',
     shortName: 'Art & Music',
     description:
       'Art and music therapy use creative expression as therapeutic tools. Licensed art and music therapists guide teens through creative activities that help process emotions, reduce stress, and develop self-awareness without relying solely on verbal communication.',
@@ -160,6 +170,7 @@ export const therapyModalities: TherapyModality[] = [
   {
     slug: 'adventure-therapy',
     name: 'Adventure Therapy',
+    heroImage: '/Photos/ULC09120.webp',
     shortName: 'Adventure',
     description:
       'Adventure therapy uses outdoor activities and experiential challenges \u2014 such as hiking, rock climbing, and team-building exercises \u2014 as therapeutic tools. These activities are facilitated by trained therapists who help teens draw connections between outdoor experiences and personal growth.',
@@ -170,6 +181,7 @@ export const therapyModalities: TherapyModality[] = [
   {
     slug: 'meditation-mindfulness',
     name: 'Meditation & Mindfulness',
+    heroImage: '/assets/facility/yoga-room.webp',
     shortName: 'Mindfulness',
     description:
       'Meditation and mindfulness practices teach teens to develop present-moment awareness, observe their thoughts without judgment, and cultivate inner calm. Sessions include guided meditation, breathing exercises, yoga, and body-scan techniques.',
@@ -180,6 +192,7 @@ export const therapyModalities: TherapyModality[] = [
   {
     slug: 'cpi',
     name: 'Crisis Prevention & Intervention (CPI)',
+    heroImage: '/assets/facility/nursing-station.webp',
     shortName: 'CPI',
     description:
       'Crisis Prevention and Intervention is a comprehensive framework for safely managing behavioral crises. All staff are CPI-certified, trained in de-escalation techniques, and equipped to support teens during moments of acute distress while maintaining dignity and safety.',
@@ -190,6 +203,7 @@ export const therapyModalities: TherapyModality[] = [
   {
     slug: 'medication-management',
     name: 'Medication Management',
+    heroImage: '/assets/facility/medical-office.webp',
     shortName: 'Medication Mgmt',
     description:
       'Our board-certified psychiatrist evaluates each teen\u2019s need for psychiatric medication and provides ongoing monitoring and adjustment. Medication is always used as part of a comprehensive treatment plan alongside therapy, never as a standalone intervention.',
@@ -206,16 +220,18 @@ export const therapyModalities: TherapyModality[] = [
   {
     slug: 'lgbtqia-affirming-care',
     name: 'LGBTQIA+ Affirming Care',
+    heroImage: '/Photos/ULC09124.webp',
     shortName: 'LGBTQIA+',
     description:
-      'Our affirming care approach ensures that LGBTQIA+ teens receive treatment that respects and validates their identity. All clinical staff are trained in affirming practices, and our treatment environment is designed to be inclusive, safe, and supportive for teens of all gender identities and sexual orientations.',
+      'Our affirming care approach ensures that LGBTQIA+ teens receive treatment that respects and validates their identity. We provide specialized mental health for trans teens and gender-diverse youth, with all clinical staff trained in affirming practices. Our treatment environment is designed to be inclusive, safe, and supportive for teens of all gender identities and sexual orientations.',
     howItHelps:
-      'LGBTQIA+ teens face unique stressors including minority stress, discrimination, and family rejection. Affirming care addresses these experiences directly, reducing shame and isolation while supporting healthy identity development and self-acceptance.',
+      'LGBTQIA+ teens face unique stressors including minority stress, discrimination, and family rejection. Whether your child identifies as gay, lesbian, bisexual, or transgender, affirming care addresses these experiences directly, reducing shame and isolation while supporting healthy identity development and self-acceptance.',
     usedFor: ['depression-treatment', 'anxiety-treatment', 'suicidal-ideation-treatment'],
   },
   {
     slug: 'holistic-treatment',
     name: 'Holistic Treatment',
+    heroImage: '/Photos/ULC09117.webp',
     shortName: 'Holistic',
     description:
       'Our holistic approach addresses the whole person \u2014 mind, body, and spirit. Beyond clinical therapy, teens participate in nutrition education, fitness programming, yoga, meditation, and creative arts. These complementary practices support overall well-being and reinforce clinical treatment goals.',
@@ -226,6 +242,7 @@ export const therapyModalities: TherapyModality[] = [
   {
     slug: 'trauma-informed-care',
     name: 'Trauma-Informed Care',
+    heroImage: '/Photos/ULC09112.webp',
     shortName: 'TIC',
     description:
       'Trauma-informed care is a foundational approach woven throughout every aspect of our program. All staff understand the prevalence and impact of trauma, recognize its signs and symptoms, and respond with practices that promote safety, trustworthiness, collaboration, and empowerment.',

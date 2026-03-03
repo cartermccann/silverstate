@@ -4,15 +4,16 @@ export const locations: LocationData[] = [
   {
     name: 'Las Vegas',
     slug: 'las-vegas',
+    image: { src: '/assets/facility/exterior-sign.webp', alt: 'Silver State Treatment Center building in Las Vegas' },
     description:
       'Silver State Adolescent Treatment Center is located in Las Vegas, Nevada, providing residential, PHP, and IOP treatment for teens ages 11-17 struggling with mental health, substance abuse, and eating disorders.',
     distanceFromFacility: 'Silver State is located in Las Vegas, NV',
     directions:
       'Silver State is located at 8225 W Robindale Rd in southwestern Las Vegas, near the I-215 Beltway and S Rainbow Blvd. Easily accessible from anywhere in the Las Vegas metro area.',
     localContext:
-      'Las Vegas is the largest city in Nevada and the seat of Clark County. Families across the Las Vegas metro area searching for adolescent mental health treatment, teen therapy, or residential programs find Silver State conveniently located in their own city. We serve families from every neighborhood in Las Vegas — from Summerlin to Henderson, Spring Valley to the Arts District.',
+      'Las Vegas is the largest city in Nevada and the seat of Clark County. Families searching for a teen mental health residential treatment center near me, adolescent therapy, or youth mental health treatment for youth find Silver State conveniently located in their own city. We serve families from every neighborhood in Las Vegas — from Summerlin to Henderson, Spring Valley to the Arts District.',
     serviceAreaDescription:
-      'Silver State provides comprehensive adolescent treatment to Las Vegas families, including 24/7 residential care, partial hospitalization, and intensive outpatient programs. As a Las Vegas-based facility, we understand the unique challenges facing local teens and families.',
+      'Silver State provides comprehensive adolescent treatment and mental health treatment for youth in Las Vegas, including 24/7 residential care, partial hospitalization, and intensive outpatient programs. If you are searching for teen mental health near me, our Las Vegas-based facility understands the unique challenges facing local teens and families.',
     relatedPrograms: ['residential', 'php', 'iop'],
     relatedConditions: [
       'anxiety',
@@ -21,20 +22,21 @@ export const locations: LocationData[] = [
       'dual-diagnosis',
       'trauma-ptsd',
     ],
-    metaTitle: 'Adolescent Treatment in Las Vegas, NV | Silver State Treatment Center',
+    metaTitle: 'Teen Mental Health Treatment Near Me in Las Vegas, NV | Silver State',
     metaDescription:
-      'Silver State Adolescent Treatment Center is located in Las Vegas, NV. Residential, PHP & IOP treatment for teens 11-17 with mental health, substance abuse & eating disorders.',
+      'Looking for a residential treatment center near me? Silver State in Las Vegas offers teen mental health treatment, PHP & IOP programs for adolescents 11-17.',
   },
   {
     name: 'Henderson',
     slug: 'henderson',
+    image: { src: '/assets/facility/exterior-building.webp', alt: 'Silver State Treatment Center exterior near Henderson' },
     description:
       'Silver State Adolescent Treatment Center serves families in Henderson, Nevada — just 20-25 minutes from our Las Vegas facility. Residential, PHP, and IOP treatment for teens ages 11-17.',
     distanceFromFacility: 'Approximately 20-25 minutes from Silver State',
     directions:
       'From Henderson, take I-215 West or US-95 North toward Las Vegas. Silver State is located at 8225 W Robindale Rd in southwestern Las Vegas, near the I-215 and S Rainbow Blvd interchange.',
     localContext:
-      'Henderson is the second-largest city in Nevada and one of the most family-oriented communities in the Las Vegas metro area. With a growing population of families with teens, Henderson parents seeking adolescent treatment often look for nearby, accessible facilities that understand their community.',
+      'Henderson is the second-largest city in Nevada and one of the most family-oriented communities in the Las Vegas metro area. With a growing population of families with teens, Henderson parents searching for teen mental health near me or a residential treatment center near me find Silver State just a short drive away.',
     serviceAreaDescription:
       "Families in Henderson have convenient access to Silver State's full continuum of adolescent care. Whether your teen needs residential treatment, a step-down PHP program, or flexible IOP sessions, our facility is a short drive from Henderson via I-215.",
     relatedPrograms: ['residential', 'php', 'iop'],
@@ -46,6 +48,7 @@ export const locations: LocationData[] = [
   {
     name: 'North Las Vegas',
     slug: 'north-las-vegas',
+    image: { src: '/assets/facility/exterior-street.webp', alt: 'Silver State Treatment Center street sign near North Las Vegas' },
     description:
       'Silver State Adolescent Treatment Center serves families in North Las Vegas, Nevada — approximately 25-30 minutes from our facility. Residential, PHP, and IOP programs for teens 11-17.',
     distanceFromFacility: 'Approximately 25-30 minutes from Silver State',
@@ -64,6 +67,7 @@ export const locations: LocationData[] = [
   {
     name: 'Summerlin',
     slug: 'summerlin',
+    image: { src: '/assets/facility/lobby-reception.webp', alt: 'Silver State Treatment Center lobby near Summerlin' },
     description:
       'Silver State Adolescent Treatment Center serves families in Summerlin, Nevada — just 15-20 minutes from our Las Vegas facility. Comprehensive adolescent treatment for teens 11-17.',
     distanceFromFacility: 'Approximately 15-20 minutes from Silver State',
@@ -82,13 +86,14 @@ export const locations: LocationData[] = [
   {
     name: 'Clark County',
     slug: 'clark-county',
+    image: { src: '/assets/facility/exterior-sign.webp', alt: 'Silver State Treatment Center serving Clark County' },
     description:
       'Silver State Adolescent Treatment Center serves families throughout Clark County, Nevada — including Las Vegas, Henderson, North Las Vegas, Boulder City, and all unincorporated communities.',
     distanceFromFacility: 'Silver State serves all of Clark County, NV',
     directions:
       'Silver State is centrally located within Clark County at 8225 W Robindale Rd, Las Vegas, NV 89113. The facility is easily accessible from anywhere in the county via I-15, US-95, or the I-215 Beltway.',
     localContext:
-      'Clark County encompasses the entire Las Vegas metropolitan area, including all incorporated cities and unincorporated communities. From Mesquite to Laughlin, Boulder City to Indian Springs, Silver State serves families across the county who need adolescent mental health and substance abuse treatment.',
+      'Clark County encompasses the entire Las Vegas metropolitan area, including all incorporated cities and unincorporated communities. From Mesquite to Laughlin, Boulder City to Indian Springs, Silver State serves families across the county searching for teen mental health near me, adolescent mental wellness support, and mental health treatment for youth.',
     serviceAreaDescription:
       'As a Clark County-based treatment facility, Silver State is positioned to serve families from every corner of the county. Our residential program provides a safe, structured environment for teens, while our PHP and IOP programs offer flexible scheduling for families who may travel from more distant parts of the county.',
     relatedPrograms: ['residential', 'php', 'iop'],
@@ -121,8 +126,8 @@ export const locationHubContent: {
 } = {
   title: 'Areas We Serve',
   description:
-    'Silver State Adolescent Treatment Center serves families throughout the Las Vegas metropolitan area and Clark County, Nevada. Our facility in southwestern Las Vegas provides residential, partial hospitalization (PHP), and intensive outpatient (IOP) treatment for adolescents ages 11-17 struggling with mental health, substance abuse, and eating disorders.',
-  metaTitle: 'Service Areas | Silver State Adolescent Treatment Center',
+    'Silver State Adolescent Treatment Center serves families throughout the Las Vegas metropolitan area and Clark County, Nevada. If you are looking for a residential treatment center near me or mental health treatment for youth, our facility in southwestern Las Vegas provides residential, partial hospitalization (PHP), and intensive outpatient (IOP) programs for adolescents ages 11-17.',
+  metaTitle: 'Residential Treatment Center Near Me | Silver State Las Vegas',
   metaDescription:
-    'Silver State serves families in Las Vegas, Henderson, North Las Vegas, Summerlin, and Clark County. Adolescent residential, PHP, and IOP treatment for teens 11-17.',
+    'Teen mental health near me in Las Vegas, Henderson, Summerlin & Clark County. Silver State offers residential, PHP & IOP treatment for youth ages 11-17.',
 }

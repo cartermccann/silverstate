@@ -40,7 +40,7 @@ export const admissionsProcess: AdmissionStep[] = admissionsSteps
 export const admissionsFaqs: FaqEntry[] = [
   {
     q: 'How long does the admissions process take?',
-    a: 'Most families complete the admissions process within 24-48 hours. The initial call takes about 15-20 minutes, insurance verification is typically completed within 10 minutes, and the clinical assessment can often be scheduled the same day.',
+    a: 'Most families complete the admissions process within 24-48 hours, and same-day admissions are available when clinically appropriate. The initial call takes about 15-20 minutes, insurance verification is typically completed within 10 minutes, and the clinical assessment can often be scheduled the same day.',
   },
   {
     q: 'What insurance do you accept?',
@@ -75,6 +75,6 @@ export const admissionsFaqs: FaqEntry[] = [
 export const admissionsPageMeta: { title: string; description: string; ogImage: string } = {
   title: 'Admissions Process | Silver State Adolescent Treatment Center',
   description:
-    'Start the admissions process at Silver State. Call 24/7, verify insurance in 10 minutes, and get your teen the help they need. Adolescent treatment ages 11-17.',
+    'Start the admissions process at Silver State. Same-day admissions available. Call 24/7, verify insurance in minutes, and get your teen help. Ages 11-17.',
   ogImage: `${baseUrl}/facility/exterior.webp`,
 }

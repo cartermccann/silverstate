@@ -4,7 +4,7 @@ export const insuranceProviders: InsurancePageData[] = [
   {
     slug: 'aetna',
     name: 'Aetna',
-    logo: null,
+    logo: '/assets/insurance/aetna.png',
     coverageDescription:
       'Aetna is one of the largest health insurance providers in the United States and typically covers adolescent behavioral health treatment, including residential, partial hospitalization (PHP), and intensive outpatient (IOP) programs. Under the Mental Health Parity and Addiction Equity Act, Aetna plans are generally required to provide mental health and substance use disorder benefits comparable to medical and surgical benefits.\n\nMost Aetna plans cover inpatient and outpatient mental health services for adolescents when deemed medically necessary. Coverage details — including copays, deductibles, and out-of-pocket maximums — vary by specific plan. Aetna typically requires a clinical assessment and documentation of medical necessity before authorizing residential treatment for teens.\n\nSilver State works directly with Aetna to verify your specific benefits and handle the authorization process. We recommend calling our admissions team to confirm your coverage — most families get answers within 10 minutes.',
     preAuthorization:
@@ -33,7 +33,7 @@ export const insuranceProviders: InsurancePageData[] = [
   {
     slug: 'cigna',
     name: 'Cigna',
-    logo: null,
+    logo: '/assets/insurance/cigna.png',
     coverageDescription:
       'Cigna provides comprehensive behavioral health coverage for adolescents through most of its plan options. Under the Mental Health Parity and Addiction Equity Act, Cigna is required to cover mental health and substance use disorder services at levels comparable to medical and surgical benefits, making adolescent treatment more accessible for families.\n\nCigna plans typically cover residential treatment, partial hospitalization programs (PHP), and intensive outpatient programs (IOP) for adolescents when clinical necessity is documented. Cigna utilizes Evernorth Behavioral Health (formerly Cigna Behavioral Health) to manage its mental health benefits, and coverage specifics depend on your individual plan.\n\nSilver State has experience working with Cigna and Evernorth to secure treatment authorization. Our admissions team can verify your Cigna benefits and walk you through what your plan covers for adolescent behavioral health treatment.',
     preAuthorization:
@@ -62,7 +62,7 @@ export const insuranceProviders: InsurancePageData[] = [
   {
     slug: 'bcbs',
     name: 'Blue Cross Blue Shield',
-    logo: null,
+    logo: '/assets/insurance/bcbs.png',
     coverageDescription:
       'Blue Cross Blue Shield (BCBS) is the largest health insurance network in the United States, with independent member companies operating across all 50 states. Most BCBS plans provide coverage for adolescent behavioral health treatment, including residential, PHP, and IOP programs. Under the Mental Health Parity and Addiction Equity Act, BCBS plans must cover mental health services comparably to medical and surgical benefits.\n\nBecause BCBS operates through independent regional companies, coverage details can vary. However, most BCBS plans cover inpatient and outpatient mental health treatment for adolescents when medically necessary. Depending on your plan, Silver State may be in-network or out-of-network — both options typically provide coverage, though your cost-sharing may differ.\n\nSilver State works with BCBS plans from across the country. Our admissions team can verify your specific BCBS benefits regardless of which state your plan originates from.',
     preAuthorization:
@@ -91,7 +91,7 @@ export const insuranceProviders: InsurancePageData[] = [
   {
     slug: 'ambetter',
     name: 'Ambetter',
-    logo: null,
+    logo: '/assets/insurance/ambetter.svg',
     coverageDescription:
       'Ambetter is a Marketplace health insurance plan offered by Centene Corporation through the Affordable Care Act (ACA) exchanges. As an ACA-compliant plan, Ambetter is required to cover mental health and substance use disorder services as one of the ten essential health benefits. Ambetter plans are also subject to federal parity protections under the Mental Health Parity and Addiction Equity Act. This includes coverage for adolescent behavioral health treatment.\n\nAmbetter plans typically cover residential treatment, PHP, and IOP for adolescents when clinically necessary. Since Ambetter is available in Nevada through the state exchange, many local families carry this coverage. Costs vary by plan metal tier (Bronze, Silver, Gold, Platinum), with higher tiers generally providing lower out-of-pocket costs for treatment.\n\nSilver State works with Ambetter to help families access their behavioral health benefits. Our team can verify your plan details and explain what your specific Ambetter coverage includes for adolescent treatment.',
     preAuthorization:
@@ -116,7 +116,7 @@ export const insuranceProviders: InsurancePageData[] = [
   {
     slug: 'humana',
     name: 'Humana',
-    logo: null,
+    logo: '/assets/insurance/humana.svg',
     coverageDescription:
       "Humana offers behavioral health coverage through its commercial plans and is one of the nation's leading health insurance providers. Under the Mental Health Parity and Addiction Equity Act, Humana plans are required to provide mental health and substance use disorder benefits that are comparable to medical and surgical benefits.\n\nMost Humana plans cover adolescent behavioral health treatment at the residential, PHP, and IOP levels when determined to be medically necessary. Humana manages behavioral health benefits through its integrated behavioral health program, and coverage specifics — including network status, copays, and deductibles — depend on your particular plan.\n\nSilver State works with Humana to verify benefits and secure authorizations for adolescent treatment. Our admissions team can clarify your specific Humana coverage and help your family understand the expected costs.",
     preAuthorization:
@@ -141,7 +141,7 @@ export const insuranceProviders: InsurancePageData[] = [
   {
     slug: 'uhc',
     name: 'United Healthcare',
-    logo: null,
+    logo: '/assets/insurance/uhc.svg',
     coverageDescription:
       "United Healthcare (UHC) is the largest health insurance company in the United States, serving millions of members nationwide. UHC provides behavioral health benefits through Optum Behavioral Health and typically covers adolescent treatment at the residential, PHP, and IOP levels. Under the Mental Health Parity and Addiction Equity Act, UHC plans must cover mental health services comparably to medical and surgical benefits.\n\nUHC plans generally cover a range of adolescent behavioral health services when deemed medically necessary, including 24-hour residential care, structured day programs, and outpatient treatment. As with all insurers, specific coverage depends on your plan type, network status, and benefit design. UHC is one of the most commonly accepted insurance providers at treatment centers nationwide.\n\nSilver State regularly works with United Healthcare and Optum to secure treatment authorizations for teens. Our team is experienced in navigating UHC's behavioral health benefits process and can verify your coverage quickly.",
     preAuthorization:
@@ -170,7 +170,7 @@ export const insuranceProviders: InsurancePageData[] = [
   {
     slug: 'tricare',
     name: 'TRICARE',
-    logo: null,
+    logo: '/assets/insurance/tricare.svg',
     coverageDescription:
       "TRICARE is the health care program for uniformed service members, retirees, and their families. TRICARE provides comprehensive behavioral health coverage for dependents, including adolescent children of active-duty and retired military personnel. TRICARE typically covers residential treatment, PHP, and IOP programs for behavioral health conditions in adolescents. While TRICARE follows military health regulations, parity principles still guide access to adolescent behavioral health care.\n\nTRICARE operates differently from commercial insurance. It does not require pre-authorization from the insurer but does require referrals and authorizations through the military health system. Active-duty family members often have no out-of-pocket costs or very low cost-sharing for authorized behavioral health treatment. TRICARE also provides coverage under the Extended Care Health Option (ECHO) for qualifying conditions.\n\nSilver State has experience working with military families and understands TRICARE's unique requirements. Our admissions team can guide you through the TRICARE authorization process and help your family access the behavioral health benefits your teen is entitled to.",
     preAuthorization:
@@ -199,7 +199,7 @@ export const insuranceProviders: InsurancePageData[] = [
   {
     slug: 'medicaid',
     name: 'Medicaid',
-    logo: null,
+    logo: '/assets/insurance/medicaid.svg',
     coverageDescription:
       'Medicaid provides health coverage for eligible low-income individuals and families, including children and adolescents. In Nevada, Medicaid is administered through the Nevada Department of Health and Human Services, with managed care provided through plans like Anthem Blue Cross Blue Shield of Nevada (now Elevance Health), Molina Healthcare, and Health Plan of Nevada (HPN). Although Medicaid rules differ from commercial plans, parity principles and federal protections still support adolescent behavioral health access.\n\nNevada Medicaid covers behavioral health treatment for adolescents, including residential, PHP, and IOP programs when medically necessary. Under the Early and Periodic Screening, Diagnostic, and Treatment (EPSDT) benefit, Medicaid must cover all medically necessary services for individuals under 21 — this is a strong protection that ensures adolescents can access the level of treatment they need.\n\nSilver State works with Nevada Medicaid managed care plans to help families access behavioral health treatment for their teens. Our admissions team can verify your Medicaid coverage and guide you through the authorization process.',
     preAuthorization:
@@ -223,12 +223,12 @@ export const insuranceProviders: InsurancePageData[] = [
       },
     ],
     metaDescription:
-      'Nevada Medicaid adolescent treatment coverage at Silver State in Las Vegas for residential, PHP, and IOP. Verify EPSDT behavioral health benefits for your teen.',
+      'Medicaid adolescent mental health treatment center in Las Vegas. Silver State accepts Nevada Medicaid for residential, PHP & IOP. Verify EPSDT benefits today.',
   },
   {
     slug: 'anthem',
     name: 'Anthem',
-    logo: null,
+    logo: '/assets/insurance/anthem.svg',
     coverageDescription:
       "Anthem is one of the largest health insurance companies in the United States and operates as a licensee of the Blue Cross Blue Shield Association in multiple states, including Nevada. Anthem plans typically provide comprehensive behavioral health coverage for adolescents, including residential treatment, PHP, and IOP programs. Under the Mental Health Parity and Addiction Equity Act, Anthem must cover mental health services comparably to medical and surgical services.\n\nAnthem offers a variety of plan types, and behavioral health benefits are generally managed through Anthem's behavioral health network. Most Anthem plans cover adolescent inpatient and outpatient mental health treatment when determined to be medically necessary, subject to standard cost-sharing provisions like deductibles, copays, and coinsurance.\n\nSilver State works with Anthem plans to verify benefits and secure treatment authorizations for teens. Our admissions team can quickly check your Anthem coverage and explain what to expect financially.",
     preAuthorization:
@@ -253,6 +253,35 @@ export const insuranceProviders: InsurancePageData[] = [
     ],
     metaDescription:
       'Anthem adolescent treatment coverage at Silver State in Las Vegas for residential, PHP, and IOP. Verify teen behavioral health benefits and authorization.',
+  },
+  {
+    slug: 'hpn',
+    name: 'Health Plan of Nevada',
+    logo: '/assets/insurance/hpn.svg',
+    coverageDescription:
+      'Health Plan of Nevada (HPN) is one of the largest managed care organizations in Nevada, serving hundreds of thousands of members across the state. HPN offers commercial, Medicare, and Medicaid managed care plans, and is a subsidiary of UnitedHealth Group. Under the Mental Health Parity and Addiction Equity Act, HPN plans are required to provide behavioral health benefits comparable to medical and surgical benefits.\n\nHPN plans typically cover adolescent behavioral health treatment at the residential, PHP, and IOP levels when determined to be medically necessary. As a Nevada-based plan, HPN is one of the most commonly held insurance options for local families seeking adolescent treatment services.\n\nSilver State works directly with Health Plan of Nevada to verify benefits and secure treatment authorizations for teens. Our admissions team is experienced in navigating HPN coverage and can help your family understand the expected costs and authorization requirements.',
+    preAuthorization:
+      'Health Plan of Nevada generally requires pre-authorization for residential and PHP-level adolescent behavioral health treatment. The authorization process involves submitting clinical documentation demonstrating medical necessity, including a comprehensive assessment and treatment plan. Silver State manages the entire pre-authorization process with HPN on behalf of families, coordinating directly with the plan to secure approval before your teen begins treatment. Call our admissions team to start the verification process.',
+    faqs: [
+      {
+        q: 'Does Health Plan of Nevada cover residential treatment for teens?',
+        a: 'Most HPN plans cover adolescent residential treatment when medically necessary. Coverage details depend on your specific plan type. Call Silver State to verify your HPN benefits — our team can typically provide answers within 10 minutes.',
+      },
+      {
+        q: 'Does HPN require pre-authorization for adolescent treatment?',
+        a: 'Yes, HPN typically requires pre-authorization for residential and PHP-level treatment. Silver State handles the entire authorization process, coordinating with HPN to secure approval before your teen begins treatment.',
+      },
+      {
+        q: 'How much will I pay out of pocket with HPN?',
+        a: 'Out-of-pocket costs with HPN depend on your specific plan, including your deductible, copay or coinsurance rates, and out-of-pocket maximum. Silver State can provide a detailed benefits breakdown when you call to verify your coverage.',
+      },
+      {
+        q: 'Is Silver State in-network with Health Plan of Nevada?',
+        a: "Silver State works with Health Plan of Nevada for adolescent behavioral health coverage. Contact our admissions team to verify your specific plan's network status and coverage levels for residential, PHP, and IOP treatment.",
+      },
+    ],
+    metaDescription:
+      'Health Plan of Nevada adolescent treatment coverage at Silver State in Las Vegas for residential, PHP, and IOP. Verify teen behavioral health benefits.',
   },
 ]
 
