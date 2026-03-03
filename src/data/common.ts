@@ -1,5 +1,7 @@
 import type { SiteInfo, NavLinkItemWithDropdown, FooterLinkGroup, AccreditationEntry } from '../types'
 
+export const CDN_URL = 'https://pub-d7363fcebeab42948ddd1a7a478927ab.r2.dev'
+
 export const site: SiteInfo = {
   name: 'Silver State Adolescent Treatment Center',
   tagline: 'Empowering Teens to Blossom',
@@ -169,6 +171,6 @@ export const footerLinks: FooterLinkGroup[] = [
 ]
 
 export const accreditations: AccreditationEntry[] = [
-  { name: 'Joint Commission Gold Seal', logo: '/assets/joint-commission.webp' },
-  { name: 'LegitScript Certified', logo: '/assets/badges/legitscript.png' },
+  { name: 'Joint Commission Gold Seal', logo: `${CDN_URL}/assets/joint-commission.webp` },
+  { name: 'LegitScript Certified', logo: `${CDN_URL}/assets/badges/legitscript.png` },
 ]

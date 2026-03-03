@@ -2,7 +2,7 @@ import type { CSSProperties } from 'react'
 import { Link } from 'react-router'
 import { IconMapPin, IconPhone, IconMail } from './Icons'
 import { OPEN_CONSENT_EVENT } from '../utils/consentEvents'
-import { footerLinks, site, accreditations } from '../data/common'
+import { footerLinks, site, accreditations, CDN_URL } from '../data/common'
 
 const columnHeadingStyle: CSSProperties = {
   fontFamily: 'var(--font-display)',
@@ -59,7 +59,7 @@ export default function Footer() {
         >
           <div>
             <img
-              src="/assets/logo.png"
+              src={`${CDN_URL}/assets/logo.png`}
               alt="Silver State Adolescent Treatment Center"
               style={{ height: 56, opacity: 0.4, marginBottom: 12 }}
             />

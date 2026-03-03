@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import { Link, useLocation } from 'react-router'
 import { IconPhone, IconMenu, IconClose, IconChevronDown } from './Icons'
 import type { NavLinkItemWithDropdown } from '../types'
-import { navLinks, site } from '../data/common'
+import { navLinks, site, CDN_URL } from '../data/common'
 import useIsMobile from '../hooks/useIsMobile'
 
 export default function Nav() {
@@ -203,7 +203,7 @@ export default function Nav() {
           }}
         >
           <Link to="/" aria-label="Silver State — Home" onClick={handleLinkClick}>
-            <img src="/assets/logo.png" alt="" style={{ height: isMobile ? 40 : 56 }} />
+            <img src={`${CDN_URL}/assets/logo.png`} alt="" style={{ height: isMobile ? 40 : 56 }} />
           </Link>
 
           {!isMobile && (

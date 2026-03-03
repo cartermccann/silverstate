@@ -1,8 +1,8 @@
-import { site } from '../data/common'
+import { site, CDN_URL } from '../data/common'
 
 const RAW_SITE_URL = import.meta.env?.VITE_SITE_URL || 'https://www.silverstatetreatment.com'
 const SITE_URL = RAW_SITE_URL.replace(/\/+$/, '')
-const DEFAULT_OG_IMAGE = `${SITE_URL}/assets/og-default.jpg`
+const DEFAULT_OG_IMAGE = `${CDN_URL}/assets/og-default.jpg`
 const TITLE_SUFFIX = ' | Silver State'
 
 function buildFullTitle(title: string): string {

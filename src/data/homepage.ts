@@ -19,14 +19,14 @@ import type {
   HomepageAdmissionsStep,
   FinalCtaData,
 } from '../types'
-import { site } from './common'
+import { site, CDN_URL } from './common'
 
 export const heroData: HeroData = {
   headline: 'The path forward starts with one conversation',
   body: 'Residential and outpatient treatment for adolescents 11\u201317. Evidence-based care rooted in family, built for lasting change.',
   ctaPrimary: { label: `Call ${site.phone}`, href: site.phoneTel },
   ctaSecondary: { label: 'Learn More', href: '/programs/residential-treatment' },
-  backgroundImage: { src: '/assets/hero-youth.webp', alt: 'Adolescent treatment at Silver State' },
+  backgroundImage: { src: `${CDN_URL}/assets/hero-youth.webp`, alt: 'Adolescent treatment at Silver State' },
 }
 
 // Keep legacy shape for backward compatibility during migration
@@ -51,17 +51,17 @@ export const introData: IntroData = {
 
 export const facilityGalleryImages: LightboxImage[] = [
   {
-    src: '/assets/woman-on-phone.jpg',
+    src: `${CDN_URL}/assets/woman-on-phone.jpg`,
     alt: 'Family involvement',
     caption: 'Family-centered treatment environment',
   },
   {
-    src: '/assets/hero-youth.webp',
+    src: `${CDN_URL}/assets/hero-youth.webp`,
     alt: 'Youth activities',
     caption: 'Structured therapeutic programming',
   },
   {
-    src: '/assets/teen-therapist.jpg',
+    src: `${CDN_URL}/assets/teen-therapist.jpg`,
     alt: 'Therapy sessions',
     caption: 'Individual and group therapy spaces',
   },
@@ -334,14 +334,14 @@ export const teamOverviewData: HomepageTeamOverview = {
 
 export const insuranceOverviewData: InsuranceEntry[] = [
   { name: 'United Healthcare', logo: null },
-  { name: 'Aetna', logo: '/assets/aetna.png' },
-  { name: 'Cigna', logo: '/assets/cigna.png' },
-  { name: 'BCBS', logo: '/assets/bcbs.png' },
+  { name: 'Aetna', logo: `${CDN_URL}/assets/aetna.png` },
+  { name: 'Cigna', logo: `${CDN_URL}/assets/cigna.png` },
+  { name: 'BCBS', logo: `${CDN_URL}/assets/bcbs.png` },
   { name: 'HPN', logo: null },
 ]
 
 export const accreditationsOverviewData: AccreditationEntry[] = [
-  { name: 'Joint Commission', logo: '/assets/joint-commission.webp' },
+  { name: 'Joint Commission', logo: `${CDN_URL}/assets/joint-commission.webp` },
   { name: 'LegitScript', logo: null },
   { name: 'HIPAA Compliant', logo: null },
   { name: 'NAATP', logo: null },
