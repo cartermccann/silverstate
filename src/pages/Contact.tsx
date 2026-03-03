@@ -20,6 +20,7 @@ export const meta = generateMeta({
   description:
     'Contact Silver State Adolescent Treatment Center. Call 24/7 at (725) 525-9897 or send a message. Our admissions team is ready to help your family.',
   path: '/contact',
+  keywords: ['contact teen treatment center', 'Silver State contact', 'teen treatment Las Vegas contact', 'adolescent treatment inquiry', 'mental health treatment contact'],
   ogImage: facilityData.images[0]?.src,
 })
 

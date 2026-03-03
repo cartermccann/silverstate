@@ -31,6 +31,7 @@ export const meta = generateMeta({
   description:
     'Learn how Silver State Adolescent Treatment Center collects, uses, and protects your information. HIPAA-compliant practices, cookie policy, and your privacy rights.',
   path: '/privacy',
+  keywords: ['privacy policy treatment center', 'Silver State privacy', 'mental health website privacy', 'healthcare privacy policy', 'adolescent treatment privacy policy'],
   ogType: 'website',
   jsonLd: [
     generateWebPage({

@@ -22,6 +22,7 @@ export const meta = generateMeta({
   title: admissionsPageMeta.title,
   description: admissionsPageMeta.description,
   path: '/admissions',
+  keywords: ['teen treatment admissions', 'adolescent treatment enrollment', 'residential treatment admission process', 'teen mental health intake', 'Silver State admissions'],
   ogImage: admissionsPageMeta.ogImage,
 })
 

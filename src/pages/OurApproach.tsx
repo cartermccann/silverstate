@@ -22,6 +22,7 @@ export const meta = generateMeta({
   description:
     "Learn about Silver State's evidence-based treatment approach for teens ages 11-17. Individualized care with a 4:1 staff ratio in Las Vegas, NV.",
   path: '/our-approach',
+  keywords: ['teen treatment approach', 'evidence-based adolescent treatment', 'teen mental health philosophy', 'holistic teen treatment', 'adolescent treatment methodology'],
   jsonLd: [
     generateWebPage({
       title: 'Our Treatment Approach',

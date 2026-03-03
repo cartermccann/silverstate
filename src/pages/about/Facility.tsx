@@ -21,6 +21,7 @@ export const meta = generateMeta({
   title: facilityData.metaTitle,
   description: facilityData.metaDescription,
   path: '/about/facility',
+  keywords: ['teen treatment facility Las Vegas', 'adolescent treatment center tour', 'Silver State facility', 'residential treatment facility Nevada', 'teen mental health campus'],
   ogImage: facilityData.images[0]?.src,
 })
 

@@ -13,6 +13,7 @@ export const meta = generateMeta({
   description:
     "HIPAA Notice of Privacy Practices for Silver State Adolescent Treatment Center. Learn how we protect your teen's health information.",
   path: '/hipaa-notice',
+  keywords: ['HIPAA notice treatment center', 'patient privacy rights', 'mental health HIPAA compliance', 'adolescent treatment privacy', 'healthcare privacy notice'],
   jsonLd: [
     generateWebPage({
       title: 'HIPAA Notice of Privacy Practices',

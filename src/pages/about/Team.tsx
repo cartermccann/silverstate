@@ -73,6 +73,7 @@ export const meta = generateMeta({
   description:
     "Meet Silver State's clinical leadership -- board-certified psychiatrists, licensed therapists, and specialized adolescent treatment professionals. Joint Commission Gold Seal accredited.",
   path: '/about/our-team',
+  keywords: ['teen treatment team', 'adolescent therapists Las Vegas', 'Silver State clinical team', 'teen mental health professionals', 'licensed teen therapists'],
 })
 
 export const handle = {

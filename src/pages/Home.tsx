@@ -52,6 +52,7 @@ export const meta = generateMeta({
   title: 'Teen Mental Health Treatment in Las Vegas',
   description: `Evidence-based residential, PHP, and IOP treatment for teens ${site.ages} in Las Vegas. Joint Commission accredited. Call ${site.phone} for 24/7 support.`,
   path: '/',
+  keywords: ['teen mental health treatment Las Vegas', 'adolescent treatment center Nevada', 'residential treatment teens', 'teen PHP IOP Las Vegas', 'Silver State Treatment Center'],
   jsonLd: [medicalOrgSchema, localBusinessSchema],
 })
 

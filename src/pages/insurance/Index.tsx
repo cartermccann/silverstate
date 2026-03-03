@@ -19,6 +19,7 @@ export const meta = generateMeta({
   description:
     'Silver State accepts Aetna, Cigna, BCBS, Ambetter, Humana, UHC, TRICARE, Medicaid, and Anthem for adolescent residential, PHP, and IOP treatment. Call to verify coverage.',
   path: '/insurance',
+  keywords: ['teen treatment insurance coverage', 'mental health insurance verification', 'insurance for adolescent treatment', 'behavioral health insurance Las Vegas', 'residential treatment insurance'],
 })
 
 export default function InsuranceHub() {

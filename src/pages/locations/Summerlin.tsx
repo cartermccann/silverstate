@@ -11,6 +11,7 @@ export const meta = generateMeta({
   description: location.metaDescription,
   path: `/locations/${location.slug}`,
   ogImage: facilityData.images[0]?.src,
+  keywords: ['teen treatment Summerlin', 'adolescent mental health Summerlin', 'teen therapy Summerlin NV', 'Summerlin teen treatment center', 'Silver State Summerlin'],
 })
 
 export const handle = {

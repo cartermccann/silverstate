@@ -20,6 +20,7 @@ export const meta = generateMeta({
   title: locationHubContent.metaTitle,
   description: locationHubContent.metaDescription,
   path: '/locations',
+  keywords: ['teen treatment Las Vegas', 'adolescent mental health Nevada', 'teen treatment near me', 'Clark County teen treatment', 'Las Vegas behavioral health teens'],
   ogImage: facilityData.images[0]?.src,
 })
 

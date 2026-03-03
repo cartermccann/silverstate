@@ -11,6 +11,7 @@ export const meta = generateMeta({
   description: location.metaDescription,
   path: `/locations/${location.slug}`,
   ogImage: facilityData.images[0]?.src,
+  keywords: ['teen treatment Clark County', 'adolescent mental health Clark County NV', 'teen therapy Clark County Nevada', 'Clark County teen treatment', 'Silver State Clark County'],
 })
 
 export const handle = {

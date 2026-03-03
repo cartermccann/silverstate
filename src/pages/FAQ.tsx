@@ -135,6 +135,7 @@ export const meta = generateMeta({
   description:
     'Find answers to common questions about adolescent mental health treatment at Silver State in Las Vegas. Admissions, insurance, daily life, and more.',
   path: '/faq',
+  keywords: ['teen treatment FAQ', 'adolescent treatment questions', 'residential treatment FAQ', 'teen mental health questions', 'Silver State FAQ'],
   jsonLd: [
     generateFAQPage({
       questions: allFaqs.map((faq) => ({ question: faq.q, answer: faq.a })),

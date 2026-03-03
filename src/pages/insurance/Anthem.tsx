@@ -8,6 +8,13 @@ export const meta = generateMeta({
   title: provider.name + ' Coverage for Teen Treatment',
   description: provider.metaDescription,
   path: `/insurance/${provider.slug}`,
+  keywords: [
+    'Anthem teen treatment coverage',
+    'Anthem adolescent mental health',
+    'Anthem residential treatment',
+    'Anthem behavioral health teens',
+    'Anthem insurance Silver State',
+  ],
 })
 
 export const handle = {

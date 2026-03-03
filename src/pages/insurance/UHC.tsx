@@ -8,6 +8,13 @@ export const meta = generateMeta({
   title: provider.name + ' Coverage for Teen Treatment',
   description: provider.metaDescription,
   path: `/insurance/${provider.slug}`,
+  keywords: [
+    'UHC teen treatment coverage',
+    'United Healthcare adolescent',
+    'UHC residential treatment',
+    'United Healthcare behavioral health',
+    'UHC insurance Silver State',
+  ],
 })
 
 export const handle = {

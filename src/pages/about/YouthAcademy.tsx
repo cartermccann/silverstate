@@ -37,6 +37,7 @@ export const meta = generateMeta({
   title: youthAcademyData.metaTitle,
   description: youthAcademyData.metaDescription,
   path: '/about/youth-academy',
+  keywords: ['teen treatment academics', 'on-site school treatment center', 'adolescent education during treatment', 'accredited academics teen treatment', 'Silver State Youth Academy'],
   ogImage: youthAcademyData.images[0]?.src,
 })
 

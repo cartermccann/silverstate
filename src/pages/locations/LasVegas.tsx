@@ -11,6 +11,7 @@ export const meta = generateMeta({
   description: location.metaDescription,
   path: `/locations/${location.slug}`,
   ogImage: facilityData.images[0]?.src,
+  keywords: ['teen treatment Las Vegas', 'adolescent mental health Las Vegas', 'teen residential treatment Las Vegas NV', 'Las Vegas teen therapy', 'Silver State Las Vegas'],
 })
 
 export const handle = {
