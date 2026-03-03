@@ -23,6 +23,7 @@ export interface PageMetaInput {
   ogImage?: string
   ogType?: string
   noIndex?: boolean
+  keywords?: string[]
   jsonLd?: Record<string, unknown>[]
 }
 
@@ -64,6 +65,11 @@ export function generateMeta(input: PageMetaInput): MetaTag[] {
     { name: 'twitter:description', content: input.description },
     { name: 'twitter:image', content: ogImage },
   ]
+
+  // SEO keywords
+  if (input.keywords?.length) {
+    tags.push({ name: 'keywords', content: input.keywords.join(', ') })
+  }
 
   // JSON-LD injection
   if (input.jsonLd?.length) {

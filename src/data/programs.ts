@@ -49,14 +49,22 @@ export const residentialProgram: ProgramPageData = {
   metaTitle: 'Residential Treatment for Teens | Silver State Treatment Center',
   metaDescription:
     'Our residential program provides 24/7 therapeutic support for adolescents 11\u201317. Evidence-based therapies, academic continuity, and family programming in a structured, safe environment.',
-  heroImage: '/assets/teen-therapist.jpg',
+  heroImage: '/assets/facility/lobby-reception.webp',
+  sectionImages: ['/assets/stock/residential-teens-smiling.jpg', '/assets/stock/residential-therapy-tablet.jpg'],
+  seoKeywords: [
+    'teen residential treatment',
+    'residential treatment for adolescents',
+    'adolescent residential treatment Las Vegas',
+    'teen mental health residential program',
+    'residential treatment ages 11-17',
+  ],
   overview:
-    'Our residential program provides 24/7 therapeutic support in a structured, safe environment. Teens receive individualized treatment combining evidence-based therapies, academic continuity through Silver State Youth Academy, and comprehensive family programming designed for lasting change. Each adolescent works with a dedicated care team that develops a personalized treatment plan addressing their unique mental health needs, family dynamics, and educational goals.',
+    'Residential treatment is the highest level of outpatient care for adolescent mental health, recommended by the Substance Abuse and Mental Health Services Administration (SAMHSA) when a teen\u2019s symptoms are too severe to be safely managed in a less intensive setting. Our residential program provides 24/7 therapeutic support in a structured, safe environment designed specifically for adolescents ages 11\u201317. Teens live on-site in our Joint Commission\u2013accredited facility, where every element of the environment \u2014 from the daily schedule to the physical space \u2014 is designed to promote healing, safety, and personal growth. With a 4:1 staff-to-client ratio, your teen receives the individualized attention they need to begin building a healthier future.\n\nWhat sets our teen residential treatment program apart is the integration of clinical care, academics, and family involvement into one seamless experience. Teens receive evidence-based therapies including CBT, DBT, and trauma-informed care alongside accredited academic instruction through Silver State Youth Academy, so they never fall behind in school. Our multidisciplinary team develops a personalized treatment plan for each adolescent that addresses their unique mental health needs, family dynamics, and educational goals.\n\nParents can expect regular communication, measurable progress, and a clear path forward. From the first day of admission through discharge and aftercare, our team works collaboratively with families to ensure that the gains made in residential treatment translate into lasting change at home, at school, and in the community.',
   approach:
-    'We combine evidence-based clinical therapies \u2014 including CBT, DBT, and trauma-informed care \u2014 with academic continuity and holistic wellness programming. Every teen receives an individualized treatment plan developed by a multidisciplinary team of licensed clinicians, educators, and support staff. Family involvement is integrated from day one through weekly therapy sessions, parent education workshops, and comprehensive discharge planning.',
+    'We combine evidence-based clinical therapies \u2014 including CBT, DBT, EMDR, and trauma-informed care \u2014 with academic continuity and holistic wellness programming to treat the whole adolescent, not just the diagnosis. Every teen receives an individualized treatment plan developed by a multidisciplinary team of licensed therapists, board-certified psychiatrists, registered nurses, certified educators, and dedicated support staff. This team meets regularly to review progress, adjust interventions, and ensure each teen is on the strongest possible trajectory.\n\nFamily involvement is integrated from day one through weekly family therapy sessions, parent education workshops, and ongoing communication with your teen\u2019s care coordinator. We believe that lasting recovery happens within the context of the family system, which is why we equip parents with the tools and understanding they need to support their teen\u2019s continued growth. Comprehensive transition and discharge planning begins at admission \u2014 including step-down to our PHP or IOP program, coordination with outpatient providers, and school re-entry support \u2014 so families feel confident and prepared for what comes next.',
   duration: 'Typical stay is 30\u201390 days, individualized to each teen\u2019s progress',
   targetAudience:
-    'Teens ages 11\u201317 whose mental health requires around-the-clock clinical support. Residential treatment is appropriate when outpatient care is insufficient and a structured, therapeutic environment is needed for stabilization and lasting change.',
+    'Residential treatment for adolescents is appropriate for teens ages 11\u201317 whose mental health requires around-the-clock clinical support. This level of care is indicated when a teen is experiencing acute symptoms such as severe depression, anxiety, trauma responses, self-harm, substance use, or suicidal ideation that cannot be safely managed through outpatient therapy alone. It is also appropriate when previous outpatient or intensive outpatient treatment has not produced sufficient progress, or when a teen\u2019s home or school environment is contributing to ongoing instability. A structured, therapeutic residential environment provides the safety and consistency needed for stabilization, skill-building, and lasting change.',
   dailySchedule: [
     {
       time: '7:00 AM',
@@ -162,6 +170,14 @@ export const residentialProgram: ProgramPageData = {
       q: 'Is residential treatment safe for my teen?',
       a: 'Absolutely. Our facility maintains a 4:1 staff-to-client ratio with 24/7 clinical and nursing support. We are Joint Commission Gold Seal accredited and follow strict safety protocols designed specifically for adolescent care.',
     },
+    {
+      q: 'What should my teen bring to residential treatment?',
+      a: 'We provide a detailed packing list during the admissions process. In general, teens should bring comfortable clothing, personal hygiene items, and any approved comfort items from home. Electronics, valuables, and certain other items are restricted for safety and therapeutic purposes. Our admissions coordinator will walk you through everything before your teen\u2019s arrival.',
+    },
+    {
+      q: 'How do you handle psychiatric medication during residential treatment?',
+      a: 'Our board-certified psychiatrist conducts a comprehensive evaluation within the first 48 hours of admission. If medication is clinically appropriate, it is carefully managed and monitored by our medical team throughout your teen\u2019s stay. We coordinate closely with your teen\u2019s existing prescribers and provide detailed medication records at discharge to ensure continuity of care.',
+    },
   ],
   relatedConditions: [
     'anxiety-treatment',
@@ -182,14 +198,22 @@ export const phpProgram: ProgramPageData = {
   metaTitle: 'Partial Hospitalization Program (PHP) for Teens | Silver State',
   metaDescription:
     'Our PHP provides full-day clinical intensity with the flexibility to return home each evening. A structured bridge between residential care and independent living for teens 11\u201317.',
-  heroImage: '/assets/woman-on-phone.jpg',
+  heroImage: '/assets/facility/therapy-room.webp',
+  sectionImages: ['/assets/stock/cbt-session.jpg', '/assets/stock/group-therapy-led.jpg'],
+  seoKeywords: [
+    'partial hospitalization program adolescent',
+    'teen partial hospitalization',
+    'adolescent PHP treatment Las Vegas',
+    'teen PHP program',
+    'partial hospitalization ages 11-17',
+  ],
   overview:
-    'Our Partial Hospitalization Program provides full clinical intensity during the day with the flexibility to return home each evening. PHP serves as a critical bridge between residential care and independent living, helping teens practice newly learned skills in real-world settings while maintaining the therapeutic structure they need. Teens attend programming five days per week and receive the same evidence-based therapies as our residential program in a supportive, structured environment.',
+    'Partial hospitalization programs (PHP) are recognized by the American Psychiatric Association as an effective level of care for adolescents who require more intensive treatment than outpatient therapy but can safely return home each evening. Our PHP provides full clinical intensity during the day with the flexibility to return home each evening, making it a vital step in the continuum of adolescent mental health care. Designed for teens ages 11\u201317, PHP serves as a critical bridge between residential treatment and independent living \u2014 or as a standalone level of care for adolescents who need more support than outpatient therapy can provide. Teens attend programming five days per week and receive the same evidence-based therapies as our residential program in a supportive, structured environment.\n\nWhat makes our adolescent partial hospitalization program uniquely effective is the balance between clinical rigor and real-world application. During the day, teens engage in intensive individual therapy, group processing, family sessions, and psychoeducation led by licensed clinicians. Each evening, they return home to practice the coping strategies, communication skills, and healthy routines they are learning in treatment \u2014 with their families actively involved in the process.\n\nParents can expect to see their teen developing greater emotional regulation, stronger family communication, and practical skills for managing the challenges that brought them to treatment. Our care team provides regular progress updates and works with each family to ensure a smooth, supported transition to the next phase of care.',
   approach:
-    'PHP combines intensive clinical therapy with real-world practice. During structured daytime hours, teens participate in individual therapy, group sessions, family therapy, and skill-building activities. Each evening, they return home to practice coping strategies, communication skills, and healthy routines with their families \u2014 with ongoing clinical support to guide the transition.',
+    'Our PHP combines intensive clinical therapy with structured real-world practice, creating a treatment experience that builds both insight and practical skill. During daytime hours, teens participate in individual therapy using CBT, DBT, and trauma-informed modalities, process-oriented group sessions, family therapy, and targeted skill-building activities. Each session is facilitated by licensed clinicians who specialize in adolescent mental health and collaborate as a multidisciplinary team \u2014 including therapists, a psychiatrist, and family counselors \u2014 to ensure coordinated, comprehensive care.\n\nFamily involvement is a cornerstone of our PHP approach. Parents participate in weekly family therapy, receive psychoeducation on their teen\u2019s diagnosis and treatment strategies, and have regular check-ins with the care coordinator. Each evening, teens return home to apply what they have learned, and the clinical team uses those real-world experiences to refine and strengthen the treatment plan. Transition planning is woven throughout the program, with clear benchmarks guiding the step-down to our IOP or to community-based outpatient providers.',
   duration: 'Typical duration is 4\u20136 weeks, with sessions 5 days per week',
   targetAudience:
-    'Teens ages 11\u201317 who are stepping down from residential treatment or who need more intensive support than outpatient care provides. PHP is ideal for adolescents who are clinically stable enough to be home evenings but require structured daily therapeutic programming.',
+    'Our adolescent partial hospitalization program is designed for teens ages 11\u201317 who are stepping down from residential treatment or who need more intensive support than outpatient care provides. PHP is appropriate when a teen is clinically stable enough to be home in the evenings but continues to experience symptoms \u2014 such as persistent depression, anxiety, self-harm urges, or difficulty functioning at school \u2014 that require structured daily therapeutic programming. It is also indicated when a teen has completed residential treatment and needs a supported transition back to family life, or when an initial clinical assessment determines that outpatient-level care is insufficient to address the teen\u2019s needs safely.',
   dailySchedule: [
     {
       time: '8:00 AM',
@@ -271,6 +295,18 @@ export const phpProgram: ProgramPageData = {
       q: 'What happens after PHP?',
       a: 'Most teens transition to our Intensive Outpatient Program (IOP) after completing PHP. This gradual step-down approach helps maintain progress while increasing independence and return to daily routines.',
     },
+    {
+      q: 'How is my teen\u2019s progress measured during PHP?',
+      a: 'Our clinical team uses standardized outcome measures, treatment plan reviews, and regular family check-ins to track your teen\u2019s progress. You will receive updates from your teen\u2019s care coordinator at least weekly, and the treatment plan is adjusted based on measurable clinical benchmarks to ensure your teen is making meaningful gains.',
+    },
+    {
+      q: 'What insurance plans cover PHP?',
+      a: 'Most major insurance plans cover partial hospitalization services for adolescents. Our admissions team handles insurance verification before treatment begins and will walk you through your coverage, including any out-of-pocket costs, so there are no surprises.',
+    },
+    {
+      q: 'Can PHP be a first step instead of residential treatment?',
+      a: 'Yes. While many teens enter PHP as a step-down from residential care, it is also appropriate as a first level of treatment for adolescents whose clinical needs exceed what outpatient therapy can address but who are stable enough to be home in the evenings. Our clinical team will determine the right fit during the initial assessment.',
+    },
   ],
   relatedConditions: [
     'anxiety-treatment',
@@ -290,14 +326,22 @@ export const iopProgram: ProgramPageData = {
   metaTitle: 'Intensive Outpatient Program (IOP) for Teens | Silver State',
   metaDescription:
     'Our IOP offers targeted therapeutic sessions several times per week for teens 11\u201317. Maintain school and daily routines while receiving evidence-based mental health treatment.',
-  heroImage: '/assets/hero-youth.webp',
+  heroImage: '/assets/facility/common-area.webp',
+  sectionImages: ['/assets/stock/individual-therapy-full.jpg', '/assets/stock/group-therapy-program.jpg'],
+  seoKeywords: [
+    'intensive outpatient program for teens',
+    'teen IOP program',
+    'adolescent IOP treatment Las Vegas',
+    'teen intensive outpatient',
+    'IOP for adolescents ages 11-17',
+  ],
   overview:
-    'Our Intensive Outpatient Program offers targeted therapeutic sessions several times per week, designed for teens who need focused clinical support while maintaining their school schedule, friendships, and daily routines. IOP is ideal for adolescents stepping down from higher levels of care or those whose needs exceed traditional weekly outpatient therapy. Teens build on coping skills, emotional regulation, and family communication in a supportive peer group environment.',
+    'Intensive outpatient programs (IOP) are recommended by the Substance Abuse and Mental Health Services Administration (SAMHSA) as an effective level of care for adolescents with moderate symptoms who can safely function in their home and school environments between sessions. Our IOP offers targeted therapeutic sessions several times per week, designed for teens ages 11\u201317 who need focused clinical support while maintaining their school schedule, friendships, and daily routines. IOP is ideal for adolescents stepping down from higher levels of care \u2014 such as our residential or PHP programs \u2014 or for those whose needs exceed what traditional weekly outpatient therapy can provide. Teens build on coping skills, emotional regulation, and family communication in a supportive peer group environment.\n\nWhat makes our teen IOP program distinctive is the emphasis on applying therapeutic skills in the context of everyday life. Sessions are scheduled after school hours so teens continue attending classes, participating in extracurricular activities, and maintaining the social connections that are so important to adolescent development. At the same time, they receive the structured clinical support needed to sustain the progress they have made and continue moving forward.\n\nParents can expect their teen to develop greater independence in managing their mental health, stronger communication within the family, and a personalized relapse prevention plan that supports long-term well-being. Our care team maintains close contact with families throughout the program and coordinates with school counselors and outside providers to ensure a fully supported recovery.',
   approach:
-    'IOP focuses on sustained skill-building and relapse prevention through a combination of individual therapy, group processing, and family involvement. Sessions are scheduled around school hours so teens can maintain academic progress and social connections. The program emphasizes applying therapeutic skills in everyday life with ongoing clinical guidance and family support.',
+    'Our teen IOP program focuses on sustained skill-building and relapse prevention through a carefully designed combination of individual therapy, group processing, and active family involvement. Licensed clinicians use evidence-based modalities including CBT and DBT to help teens strengthen the coping strategies and emotional regulation skills they have developed in earlier phases of treatment \u2014 or to build these skills for the first time in a focused, structured setting. Each teen\u2019s treatment plan is individualized and regularly reviewed by our multidisciplinary clinical team.\n\nFamily participation is an essential component of our intensive outpatient program for teens. Parents and caregivers attend family therapy sessions, receive guidance on reinforcing therapeutic skills at home, and have regular communication with the clinical team about their teen\u2019s progress. Sessions are scheduled around school hours so teens can maintain academic progress and social connections while receiving care. As teens approach the end of the program, our team develops a comprehensive transition plan that includes coordination with outpatient therapists, school counselors, and any other community supports to ensure continuity of care.',
   duration: 'Typical duration is 6\u201312 weeks, with 3 sessions per week',
   targetAudience:
-    'Teens ages 11\u201317 who are stepping down from PHP or residential treatment, or who need more support than weekly outpatient therapy. IOP is designed for adolescents who are stable enough to attend school and manage daily routines but benefit from structured therapeutic sessions multiple times per week.',
+    'Our intensive outpatient program for teens is designed for adolescents ages 11\u201317 who are stepping down from PHP or residential treatment, or who need more support than weekly outpatient therapy can provide. IOP is appropriate for teens who are clinically stable enough to attend school and manage daily routines but continue to experience symptoms \u2014 such as anxiety, depression, mood instability, or difficulty with peer and family relationships \u2014 that benefit from structured therapeutic sessions multiple times per week. It is also a strong fit for teens returning from a crisis stabilization or hospitalization who need a supported re-entry into their daily environment.',
   dailySchedule: [
     {
       time: '3:30 PM',
@@ -356,6 +400,18 @@ export const iopProgram: ProgramPageData = {
     {
       q: 'Is IOP covered by insurance?',
       a: 'Most major insurance plans cover IOP services. Our admissions team verifies insurance benefits and can explain your coverage before treatment begins.',
+    },
+    {
+      q: 'What happens when my teen completes IOP?',
+      a: 'As your teen nears the end of the IOP program, our clinical team develops a comprehensive aftercare plan. This typically includes a transition to weekly outpatient therapy, continued family support strategies, and coordination with school counselors or community providers. The goal is to ensure your teen has a strong support network in place for sustained well-being.',
+    },
+    {
+      q: 'Can my teen start IOP without first going through residential or PHP?',
+      a: 'Yes. While many teens enter IOP as a step-down from a higher level of care, it is also appropriate as an initial treatment option for adolescents who need more support than weekly therapy but are stable enough to maintain their school schedule and daily routines. Our clinical team determines the right level of care during the intake assessment.',
+    },
+    {
+      q: 'How is family involved in the IOP program?',
+      a: 'Family involvement is built into every phase of IOP. Parents and caregivers participate in scheduled family therapy sessions, receive regular updates from the clinical team, and are given practical strategies to reinforce their teen\u2019s progress at home. We also coordinate with school counselors and any outside providers to ensure everyone supporting your teen is aligned.',
     },
   ],
   relatedConditions: [

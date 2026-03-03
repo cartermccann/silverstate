@@ -238,6 +238,8 @@ export interface ConditionData {
   reviewDate?: string
   sources: SourceCitation[]
   heroImage?: string
+  sectionImages?: string[]
+  seoKeywords?: string[]
 }
 
 /** @alias Explicit page schema name per story contract */
@@ -303,6 +305,9 @@ export interface TherapyModality {
   usedFor: string[]
   evidenceBasis?: string
   heroImage?: string
+  metaTitle?: string
+  metaDescription?: string
+  seoKeywords?: string[]
 }
 
 export interface ProgramPageData {
@@ -325,6 +330,8 @@ export interface ProgramPageData {
   relatedPrograms: string[]
   reviewedBy?: string
   reviewDate?: string
+  sectionImages?: string[]
+  seoKeywords?: string[]
 }
 
 export interface PrivacySection {
@@ -355,4 +362,28 @@ export interface InsurancePageData {
   preAuthorization: string
   faqs: FaqEntry[]
   metaDescription: string
+}
+
+export interface ComparisonItem {
+  name: string
+  slug: string
+  description: string
+  bestFor: string
+  keyFeatures: string[]
+}
+
+export interface ComparisonPageData {
+  slug: string
+  title: string
+  metaTitle: string
+  metaDescription: string
+  category: 'therapy' | 'program' | 'condition'
+  introduction: string
+  itemA: ComparisonItem
+  itemB: ComparisonItem
+  keyDifferences: { aspect: string; itemA: string; itemB: string }[]
+  whenToChoose: string
+  faqs: FaqEntry[]
+  sources: SourceCitation[]
+  seoKeywords: string[]
 }

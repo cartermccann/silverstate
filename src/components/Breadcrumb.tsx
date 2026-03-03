@@ -45,6 +45,8 @@ const SEGMENT_LABELS: Record<string, string> = {
   'binge-eating-treatment': 'Binge Eating Treatment',
   'arfid-treatment': 'ARFID Treatment',
   'osfed-treatment': 'OSFED Treatment',
+  'school-refusal-treatment': 'School Refusal Treatment',
+  'compulsive-eating-treatment': 'Compulsive Eating Treatment',
   'our-team': 'Our Team',
   'youth-academy': 'Youth Academy',
   facility: 'Facility',
@@ -57,11 +59,19 @@ const SEGMENT_LABELS: Record<string, string> = {
   tricare: 'TRICARE',
   medicaid: 'Medicaid',
   anthem: 'Anthem',
+  hpn: 'HPN',
   'las-vegas': 'Las Vegas',
   henderson: 'Henderson',
   'north-las-vegas': 'North Las Vegas',
   summerlin: 'Summerlin',
   'clark-county': 'Clark County',
+  compare: 'Compare',
+  'cbt-vs-dbt': 'CBT vs DBT',
+  'residential-vs-php': 'Residential vs PHP',
+  'residential-vs-iop': 'Residential vs IOP',
+  'anxiety-vs-depression': 'Anxiety vs Depression',
+  'ptsd-vs-anxiety': 'PTSD vs Anxiety',
+  'anorexia-vs-bulimia': 'Anorexia vs Bulimia',
 }
 
 const SECTION_ROOT_ALIASES: Record<string, string> = {

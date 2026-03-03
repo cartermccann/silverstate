@@ -40,14 +40,14 @@ export const navLinks: NavLinkItemWithDropdown[] = [
         viewAll: { label: 'All Therapy Programs', href: '/programs/therapy-programs' },
       },
       {
-        heading: 'Specialty & More',
+        heading: 'Specialty & Compare',
         links: [
           { label: 'LGBTQIA+ Affirming Care', href: '/programs/lgbtqia-affirming-care' },
           { label: 'Holistic Treatment', href: '/programs/holistic-treatment' },
           { label: 'Trauma-Informed Care', href: '/programs/trauma-informed-care' },
-          { label: 'Medication Management', href: '/programs/medication-management' },
-          { label: 'Adventure Therapy', href: '/programs/adventure-therapy' },
-          { label: 'Art & Music Therapy', href: '/programs/art-music-therapy' },
+          { label: 'CBT vs DBT', href: '/compare/cbt-vs-dbt' },
+          { label: 'Residential vs PHP', href: '/compare/residential-vs-php' },
+          { label: 'Treatment Comparisons', href: '/compare' },
         ],
         viewAll: { label: 'Our Approach', href: '/our-approach' },
       },
@@ -133,6 +133,7 @@ export const navLinks: NavLinkItemWithDropdown[] = [
   },
   { label: 'Admissions', href: '/admissions' },
   { label: 'About', href: '/about/our-team' },
+  { label: 'Resources', href: '/resources' },
 ]
 
 export const footerLinks: FooterLinkGroup[] = [
@@ -164,6 +165,7 @@ export const footerLinks: FooterLinkGroup[] = [
       { label: 'Facility Tour', href: '/about/facility' },
       { label: 'Accreditation', href: '/about/our-team#accreditation' },
       { label: 'Youth Academy', href: '/about/youth-academy' },
+      { label: 'Resources', href: '/resources' },
     ],
   },
 ]

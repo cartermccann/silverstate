@@ -71,6 +71,7 @@ const UHC = lazy(() => import('./pages/insurance/UHC'))
 const TRICARE = lazy(() => import('./pages/insurance/TRICARE'))
 const Medicaid = lazy(() => import('./pages/insurance/Medicaid'))
 const Anthem = lazy(() => import('./pages/insurance/Anthem'))
+const HPN = lazy(() => import('./pages/insurance/HPN'))
 
 // Locations
 const LocationsIndex = lazy(() => import('./pages/locations/Index'))
@@ -88,6 +89,21 @@ const YouthAcademy = lazy(() => import('./pages/about/YouthAcademy'))
 // Admissions & Contact
 const Process = lazy(() => import('./pages/admissions/Process'))
 const Contact = lazy(() => import('./pages/Contact'))
+
+// Resources
+const ResourcesIndex = lazy(() => import('./pages/resources/Index'))
+const CPIArticle = lazy(() => import('./pages/resources/CPIArticle'))
+const DefiantTeenArticle = lazy(() => import('./pages/resources/DefiantTeenArticle'))
+const SchoolBurnoutArticle = lazy(() => import('./pages/resources/SchoolBurnoutArticle'))
+
+// Comparisons
+const ComparisonsIndex = lazy(() => import('./pages/comparisons/Index'))
+const CbtVsDbt = lazy(() => import('./pages/comparisons/CbtVsDbt'))
+const ResidentialVsPhp = lazy(() => import('./pages/comparisons/ResidentialVsPhp'))
+const ResidentialVsIop = lazy(() => import('./pages/comparisons/ResidentialVsIop'))
+const AnxietyVsDepression = lazy(() => import('./pages/comparisons/AnxietyVsDepression'))
+const PtsdVsAnxiety = lazy(() => import('./pages/comparisons/PtsdVsAnxiety'))
+const AnorexiaVsBulimia = lazy(() => import('./pages/comparisons/AnorexiaVsBulimia'))
 
 // Standalone
 const OurApproach = lazy(() => import('./pages/OurApproach'))
@@ -606,6 +622,14 @@ export const routes: RouteObject[] = [
       </S>
     ),
   },
+  {
+    path: '/insurance/hpn',
+    element: (
+      <S>
+        <HPN />
+      </S>
+    ),
+  },
 
   // Locations
   {
@@ -697,6 +721,98 @@ export const routes: RouteObject[] = [
     element: (
       <S>
         <Contact />
+      </S>
+    ),
+  },
+
+  // Resources
+  {
+    path: '/resources',
+    element: (
+      <S>
+        <ResourcesIndex />
+      </S>
+    ),
+  },
+  {
+    path: '/resources/crisis-prevention-intervention',
+    element: (
+      <S>
+        <CPIArticle />
+      </S>
+    ),
+  },
+  {
+    path: '/resources/defiant-teenager-treatment',
+    element: (
+      <S>
+        <DefiantTeenArticle />
+      </S>
+    ),
+  },
+  {
+    path: '/resources/school-burnout-signs',
+    element: (
+      <S>
+        <SchoolBurnoutArticle />
+      </S>
+    ),
+  },
+
+  // Comparisons
+  {
+    path: '/compare',
+    element: (
+      <S>
+        <ComparisonsIndex />
+      </S>
+    ),
+  },
+  {
+    path: '/compare/cbt-vs-dbt',
+    element: (
+      <S>
+        <CbtVsDbt />
+      </S>
+    ),
+  },
+  {
+    path: '/compare/residential-vs-php',
+    element: (
+      <S>
+        <ResidentialVsPhp />
+      </S>
+    ),
+  },
+  {
+    path: '/compare/residential-vs-iop',
+    element: (
+      <S>
+        <ResidentialVsIop />
+      </S>
+    ),
+  },
+  {
+    path: '/compare/anxiety-vs-depression',
+    element: (
+      <S>
+        <AnxietyVsDepression />
+      </S>
+    ),
+  },
+  {
+    path: '/compare/ptsd-vs-anxiety',
+    element: (
+      <S>
+        <PtsdVsAnxiety />
+      </S>
+    ),
+  },
+  {
+    path: '/compare/anorexia-vs-bulimia',
+    element: (
+      <S>
+        <AnorexiaVsBulimia />
       </S>
     ),
   },

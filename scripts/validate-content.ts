@@ -98,6 +98,30 @@ interface TherapyModalityLike {
   usedFor: string[]
 }
 
+interface ComparisonItemLike {
+  name: string
+  slug: string
+  description: string
+  bestFor: string
+  keyFeatures: string[]
+}
+
+interface ComparisonPageLike {
+  slug: string
+  title: string
+  metaTitle: string
+  metaDescription: string
+  category: string
+  introduction: string
+  itemA: ComparisonItemLike
+  itemB: ComparisonItemLike
+  keyDifferences: Array<{ aspect: string; itemA: string; itemB: string }>
+  whenToChoose: string
+  faqs: Array<{ q: string; a: string }>
+  sources: Array<{ label: string; url: string }>
+  seoKeywords: string[]
+}
+
 const errors: ValidationError[] = []
 
 function requireString(file: string, entry: string, field: string, value: unknown): void {
@@ -271,7 +295,7 @@ function printResults(): never | void {
 
   console.log('\n=== Content validation passed ===')
   console.log(
-    '  Validated: common, programs, conditions, insurance, locations, about, admissions, therapies',
+    '  Validated: common, programs, conditions, insurance, locations, about, admissions, therapies, comparisons',
   )
   console.log('  All required fields present and non-empty.\n')
 }
@@ -588,6 +612,79 @@ async function run(): Promise<void> {
       }
     } else {
       console.log('  Skipping therapyModalities — empty (will be populated in Epic 3)')
+    }
+  }
+
+  const comparisonsModule = await importOptionalModule<{
+    comparisons?: ComparisonPageLike[]
+  }>('../src/data/comparisons.ts', 'comparisons.ts', 'GEO')
+
+  if (comparisonsModule) {
+    if (!comparisonsModule.comparisons) {
+      errors.push({
+        file: 'comparisons.ts',
+        entry: 'exports',
+        field: 'comparisons',
+        message: 'Expected exported comparisons array',
+      })
+    } else if (comparisonsModule.comparisons.length > 0) {
+      const seenComparisonSlugs = new Set<string>()
+
+      for (const comp of comparisonsModule.comparisons) {
+        requireSlug('comparisons.ts', comp.slug ?? '(unknown)', 'slug', comp.slug)
+        if (seenComparisonSlugs.has(comp.slug)) {
+          errors.push({
+            file: 'comparisons.ts',
+            entry: comp.slug,
+            field: 'slug',
+            message: `Duplicate comparison slug: "${comp.slug}"`,
+          })
+        }
+        seenComparisonSlugs.add(comp.slug)
+
+        requireString('comparisons.ts', comp.slug, 'title', comp.title)
+        requireString('comparisons.ts', comp.slug, 'metaTitle', comp.metaTitle)
+        requireString('comparisons.ts', comp.slug, 'metaDescription', comp.metaDescription)
+        requireLengthRange(
+          'comparisons.ts',
+          comp.slug,
+          'metaDescription',
+          comp.metaDescription,
+          150,
+          160,
+        )
+        requireString('comparisons.ts', comp.slug, 'introduction', comp.introduction)
+        requireString('comparisons.ts', comp.slug, 'whenToChoose', comp.whenToChoose)
+
+        // Validate items
+        for (const side of ['itemA', 'itemB'] as const) {
+          const item = comp[side]
+          requireString('comparisons.ts', `${comp.slug}.${side}`, 'name', item.name)
+          requireSlug('comparisons.ts', `${comp.slug}.${side}`, 'slug', item.slug)
+          requireString('comparisons.ts', `${comp.slug}.${side}`, 'description', item.description)
+          requireString('comparisons.ts', `${comp.slug}.${side}`, 'bestFor', item.bestFor)
+          requireArray('comparisons.ts', `${comp.slug}.${side}`, 'keyFeatures', item.keyFeatures, 3)
+        }
+
+        requireArray('comparisons.ts', comp.slug, 'keyDifferences', comp.keyDifferences, 3)
+        for (const diff of comp.keyDifferences) {
+          requireString('comparisons.ts', `${comp.slug}.keyDifferences`, 'aspect', diff.aspect)
+          requireString('comparisons.ts', `${comp.slug}.keyDifferences`, 'itemA', diff.itemA)
+          requireString('comparisons.ts', `${comp.slug}.keyDifferences`, 'itemB', diff.itemB)
+        }
+
+        requireArray('comparisons.ts', comp.slug, 'faqs', comp.faqs, 2)
+        for (const faq of comp.faqs) {
+          requireString('comparisons.ts', `${comp.slug}.faqs`, 'q', faq.q)
+          requireString('comparisons.ts', `${comp.slug}.faqs`, 'a', faq.a)
+        }
+
+        requireArray('comparisons.ts', comp.slug, 'sources', comp.sources, 2)
+        for (const src of comp.sources) {
+          requireString('comparisons.ts', `${comp.slug}.sources`, 'label', src.label)
+          requireUrl('comparisons.ts', `${comp.slug}.sources`, 'url', src.url)
+        }
+      }
     }
   }
 
