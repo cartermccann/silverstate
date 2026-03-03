@@ -19,6 +19,7 @@ export const meta = generateMeta({
   description:
     'Silver State treats adolescent mental health conditions, substance abuse, and eating disorders. Evidence-based residential, PHP, and IOP treatment for teens ages 11-17 in Las Vegas.',
   path: '/conditions',
+  keywords: ['teen mental health conditions', 'adolescent behavioral health', 'conditions treated teens', 'teen substance abuse treatment', 'teen eating disorder treatment'],
 })
 
 const categoryLabels: Record<string, string> = {

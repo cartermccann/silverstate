@@ -8,6 +8,7 @@ export const meta = generateMeta({
   title: condition.metaTitle,
   description: condition.metaDescription,
   path: `/conditions/${condition.slug}`,
+  keywords: condition.seoKeywords,
 })
 
 export const handle = {

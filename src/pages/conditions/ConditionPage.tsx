@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router'
 import type { ConditionData } from '../../types'
 import AnimateIn, { StaggerGroup, StaggerItem } from '../../components/AnimateIn'
+import Parallax, { ClipReveal } from '../../components/Parallax'
 import { CharReveal } from '../../components/TextReveal'
 import FaqItem from '../../components/FaqItem'
 import MagneticButton from '../../components/MagneticButton'
@@ -100,47 +101,58 @@ export default function ConditionPage({ condition }: ConditionPageProps) {
         </div>
       </section>
 
-      {/* ── 2. CONDITION OVERVIEW ── */}
+      {/* ── 2. CONDITION OVERVIEW (side-by-side with image) ── */}
       <section style={{ padding: '64px 0' }}>
-        <div className="wrap" style={{ maxWidth: 800 }}>
-          <AnimateIn variant="fadeUp">
-            <h2 className="section-heading">Understanding {shortName} in Adolescents</h2>
-          </AnimateIn>
+        <div className="wrap">
+          <div
+            className="condition-overview-grid"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: condition.sectionImages?.[0] ? '1fr 1fr' : '1fr',
+              gap: 48,
+              alignItems: 'center',
+            }}
+          >
+            <div style={{ maxWidth: condition.sectionImages?.[0] ? undefined : 800 }}>
+              <AnimateIn variant="fadeUp">
+                <h2 className="section-heading">Understanding {shortName} in Adolescents</h2>
+              </AnimateIn>
 
-          {condition.description.split('\n\n').map((paragraph, i) => (
-            <AnimateIn key={i} variant="blurUp" delay={0.1 + i * 0.1}>
-              <p
-                style={{
-                  marginTop: 16,
-                  color: 'var(--body)',
-                  fontSize: '.95rem',
-                  lineHeight: 1.7,
-                }}
-              >
-                {paragraph}
-              </p>
-            </AnimateIn>
-          ))}
+              {condition.description.split('\n\n').map((paragraph, i) => (
+                <AnimateIn key={i} variant="blurUp" delay={0.1 + i * 0.1}>
+                  <p
+                    style={{
+                      marginTop: 16,
+                      color: 'var(--body)',
+                      fontSize: '.95rem',
+                      lineHeight: 1.7,
+                    }}
+                  >
+                    {paragraph}
+                  </p>
+                </AnimateIn>
+              ))}
+            </div>
 
-          {condition.sectionImages?.[0] && (
-            <AnimateIn variant="fadeUp" delay={0.3}>
-              <img
-                src={condition.sectionImages[0]}
-                alt={`${shortName} treatment session at Silver State`}
-                loading="lazy"
-                width={800}
-                height={450}
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  aspectRatio: '16 / 9',
-                  objectFit: 'cover',
-                  borderRadius: 'var(--radius-lg)',
-                  marginTop: 32,
-                }}
-              />
-            </AnimateIn>
-          )}
+            {condition.sectionImages?.[0] && (
+              <ClipReveal direction="up" duration={1.2}>
+                <Parallax speed={0.15} overflow="visible">
+                  <img
+                    src={condition.sectionImages[0]}
+                    alt={`${shortName} treatment session at Silver State`}
+                    loading="lazy"
+                    style={{
+                      width: '100%',
+                      borderRadius: 'var(--radius-lg)',
+                      aspectRatio: '4 / 5',
+                      objectFit: 'cover',
+                      display: 'block',
+                    }}
+                  />
+                </Parallax>
+              </ClipReveal>
+            )}
+          </div>
         </div>
       </section>
 
@@ -238,45 +250,56 @@ export default function ConditionPage({ condition }: ConditionPageProps) {
         </div>
       </section>
 
-      {/* ── 5. OUR APPROACH ── */}
+      {/* ── 5. OUR APPROACH (side-by-side with image) ── */}
       <section style={{ padding: '64px 0', background: WARM }}>
-        <div className="wrap" style={{ maxWidth: 800 }}>
-          <AnimateIn variant="fadeUp">
-            <h2 className="section-heading">How Silver State Treats {shortName}</h2>
-          </AnimateIn>
+        <div className="wrap">
+          <div
+            className="condition-approach-grid"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: condition.sectionImages?.[1] ? '1fr 1fr' : '1fr',
+              gap: 48,
+              alignItems: 'center',
+            }}
+          >
+            {condition.sectionImages?.[1] && (
+              <ClipReveal direction="up" duration={1.2}>
+                <Parallax speed={0.15} overflow="visible">
+                  <img
+                    src={condition.sectionImages[1]}
+                    alt={`Evidence-based therapy for ${shortName} at Silver State`}
+                    loading="lazy"
+                    style={{
+                      width: '100%',
+                      borderRadius: 'var(--radius-lg)',
+                      aspectRatio: '4 / 5',
+                      objectFit: 'cover',
+                      display: 'block',
+                    }}
+                  />
+                </Parallax>
+              </ClipReveal>
+            )}
 
-          <AnimateIn variant="blurUp" delay={0.1}>
-            <p
-              style={{
-                marginTop: 16,
-                color: 'var(--body)',
-                fontSize: '.95rem',
-                lineHeight: 1.7,
-              }}
-            >
-              {condition.approach}
-            </p>
-          </AnimateIn>
+            <div style={{ maxWidth: condition.sectionImages?.[1] ? undefined : 800 }}>
+              <AnimateIn variant="fadeUp">
+                <h2 className="section-heading">How Silver State Treats {shortName}</h2>
+              </AnimateIn>
 
-          {condition.sectionImages?.[1] && (
-            <AnimateIn variant="fadeUp" delay={0.2}>
-              <img
-                src={condition.sectionImages[1]}
-                alt={`Evidence-based therapy for ${shortName} at Silver State`}
-                loading="lazy"
-                width={800}
-                height={450}
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  aspectRatio: '16 / 9',
-                  objectFit: 'cover',
-                  borderRadius: 'var(--radius-lg)',
-                  marginTop: 24,
-                }}
-              />
-            </AnimateIn>
-          )}
+              <AnimateIn variant="blurUp" delay={0.1}>
+                <p
+                  style={{
+                    marginTop: 16,
+                    color: 'var(--body)',
+                    fontSize: '.95rem',
+                    lineHeight: 1.7,
+                  }}
+                >
+                  {condition.approach}
+                </p>
+              </AnimateIn>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -572,6 +595,16 @@ export default function ConditionPage({ condition }: ConditionPageProps) {
           </div>
         </section>
       )}
+
+      <style>{`
+        @media (max-width: 900px) {
+          .condition-overview-grid,
+          .condition-approach-grid {
+            grid-template-columns: 1fr !important;
+            gap: 32px !important;
+          }
+        }
+      `}</style>
     </>
   )
 }
