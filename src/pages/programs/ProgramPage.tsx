@@ -104,18 +104,20 @@ export default function ProgramPage({ program }: ProgramPageProps) {
             {program.title}
           </CharReveal>
 
-          <AnimateIn variant="blurUp" delay={0.2}>
-            <p
-              style={{
-                marginTop: 16,
-                color: 'var(--body)',
-                fontSize: '1rem',
-                lineHeight: 1.7,
-              }}
-            >
-              {program.overview}
-            </p>
-          </AnimateIn>
+          {program.overview.split('\n\n').map((paragraph, i) => (
+            <AnimateIn key={i} variant="blurUp" delay={0.2 + i * 0.1}>
+              <p
+                style={{
+                  marginTop: 16,
+                  color: 'var(--body)',
+                  fontSize: '1rem',
+                  lineHeight: 1.7,
+                }}
+              >
+                {paragraph}
+              </p>
+            </AnimateIn>
+          ))}
 
           <AnimateIn variant="fadeUp" delay={0.3}>
             <div
@@ -158,19 +160,21 @@ export default function ProgramPage({ program }: ProgramPageProps) {
             </div>
           </AnimateIn>
 
-          <AnimateIn variant="blurUp" delay={0.4}>
-            <p
-              style={{
-                marginTop: 20,
-                color: 'var(--body)',
-                fontSize: '.9rem',
-                lineHeight: 1.7,
-                fontStyle: 'italic',
-              }}
-            >
-              {program.targetAudience}
-            </p>
-          </AnimateIn>
+          {program.targetAudience.split('\n\n').map((paragraph, i) => (
+            <AnimateIn key={i} variant="blurUp" delay={0.4 + i * 0.1}>
+              <p
+                style={{
+                  marginTop: 20,
+                  color: 'var(--body)',
+                  fontSize: '.9rem',
+                  lineHeight: 1.7,
+                  fontStyle: 'italic',
+                }}
+              >
+                {paragraph}
+              </p>
+            </AnimateIn>
+          ))}
         </div>
       </section>
 
@@ -192,18 +196,20 @@ export default function ProgramPage({ program }: ProgramPageProps) {
                 <h2 className="section-heading">Our Approach</h2>
               </AnimateIn>
 
-              <AnimateIn variant="blurUp" delay={0.1}>
-                <p
-                  style={{
-                    marginTop: 16,
-                    color: 'var(--body)',
-                    fontSize: '.95rem',
-                    lineHeight: 1.7,
-                  }}
-                >
-                  {program.approach}
-                </p>
-              </AnimateIn>
+              {program.approach.split('\n\n').map((paragraph, i) => (
+                <AnimateIn key={i} variant="blurUp" delay={0.1 + i * 0.1}>
+                  <p
+                    style={{
+                      marginTop: 16,
+                      color: 'var(--body)',
+                      fontSize: '.95rem',
+                      lineHeight: 1.7,
+                    }}
+                  >
+                    {paragraph}
+                  </p>
+                </AnimateIn>
+              ))}
 
               {program.stat && (
                 <AnimateIn variant="fadeUp" delay={0.15}>

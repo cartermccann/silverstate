@@ -286,18 +286,20 @@ export default function ConditionPage({ condition }: ConditionPageProps) {
                 <h2 className="section-heading">How Silver State Treats {shortName}</h2>
               </AnimateIn>
 
-              <AnimateIn variant="blurUp" delay={0.1}>
-                <p
-                  style={{
-                    marginTop: 16,
-                    color: 'var(--body)',
-                    fontSize: '.95rem',
-                    lineHeight: 1.7,
-                  }}
-                >
-                  {condition.approach}
-                </p>
-              </AnimateIn>
+              {condition.approach.split('\n\n').map((paragraph, i) => (
+                <AnimateIn key={i} variant="blurUp" delay={0.1 + i * 0.1}>
+                  <p
+                    style={{
+                      marginTop: 16,
+                      color: 'var(--body)',
+                      fontSize: '.95rem',
+                      lineHeight: 1.7,
+                    }}
+                  >
+                    {paragraph}
+                  </p>
+                </AnimateIn>
+              ))}
             </div>
           </div>
         </div>

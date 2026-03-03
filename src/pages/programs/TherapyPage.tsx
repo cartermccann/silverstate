@@ -91,11 +91,13 @@ export default function TherapyPage({ therapy, faqs }: TherapyPageProps) {
           >
             {therapy.name}
           </CharReveal>
-          <AnimateIn variant="blurUp" delay={0.2}>
-            <p style={{ marginTop: 16, color: 'var(--body)', fontSize: '1rem', lineHeight: 1.7 }}>
-              {therapy.description}
-            </p>
-          </AnimateIn>
+          {therapy.description.split('\n\n').map((paragraph, i) => (
+            <AnimateIn key={i} variant="blurUp" delay={0.2 + i * 0.1}>
+              <p style={{ marginTop: 16, color: 'var(--body)', fontSize: '1rem', lineHeight: 1.7 }}>
+                {paragraph}
+              </p>
+            </AnimateIn>
+          ))}
         </div>
       </section>
 
@@ -105,18 +107,20 @@ export default function TherapyPage({ therapy, faqs }: TherapyPageProps) {
           <AnimateIn variant="fadeUp">
             <h2 className="section-heading">How {therapy.shortName} Helps Teens</h2>
           </AnimateIn>
-          <AnimateIn variant="blurUp" delay={0.1}>
-            <p
-              style={{
-                marginTop: 16,
-                color: 'var(--body)',
-                fontSize: '.95rem',
-                lineHeight: 1.7,
-              }}
-            >
-              {therapy.howItHelps}
-            </p>
-          </AnimateIn>
+          {therapy.howItHelps.split('\n\n').map((paragraph, i) => (
+            <AnimateIn key={i} variant="blurUp" delay={0.1 + i * 0.1}>
+              <p
+                style={{
+                  marginTop: 16,
+                  color: 'var(--body)',
+                  fontSize: '.95rem',
+                  lineHeight: 1.7,
+                }}
+              >
+                {paragraph}
+              </p>
+            </AnimateIn>
+          ))}
           {therapy.evidenceBasis && (
             <AnimateIn variant="fadeUp" delay={0.2}>
               <div
