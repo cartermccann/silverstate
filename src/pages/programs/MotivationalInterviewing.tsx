@@ -9,6 +9,7 @@ export const meta = generateMeta({
   description:
     'Adolescent motivational interviewing therapy at Silver State in Las Vegas, NV. MI is a collaborative approach that strengthens a teen\'s own motivation to change by exploring their personal values and goals.',
   path: `/programs/${therapy.slug}`,
+  keywords: therapy.seoKeywords,
 })
 
 export const handle = {
@@ -27,6 +28,14 @@ const faqs = [
   {
     q: 'Is motivational interviewing used as a standalone treatment or alongside other therapies?',
     a: 'At Silver State, motivational interviewing is used both ways. It often serves as an essential early-phase intervention to build therapeutic rapport and increase a teen\'s readiness for more intensive therapies like CBT or DBT. It is also woven into ongoing treatment sessions to sustain motivation throughout the recovery process. For substance use concerns, MI may be paired with relapse prevention strategies. The flexibility of MI makes it a valuable complement to nearly every other therapeutic modality in our program.',
+  },
+  {
+    q: 'What is the evidence base for motivational interviewing with teens?',
+    a: 'A comprehensive meta-analysis published in the journal Clinical Psychology Review by Barnett et al. found that motivational interviewing produced significant positive effects for adolescent substance use, treatment engagement, and health-related behaviors. The National Institute on Drug Abuse (NIDA) recognizes MI as an evidence-based approach for adolescent substance use disorders. Additional research in the journal Pediatrics demonstrated that even brief MI interventions — as short as one to two sessions — reduced risky drinking and cannabis use among teens in emergency department settings.',
+  },
+  {
+    q: 'How many motivational interviewing sessions do teens typically need?',
+    a: 'One of the strengths of motivational interviewing is its flexibility. According to research from the Motivational Interviewing Network of Trainers (MINT), even a single 45- to 60-minute MI session can shift a teen\'s readiness to change. When used as a standalone brief intervention, 1 to 4 sessions are typical, as documented in studies published by the Journal of Substance Abuse Treatment. When integrated into ongoing residential treatment at Silver State, MI techniques are woven throughout the therapeutic process for the duration of the teen\'s stay.',
   },
 ]
 

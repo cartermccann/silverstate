@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router'
 import type { ProgramPageData } from '../../types'
 import AnimateIn, { StaggerGroup, StaggerItem } from '../../components/AnimateIn'
+import Parallax, { ClipReveal } from '../../components/Parallax'
 import { CharReveal } from '../../components/TextReveal'
 import FaqItem from '../../components/FaqItem'
 import TimelineRow from '../../components/Timeline'
@@ -176,49 +177,81 @@ export default function ProgramPage({ program }: ProgramPageProps) {
       {/* ── 2. APPROACH & FEATURES ── */}
       <section style={{ padding: '64px 0' }}>
         <div className="wrap">
-          <AnimateIn variant="fadeUp">
-            <h2 className="section-heading">Our Approach</h2>
-          </AnimateIn>
+          {/* Side-by-side: text left, image right */}
+          <div
+            className="program-approach-grid"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: program.sectionImages?.[0] ? '1fr 1fr' : '1fr',
+              gap: 48,
+              alignItems: 'center',
+            }}
+          >
+            <div>
+              <AnimateIn variant="fadeUp">
+                <h2 className="section-heading">Our Approach</h2>
+              </AnimateIn>
 
-          <AnimateIn variant="blurUp" delay={0.1}>
-            <p
-              style={{
-                marginTop: 16,
-                color: 'var(--body)',
-                fontSize: '.95rem',
-                lineHeight: 1.7,
-                maxWidth: 700,
-              }}
-            >
-              {program.approach}
-            </p>
-          </AnimateIn>
+              <AnimateIn variant="blurUp" delay={0.1}>
+                <p
+                  style={{
+                    marginTop: 16,
+                    color: 'var(--body)',
+                    fontSize: '.95rem',
+                    lineHeight: 1.7,
+                  }}
+                >
+                  {program.approach}
+                </p>
+              </AnimateIn>
 
-          {program.stat && (
-            <AnimateIn variant="fadeUp" delay={0.15}>
-              <div
-                style={{
-                  marginTop: 24,
-                  padding: '16px 24px',
-                  background: WARM,
-                  borderRadius: 'var(--radius-lg)',
-                  display: 'inline-block',
-                  fontFamily: DISPLAY,
-                  fontSize: '1.1rem',
-                  fontWeight: 700,
-                  color: SAGE,
-                }}
-              >
-                {program.stat}
-              </div>
-            </AnimateIn>
-          )}
+              {program.stat && (
+                <AnimateIn variant="fadeUp" delay={0.15}>
+                  <div
+                    style={{
+                      marginTop: 24,
+                      padding: '16px 24px',
+                      background: WARM,
+                      borderRadius: 'var(--radius-lg)',
+                      display: 'inline-block',
+                      fontFamily: DISPLAY,
+                      fontSize: '1.1rem',
+                      fontWeight: 700,
+                      color: SAGE,
+                    }}
+                  >
+                    {program.stat}
+                  </div>
+                </AnimateIn>
+              )}
+            </div>
 
+            {program.sectionImages?.[0] && (
+              <ClipReveal direction="up" duration={1.2}>
+                <Parallax speed={0.15} overflow="visible">
+                  <img
+                    src={program.sectionImages[0]}
+                    alt={`${program.label} at Silver State`}
+                    loading="lazy"
+                    style={{
+                      width: '100%',
+                      borderRadius: 'var(--radius-lg)',
+                      aspectRatio: '4 / 5',
+                      objectFit: 'cover',
+                      display: 'block',
+                    }}
+                  />
+                </Parallax>
+              </ClipReveal>
+            )}
+          </div>
+
+          {/* Features checklist below */}
           <StaggerGroup
             stagger={0.08}
             variant="fadeUp"
             style={{
-              marginTop: 32,
+              marginTop: 40,
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
               gap: 16,
@@ -250,27 +283,6 @@ export default function ProgramPage({ program }: ProgramPageProps) {
               </StaggerItem>
             ))}
           </StaggerGroup>
-
-          {program.sectionImages?.[0] && (
-            <AnimateIn variant="fadeUp" delay={0.2}>
-              <img
-                src={program.sectionImages[0]}
-                alt={`${program.label} at Silver State`}
-                loading="lazy"
-                width={800}
-                height={450}
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  aspectRatio: '16 / 9',
-                  objectFit: 'cover',
-                  borderRadius: 'var(--radius-lg)',
-                  marginTop: 32,
-                  maxWidth: 700,
-                }}
-              />
-            </AnimateIn>
-          )}
         </div>
       </section>
 
@@ -315,6 +327,99 @@ export default function ProgramPage({ program }: ProgramPageProps) {
           </AnimateIn>
         </div>
       </section>
+
+      {/* ── 3b. IMAGE BAND — side-by-side with callout ── */}
+      {program.sectionImages?.[1] && (
+        <section style={{ padding: '64px 0', background: SAGE, color: '#fff' }}>
+          <div className="wrap" style={{ padding: '0 32px' }}>
+            <div
+              className="program-band-grid"
+              style={{
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr',
+                gap: 56,
+                alignItems: 'center',
+              }}
+            >
+              <ClipReveal direction="up" duration={1.2}>
+                <Parallax speed={0.2} overflow="visible">
+                  <img
+                    src={program.sectionImages[1]}
+                    alt={`Therapy session during ${program.label} at Silver State`}
+                    loading="lazy"
+                    style={{
+                      width: '100%',
+                      borderRadius: 'var(--radius-lg)',
+                      aspectRatio: '4 / 5',
+                      objectFit: 'cover',
+                      display: 'block',
+                    }}
+                  />
+                </Parallax>
+              </ClipReveal>
+
+              <div>
+                <AnimateIn variant="fadeUp">
+                  <span
+                    style={{
+                      fontSize: '.7rem',
+                      fontWeight: 600,
+                      letterSpacing: '.1em',
+                      textTransform: 'uppercase',
+                      color: 'rgba(255,255,255,0.7)',
+                    }}
+                  >
+                    Healing Happens Here
+                  </span>
+                </AnimateIn>
+                <CharReveal
+                  as="h2"
+                  stagger={0.02}
+                  style={{
+                    fontFamily: DISPLAY,
+                    fontSize: 'clamp(1.75rem, 3vw, 2.5rem)',
+                    fontWeight: 700,
+                    lineHeight: 1.0,
+                    letterSpacing: '-0.03em',
+                    marginTop: 12,
+                    textWrap: 'balance',
+                  }}
+                >
+                  Evidence-Based Care, Personalized for Every Teen
+                </CharReveal>
+                <AnimateIn variant="blurUp" delay={0.2}>
+                  <p
+                    style={{
+                      marginTop: 16,
+                      fontSize: '.95rem',
+                      lineHeight: 1.7,
+                      color: 'rgba(255,255,255,0.85)',
+                      maxWidth: 440,
+                    }}
+                  >
+                    Our clinical team tailors treatment to each adolescent's unique needs,
+                    combining proven therapeutic modalities with holistic wellness and family support.
+                  </p>
+                </AnimateIn>
+                <AnimateIn variant="fadeUp" delay={0.3}>
+                  <div style={{ display: 'flex', gap: 12, marginTop: 24, flexWrap: 'wrap' }}>
+                    <MagneticButton>
+                      <a
+                        href={site.phoneTel}
+                        className="btn btn-white"
+                        style={{ textDecoration: 'none' }}
+                      >
+                        <IconPhone style={{ width: 18, height: 18 }} />
+                        Call {site.phone}
+                      </a>
+                    </MagneticButton>
+                  </div>
+                </AnimateIn>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── 4. THERAPY MODALITIES ── */}
       <section style={{ padding: '64px 0' }}>
@@ -605,6 +710,15 @@ export default function ProgramPage({ program }: ProgramPageProps) {
         </div>
       </section>
 
+      <style>{`
+        @media (max-width: 900px) {
+          .program-approach-grid,
+          .program-band-grid {
+            grid-template-columns: 1fr !important;
+            gap: 32px !important;
+          }
+        }
+      `}</style>
     </>
   )
 }

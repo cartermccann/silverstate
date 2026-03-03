@@ -8,6 +8,7 @@ export const meta = generateMeta({
   description: iopProgram.metaDescription,
   path: `/programs/${iopProgram.slug}`,
   ogImage: iopProgram.heroImage,
+  keywords: iopProgram.seoKeywords,
 })
 
 export const handle = {

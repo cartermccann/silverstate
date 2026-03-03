@@ -9,6 +9,7 @@ export const meta = generateMeta({
   description:
     'Adolescent holistic treatment at Silver State in Las Vegas addresses mind, body, and spirit through nutrition, fitness, yoga, meditation, and creative arts.',
   path: `/programs/${therapy.slug}`,
+  keywords: therapy.seoKeywords,
 })
 
 export const handle = {
@@ -27,6 +28,14 @@ const faqs = [
   {
     q: 'What holistic activities are available to teens?',
     a: 'Our holistic programming includes yoga, guided meditation, nutrition education, physical fitness activities, art and music expression, journaling, nature-based mindfulness walks, and recreational therapy. Each teen\u2019s schedule is personalized to include activities that best support their individual treatment plan and interests.',
+  },
+  {
+    q: 'What is the evidence base for holistic treatment with teens?',
+    a: 'Research published in the Journal of Alternative and Complementary Medicine found that integrative treatment approaches combining conventional therapy with complementary modalities such as yoga, mindfulness, and nutrition counseling produced greater reductions in adolescent anxiety and depression than conventional therapy alone. A systematic review in the journal Pediatrics by McClafferty et al. confirmed that mind-body practices including yoga and meditation are safe and effective adjuncts for adolescent mental health care. The National Center for Complementary and Integrative Health (NCCIH), part of the NIH, supports ongoing research into holistic interventions for youth.',
+  },
+  {
+    q: 'How many holistic treatment sessions do teens typically need?',
+    a: 'Because holistic treatment encompasses multiple modalities, there is no single session count. According to research published in the International Journal of Yoga Therapy, adolescents show measurable improvements in stress and emotional regulation after 8 to 12 weeks of consistent yoga practice. Studies reviewed by the Academy of Nutrition and Dietetics suggest that nutrition counseling integrated over the full course of treatment leads to the most sustained benefits. At Silver State, holistic activities are scheduled daily throughout each teen\'s residential stay, ensuring these practices become integrated habits rather than isolated interventions.',
   },
 ]
 

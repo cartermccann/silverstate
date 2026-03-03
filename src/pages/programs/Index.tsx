@@ -20,6 +20,7 @@ export const meta = generateMeta({
   description:
     "Explore Silver State's adolescent treatment programs: Residential, PHP, and IOP for teens ages 11-17 in Las Vegas. Evidence-based care with a 4:1 staff-to-client ratio.",
   path: '/programs',
+  keywords: ['teen treatment programs Las Vegas', 'adolescent residential treatment', 'teen PHP program', 'teen IOP program', 'mental health programs for teenagers'],
 })
 
 export default function ProgramsHub() {

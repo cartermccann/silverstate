@@ -20,6 +20,7 @@ export const meta = generateMeta({
   description:
     'Explore Silver State\u2019s 17+ evidence-based therapy programs for adolescents ages 11-17 in Las Vegas, including CBT, DBT, EMDR, family therapy, and more.',
   path: '/programs/therapy-programs',
+  keywords: ['teen therapy programs', 'adolescent therapy modalities', 'teen CBT DBT EMDR', 'therapy for teenagers Las Vegas', 'evidence-based teen therapy'],
 })
 
 type CategoryKey = 'evidence-based' | 'therapeutic-modalities' | 'treatment-approaches'

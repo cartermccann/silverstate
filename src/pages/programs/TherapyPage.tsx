@@ -55,6 +55,26 @@ export default function TherapyPage({ therapy, faqs }: TherapyPageProps) {
       {/* ── HERO ── */}
       <section style={{ padding: '64px 0 48px', background: WARM }}>
         <div className="wrap" style={{ maxWidth: 800 }}>
+          {therapy.heroImage && (
+            <AnimateIn variant="fadeUp">
+              <img
+                src={therapy.heroImage}
+                alt={`${therapy.name} at Silver State`}
+                loading="eager"
+                width={800}
+                height={360}
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  aspectRatio: '800 / 360',
+                  objectFit: 'cover',
+                  borderRadius: 'var(--radius-lg)',
+                  marginBottom: 24,
+                }}
+              />
+            </AnimateIn>
+          )}
+
           <AnimateIn variant="fadeUp">
             <span className="section-label">Therapy &amp; Treatment</span>
           </AnimateIn>

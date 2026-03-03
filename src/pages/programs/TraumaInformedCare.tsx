@@ -9,6 +9,7 @@ export const meta = generateMeta({
   description:
     'Adolescent trauma-informed care at Silver State in Las Vegas ensures every aspect of treatment promotes safety, trust, and empowerment for teens who have experienced trauma.',
   path: `/programs/${therapy.slug}`,
+  keywords: therapy.seoKeywords,
 })
 
 export const handle = {
@@ -27,6 +28,14 @@ const faqs = [
   {
     q: 'How does trauma-informed care differ from trauma therapy?',
     a: 'Trauma therapy (such as EMDR or TF-CBT) is a specific clinical intervention that directly processes traumatic memories. Trauma-informed care is broader\u2014it is an organizational approach that ensures the entire treatment environment is safe and supportive for trauma survivors. At Silver State, we provide both: a trauma-informed environment for all teens and specialized trauma therapies for those who need targeted trauma processing.',
+  },
+  {
+    q: 'What is the evidence base for trauma-informed care with teens?',
+    a: 'Research by the Kaiser Permanente ACE (Adverse Childhood Experiences) Study, one of the largest investigations of the impact of childhood trauma on health, established the scientific foundation for trauma-informed approaches in healthcare settings. A study published in the Journal of Child & Adolescent Trauma found that residential programs implementing trauma-informed care frameworks reported significant reductions in seclusion, restraint, and behavioral incidents among adolescents. SAMHSA\'s National Center for Trauma-Informed Care cites growing evidence that organization-wide trauma-informed practices improve both client outcomes and staff retention in youth-serving programs.',
+  },
+  {
+    q: 'How long do teens typically need trauma-informed care?',
+    a: 'Trauma-informed care is not a time-limited intervention with a fixed session count — it is an ongoing framework that shapes the entire treatment environment. According to SAMHSA\'s Concept of Trauma and Guidance for a Trauma-Informed Approach, the principles of safety, trustworthiness, peer support, collaboration, and empowerment should be present throughout every phase of treatment. At Silver State, trauma-informed practices are embedded in every interaction from admission through discharge and aftercare, ensuring that each teen\'s experience of care is consistently safe and supportive regardless of their length of stay.',
   },
 ]
 

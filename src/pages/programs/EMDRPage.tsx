@@ -9,6 +9,7 @@ export const meta = generateMeta({
   description:
     'Adolescent EMDR therapy at Silver State in Las Vegas, NV. Eye Movement Desensitization and Reprocessing helps teens heal from trauma without requiring detailed verbal recounting of distressing events.',
   path: `/programs/${therapy.slug}`,
+  keywords: therapy.seoKeywords,
 })
 
 export const handle = {
@@ -27,6 +28,14 @@ const faqs = [
   {
     q: 'Is EMDR safe for adolescents?',
     a: 'Yes. EMDR is recognized by the World Health Organization and the American Psychological Association as a safe and effective treatment for trauma and PTSD in both adults and adolescents. Our EMDR-trained clinicians are experienced in adapting the protocol for teens, using age-appropriate language and pacing. One advantage of EMDR for adolescents is that it does not require them to describe their traumatic experience in detail, which can reduce discomfort for teens who are reluctant to talk.',
+  },
+  {
+    q: 'What is the evidence base for EMDR with teens?',
+    a: 'A meta-analysis published in the European Journal of Psychotraumatology found that EMDR significantly reduced PTSD symptoms in children and adolescents, with effect sizes comparable to or exceeding those of trauma-focused CBT. The World Health Organization (WHO) and the International Society for Traumatic Stress Studies (ISTSS) both recommend EMDR as a first-line treatment for PTSD in young people. A 2017 randomized controlled trial by de Roos et al., published in the Journal of Child Psychology and Psychiatry, confirmed that EMDR produced faster symptom relief than CBT in trauma-exposed youth.',
+  },
+  {
+    q: 'How many EMDR sessions do teens typically need?',
+    a: 'According to EMDR International Association guidelines, adolescents with a single-incident trauma often experience significant relief in 3 to 6 sessions. Teens with complex or repeated trauma may require 12 or more sessions to address multiple traumatic memories and their associated triggers. Research by Ahmad et al. published in the Nordic Journal of Psychiatry found that children and adolescents showed clinically meaningful PTSD symptom reduction within an average of 8 sessions.',
   },
 ]
 

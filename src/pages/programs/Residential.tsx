@@ -8,6 +8,7 @@ export const meta = generateMeta({
   description: residentialProgram.metaDescription,
   path: `/programs/${residentialProgram.slug}`,
   ogImage: residentialProgram.heroImage,
+  keywords: residentialProgram.seoKeywords,
 })
 
 export const handle = {

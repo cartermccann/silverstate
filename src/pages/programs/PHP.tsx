@@ -8,6 +8,7 @@ export const meta = generateMeta({
   description: phpProgram.metaDescription,
   path: `/programs/${phpProgram.slug}`,
   ogImage: phpProgram.heroImage,
+  keywords: phpProgram.seoKeywords,
 })
 
 export const handle = {

@@ -9,6 +9,7 @@ export const meta = generateMeta({
   description:
     'Adolescent group therapy at Silver State in Las Vegas, NV. Small, therapist-led groups help teens build social skills, reduce isolation, and practice healthy communication with peers in a safe, confidential setting.',
   path: `/programs/${therapy.slug}`,
+  keywords: therapy.seoKeywords,
 })
 
 export const handle = {
@@ -27,6 +28,14 @@ const faqs = [
   {
     q: 'How are group therapy sessions structured?',
     a: 'Each group session follows a consistent format that includes a check-in, a focused topic or skill-building activity, group discussion, and a closing reflection. Topics rotate through areas such as coping skills, communication, emotional regulation, healthy relationships, and relapse prevention. Some groups are psychoeducational, teaching specific skills like DBT distress tolerance techniques, while others are process-oriented, allowing teens to explore interpersonal dynamics in real time. This variety ensures that adolescents develop a well-rounded set of skills throughout their treatment.',
+  },
+  {
+    q: 'What is the evidence base for group therapy with teens?',
+    a: 'A meta-analysis published in the Journal of Clinical Child & Adolescent Psychology by Weisz et al. found that group-based interventions produce significant improvements in depression, anxiety, and behavioral problems among adolescents. The American Group Psychotherapy Association (AGPA) cites decades of research confirming that group therapy is particularly effective for teens because it leverages the power of peer relationships, which are developmentally central during adolescence. Studies in Psychotherapy Research also show that group cohesion — the bond formed between group members — is one of the strongest predictors of positive outcomes in adolescent group treatment.',
+  },
+  {
+    q: 'How many group therapy sessions do teens typically need?',
+    a: 'Research published in the Journal of the American Academy of Child & Adolescent Psychiatry suggests that adolescents benefit from a minimum of 8 to 12 structured group sessions for skill-building groups such as DBT skills or social skills training. Process-oriented groups are typically ongoing throughout the duration of residential treatment. At Silver State, teens participate in multiple group sessions per week, which allows them to build trust with peers more quickly and practice interpersonal skills in real time across a range of group formats.',
   },
 ]
 
