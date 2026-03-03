@@ -14,7 +14,7 @@ import TimelineRow from '../components/Timeline'
 import CardStack from '../components/CardStack'
 import useDragScroll from '../hooks/useDragScroll'
 import { IconPhone, IconCheck, IconUser, IconShield, IconMapPin } from '../components/Icons'
-import { site } from '../data/common'
+import { site, CDN_URL } from '../data/common'
 import {
   heroData,
   introData,
@@ -401,7 +401,7 @@ export default function Home() {
             }}
           >
             <img
-              src="/assets/teen-therapist.jpg"
+              src={`${CDN_URL}/assets/teen-therapist.jpg`}
               alt="Teen participating in a therapy session"
               loading="lazy"
               style={{
@@ -802,7 +802,7 @@ export default function Home() {
                 }}
               >
                 <img
-                  src="/assets/teen-therapist.jpg"
+                  src={`${CDN_URL}/assets/teen-therapist.jpg`}
                   alt="Youth Academy classroom environment"
                   loading="lazy"
                   style={{
@@ -1050,7 +1050,7 @@ export default function Home() {
                   }}
                 >
                   <img
-                    src="/assets/woman-on-phone.jpg"
+                    src={`${CDN_URL}/assets/woman-on-phone.jpg`}
                     alt="Family involvement in the treatment process"
                     loading="lazy"
                     style={{
