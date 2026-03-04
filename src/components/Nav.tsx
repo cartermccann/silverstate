@@ -213,7 +213,7 @@ export default function Nav() {
           </Link>
 
           {!isMobile && (
-            <nav aria-label="Main navigation" style={{ display: 'flex', gap: 4 }}>
+            <nav aria-label="Main navigation" style={{ display: 'flex', gap: 2, alignItems: 'center' }}>
               {navLinks.map((link: NavLinkItemWithDropdown) =>
                 link.dropdown ? (
                   <div
@@ -236,12 +236,12 @@ export default function Nav() {
                       }
                       className="nav-trigger-btn"
                       style={{
-                        fontSize: '.875rem',
+                        fontSize: '.82rem',
                         fontWeight: 600,
                         color: isActive(link.href) ? 'var(--blue)' : 'var(--body)',
                         position: 'relative',
                         borderRadius: 4,
-                        padding: '4px 8px',
+                        padding: '4px 6px',
                         background: 'none',
                         border: 'none',
                         cursor: 'pointer',
@@ -354,12 +354,12 @@ export default function Nav() {
                     to={link.href}
                     aria-current={isActive(link.href) ? 'page' : undefined}
                     style={{
-                      fontSize: '.875rem',
+                      fontSize: '.82rem',
                       fontWeight: 600,
                       color: isActive(link.href) ? 'var(--blue)' : 'var(--body)',
                       position: 'relative',
                       borderRadius: 4,
-                      padding: '4px 8px',
+                      padding: '4px 6px',
                     }}
                   >
                     {link.label}
