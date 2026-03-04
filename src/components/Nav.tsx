@@ -166,6 +166,12 @@ export default function Nav() {
 
   const phoneAriaLabel = `Call Silver State at ${site.phone}`
 
+  // Active link detection
+  const isActive = (href: string) => {
+    if (href === '/') return location.pathname === '/'
+    return location.pathname.startsWith(href)
+  }
+
   // Track last simple link index for mobile focus trap
   let mobileLastLinkIndex = -1
   navLinks.forEach((l, i) => {
@@ -224,6 +230,7 @@ export default function Nav() {
                       }}
                       aria-haspopup="true"
                       aria-expanded={openDropdown === link.label}
+                      aria-current={isActive(link.href) ? 'true' : undefined}
                       onClick={() =>
                         setOpenDropdown((prev) => (prev === link.label ? null : link.label))
                       }
@@ -231,7 +238,7 @@ export default function Nav() {
                       style={{
                         fontSize: '.875rem',
                         fontWeight: 600,
-                        color: 'var(--body)',
+                        color: isActive(link.href) ? 'var(--blue)' : 'var(--body)',
                         position: 'relative',
                         borderRadius: 4,
                         padding: '4px 8px',
@@ -345,10 +352,11 @@ export default function Nav() {
                   <Link
                     key={link.label}
                     to={link.href}
+                    aria-current={isActive(link.href) ? 'page' : undefined}
                     style={{
                       fontSize: '.875rem',
                       fontWeight: 600,
-                      color: 'var(--body)',
+                      color: isActive(link.href) ? 'var(--blue)' : 'var(--body)',
                       position: 'relative',
                       borderRadius: 4,
                       padding: '4px 8px',

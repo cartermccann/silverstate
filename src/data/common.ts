@@ -1,6 +1,6 @@
 import type { SiteInfo, NavLinkItemWithDropdown, FooterLinkGroup, AccreditationEntry } from '../types'
 
-export const CDN_URL = 'https://pub-d7363fcebeab42948ddd1a7a478927ab.r2.dev'
+export const CDN_URL = ''
 
 export const site: SiteInfo = {
   name: 'Silver State Adolescent Treatment Center',
@@ -15,6 +15,10 @@ export const site: SiteInfo = {
 }
 
 export const navLinks: NavLinkItemWithDropdown[] = [
+  {
+    label: 'Home',
+    href: '/',
+  },
   {
     label: 'Programs',
     href: '/programs',

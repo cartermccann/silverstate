@@ -479,6 +479,10 @@ export default function ProgramPage({ program }: ProgramPageProps) {
                         color: 'var(--body)',
                         lineHeight: 1.6,
                         marginBottom: 8,
+                        display: '-webkit-box',
+                        WebkitLineClamp: 3,
+                        WebkitBoxOrient: 'vertical' as const,
+                        overflow: 'hidden',
                       }}
                     >
                       {therapy.description}
@@ -489,6 +493,10 @@ export default function ProgramPage({ program }: ProgramPageProps) {
                         color: SAGE,
                         lineHeight: 1.5,
                         fontWeight: 500,
+                        display: '-webkit-box',
+                        WebkitLineClamp: 2,
+                        WebkitBoxOrient: 'vertical' as const,
+                        overflow: 'hidden',
                       }}
                     >
                       {therapy.howItHelps}
