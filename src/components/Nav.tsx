@@ -212,8 +212,7 @@ export default function Nav() {
             <img src={`${CDN_URL}/assets/logo.png`} alt="" style={{ height: isMobile ? 40 : 56 }} />
           </Link>
 
-          {!isMobile && (
-            <nav aria-label="Main navigation" style={{ display: 'flex', gap: 2, alignItems: 'center' }}>
+          <nav aria-label="Main navigation" className="desktop-nav" style={{ display: 'flex', gap: 2, alignItems: 'center' }}>
               {navLinks.map((link: NavLinkItemWithDropdown) =>
                 link.dropdown ? (
                   <div
@@ -367,7 +366,6 @@ export default function Nav() {
                 ),
               )}
             </nav>
-          )}
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <a
@@ -391,30 +389,28 @@ export default function Nav() {
               <span className="phone-text">{site.phone}</span>
             </a>
 
-            {isMobile && (
-              <button
-                ref={hamburgerRef}
-                type="button"
-                aria-label={effectiveMenuOpen ? 'Close menu' : 'Open menu'}
-                aria-expanded={effectiveMenuOpen}
-                aria-controls={mobileNavPanelId}
-                onClick={() => (effectiveMenuOpen ? handleMenuClose() : setMenuOpen(true))}
-                style={{
-                  minWidth: 44,
-                  minHeight: 44,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  background: 'none',
-                  border: 'none',
-                  cursor: 'pointer',
-                  padding: 0,
-                  color: 'var(--text)',
-                }}
-              >
-                {effectiveMenuOpen ? <IconClose /> : <IconMenu />}
-              </button>
-            )}
+            <button
+              ref={hamburgerRef}
+              type="button"
+              className="mobile-hamburger"
+              aria-label={effectiveMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={effectiveMenuOpen}
+              aria-controls={mobileNavPanelId}
+              onClick={() => (effectiveMenuOpen ? handleMenuClose() : setMenuOpen(true))}
+              style={{
+                minWidth: 44,
+                minHeight: 44,
+                alignItems: 'center',
+                justifyContent: 'center',
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                padding: 0,
+                color: 'var(--text)',
+              }}
+            >
+              {effectiveMenuOpen ? <IconClose /> : <IconMenu />}
+            </button>
           </div>
         </div>
       </header>
@@ -569,6 +565,13 @@ export default function Nav() {
       <style>{`
         .site-header {
           transition: background .3s, border-color .3s;
+        }
+        /* Desktop nav visible on wide screens, hidden on mobile */
+        .desktop-nav { display: flex; }
+        .mobile-hamburger { display: none; }
+        @media (max-width: 900px) {
+          .desktop-nav { display: none !important; }
+          .mobile-hamburger { display: flex !important; }
         }
         @media (prefers-reduced-motion: reduce) {
           .site-header {
