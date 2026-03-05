@@ -212,7 +212,7 @@ export default function Nav() {
             <img src={`${CDN_URL}/assets/logo.png`} alt="" style={{ height: isMobile ? 40 : 56 }} />
           </Link>
 
-          <nav aria-label="Main navigation" className="desktop-nav" style={{ display: 'flex', gap: 2, alignItems: 'center' }}>
+          <nav aria-label="Main navigation" className="desktop-nav" style={{ gap: 2, alignItems: 'center' }}>
               {navLinks.map((link: NavLinkItemWithDropdown) =>
                 link.dropdown ? (
                   <div
@@ -565,13 +565,6 @@ export default function Nav() {
       <style>{`
         .site-header {
           transition: background .3s, border-color .3s;
-        }
-        /* Desktop nav visible on wide screens, hidden on mobile */
-        .desktop-nav { display: flex; }
-        .mobile-hamburger { display: none; }
-        @media (max-width: 900px) {
-          .desktop-nav { display: none !important; }
-          .mobile-hamburger { display: flex !important; }
         }
         @media (prefers-reduced-motion: reduce) {
           .site-header {

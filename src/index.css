@@ -268,11 +268,19 @@ textarea:focus-visible {
   will-change: transform, opacity;
 }
 
+/* ── Nav responsive defaults ── */
+.desktop-nav { display: flex; }
+.mobile-hamburger { display: none; }
+
 @media (max-width: 900px) {
   .wrap,
   .wrap-narrow {
     padding: 0 20px;
   }
+
+  /* Nav: hide desktop nav, show hamburger on mobile */
+  .desktop-nav { display: none !important; }
+  .mobile-hamburger { display: flex !important; }
 
   /* "Is this right for you?" — stack on mobile */
   .home-whothisis-grid {
