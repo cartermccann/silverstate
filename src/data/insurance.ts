@@ -91,7 +91,7 @@ export const insuranceProviders: InsurancePageData[] = [
   {
     slug: 'ambetter',
     name: 'Ambetter',
-    logo: '/assets/insurance/ambetter.svg',
+    logo: '/assets/insurance/ambetter.png',
     coverageDescription:
       'Ambetter is a Marketplace health insurance plan offered by Centene Corporation through the Affordable Care Act (ACA) exchanges. As an ACA-compliant plan, Ambetter is required to cover mental health and substance use disorder services as one of the ten essential health benefits. Ambetter plans are also subject to federal parity protections under the Mental Health Parity and Addiction Equity Act. This includes coverage for adolescent behavioral health treatment.\n\nAmbetter plans typically cover residential treatment, PHP, and IOP for adolescents when clinically necessary. Since Ambetter is available in Nevada through the state exchange, many local families carry this coverage. Costs vary by plan metal tier (Bronze, Silver, Gold, Platinum), with higher tiers generally providing lower out-of-pocket costs for treatment.\n\nSilver State works with Ambetter to help families access their behavioral health benefits. Our team can verify your plan details and explain what your specific Ambetter coverage includes for adolescent treatment.',
     preAuthorization:
