@@ -348,11 +348,11 @@ export const teamOverviewData: HomepageTeamOverview = {
 }
 
 export const insuranceOverviewData: InsuranceEntry[] = [
-  { name: 'United Healthcare', logo: '/assets/insurance/uhc.svg' },
+  { name: 'UnitedHealthcare', logo: '/assets/insurance/uhc.svg' },
   { name: 'Aetna', logo: '/assets/insurance/aetna.png' },
   { name: 'Cigna', logo: '/assets/insurance/cigna.png' },
   { name: 'BCBS', logo: '/assets/insurance/bcbs.png' },
-  { name: 'HPN', logo: '/assets/insurance/hpn.svg' },
+  { name: 'Health Plan of Nevada', logo: '/assets/insurance/hpn.svg' },
 ]
 
 export const accreditationsOverviewData: AccreditationEntry[] = [

@@ -1,4 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
-  <rect x="0.5" y="0.5" width="199" height="59" rx="8" ry="8" fill="#ffffff" stroke="#00539B" stroke-width="1"/>
-  <text x="100" y="35" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-size="16" fill="#00539B" text-anchor="middle">Health Plan of Nevada</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 80" width="360" height="80">
+  <!-- HPN mountain/peak icon -->
+  <g transform="translate(16, 10)">
+    <path d="M0,52 L22,12 L32,28 L44,4 L56,28 L66,12 L88,52 Z" fill="#00539B" opacity="0.9"/>
+    <path d="M10,52 L44,14 L78,52 Z" fill="#0073CF" opacity="0.6"/>
+  </g>
+  <!-- Text -->
+  <text x="118" y="36" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="22" fill="#00539B">Health Plan</text>
+  <text x="118" y="58" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="18" fill="#00539B">of Nevada</text>
 </svg>

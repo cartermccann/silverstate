@@ -1,4 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
-  <rect x="0.5" y="0.5" width="199" height="59" rx="8" ry="8" fill="#ffffff" stroke="#002677" stroke-width="1"/>
-  <text x="100" y="35" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-size="18" fill="#002677" text-anchor="middle">United Healthcare</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 80" width="400" height="80">
+  <!-- UHC shield/arch mark -->
+  <g transform="translate(20, 8)">
+    <!-- Orange arch -->
+    <path d="M0,52 C0,23.3 15.2,0 34,0 C52.8,0 68,23.3 68,52" fill="none" stroke="#D45B07" stroke-width="8" stroke-linecap="round"/>
+    <!-- Blue base -->
+    <rect x="4" y="48" width="60" height="8" rx="4" fill="#002677"/>
+  </g>
+  <!-- Text -->
+  <text x="100" y="38" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="28" fill="#002677" letter-spacing="-0.5">UnitedHealthcare</text>
+  <text x="100" y="60" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="13" fill="#002677" letter-spacing="0.5"></text>
 </svg>

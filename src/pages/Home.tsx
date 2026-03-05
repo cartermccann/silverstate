@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router'
 import AnimateIn, { StaggerGroup, StaggerItem } from '../components/AnimateIn'
 import TextReveal, { CharReveal } from '../components/TextReveal'
-import Parallax, { ClipReveal } from '../components/Parallax'
 import MagneticButton from '../components/MagneticButton'
 import ProfileChip from '../components/ProfileChip'
 import CountUp from '../components/CountUp'
@@ -131,7 +130,7 @@ export default function Home() {
   return (
     <>
       {/* ----------------------------------------
-          1. HERO — Full viewport with parallax zoom-out
+          1. HERO — Full viewport with video background
       ---------------------------------------- */}
       <section
         style={{
@@ -144,32 +143,24 @@ export default function Home() {
           overflow: 'hidden',
         }}
       >
-        <Parallax
-          speed={0.4}
-          scale={true}
-          scaleFrom={1.2}
-          scaleTo={1}
+        {/* Video background — poster image shown until video loads */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={heroData.backgroundImage.src}
+          aria-hidden="true"
           style={{
             position: 'absolute',
             inset: 0,
             width: '100%',
             height: '100%',
+            objectFit: 'cover',
           }}
         >
-          <img
-            src={heroData.backgroundImage.src}
-            alt={heroData.backgroundImage.alt}
-            width={1920}
-            height={1080}
-            fetchPriority="high"
-            loading="eager"
-            style={{
-              width: '100%',
-              height: '120%',
-              objectFit: 'cover',
-            }}
-          />
-        </Parallax>
+          <source src="/Videos/hero-bg.mp4" type="video/mp4" />
+        </video>
 
         {/* Overlay gradient */}
         <div
@@ -282,18 +273,16 @@ export default function Home() {
             {introData.paragraph}
           </TextReveal>
 
-          <AnimateIn variant="blurUp" delay={0.1}>
-            <p
-              style={{
-                marginTop: 24,
-                color: 'var(--body)',
-                fontSize: '.88rem',
-                lineHeight: 1.65,
-              }}
-            >
-              {introData.credibilityLine}
-            </p>
-          </AnimateIn>
+          <p
+            style={{
+              marginTop: 24,
+              color: 'var(--body)',
+              fontSize: '.88rem',
+              lineHeight: 1.65,
+            }}
+          >
+            {introData.credibilityLine}
+          </p>
         </div>
       </section>
 
@@ -325,23 +314,19 @@ export default function Home() {
                 >
                   Is This Right for You?
                 </span>
-              </AnimateIn>
-              <CharReveal
-                as="h2"
-                stagger={0.02}
-                style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: 'clamp(2rem, 3.5vw, 2.75rem)',
-                  fontWeight: 700,
-                  lineHeight: 0.95,
-                  marginTop: 12,
-                  letterSpacing: '-0.03em',
-                  textWrap: 'balance',
-                }}
-              >
-                {whoThisIsForData.headline}
-              </CharReveal>
-              <AnimateIn variant="blurUp" delay={0.2}>
+                <h2
+                  style={{
+                    fontFamily: 'var(--font-display)',
+                    fontSize: 'clamp(2rem, 3.5vw, 2.75rem)',
+                    fontWeight: 700,
+                    lineHeight: 0.95,
+                    marginTop: 12,
+                    letterSpacing: '-0.03em',
+                    textWrap: 'balance',
+                  }}
+                >
+                  {whoThisIsForData.headline}
+                </h2>
                 <p
                   style={{
                     marginTop: 16,
@@ -357,9 +342,8 @@ export default function Home() {
             </div>
 
             {/* Right — profile chips */}
-            <StaggerGroup
+            <AnimateIn
               variant="fadeUp"
-              stagger={0.1}
               style={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -367,11 +351,9 @@ export default function Home() {
               }}
             >
               {whoThisIsForData.profiles.map((p) => (
-                <StaggerItem key={p.label}>
-                  <ProfileChip label={p.label} desc={p.desc} />
-                </StaggerItem>
+                <ProfileChip key={p.label} label={p.label} desc={p.desc} />
               ))}
-            </StaggerGroup>
+            </AnimateIn>
           </div>
         </div>
       </section>
@@ -417,17 +399,19 @@ export default function Home() {
           {/* Scrolling Content */}
           <div>
             {programHighlightsData.map((program) => (
-              <div
+              <AnimateIn
                 key={program.slug}
-                className="home-program-panel"
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'center',
-                  marginBottom: 40,
-                }}
+                variant="fadeUp"
               >
-                <AnimateIn variant="fadeIn" delay={0.1}>
+                <div
+                  className="home-program-panel"
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    marginBottom: 40,
+                  }}
+                >
                   <span
                     style={{
                       display: 'inline-block',
@@ -441,24 +425,21 @@ export default function Home() {
                   >
                     {program.label}
                   </span>
-                </AnimateIn>
 
-                <TextReveal
-                  as="h2"
-                  style={{
-                    fontFamily: DISPLAY,
-                    fontSize: 'clamp(2.25rem, 4vw, 3.5rem)',
-                    fontWeight: 700,
-                    lineHeight: 0.95,
-                    color: 'var(--text)',
-                    letterSpacing: '-0.03em',
-                    textWrap: 'balance',
-                  }}
-                >
-                  {program.title}
-                </TextReveal>
+                  <h2
+                    style={{
+                      fontFamily: DISPLAY,
+                      fontSize: 'clamp(2.25rem, 4vw, 3.5rem)',
+                      fontWeight: 700,
+                      lineHeight: 0.95,
+                      color: 'var(--text)',
+                      letterSpacing: '-0.03em',
+                      textWrap: 'balance',
+                    }}
+                  >
+                    {program.title}
+                  </h2>
 
-                <AnimateIn variant="blurUp" delay={0.2}>
                   <p
                     style={{
                       marginTop: 20,
@@ -469,23 +450,20 @@ export default function Home() {
                   >
                     {program.body}
                   </p>
-                </AnimateIn>
 
-                <StaggerGroup
-                  variant="fadeUp"
-                  stagger={0.1}
-                  style={{
-                    listStyle: 'none',
-                    padding: 0,
-                    marginTop: 32,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: 14,
-                  }}
-                >
-                  {program.features.map((f) => (
-                    <StaggerItem key={f}>
+                  <div
+                    style={{
+                      listStyle: 'none',
+                      padding: 0,
+                      marginTop: 32,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: 14,
+                    }}
+                  >
+                    {program.features.map((f) => (
                       <div
+                        key={f}
                         style={{
                           display: 'flex',
                           alignItems: 'flex-start',
@@ -506,11 +484,9 @@ export default function Home() {
                         />
                         {f}
                       </div>
-                    </StaggerItem>
-                  ))}
-                </StaggerGroup>
+                    ))}
+                  </div>
 
-                <AnimateIn variant="fadeUp" delay={0.3}>
                   <Link
                     to={`/programs/${program.slug}`}
                     style={{
@@ -526,8 +502,8 @@ export default function Home() {
                   >
                     Learn more about {program.label} &rarr;
                   </Link>
-                </AnimateIn>
-              </div>
+                </div>
+              </AnimateIn>
             ))}
           </div>
         </div>
@@ -544,23 +520,19 @@ export default function Home() {
         }}
       >
         <div className="wrap" style={{ maxWidth: 960 }}>
-          <div style={{ marginBottom: 64, textAlign: 'center' }}>
-            <AnimateIn variant="fadeIn">
-              <span
-                style={{
-                  fontSize: '.75rem',
-                  fontWeight: 600,
-                  letterSpacing: '.12em',
-                  textTransform: 'uppercase',
-                  color: SAGE,
-                }}
-              >
-                Conditions We Treat
-              </span>
-            </AnimateIn>
-            <CharReveal
-              as="h2"
-              stagger={0.02}
+          <AnimateIn variant="fadeIn" style={{ marginBottom: 64, textAlign: 'center' }}>
+            <span
+              style={{
+                fontSize: '.75rem',
+                fontWeight: 600,
+                letterSpacing: '.12em',
+                textTransform: 'uppercase',
+                color: SAGE,
+              }}
+            >
+              Conditions We Treat
+            </span>
+            <h2
               style={{
                 fontFamily: DISPLAY,
                 fontSize: 'clamp(2.25rem, 4vw, 3.5rem)',
@@ -572,8 +544,8 @@ export default function Home() {
               }}
             >
               Comprehensive care for complex challenges
-            </CharReveal>
-          </div>
+            </h2>
+          </AnimateIn>
 
           <CardStack topStart={120} topStep={20}>
             {conditionsOverviewData.map((cat, catIdx) => (
@@ -602,9 +574,7 @@ export default function Home() {
                 >
                   {cat.category}
                 </h3>
-                <StaggerGroup
-                  variant="fadeUp"
-                  stagger={0.06}
+                <div
                   style={{
                     display: 'grid',
                     gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
@@ -614,20 +584,19 @@ export default function Home() {
                   }}
                 >
                   {cat.conditions.map((c) => (
-                    <StaggerItem key={c.slug}>
-                      <Link
-                        to={`/conditions/${c.slug}`}
-                        style={{
-                          fontSize: '1.05rem',
-                          color: 'var(--body)',
-                          textDecoration: 'none',
-                        }}
-                      >
-                        {c.name}
-                      </Link>
-                    </StaggerItem>
+                    <Link
+                      key={c.slug}
+                      to={`/conditions/${c.slug}`}
+                      style={{
+                        fontSize: '1.05rem',
+                        color: 'var(--body)',
+                        textDecoration: 'none',
+                      }}
+                    >
+                      {c.name}
+                    </Link>
                   ))}
-                </StaggerGroup>
+                </div>
               </div>
             ))}
 
@@ -657,9 +626,7 @@ export default function Home() {
               >
                 Therapeutic Modalities
               </h3>
-              <StaggerGroup
-                variant="fadeUp"
-                stagger={0.06}
+              <div
                 style={{
                   display: 'grid',
                   gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
@@ -669,11 +636,9 @@ export default function Home() {
                 }}
               >
                 {therapiesOverviewData.map((t) => (
-                  <StaggerItem key={t}>
-                    <span style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,.9)' }}>{t}</span>
-                  </StaggerItem>
+                  <span key={t} style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,.9)' }}>{t}</span>
                 ))}
-              </StaggerGroup>
+              </div>
             </div>
           </CardStack>
         </div>
@@ -701,23 +666,19 @@ export default function Home() {
             }}
           >
             {/* Content */}
-            <div>
-              <AnimateIn variant="fadeIn">
-                <span
-                  style={{
-                    fontSize: '.7rem',
-                    fontWeight: 600,
-                    letterSpacing: '.1em',
-                    textTransform: 'uppercase',
-                    color: SAGE_LIGHT,
-                  }}
-                >
-                  {youthAcademyData.label}
-                </span>
-              </AnimateIn>
-              <CharReveal
-                as="h2"
-                stagger={0.02}
+            <AnimateIn variant="fadeIn">
+              <span
+                style={{
+                  fontSize: '.7rem',
+                  fontWeight: 600,
+                  letterSpacing: '.1em',
+                  textTransform: 'uppercase',
+                  color: SAGE_LIGHT,
+                }}
+              >
+                {youthAcademyData.label}
+              </span>
+              <h2
                 style={{
                   fontFamily: DISPLAY,
                   fontSize: 'clamp(2rem, 3.5vw, 2.75rem)',
@@ -729,24 +690,20 @@ export default function Home() {
                 }}
               >
                 {youthAcademyData.headline}
-              </CharReveal>
-              <AnimateIn variant="blurUp" delay={0.2}>
-                <p
-                  style={{
-                    marginTop: 16,
-                    color: 'rgba(255,255,255,.7)',
-                    fontSize: '.95rem',
-                    lineHeight: 1.75,
-                  }}
-                >
-                  {youthAcademyData.body}
-                </p>
-              </AnimateIn>
+              </h2>
+              <p
+                style={{
+                  marginTop: 16,
+                  color: 'rgba(255,255,255,.7)',
+                  fontSize: '.95rem',
+                  lineHeight: 1.75,
+                }}
+              >
+                {youthAcademyData.body}
+              </p>
 
               {/* Feature grid — 2x2 */}
-              <StaggerGroup
-                variant="fadeUp"
-                stagger={0.12}
+              <div
                 style={{
                   display: 'grid',
                   gridTemplateColumns: '1fr 1fr',
@@ -755,45 +712,44 @@ export default function Home() {
                 }}
               >
                 {youthAcademyData.features.map((f) => (
-                  <StaggerItem key={f.title}>
-                    <div
+                  <div
+                    key={f.title}
+                    style={{
+                      padding: '20px',
+                      borderRadius: 'var(--radius)',
+                      background: 'rgba(255,255,255,0.06)',
+                      border: '1px solid rgba(255,255,255,0.08)',
+                    }}
+                  >
+                    <span
                       style={{
-                        padding: '20px',
-                        borderRadius: 'var(--radius)',
-                        background: 'rgba(255,255,255,0.06)',
-                        border: '1px solid rgba(255,255,255,0.08)',
+                        fontFamily: DISPLAY,
+                        fontSize: '.88rem',
+                        fontWeight: 600,
+                        display: 'block',
+                        lineHeight: 1.3,
                       }}
                     >
-                      <span
-                        style={{
-                          fontFamily: DISPLAY,
-                          fontSize: '.88rem',
-                          fontWeight: 600,
-                          display: 'block',
-                          lineHeight: 1.3,
-                        }}
-                      >
-                        {f.title}
-                      </span>
-                      <span
-                        style={{
-                          fontSize: '.82rem',
-                          color: 'rgba(255,255,255,.5)',
-                          lineHeight: 1.5,
-                          marginTop: 6,
-                          display: 'block',
-                        }}
-                      >
-                        {f.desc}
-                      </span>
-                    </div>
-                  </StaggerItem>
+                      {f.title}
+                    </span>
+                    <span
+                      style={{
+                        fontSize: '.82rem',
+                        color: 'rgba(255,255,255,.5)',
+                        lineHeight: 1.5,
+                        marginTop: 6,
+                        display: 'block',
+                      }}
+                    >
+                      {f.desc}
+                    </span>
+                  </div>
                 ))}
-              </StaggerGroup>
-            </div>
+              </div>
+            </AnimateIn>
 
-            {/* Image with clip reveal */}
-            <AnimateIn variant="clipUp">
+            {/* Image */}
+            <AnimateIn variant="fadeUp">
               <div
                 style={{
                   borderRadius: 'var(--radius-lg)',
@@ -814,49 +770,47 @@ export default function Home() {
               </div>
 
               {/* Director callout */}
-              <AnimateIn variant="fadeUp" delay={0.4}>
-                <div
+              <div
+                style={{
+                  marginTop: 16,
+                  padding: '16px 20px',
+                  background: 'rgba(255,255,255,0.06)',
+                  border: '1px solid rgba(255,255,255,0.08)',
+                  borderRadius: 'var(--radius)',
+                }}
+              >
+                <span
                   style={{
-                    marginTop: 16,
-                    padding: '16px 20px',
-                    background: 'rgba(255,255,255,0.06)',
-                    border: '1px solid rgba(255,255,255,0.08)',
-                    borderRadius: 'var(--radius)',
+                    fontFamily: DISPLAY,
+                    fontSize: '.85rem',
+                    fontWeight: 600,
+                    display: 'block',
                   }}
                 >
-                  <span
-                    style={{
-                      fontFamily: DISPLAY,
-                      fontSize: '.85rem',
-                      fontWeight: 600,
-                      display: 'block',
-                    }}
-                  >
-                    {youthAcademyData.director.name}
-                  </span>
-                  <span
-                    style={{
-                      fontSize: '.78rem',
-                      color: SAGE_LIGHT,
-                      display: 'block',
-                      marginTop: 2,
-                    }}
-                  >
-                    {youthAcademyData.director.title}
-                  </span>
-                  <span
-                    style={{
-                      fontSize: '.8rem',
-                      color: 'rgba(255,255,255,.45)',
-                      lineHeight: 1.55,
-                      marginTop: 8,
-                      display: 'block',
-                    }}
-                  >
-                    {youthAcademyData.director.bio}
-                  </span>
-                </div>
-              </AnimateIn>
+                  {youthAcademyData.director.name}
+                </span>
+                <span
+                  style={{
+                    fontSize: '.78rem',
+                    color: SAGE_LIGHT,
+                    display: 'block',
+                    marginTop: 2,
+                  }}
+                >
+                  {youthAcademyData.director.title}
+                </span>
+                <span
+                  style={{
+                    fontSize: '.8rem',
+                    color: 'rgba(255,255,255,.45)',
+                    lineHeight: 1.55,
+                    marginTop: 8,
+                    display: 'block',
+                  }}
+                >
+                  {youthAcademyData.director.bio}
+                </span>
+              </div>
             </AnimateIn>
           </div>
         </div>
@@ -874,11 +828,9 @@ export default function Home() {
             textAlign: 'center',
           }}
         >
-          <AnimateIn variant="scaleUp" duration={1.2}>
+          <AnimateIn variant="fadeIn">
             <blockquote style={{ margin: 0, padding: 0 }}>
-              <TextReveal
-                as="p"
-                stagger={0.03}
+              <p
                 style={{
                   fontFamily: DISPLAY,
                   fontSize: 'clamp(1.3rem, 2.2vw, 1.65rem)',
@@ -889,24 +841,22 @@ export default function Home() {
                 }}
               >
                 {`\u201C${testimonialData.quote}\u201D`}
-              </TextReveal>
-              <AnimateIn variant="fadeUp" delay={0.6}>
-                <footer style={{ marginTop: 20 }}>
-                  <strong style={{ fontSize: '.9rem', color: 'var(--text)' }}>
-                    {testimonialData.author}
-                  </strong>
-                  <span
-                    style={{
-                      display: 'block',
-                      fontSize: '.82rem',
-                      color: 'var(--body)',
-                      marginTop: 2,
-                    }}
-                  >
-                    {testimonialData.detail}
-                  </span>
-                </footer>
-              </AnimateIn>
+              </p>
+              <footer style={{ marginTop: 20 }}>
+                <strong style={{ fontSize: '.9rem', color: 'var(--text)' }}>
+                  {testimonialData.author}
+                </strong>
+                <span
+                  style={{
+                    display: 'block',
+                    fontSize: '.82rem',
+                    color: 'var(--body)',
+                    marginTop: 2,
+                  }}
+                >
+                  {testimonialData.detail}
+                </span>
+              </footer>
             </blockquote>
           </AnimateIn>
         </div>
@@ -917,23 +867,19 @@ export default function Home() {
       ---------------------------------------- */}
       <section style={{ padding: '80px 0', background: WARM }}>
         <div className="wrap" style={{ maxWidth: 800 }}>
-          <div style={{ textAlign: 'center', marginBottom: 48 }}>
-            <AnimateIn variant="fadeIn">
-              <span
-                style={{
-                  fontSize: '.7rem',
-                  fontWeight: 600,
-                  letterSpacing: '.1em',
-                  textTransform: 'uppercase',
-                  color: SAGE,
-                }}
-              >
-                Daily Life
-              </span>
-            </AnimateIn>
-            <CharReveal
-              as="h2"
-              stagger={0.02}
+          <AnimateIn variant="fadeIn" style={{ textAlign: 'center', marginBottom: 48 }}>
+            <span
+              style={{
+                fontSize: '.7rem',
+                fontWeight: 600,
+                letterSpacing: '.1em',
+                textTransform: 'uppercase',
+                color: SAGE,
+              }}
+            >
+              Daily Life
+            </span>
+            <h2
               style={{
                 fontFamily: DISPLAY,
                 fontSize: 'clamp(2rem, 3.5vw, 2.75rem)',
@@ -945,23 +891,21 @@ export default function Home() {
               }}
             >
               What a day looks like here
-            </CharReveal>
-            <AnimateIn variant="blurUp" delay={0.2}>
-              <p
-                style={{
-                  marginTop: 12,
-                  color: 'var(--body)',
-                  fontSize: '.95rem',
-                  lineHeight: 1.7,
-                  maxWidth: 520,
-                  margin: '12px auto 0',
-                }}
-              >
-                Every day is structured with purpose — balancing clinical therapy, academics,
-                recreation, and rest.
-              </p>
-            </AnimateIn>
-          </div>
+            </h2>
+            <p
+              style={{
+                marginTop: 12,
+                color: 'var(--body)',
+                fontSize: '.95rem',
+                lineHeight: 1.7,
+                maxWidth: 520,
+                margin: '12px auto 0',
+              }}
+            >
+              Every day is structured with purpose — balancing clinical therapy, academics,
+              recreation, and rest.
+            </p>
+          </AnimateIn>
 
           <AnimateIn variant="slideUp" delay={0.1}>
             <div
@@ -1018,7 +962,7 @@ export default function Home() {
       </section>
 
       {/* ----------------------------------------
-          7. FAMILY BAND — Sage green with ClipReveal + Parallax
+          7. FAMILY BAND — Sage green
       ---------------------------------------- */}
       <section style={{ background: SAGE, color: '#fff' }}>
         <div className="wrap" style={{ padding: '0 32px' }}>
@@ -1032,62 +976,58 @@ export default function Home() {
               padding: '80px 0',
             }}
           >
-            {/* Image with ClipReveal + inner Parallax + Lightbox trigger */}
-            <ClipReveal direction="up" duration={1.2}>
-              <Parallax speed={0.25} overflow="visible">
-                <button
-                  type="button"
-                  aria-label="Open family involvement image in lightbox"
-                  onClick={() => setLightboxIndex(0)}
+            {/* Image */}
+            <AnimateIn variant="fadeUp">
+              <button
+                type="button"
+                aria-label="Open family involvement image in lightbox"
+                onClick={() => setLightboxIndex(0)}
+                style={{
+                  position: 'relative',
+                  cursor: 'pointer',
+                  background: 'transparent',
+                  border: 0,
+                  padding: 0,
+                  width: '100%',
+                  textAlign: 'left',
+                }}
+              >
+                <img
+                  src={`${CDN_URL}/assets/woman-on-phone.jpg`}
+                  alt="Family involvement in the treatment process"
+                  loading="lazy"
                   style={{
-                    position: 'relative',
-                    cursor: 'pointer',
-                    background: 'transparent',
-                    border: 0,
-                    padding: 0,
                     width: '100%',
-                    textAlign: 'left',
+                    borderRadius: 'var(--radius-lg)',
+                    aspectRatio: '4/5',
+                    objectFit: 'cover',
                   }}
+                />
+                <span
+                  style={{
+                    position: 'absolute',
+                    bottom: 16,
+                    left: 16,
+                    padding: '8px 16px',
+                    borderRadius: 999,
+                    background: 'rgba(0,0,0,0.5)',
+                    backdropFilter: 'blur(10px)',
+                    WebkitBackdropFilter: 'blur(10px)',
+                    border: '1px solid rgba(255,255,255,0.15)',
+                    color: '#fff',
+                    fontSize: '.78rem',
+                    fontWeight: 600,
+                    letterSpacing: '.02em',
+                  }}
+                  aria-hidden="true"
                 >
-                  <img
-                    src={`${CDN_URL}/assets/woman-on-phone.jpg`}
-                    alt="Family involvement in the treatment process"
-                    loading="lazy"
-                    style={{
-                      width: '100%',
-                      borderRadius: 'var(--radius-lg)',
-                      aspectRatio: '4/5',
-                      objectFit: 'cover',
-                    }}
-                  />
-                  <span
-                    style={{
-                      position: 'absolute',
-                      bottom: 16,
-                      left: 16,
-                      padding: '8px 16px',
-                      borderRadius: 999,
-                      background: 'rgba(0,0,0,0.5)',
-                      backdropFilter: 'blur(10px)',
-                      WebkitBackdropFilter: 'blur(10px)',
-                      border: '1px solid rgba(255,255,255,0.15)',
-                      color: '#fff',
-                      fontSize: '.78rem',
-                      fontWeight: 600,
-                      letterSpacing: '.02em',
-                    }}
-                    aria-hidden="true"
-                  >
-                    View Facility
-                  </span>
-                </button>
-              </Parallax>
-            </ClipReveal>
+                  View Facility
+                </span>
+              </button>
+            </AnimateIn>
 
-            <div>
-              <TextReveal
-                as="h2"
-                stagger={0.03}
+            <AnimateIn variant="fadeIn">
+              <h2
                 style={{
                   fontFamily: DISPLAY,
                   fontSize: 'clamp(1.75rem, 3vw, 2.5rem)',
@@ -1098,24 +1038,20 @@ export default function Home() {
                 }}
               >
                 {familySectionData.heading}
-              </TextReveal>
+              </h2>
 
-              <AnimateIn variant="blurUp" delay={0.2}>
-                <p
-                  style={{
-                    marginTop: 16,
-                    fontSize: '.95rem',
-                    lineHeight: 1.75,
-                    color: 'rgba(255,255,255,.8)',
-                  }}
-                >
-                  {familySectionData.body}
-                </p>
-              </AnimateIn>
+              <p
+                style={{
+                  marginTop: 16,
+                  fontSize: '.95rem',
+                  lineHeight: 1.75,
+                  color: 'rgba(255,255,255,.8)',
+                }}
+              >
+                {familySectionData.body}
+              </p>
 
-              <StaggerGroup
-                variant="fadeUp"
-                stagger={0.1}
+              <div
                 style={{
                   listStyle: 'none',
                   padding: 0,
@@ -1126,32 +1062,31 @@ export default function Home() {
                 }}
               >
                 {familySectionData.bulletPoints.map((item) => (
-                  <StaggerItem key={item}>
-                    <div
+                  <div
+                    key={item}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'flex-start',
+                      gap: 10,
+                      fontSize: '.9rem',
+                      lineHeight: 1.5,
+                      color: 'rgba(255,255,255,.9)',
+                    }}
+                  >
+                    <IconCheck
                       style={{
-                        display: 'flex',
-                        alignItems: 'flex-start',
-                        gap: 10,
-                        fontSize: '.9rem',
-                        lineHeight: 1.5,
-                        color: 'rgba(255,255,255,.9)',
+                        flexShrink: 0,
+                        color: 'rgba(255,255,255,.7)',
+                        marginTop: 2,
+                        width: 16,
+                        height: 16,
                       }}
-                    >
-                      <IconCheck
-                        style={{
-                          flexShrink: 0,
-                          color: 'rgba(255,255,255,.7)',
-                          marginTop: 2,
-                          width: 16,
-                          height: 16,
-                        }}
-                      />
-                      {item}
-                    </div>
-                  </StaggerItem>
+                    />
+                    {item}
+                  </div>
                 ))}
-              </StaggerGroup>
-            </div>
+              </div>
+            </AnimateIn>
           </div>
         </div>
       </section>
@@ -1161,23 +1096,19 @@ export default function Home() {
       ---------------------------------------- */}
       <section style={{ padding: '80px 0' }}>
         <div className="wrap">
-          <div style={{ textAlign: 'center', marginBottom: 48 }}>
-            <AnimateIn variant="fadeIn">
-              <span
-                style={{
-                  fontSize: '.7rem',
-                  fontWeight: 600,
-                  letterSpacing: '.1em',
-                  textTransform: 'uppercase',
-                  color: SAGE,
-                }}
-              >
-                Our Team
-              </span>
-            </AnimateIn>
-            <CharReveal
-              as="h2"
-              stagger={0.02}
+          <AnimateIn variant="fadeIn" style={{ textAlign: 'center', marginBottom: 48 }}>
+            <span
+              style={{
+                fontSize: '.7rem',
+                fontWeight: 600,
+                letterSpacing: '.1em',
+                textTransform: 'uppercase',
+                color: SAGE,
+              }}
+            >
+              Our Team
+            </span>
+            <h2
               style={{
                 fontFamily: DISPLAY,
                 fontSize: 'clamp(2rem, 3.5vw, 2.75rem)',
@@ -1189,24 +1120,22 @@ export default function Home() {
               }}
             >
               A multidisciplinary team, working as one
-            </CharReveal>
-            <AnimateIn variant="blurUp" delay={0.3}>
-              <p
-                style={{
-                  marginTop: 12,
-                  color: 'var(--body)',
-                  fontSize: '.95rem',
-                  lineHeight: 1.7,
-                  maxWidth: 560,
-                  marginLeft: 'auto',
-                  marginRight: 'auto',
-                }}
-              >
-                Led by <strong>{teamOverviewData.clinical}</strong>, our team brings together
-                specialists across every dimension of adolescent care.
-              </p>
-            </AnimateIn>
-          </div>
+            </h2>
+            <p
+              style={{
+                marginTop: 12,
+                color: 'var(--body)',
+                fontSize: '.95rem',
+                lineHeight: 1.7,
+                maxWidth: 560,
+                marginLeft: 'auto',
+                marginRight: 'auto',
+              }}
+            >
+              Led by <strong>{teamOverviewData.clinical}</strong>, our team brings together
+              specialists across every dimension of adolescent care.
+            </p>
+          </AnimateIn>
 
           {/* Scroll-Snap Team Carousel */}
           <AnimateIn variant="fadeUp" delay={0.2}>
@@ -1297,23 +1226,19 @@ export default function Home() {
       ---------------------------------------- */}
       <section style={{ padding: '80px 0', background: WARM }}>
         <div style={{ maxWidth: 720, margin: '0 auto', padding: '0 32px' }}>
-          <div style={{ textAlign: 'center', marginBottom: 40 }}>
-            <AnimateIn variant="fadeIn">
-              <span
-                style={{
-                  fontSize: '.7rem',
-                  fontWeight: 600,
-                  letterSpacing: '.1em',
-                  textTransform: 'uppercase',
-                  color: SAGE,
-                }}
-              >
-                Common Questions
-              </span>
-            </AnimateIn>
-            <CharReveal
-              as="h2"
-              stagger={0.025}
+          <AnimateIn variant="fadeIn" style={{ textAlign: 'center', marginBottom: 40 }}>
+            <span
+              style={{
+                fontSize: '.7rem',
+                fontWeight: 600,
+                letterSpacing: '.1em',
+                textTransform: 'uppercase',
+                color: SAGE,
+              }}
+            >
+              Common Questions
+            </span>
+            <h2
               style={{
                 fontFamily: DISPLAY,
                 fontSize: 'clamp(2rem, 3vw, 2.5rem)',
@@ -1325,8 +1250,8 @@ export default function Home() {
               }}
             >
               We know this is overwhelming
-            </CharReveal>
-          </div>
+            </h2>
+          </AnimateIn>
 
           <AnimateIn variant="slideUp" delay={0.1}>
             <div
@@ -1417,9 +1342,7 @@ export default function Home() {
               marginTop: 40,
             }}
           >
-            <StaggerGroup
-              stagger={0.1}
-              variant="scaleUp"
+            <div
               style={{
                 display: 'flex',
                 alignItems: 'center',
@@ -1429,35 +1352,35 @@ export default function Home() {
               }}
             >
               {insuranceOverviewData.map((ins) => (
-                <StaggerItem key={ins.name}>
-                  {ins.logo ? (
-                    <img
-                      src={ins.logo}
-                      alt={`${ins.name} insurance accepted`}
-                      loading="lazy"
-                      className="home-logo-img"
-                      style={{
-                        height: 36,
-                        filter: 'grayscale(100%)',
-                        opacity: 0.5,
-                        transition: 'all .2s ease',
-                      }}
-                    />
-                  ) : (
-                    <span
-                      style={{
-                        fontSize: '.85rem',
-                        fontWeight: 600,
-                        color: 'var(--body)',
-                        letterSpacing: '.02em',
-                      }}
-                    >
-                      {ins.name}
-                    </span>
-                  )}
-                </StaggerItem>
+                ins.logo ? (
+                  <img
+                    key={ins.name}
+                    src={ins.logo}
+                    alt={`${ins.name} insurance accepted`}
+                    loading="lazy"
+                    className="home-logo-img"
+                    style={{
+                      height: 36,
+                      filter: 'grayscale(100%)',
+                      opacity: 0.5,
+                      transition: 'all .2s ease',
+                    }}
+                  />
+                ) : (
+                  <span
+                    key={ins.name}
+                    style={{
+                      fontSize: '.85rem',
+                      fontWeight: 600,
+                      color: 'var(--body)',
+                      letterSpacing: '.02em',
+                    }}
+                  >
+                    {ins.name}
+                  </span>
+                )
               ))}
-            </StaggerGroup>
+            </div>
           </div>
 
           {/* Accreditation logos — glassmorphic panel */}
@@ -1472,9 +1395,7 @@ export default function Home() {
               marginTop: 16,
             }}
           >
-            <StaggerGroup
-              stagger={0.12}
-              variant="scaleUp"
+            <div
               style={{
                 display: 'flex',
                 alignItems: 'center',
@@ -1484,38 +1405,38 @@ export default function Home() {
               }}
             >
               {accreditationsOverviewData.map((acc) => (
-                <StaggerItem key={acc.name}>
-                  {acc.logo ? (
-                    <img
-                      src={acc.logo}
-                      alt={`${acc.name} accreditation badge`}
-                      loading="lazy"
-                      className="home-logo-img"
-                      style={{
-                        height: 44,
-                        filter: 'grayscale(100%)',
-                        opacity: 0.5,
-                        transition: 'all .2s ease',
-                      }}
-                    />
-                  ) : (
-                    <span
-                      style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: 6,
-                        fontSize: '.82rem',
-                        fontWeight: 600,
-                        color: 'var(--body)',
-                      }}
-                    >
-                      <IconShield style={{ width: 16, height: 16 }} />
-                      {acc.name}
-                    </span>
-                  )}
-                </StaggerItem>
+                acc.logo ? (
+                  <img
+                    key={acc.name}
+                    src={acc.logo}
+                    alt={`${acc.name} accreditation badge`}
+                    loading="lazy"
+                    className="home-logo-img"
+                    style={{
+                      height: 44,
+                      filter: 'grayscale(100%)',
+                      opacity: 0.5,
+                      transition: 'all .2s ease',
+                    }}
+                  />
+                ) : (
+                  <span
+                    key={acc.name}
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: 6,
+                      fontSize: '.82rem',
+                      fontWeight: 600,
+                      color: 'var(--body)',
+                    }}
+                  >
+                    <IconShield style={{ width: 16, height: 16 }} />
+                    {acc.name}
+                  </span>
+                )
               ))}
-            </StaggerGroup>
+            </div>
           </div>
         </div>
       </section>
@@ -1525,23 +1446,19 @@ export default function Home() {
       ---------------------------------------- */}
       <section style={{ padding: '80px 0', background: WARM }}>
         <div className="wrap" style={{ maxWidth: 960 }}>
-          <div style={{ textAlign: 'center', marginBottom: 48 }}>
-            <AnimateIn variant="fadeIn">
-              <span
-                style={{
-                  fontSize: '.7rem',
-                  fontWeight: 600,
-                  letterSpacing: '.1em',
-                  textTransform: 'uppercase',
-                  color: SAGE,
-                }}
-              >
-                Getting Started
-              </span>
-            </AnimateIn>
-            <CharReveal
-              as="h2"
-              stagger={0.02}
+          <AnimateIn variant="fadeIn" style={{ textAlign: 'center', marginBottom: 48 }}>
+            <span
+              style={{
+                fontSize: '.7rem',
+                fontWeight: 600,
+                letterSpacing: '.1em',
+                textTransform: 'uppercase',
+                color: SAGE,
+              }}
+            >
+              Getting Started
+            </span>
+            <h2
               style={{
                 fontFamily: DISPLAY,
                 fontSize: 'clamp(2rem, 3.5vw, 2.75rem)',
@@ -1553,27 +1470,24 @@ export default function Home() {
               }}
             >
               From first call to first day
-            </CharReveal>
-            <AnimateIn variant="blurUp" delay={0.2}>
-              <p
-                style={{
-                  marginTop: 12,
-                  color: 'var(--body)',
-                  fontSize: '.95rem',
-                  lineHeight: 1.7,
-                  maxWidth: 480,
-                  margin: '12px auto 0',
-                }}
-              >
-                We&apos;ve simplified admissions so you can focus on your family. Most families
-                complete the process within 24-48 hours.
-              </p>
-            </AnimateIn>
-          </div>
+            </h2>
+            <p
+              style={{
+                marginTop: 12,
+                color: 'var(--body)',
+                fontSize: '.95rem',
+                lineHeight: 1.7,
+                maxWidth: 480,
+                margin: '12px auto 0',
+              }}
+            >
+              We&apos;ve simplified admissions so you can focus on your family. Most families
+              complete the process within 24-48 hours.
+            </p>
+          </AnimateIn>
 
-          <StaggerGroup
+          <AnimateIn
             variant="fadeUp"
-            stagger={0.15}
             className="home-steps-grid"
             style={{
               display: 'grid',
@@ -1582,13 +1496,11 @@ export default function Home() {
             }}
           >
             {admissionsOverviewData.map((step) => (
-              <StaggerItem key={step.step}>
-                <StepCard step={step.step} title={step.title} desc={step.desc} />
-              </StaggerItem>
+              <StepCard key={step.step} step={step.step} title={step.title} desc={step.desc} />
             ))}
-          </StaggerGroup>
+          </AnimateIn>
 
-          <AnimateIn variant="fadeUp" delay={0.4}>
+          <AnimateIn variant="fadeUp">
             <div
               style={{
                 textAlign: 'center',
@@ -1649,7 +1561,7 @@ export default function Home() {
             {finalCtaData.headline}
           </CharReveal>
 
-          <TextReveal
+          <p
             style={{
               marginTop: 16,
               fontSize: '1.05rem',
@@ -1659,12 +1571,11 @@ export default function Home() {
               marginLeft: 'auto',
               marginRight: 'auto',
             }}
-            stagger={0.03}
           >
             {finalCtaData.body}
-          </TextReveal>
+          </p>
 
-          <AnimateIn delay={0.4} variant="fadeUp">
+          <AnimateIn delay={0.3} variant="fadeUp">
             <div
               style={{
                 marginTop: 32,
