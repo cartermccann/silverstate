@@ -273,6 +273,22 @@ textarea:focus-visible {
   .wrap-narrow {
     padding: 0 20px;
   }
+
+  /* "Is this right for you?" — stack on mobile */
+  .home-whothisis-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  /* Programs — stack image above text, no overlay */
+  .home-program-img-stack {
+    position: relative !important;
+    height: 300px !important;
+  }
+  .home-program-img-stack img {
+    position: relative !important;
+    height: 100% !important;
+  }
 }
 
 /* ── Premium UI Enhancements (Maze.co & Realfood.gov inspired) ── */

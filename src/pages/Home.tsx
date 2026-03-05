@@ -375,6 +375,7 @@ export default function Home() {
           <div
             className="home-program-img-stack"
             style={{
+              position: 'relative',
               height: 'var(--sticky-height, 600px)',
               display: 'flex',
               flexDirection: 'column',
