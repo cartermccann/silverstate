@@ -61,7 +61,7 @@ export default function Footer() {
             <img
               src={`${CDN_URL}/assets/logo.png`}
               alt="Silver State Adolescent Treatment Center"
-              style={{ height: 56, opacity: 0.4, marginBottom: 12 }}
+              style={{ height: 56, marginBottom: 12 }}
             />
             <p
               style={{ lineHeight: 1.65, maxWidth: 280, color: 'var(--body)', fontSize: '.85rem' }}
@@ -125,7 +125,7 @@ export default function Footer() {
                 key={a.name}
                 src={a.logo}
                 alt={`${a.name} Accredited`}
-                style={{ height: 40, objectFit: 'contain', opacity: 0.6 }}
+                style={{ height: 40, objectFit: 'contain' }}
               />
             ) : (
               <span
