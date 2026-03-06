@@ -104,20 +104,21 @@ export default function ProgramPage({ program }: ProgramPageProps) {
             {program.title}
           </CharReveal>
 
-          {program.overview.split('\n\n').map((paragraph, i) => (
-            <AnimateIn key={i} variant="blurUp" delay={0.2 + i * 0.1}>
-              <p
-                style={{
-                  marginTop: 16,
-                  color: 'var(--body)',
-                  fontSize: '1rem',
-                  lineHeight: 1.7,
-                }}
-              >
-                {paragraph}
-              </p>
-            </AnimateIn>
-          ))}
+          <div className="program-text-blocks">
+            {program.overview.split('\n\n').map((paragraph, i) => (
+              <AnimateIn key={i} variant="blurUp" delay={0.2 + i * 0.1}>
+                <p
+                  style={{
+                    color: 'var(--body)',
+                    fontSize: '1rem',
+                    lineHeight: 1.7,
+                  }}
+                >
+                  {paragraph}
+                </p>
+              </AnimateIn>
+            ))}
+          </div>
 
           <AnimateIn variant="fadeUp" delay={0.3}>
             <div
@@ -160,21 +161,22 @@ export default function ProgramPage({ program }: ProgramPageProps) {
             </div>
           </AnimateIn>
 
-          {program.targetAudience.split('\n\n').map((paragraph, i) => (
-            <AnimateIn key={i} variant="blurUp" delay={0.4 + i * 0.1}>
-              <p
-                style={{
-                  marginTop: 20,
-                  color: 'var(--body)',
-                  fontSize: '.9rem',
-                  lineHeight: 1.7,
-                  fontStyle: 'italic',
-                }}
-              >
-                {paragraph}
-              </p>
-            </AnimateIn>
-          ))}
+          <div className="program-text-blocks">
+            {program.targetAudience.split('\n\n').map((paragraph, i) => (
+              <AnimateIn key={i} variant="blurUp" delay={0.4 + i * 0.1}>
+                <p
+                  style={{
+                    color: 'var(--body)',
+                    fontSize: '.9rem',
+                    lineHeight: 1.7,
+                    fontStyle: 'italic',
+                  }}
+                >
+                  {paragraph}
+                </p>
+              </AnimateIn>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -196,20 +198,21 @@ export default function ProgramPage({ program }: ProgramPageProps) {
                 <h2 className="section-heading">Our Approach</h2>
               </AnimateIn>
 
-              {program.approach.split('\n\n').map((paragraph, i) => (
-                <AnimateIn key={i} variant="blurUp" delay={0.1 + i * 0.1}>
-                  <p
-                    style={{
-                      marginTop: 16,
-                      color: 'var(--body)',
-                      fontSize: '.95rem',
-                      lineHeight: 1.7,
-                    }}
-                  >
-                    {paragraph}
-                  </p>
-                </AnimateIn>
-              ))}
+              <div className="program-text-blocks">
+                {program.approach.split('\n\n').map((paragraph, i) => (
+                  <AnimateIn key={i} variant="blurUp" delay={0.1 + i * 0.1}>
+                    <p
+                      style={{
+                        color: 'var(--body)',
+                        fontSize: '.95rem',
+                        lineHeight: 1.7,
+                      }}
+                    >
+                      {paragraph}
+                    </p>
+                  </AnimateIn>
+                ))}
+              </div>
 
               {program.stat && (
                 <AnimateIn variant="fadeUp" delay={0.15}>
@@ -725,11 +728,29 @@ export default function ProgramPage({ program }: ProgramPageProps) {
       </section>
 
       <style>{`
+        .program-text-blocks {
+          margin-top: 16px;
+        }
+        .program-text-blocks p {
+          margin-top: 16px;
+        }
         @media (max-width: 900px) {
           .program-approach-grid,
           .program-band-grid {
             grid-template-columns: 1fr !important;
             gap: 32px !important;
+          }
+          .program-text-blocks {
+            margin-top: 20px;
+          }
+          .program-text-blocks p {
+            margin-top: 24px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+          }
+          .program-text-blocks p:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
           }
         }
       `}</style>

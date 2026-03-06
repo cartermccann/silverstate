@@ -64,14 +64,12 @@ const CompulsiveEating = lazy(() => import('./pages/conditions/CompulsiveEating'
 const InsuranceIndex = lazy(() => import('./pages/insurance/Index'))
 const Aetna = lazy(() => import('./pages/insurance/Aetna'))
 const Cigna = lazy(() => import('./pages/insurance/Cigna'))
-const BCBS = lazy(() => import('./pages/insurance/BCBS'))
 const Ambetter = lazy(() => import('./pages/insurance/Ambetter'))
-const Humana = lazy(() => import('./pages/insurance/Humana'))
 const UHC = lazy(() => import('./pages/insurance/UHC'))
-const TRICARE = lazy(() => import('./pages/insurance/TRICARE'))
-const Medicaid = lazy(() => import('./pages/insurance/Medicaid'))
-const Anthem = lazy(() => import('./pages/insurance/Anthem'))
 const HPN = lazy(() => import('./pages/insurance/HPN'))
+const MedicaidFFS = lazy(() => import('./pages/insurance/MedicaidFFS'))
+const GEHA = lazy(() => import('./pages/insurance/GEHA'))
+const UMR = lazy(() => import('./pages/insurance/UMR'))
 
 // Locations
 const LocationsIndex = lazy(() => import('./pages/locations/Index'))
@@ -567,26 +565,10 @@ export const routes: RouteObject[] = [
     ),
   },
   {
-    path: '/insurance/bcbs',
-    element: (
-      <S>
-        <BCBS />
-      </S>
-    ),
-  },
-  {
     path: '/insurance/ambetter',
     element: (
       <S>
         <Ambetter />
-      </S>
-    ),
-  },
-  {
-    path: '/insurance/humana',
-    element: (
-      <S>
-        <Humana />
       </S>
     ),
   },
@@ -599,34 +581,34 @@ export const routes: RouteObject[] = [
     ),
   },
   {
-    path: '/insurance/tricare',
-    element: (
-      <S>
-        <TRICARE />
-      </S>
-    ),
-  },
-  {
-    path: '/insurance/medicaid',
-    element: (
-      <S>
-        <Medicaid />
-      </S>
-    ),
-  },
-  {
-    path: '/insurance/anthem',
-    element: (
-      <S>
-        <Anthem />
-      </S>
-    ),
-  },
-  {
     path: '/insurance/hpn',
     element: (
       <S>
         <HPN />
+      </S>
+    ),
+  },
+  {
+    path: '/insurance/medicaid-ffs',
+    element: (
+      <S>
+        <MedicaidFFS />
+      </S>
+    ),
+  },
+  {
+    path: '/insurance/geha',
+    element: (
+      <S>
+        <GEHA />
+      </S>
+    ),
+  },
+  {
+    path: '/insurance/umr',
+    element: (
+      <S>
+        <UMR />
       </S>
     ),
   },

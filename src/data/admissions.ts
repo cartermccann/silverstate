@@ -44,7 +44,7 @@ export const admissionsFaqs: FaqEntry[] = [
   },
   {
     q: 'What insurance do you accept?',
-    a: 'Silver State accepts most major insurance plans including Aetna, Cigna, Blue Cross Blue Shield, Ambetter, Humana, United Healthcare, TRICARE, Medicaid, and Anthem. Our admissions team can verify your specific coverage in under 10 minutes.',
+    a: 'Silver State accepts most major insurance plans including Aetna, Cigna, Ambetter, United Healthcare, Health Plan of Nevada, GEHA, UMR, and Medicaid Fee for Service. Our admissions team can verify your specific coverage in under 10 minutes.',
   },
   {
     q: 'What should my teen bring?',

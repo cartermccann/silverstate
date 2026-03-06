@@ -51,7 +51,7 @@ const faqSections = [
       },
       {
         q: 'What insurance do you accept?',
-        a: 'We accept most major insurance plans, including Aetna, Cigna, Blue Cross Blue Shield (BCBS), UnitedHealthcare (UHC), Humana, TRICARE, and Nevada Medicaid. Our admissions team handles insurance verification and can explain your benefits and any out-of-pocket costs before treatment begins.',
+        a: 'We accept most major insurance plans, including Aetna, Cigna, Ambetter, UnitedHealthcare (UHC), Health Plan of Nevada (HPN), GEHA, UMR, and Medicaid Fee for Service. Our admissions team handles insurance verification and can explain your benefits and any out-of-pocket costs before treatment begins.',
       },
       {
         q: "What if I don't have insurance?",

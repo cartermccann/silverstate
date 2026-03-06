@@ -145,36 +145,36 @@ export default function CPI() {
             Crisis Prevention &amp; Intervention
           </CharReveal>
 
-          <AnimateIn variant="blurUp" delay={0.2}>
-            <p
-              style={{
-                marginTop: 16,
-                color: 'var(--body)',
-                fontSize: '1rem',
-                lineHeight: 1.7,
-              }}
-            >
-              When an adolescent is in emotional crisis, the response they receive in those first
-              critical moments shapes everything that follows. At Silver State, every team member is
-              certified in Crisis Prevention Intervention (CPI) — an evidence-informed framework
-              that replaces punitive responses with empathy, structure, and safety.
-            </p>
-          </AnimateIn>
-          <AnimateIn variant="blurUp" delay={0.3}>
-            <p
-              style={{
-                marginTop: 16,
-                color: 'var(--body)',
-                fontSize: '1rem',
-                lineHeight: 1.7,
-              }}
-            >
-              CPI is not a single technique. It is a philosophy of care that prioritizes the dignity
-              and safety of both the individual in crisis and those around them. The framework
-              emphasizes prevention first — identifying and addressing triggers before a crisis fully
-              develops — and intervention second, using the least restrictive approach necessary.
-            </p>
-          </AnimateIn>
+          <div className="cpi-text-blocks">
+            <AnimateIn variant="blurUp" delay={0.2}>
+              <p
+                style={{
+                  color: 'var(--body)',
+                  fontSize: '1rem',
+                  lineHeight: 1.7,
+                }}
+              >
+                When an adolescent is in emotional crisis, the response they receive in those first
+                critical moments shapes everything that follows. At Silver State, every team member is
+                certified in Crisis Prevention Intervention (CPI) — an evidence-informed framework
+                that replaces punitive responses with empathy, structure, and safety.
+              </p>
+            </AnimateIn>
+            <AnimateIn variant="blurUp" delay={0.3}>
+              <p
+                style={{
+                  color: 'var(--body)',
+                  fontSize: '1rem',
+                  lineHeight: 1.7,
+                }}
+              >
+                CPI is not a single technique. It is a philosophy of care that prioritizes the dignity
+                and safety of both the individual in crisis and those around them. The framework
+                emphasizes prevention first — identifying and addressing triggers before a crisis fully
+                develops — and intervention second, using the least restrictive approach necessary.
+              </p>
+            </AnimateIn>
+          </div>
 
           <AnimateIn variant="fadeUp" delay={0.4}>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, marginTop: 24 }}>
@@ -217,51 +217,50 @@ export default function CPI() {
             <h2 className="section-heading">Why CPI Matters for Teen Treatment</h2>
           </AnimateIn>
 
-          <AnimateIn variant="blurUp" delay={0.1}>
-            <p
-              style={{
-                marginTop: 16,
-                color: 'var(--body)',
-                fontSize: '.95rem',
-                lineHeight: 1.7,
-              }}
-            >
-              Adolescents are neurologically wired for emotional intensity. The prefrontal cortex —
-              responsible for impulse control, decision-making, and emotional regulation — does not
-              fully mature until the mid-20s. This means teens are more susceptible to emotional
-              flooding and less equipped to self-regulate during high-stress moments.
-            </p>
-          </AnimateIn>
-          <AnimateIn variant="blurUp" delay={0.2}>
-            <p
-              style={{
-                marginTop: 16,
-                color: 'var(--body)',
-                fontSize: '.95rem',
-                lineHeight: 1.7,
-              }}
-            >
-              In a residential or partial hospitalization setting, many teens arrive with histories
-              of trauma, attachment disruption, or chronic invalidation. A crisis response that feels
-              punitive or controlling can retraumatize, eroding the trust that effective treatment
-              depends on. CPI-based approaches help maintain the therapeutic relationship even during
-              the most challenging moments.
-            </p>
-          </AnimateIn>
-          <AnimateIn variant="blurUp" delay={0.3}>
-            <p
-              style={{
-                marginTop: 16,
-                color: 'var(--body)',
-                fontSize: '.95rem',
-                lineHeight: 1.7,
-              }}
-            >
-              Research supports this. Facilities that implement CPI training consistently report
-              reductions in the use of physical restraint and seclusion, fewer staff injuries, and
-              improved therapeutic alliance between staff and clients.
-            </p>
-          </AnimateIn>
+          <div className="cpi-text-blocks">
+            <AnimateIn variant="blurUp" delay={0.1}>
+              <p
+                style={{
+                  color: 'var(--body)',
+                  fontSize: '.95rem',
+                  lineHeight: 1.7,
+                }}
+              >
+                Adolescents are neurologically wired for emotional intensity. The prefrontal cortex —
+                responsible for impulse control, decision-making, and emotional regulation — does not
+                fully mature until the mid-20s. This means teens are more susceptible to emotional
+                flooding and less equipped to self-regulate during high-stress moments.
+              </p>
+            </AnimateIn>
+            <AnimateIn variant="blurUp" delay={0.2}>
+              <p
+                style={{
+                  color: 'var(--body)',
+                  fontSize: '.95rem',
+                  lineHeight: 1.7,
+                }}
+              >
+                In a residential or partial hospitalization setting, many teens arrive with histories
+                of trauma, attachment disruption, or chronic invalidation. A crisis response that feels
+                punitive or controlling can retraumatize, eroding the trust that effective treatment
+                depends on. CPI-based approaches help maintain the therapeutic relationship even during
+                the most challenging moments.
+              </p>
+            </AnimateIn>
+            <AnimateIn variant="blurUp" delay={0.3}>
+              <p
+                style={{
+                  color: 'var(--body)',
+                  fontSize: '.95rem',
+                  lineHeight: 1.7,
+                }}
+              >
+                Research supports this. Facilities that implement CPI training consistently report
+                reductions in the use of physical restraint and seclusion, fewer staff injuries, and
+                improved therapeutic alliance between staff and clients.
+              </p>
+            </AnimateIn>
+          </div>
         </div>
       </section>
 
@@ -360,38 +359,38 @@ export default function CPI() {
                 <h2 className="section-heading">How Silver State Uses CPI</h2>
               </AnimateIn>
 
-              <AnimateIn variant="blurUp" delay={0.1}>
-                <p
-                  style={{
-                    marginTop: 16,
-                    color: 'var(--body)',
-                    fontSize: '.95rem',
-                    lineHeight: 1.7,
-                  }}
-                >
-                  At Silver State, CPI is not just a training certification — it is embedded in our
-                  culture of care. Every team member, from licensed clinicians to residential
-                  counselors, is trained in CPI techniques and practices them daily. Our crisis
-                  prevention program operates on a philosophy of early intervention: identifying
-                  behavioral cues early and responding with support before escalation occurs.
-                </p>
-              </AnimateIn>
-              <AnimateIn variant="blurUp" delay={0.2}>
-                <p
-                  style={{
-                    marginTop: 16,
-                    color: 'var(--body)',
-                    fontSize: '.95rem',
-                    lineHeight: 1.7,
-                  }}
-                >
-                  Our approach integrates CPI with evidence-based therapies including CBT, DBT, and
-                  trauma-informed care, giving teens both immediate crisis support and long-term
-                  coping skills. This combination means that each crisis becomes a learning moment —
-                  an opportunity to practice regulation, communication, and self-awareness in a
-                  safe, supported environment.
-                </p>
-              </AnimateIn>
+              <div className="cpi-text-blocks">
+                <AnimateIn variant="blurUp" delay={0.1}>
+                  <p
+                    style={{
+                      color: 'var(--body)',
+                      fontSize: '.95rem',
+                      lineHeight: 1.7,
+                    }}
+                  >
+                    At Silver State, CPI is not just a training certification — it is embedded in our
+                    culture of care. Every team member, from licensed clinicians to residential
+                    counselors, is trained in CPI techniques and practices them daily. Our crisis
+                    prevention program operates on a philosophy of early intervention: identifying
+                    behavioral cues early and responding with support before escalation occurs.
+                  </p>
+                </AnimateIn>
+                <AnimateIn variant="blurUp" delay={0.2}>
+                  <p
+                    style={{
+                      color: 'var(--body)',
+                      fontSize: '.95rem',
+                      lineHeight: 1.7,
+                    }}
+                  >
+                    Our approach integrates CPI with evidence-based therapies including CBT, DBT, and
+                    trauma-informed care, giving teens both immediate crisis support and long-term
+                    coping skills. This combination means that each crisis becomes a learning moment —
+                    an opportunity to practice regulation, communication, and self-awareness in a
+                    safe, supported environment.
+                  </p>
+                </AnimateIn>
+              </div>
 
               <AnimateIn variant="fadeUp" delay={0.25}>
                 <div
@@ -783,10 +782,22 @@ export default function CPI() {
       </section>
 
       <style>{`
+        .cpi-text-blocks p {
+          margin-top: 16px;
+        }
         @media (max-width: 900px) {
           .cpi-approach-grid {
             grid-template-columns: 1fr !important;
             gap: 32px !important;
+          }
+          .cpi-text-blocks p {
+            margin-top: 24px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+          }
+          .cpi-text-blocks p:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
           }
         }
       `}</style>

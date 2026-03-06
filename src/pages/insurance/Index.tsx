@@ -17,7 +17,7 @@ const WARM = 'var(--warm)'
 export const meta = generateMeta({
   title: 'Insurance Coverage for Teen Treatment | Silver State Treatment Center',
   description:
-    'Silver State accepts Aetna, Cigna, BCBS, Ambetter, Humana, UHC, TRICARE, Medicaid, and Anthem for adolescent residential, PHP, and IOP treatment. Call to verify coverage.',
+    'Silver State accepts Aetna, Cigna, Ambetter, UHC, HPN, GEHA, UMR, and Medicaid FFS for adolescent residential, PHP, and IOP treatment. Verify coverage.',
   path: '/insurance',
   keywords: ['teen treatment insurance coverage', 'mental health insurance verification', 'insurance for adolescent treatment', 'behavioral health insurance Las Vegas', 'residential treatment insurance'],
 })
@@ -37,7 +37,7 @@ export default function InsuranceHub() {
   const hubFaqs = [
     {
       q: 'What insurance does Silver State accept?',
-      a: `Silver State accepts most major insurance plans including Aetna, Cigna, Blue Cross Blue Shield, Ambetter, Humana, United Healthcare, TRICARE, Medicaid, and Anthem. We also work with additional providers not listed here. Call ${site.phone} to verify your specific plan.`,
+      a: `Silver State accepts most major insurance plans including Aetna, Cigna, Ambetter, United Healthcare, Health Plan of Nevada, GEHA, UMR, and Medicaid Fee for Service. We also work with additional providers not listed here. Call ${site.phone} to verify your specific plan.`,
     },
     {
       q: 'How do I verify my insurance coverage?',

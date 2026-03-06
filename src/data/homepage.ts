@@ -351,8 +351,9 @@ export const insuranceOverviewData: InsuranceEntry[] = [
   { name: 'UnitedHealthcare', logo: '/assets/insurance/uhc.svg' },
   { name: 'Aetna', logo: '/assets/insurance/aetna.png' },
   { name: 'Cigna', logo: '/assets/insurance/cigna.png' },
-  { name: 'BCBS', logo: '/assets/insurance/bcbs.png' },
+  { name: 'Ambetter', logo: '/assets/insurance/ambetter.png' },
   { name: 'Health Plan of Nevada', logo: '/assets/insurance/hpn.svg' },
+  { name: 'GEHA', logo: '/assets/insurance/geha.png' },
 ]
 
 export const accreditationsOverviewData: AccreditationEntry[] = [
