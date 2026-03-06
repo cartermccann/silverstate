@@ -140,10 +140,10 @@ export const keyDifferentiators: KeyDifferentiator[] = [
       'Silver State Youth Academy provides accredited, on-site education so treatment never means falling behind in school.',
   },
   {
-    title: 'Full Continuum of Care',
-    value: 'RTC \u2192 PHP \u2192 IOP',
+    title: 'Comprehensive Residential Care',
+    value: 'RTC',
     description:
-      'Residential, Partial Hospitalization, and Intensive Outpatient programs under one roof for seamless step-down care.',
+      'Our residential treatment program provides 24/7 clinical support with evidence-based therapies, accredited academics, and family programming under one roof.',
   },
 ]
 

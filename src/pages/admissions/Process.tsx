@@ -329,7 +329,7 @@ export default function Process() {
                     marginBottom: 16,
                   }}
                 >
-                  Learn about our residential, PHP, and IOP treatment programs for teens.
+                  Learn about our residential treatment and therapy programs for teens.
                 </p>
                 <Link
                   to="/programs/residential-treatment"

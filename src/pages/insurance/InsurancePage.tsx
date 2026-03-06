@@ -26,10 +26,10 @@ export default function InsurancePage({ provider }: InsurancePageProps) {
 
   const coverageAreas = [
     'Residential Treatment',
-    'Partial Hospitalization (PHP)',
-    'Intensive Outpatient (IOP)',
     'Clinical Assessments',
+    'Individual & Group Therapy',
     'Family Therapy',
+    'Medication Management',
   ]
 
   return (
@@ -85,7 +85,7 @@ export default function InsurancePage({ provider }: InsurancePageProps) {
                 lineHeight: 1.7,
               }}
             >
-              Silver State accepts {provider.name} for residential, PHP, and IOP treatment for teens
+              Silver State accepts {provider.name} for adolescent residential treatment for teens
               ages 11-17.
             </p>
           </AnimateIn>
@@ -389,26 +389,9 @@ export default function InsurancePage({ provider }: InsurancePageProps) {
                       Learn About Residential Treatment &rarr;
                     </Link>
                   </li>
-                  <li style={{ marginBottom: 8 }}>
-                    <Link
-                      to="/programs/php"
-                      style={{
-                        color: 'var(--blue)',
-                        textDecoration: 'none',
-                        fontSize: '.9rem',
-                        fontWeight: 500,
-                        display: 'inline-block',
-                        padding: '4px 0',
-                        minHeight: 44,
-                        lineHeight: '36px',
-                      }}
-                    >
-                      Learn About PHP &rarr;
-                    </Link>
-                  </li>
                   <li>
                     <Link
-                      to="/programs/iop"
+                      to="/programs/therapy-programs"
                       style={{
                         color: 'var(--blue)',
                         textDecoration: 'none',
@@ -420,7 +403,7 @@ export default function InsurancePage({ provider }: InsurancePageProps) {
                         lineHeight: '36px',
                       }}
                     >
-                      Learn About IOP &rarr;
+                      Explore Our Therapy Programs &rarr;
                     </Link>
                   </li>
                 </ul>

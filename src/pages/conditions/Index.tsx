@@ -17,7 +17,7 @@ const WARM = 'var(--warm)'
 export const meta = generateMeta({
   title: 'Conditions We Treat | Teen Mental Health & Substance Abuse | Silver State',
   description:
-    'Silver State treats adolescent mental health conditions, substance abuse, and eating disorders. Evidence-based residential, PHP, and IOP treatment for teens ages 11-17 in Las Vegas.',
+    'Silver State treats adolescent mental health conditions, substance abuse, and eating disorders. Evidence-based residential treatment for teens ages 11-17 in Las Vegas.',
   path: '/conditions',
   keywords: ['teen mental health conditions', 'adolescent behavioral health', 'conditions treated teens', 'teen substance abuse treatment', 'teen eating disorder treatment'],
 })
@@ -52,7 +52,7 @@ export default function ConditionsHub() {
     },
     {
       q: 'How do I know which level of care my teen needs?',
-      a: `Our admissions team conducts a thorough clinical assessment to determine the right level of care — residential, partial hospitalization (PHP), or intensive outpatient (IOP). The recommendation is based on your teen's symptoms, safety, and daily functioning. Call ${site.phone} to start with a free assessment.`,
+      a: `Our admissions team conducts a thorough clinical assessment to determine the right level of care for your teen. The recommendation is based on your teen's symptoms, safety, and daily functioning. Silver State offers residential treatment along with a comprehensive range of evidence-based therapy programs. Call ${site.phone} to start with a free assessment.`,
     },
     {
       q: 'Can you treat teens with more than one condition?',
@@ -119,8 +119,8 @@ export default function ConditionsHub() {
             >
               Silver State provides specialized treatment for adolescents ages 11&ndash;17 facing
               mental health challenges, substance abuse, and eating disorders. Every condition below
-              is treated through our full continuum of care &mdash; residential, PHP, and IOP
-              &mdash; with individualized plans built around your teen&rsquo;s specific needs.
+              is treated through our residential treatment and therapy programs, with
+              individualized plans built around your teen&rsquo;s specific needs.
             </p>
           </AnimateIn>
         </div>
@@ -360,7 +360,7 @@ export default function ConditionsHub() {
                     marginBottom: 16,
                   }}
                 >
-                  Learn about our residential, PHP, and IOP treatment programs for adolescents.
+                  Learn about our residential treatment and therapy programs for adolescents.
                 </p>
                 <Link
                   to="/programs"

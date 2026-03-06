@@ -44,7 +44,7 @@ describe('Breadcrumb', () => {
 
   it('generates valid BreadcrumbList JSON-LD', () => {
     const { container } = render(
-      <MemoryRouter initialEntries={['/programs/php']}>
+      <MemoryRouter initialEntries={['/programs/residential-treatment']}>
         <Breadcrumb />
       </MemoryRouter>,
     )
@@ -59,8 +59,8 @@ describe('Breadcrumb', () => {
     expect(jsonLd.itemListElement[0].name).toBe('Home')
     expect(jsonLd.itemListElement[0].item).toBe(`${expectedBaseUrl}/`)
     expect(jsonLd.itemListElement[1].name).toBe('Programs')
-    expect(jsonLd.itemListElement[2].name).toBe('PHP')
-    expect(jsonLd.itemListElement[2].item).toBe(`${expectedBaseUrl}/programs/php`)
+    expect(jsonLd.itemListElement[2].name).toBe('Residential Treatment')
+    expect(jsonLd.itemListElement[2].item).toBe(`${expectedBaseUrl}/programs/residential-treatment`)
   })
 
   it('renders explicit mapped labels for special condition slugs', () => {

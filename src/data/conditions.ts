@@ -64,11 +64,11 @@ export const conditions: ConditionData[] = [
       'Mindfulness-Based Stress Reduction (MBSR)',
     ],
     approach:
-      "Silver State treats adolescent anxiety through our full continuum of care — Residential, PHP, and IOP — tailored to your teen's severity level. With a 4:1 staff-to-client ratio, your child receives individualized attention from clinicians who specialize in teen anxiety. Treatment begins with a thorough clinical assessment to identify the specific anxiety disorder and any co-occurring conditions, followed by a personalized plan that combines individual therapy, group skill-building, and experiential modalities.\n\nOur on-site academics ensure your teen stays on track with school while learning coping strategies, and family therapy sessions help the whole family understand and support recovery. As your teen builds confidence and masters anxiety management skills, we guide them through a structured step-down process — from residential to PHP to IOP — ensuring they are ready for each transition and have the tools to maintain progress at home.",
+      "Silver State treats adolescent anxiety through our residential program and comprehensive therapy offerings, tailored to your teen's severity level. With a 4:1 staff-to-client ratio, your child receives individualized attention from clinicians who specialize in teen anxiety. Treatment begins with a thorough clinical assessment to identify the specific anxiety disorder and any co-occurring conditions, followed by a personalized plan that combines individual therapy, group skill-building, and experiential modalities.\n\nOur on-site academics ensure your teen stays on track with school while learning coping strategies, and family therapy sessions help the whole family understand and support recovery. As your teen builds confidence and masters anxiety management skills, we prepare them for a successful transition home with outpatient referrals and aftercare support to maintain progress.",
     faqs: [
       {
         q: 'How long does adolescent anxiety treatment take?',
-        a: "Treatment length varies by severity. Residential stays typically last 45–90 days, PHP runs 4–6 weeks, and IOP usually lasts 6–12 weeks. Your teen's clinical team adjusts the plan as they make progress.",
+        a: "Treatment length varies by severity. Residential stays typically last 45–90 days. Your teen's clinical team reassesses regularly and adjusts the plan as they make progress, with aftercare planning to support continued recovery.",
       },
       {
         q: 'What types of anxiety do you treat in teens?',
@@ -95,11 +95,11 @@ export const conditions: ConditionData[] = [
         a: 'Anxiety disorders in adolescents are diagnosed using criteria from the Diagnostic and Statistical Manual of Mental Disorders (DSM-5), which requires persistent, excessive worry or fear that interferes with daily functioning. A qualified clinician conducts a comprehensive evaluation including clinical interviews, behavioral observation, and standardized assessment tools to determine the specific type and severity of the anxiety disorder.',
       },
     ],
-    relatedPrograms: ['residential-treatment', 'php', 'iop'],
+    relatedPrograms: ['residential-treatment'],
     relatedConditions: ['depression-treatment', 'trauma-ptsd-treatment', 'ocd-treatment'],
     metaTitle: 'Adolescent Anxiety Treatment | Silver State',
     metaDescription:
-      'Evidence-based adolescent anxiety treatment at Silver State in Las Vegas. CBT, DBT, and family therapy for teens ages 11-17 in residential, PHP, and IOP.',
+      'Evidence-based adolescent anxiety treatment at Silver State in Las Vegas. CBT, DBT, and family therapy in a structured residential program for teens 11-17.',
     reviewedBy: 'Dr. Russ Park, MD',
     reviewDate: '2026-02-01',
     sources: [
@@ -123,7 +123,7 @@ export const conditions: ConditionData[] = [
     headline: 'Adolescent Depression Treatment at Silver State',
     category: 'mental-health',
     description:
-      "Major depressive disorder is one of the leading causes of disability among adolescents, with approximately one in five teens experiencing a major depressive episode before adulthood according to the National Institute of Mental Health (NIMH). Depression is more than sadness — in teenagers, it often manifests as irritability, withdrawal, and a loss of interest in activities that once brought joy. Silver State provides specialized teen depression treatment for families across Las Vegas and the surrounding region.\n\nIn adolescents ages 11–17, depression can look very different from what parents expect. Rather than expressing sadness, your teen may become angry, argumentative, or emotionally explosive. They may spend increasing time isolated in their room, lose motivation for schoolwork, or complain of unexplained physical symptoms. Social media comparison, academic pressure, family conflict, and identity development all contribute to the rising rates of teen depression.\n\nWithout treatment, adolescent depression carries serious risks including academic failure, substance use, self-harm, and suicidal ideation according to the Centers for Disease Control and Prevention (CDC). Research consistently shows that early intervention produces the best long-term outcomes, and the adolescent brain responds particularly well to evidence-based therapies like CBT and DBT.\n\nAt Silver State, we specialize in helping teens break free from the grip of depression. Our clinicians create individualized treatment plans that address the root causes of your teen's depression — not just the symptoms — across our full continuum of residential, PHP, and IOP care.",
+      "Major depressive disorder is one of the leading causes of disability among adolescents, with approximately one in five teens experiencing a major depressive episode before adulthood according to the National Institute of Mental Health (NIMH). Depression is more than sadness — in teenagers, it often manifests as irritability, withdrawal, and a loss of interest in activities that once brought joy. Silver State provides specialized teen depression treatment for families across Las Vegas and the surrounding region.\n\nIn adolescents ages 11–17, depression can look very different from what parents expect. Rather than expressing sadness, your teen may become angry, argumentative, or emotionally explosive. They may spend increasing time isolated in their room, lose motivation for schoolwork, or complain of unexplained physical symptoms. Social media comparison, academic pressure, family conflict, and identity development all contribute to the rising rates of teen depression.\n\nWithout treatment, adolescent depression carries serious risks including academic failure, substance use, self-harm, and suicidal ideation according to the Centers for Disease Control and Prevention (CDC). Research consistently shows that early intervention produces the best long-term outcomes, and the adolescent brain responds particularly well to evidence-based therapies like CBT and DBT.\n\nAt Silver State, we specialize in helping teens break free from the grip of depression. Our clinicians create individualized treatment plans that address the root causes of your teen's depression — not just the symptoms — through our residential program and evidence-based therapy offerings.",
     symptoms: [
       'Persistent sadness, emptiness, or hopelessness lasting two weeks or more',
       'Loss of interest in friends, hobbies, or activities they previously enjoyed',
@@ -143,15 +143,15 @@ export const conditions: ConditionData[] = [
       'Behavioral Activation',
     ],
     approach:
-      "Silver State's depression treatment integrates individual therapy, group sessions, and family involvement across our Residential, PHP, and IOP levels of care. Our 4:1 staff-to-client ratio ensures your teen builds a strong therapeutic relationship with their treatment team. Treatment begins with a comprehensive clinical assessment to identify the severity of depression, any co-occurring conditions, and the specific factors contributing to your teen's symptoms.\n\nOn-site academics keep your child engaged in learning, while our structured daily programming provides the routine and purpose that depression often takes away. Family therapy is woven into every level of care, helping parents learn how to support their teen without enabling avoidance. As your teen progresses, our step-down model provides a gradual transition back to daily life with continued clinical support at each stage.",
+      "Silver State's depression treatment integrates individual therapy, group sessions, and family involvement within our residential program. Our 4:1 staff-to-client ratio ensures your teen builds a strong therapeutic relationship with their treatment team. Treatment begins with a comprehensive clinical assessment to identify the severity of depression, any co-occurring conditions, and the specific factors contributing to your teen's symptoms.\n\nOn-site academics keep your child engaged in learning, while our structured daily programming provides the routine and purpose that depression often takes away. Family therapy is woven into every aspect of care, helping parents learn how to support their teen without enabling avoidance. As your teen progresses, our discharge planning provides a gradual transition back to daily life with outpatient referrals and aftercare support.",
     faqs: [
       {
         q: 'How do I know if my teen needs depression treatment?',
         a: "If your teen has experienced persistent sadness, withdrawal, or loss of interest for more than two weeks, and it's affecting their daily functioning, it may be time to seek professional help. Our admissions team can help you assess the situation.",
       },
       {
-        q: 'What is the difference between PHP and IOP for teen depression?',
-        a: 'PHP (Partial Hospitalization) provides 5–6 hours of daily programming and is suited for teens who need intensive support but can safely return home each evening. IOP (Intensive Outpatient) meets 3–4 times per week and works well for teens stepping down from higher care or those with moderate symptoms.',
+        q: 'What does the daily treatment schedule look like for teen depression?',
+        a: 'Each day at Silver State follows a structured schedule that balances clinical therapy with wellness activities. Teens participate in individual therapy, group sessions, family therapy, on-site academics, and therapeutic activities like art therapy and mindfulness — all designed to address depression from multiple angles.',
       },
       {
         q: 'Can depression in teens be treated without medication?',
@@ -174,7 +174,7 @@ export const conditions: ConditionData[] = [
         a: 'Depression in adolescents is diagnosed based on criteria from the DSM-5, which requires a depressed or irritable mood and loss of interest lasting at least two weeks along with additional symptoms such as sleep changes, fatigue, and difficulty concentrating. A comprehensive clinical evaluation by a qualified mental health professional includes interviews with both the teen and their family to assess symptom severity and rule out other conditions.',
       },
     ],
-    relatedPrograms: ['residential-treatment', 'php', 'iop'],
+    relatedPrograms: ['residential-treatment'],
     relatedConditions: [
       'anxiety-treatment',
       'suicidal-ideation-treatment',
@@ -223,7 +223,7 @@ export const conditions: ConditionData[] = [
       'Somatic Experiencing',
     ],
     approach:
-      "Silver State's trauma treatment begins with creating a physically and emotionally safe environment where your teen can begin to heal. Our 4:1 staff-to-client ratio allows clinicians to build trust gradually and work at your teen's pace. We use a phased approach: first establishing safety and stabilization, then processing traumatic memories through evidence-based modalities like EMDR and TF-CBT, and finally integrating new skills for daily life.\n\nAcross Residential, PHP, and IOP settings, we integrate individual trauma processing with group skill-building and family therapy. Family involvement is critical — we help parents understand how trauma affects adolescent behavior and equip them to provide a supportive recovery environment at home. On-site academics provide stability and normalcy during treatment, and our step-down model ensures your teen transitions gradually to less intensive care as they build resilience.",
+      "Silver State's trauma treatment begins with creating a physically and emotionally safe environment where your teen can begin to heal. Our 4:1 staff-to-client ratio allows clinicians to build trust gradually and work at your teen's pace. We use a phased approach: first establishing safety and stabilization, then processing traumatic memories through evidence-based modalities like EMDR and TF-CBT, and finally integrating new skills for daily life.\n\nWithin our residential program, we integrate individual trauma processing with group skill-building and family therapy. Family involvement is critical — we help parents understand how trauma affects adolescent behavior and equip them to provide a supportive recovery environment at home. On-site academics provide stability and normalcy during treatment, and our discharge planning ensures your teen transitions successfully with outpatient referrals and aftercare support as they build resilience.",
     faqs: [
       {
         q: 'What types of trauma do you treat in adolescents?',
@@ -235,7 +235,7 @@ export const conditions: ConditionData[] = [
       },
       {
         q: 'Is residential treatment necessary for adolescent trauma?',
-        a: "Not always. The appropriate level of care depends on the severity of symptoms and your teen's safety. Some teens benefit from the 24/7 support of residential treatment, while others do well in PHP or IOP. Our admissions team helps determine the right fit.",
+        a: "Not always. The appropriate level of care depends on the severity of symptoms and your teen's safety. Some teens benefit from the 24/7 support of residential treatment, while others may be better served by outpatient care. Our admissions team helps determine the right fit.",
       },
       {
         q: 'How long does teen PTSD treatment take?',
@@ -254,7 +254,7 @@ export const conditions: ConditionData[] = [
         a: 'PTSD in adolescents is diagnosed using DSM-5 criteria, which require exposure to a traumatic event followed by symptoms in four clusters: intrusive re-experiencing, avoidance, negative changes in mood and cognition, and hyperarousal. A licensed clinician conducts a thorough assessment including trauma history, symptom inventories, and collateral information from parents to confirm the diagnosis.',
       },
     ],
-    relatedPrograms: ['residential-treatment', 'php', 'iop'],
+    relatedPrograms: ['residential-treatment'],
     relatedConditions: ['anxiety-treatment', 'depression-treatment', 'suicidal-ideation-treatment'],
     metaTitle: 'Teen Trauma & PTSD Treatment | Silver State',
     metaDescription:
@@ -299,7 +299,7 @@ export const conditions: ConditionData[] = [
       'Collaborative Assessment and Management of Suicidality (CAMS)',
     ],
     approach:
-      "Silver State prioritizes immediate safety while addressing the underlying pain driving suicidal thoughts. Our Residential program provides 24/7 monitoring with a 4:1 staff-to-client ratio, ensuring your teen is never alone during their most vulnerable moments. Treatment begins with comprehensive risk assessment and individualized safety planning, then progresses to evidence-based therapies that help your teen develop distress tolerance, emotional regulation, and reasons for living.\n\nTreatment progresses through PHP and IOP as your teen stabilizes, with robust safety planning at every transition. Family involvement is essential — we help parents recognize warning signs, remove means of self-harm at home, and support their teen's recovery. Our step-down model ensures that as your teen moves to less intensive levels of care, they have the skills, support systems, and crisis plans needed to stay safe.",
+      "Silver State prioritizes immediate safety while addressing the underlying pain driving suicidal thoughts. Our residential program provides 24/7 monitoring with a 4:1 staff-to-client ratio, ensuring your teen is never alone during their most vulnerable moments. Treatment begins with comprehensive risk assessment and individualized safety planning, then progresses to evidence-based therapies that help your teen develop distress tolerance, emotional regulation, and reasons for living.\n\nAs your teen stabilizes, we develop a thorough discharge plan with robust safety planning for every transition. Family involvement is essential — we help parents recognize warning signs, remove means of self-harm at home, and support their teen's recovery. Our discharge planning ensures that as your teen transitions to outpatient care, they have the skills, support systems, and crisis plans needed to stay safe.",
     faqs: [
       {
         q: 'What should I do if my teen is talking about suicide?',
@@ -330,7 +330,7 @@ export const conditions: ConditionData[] = [
         a: 'Suicidal ideation is assessed through comprehensive clinical interviews that evaluate the frequency, intensity, duration, and specificity of suicidal thoughts. Clinicians use validated screening tools such as the Columbia Suicide Severity Rating Scale (C-SSRS) recommended by the National Institute of Mental Health (NIMH), along with thorough risk factor and protective factor assessments to determine the appropriate level of care.',
       },
     ],
-    relatedPrograms: ['residential-treatment', 'php', 'iop'],
+    relatedPrograms: ['residential-treatment'],
     relatedConditions: ['depression-treatment', 'trauma-ptsd-treatment', 'bpd-treatment'],
     metaTitle: 'Teen Self-Harm & Suicidal Ideation Treatment | Silver State',
     metaDescription:
@@ -374,7 +374,7 @@ export const conditions: ConditionData[] = [
       'Habit Reversal Training',
     ],
     approach:
-      "Silver State's OCD treatment centers on Exposure and Response Prevention (ERP), the gold-standard therapy for OCD. Through our Residential, PHP, and IOP levels, clinicians guide your teen through gradual, supported exposure to anxiety-provoking situations while teaching them to resist the urge to perform compulsions. Our 4:1 staff ratio means dedicated support during challenging exposures, and on-site academics ensure school continuity during treatment.\n\nFamily involvement is essential in adolescent OCD treatment. Parents often unknowingly accommodate OCD behaviors — providing reassurance, enabling avoidance, or participating in rituals. Our family therapy component helps parents recognize accommodation patterns and learn how to support their teen's ERP work at home. As your teen builds confidence managing OCD, they step down through our continuum of care with continued clinical support.",
+      "Silver State's OCD treatment centers on Exposure and Response Prevention (ERP), the gold-standard therapy for OCD. Within our residential program, clinicians guide your teen through gradual, supported exposure to anxiety-provoking situations while teaching them to resist the urge to perform compulsions. Our 4:1 staff ratio means dedicated support during challenging exposures, and on-site academics ensure school continuity during treatment.\n\nFamily involvement is essential in adolescent OCD treatment. Parents often unknowingly accommodate OCD behaviors — providing reassurance, enabling avoidance, or participating in rituals. Our family therapy component helps parents recognize accommodation patterns and learn how to support their teen's ERP work at home. As your teen builds confidence managing OCD, we prepare them for a successful transition with outpatient referrals and continued aftercare support.",
     faqs: [
       {
         q: 'What is ERP and why is it effective for teen OCD?',
@@ -382,7 +382,7 @@ export const conditions: ConditionData[] = [
       },
       {
         q: 'How long does OCD treatment take for teens?',
-        a: 'OCD treatment duration depends on severity. Residential treatment may last 60–90 days for severe cases, while PHP and IOP programs typically run 6–12 weeks. Many teens see meaningful improvement within the first few weeks of consistent ERP.',
+        a: 'OCD treatment duration depends on severity. Residential treatment may last 60–90 days for severe cases. Many teens see meaningful improvement within the first few weeks of consistent ERP, and our clinical team will recommend the right timeline for your teen.',
       },
       {
         q: 'Can OCD get worse during treatment?',
@@ -405,7 +405,7 @@ export const conditions: ConditionData[] = [
         a: 'OCD is diagnosed using DSM-5 criteria, which require the presence of obsessions, compulsions, or both that are time-consuming, cause significant distress, or interfere with daily functioning. A qualified clinician conducts a comprehensive evaluation using tools such as the Yale-Brown Obsessive Compulsive Scale (Y-BOCS) to assess symptom type and severity.',
       },
     ],
-    relatedPrograms: ['residential-treatment', 'php', 'iop'],
+    relatedPrograms: ['residential-treatment'],
     relatedConditions: ['anxiety-treatment', 'depression-treatment', 'bpd-treatment'],
     metaTitle: 'Adolescent OCD Treatment | Silver State',
     metaDescription:
@@ -453,7 +453,7 @@ export const conditions: ConditionData[] = [
       'Interpersonal and Social Rhythm Therapy (IPSRT)',
     ],
     approach:
-      'Silver State provides structured treatment for adolescent bipolar disorder across Residential, PHP, and IOP levels of care. Our approach combines therapy with psychoeducation to help your teen recognize early warning signs of mood episodes and develop proactive management strategies. The 4:1 staff-to-client ratio ensures close monitoring during mood transitions, and our structured daily schedule provides the routine and sleep hygiene that are essential for mood stability.\n\nFamily therapy is central to our approach — we educate parents about the condition, teach them to recognize prodromal symptoms, and equip the whole family with tools for long-term stability. As your teen stabilizes, our step-down process allows them to practice mood management skills with decreasing levels of support, building confidence for sustained recovery.',
+      'Silver State provides structured residential treatment for adolescent bipolar disorder. Our approach combines therapy with psychoeducation to help your teen recognize early warning signs of mood episodes and develop proactive management strategies. The 4:1 staff-to-client ratio ensures close monitoring during mood transitions, and our structured daily schedule provides the routine and sleep hygiene that are essential for mood stability.\n\nFamily therapy is central to our approach — we educate parents about the condition, teach them to recognize prodromal symptoms, and equip the whole family with tools for long-term stability. As your teen stabilizes, our discharge planning prepares them to practice mood management skills independently, with outpatient referrals and aftercare support for sustained recovery.',
     faqs: [
       {
         q: 'How is bipolar disorder different from normal teen mood swings?',
@@ -484,7 +484,7 @@ export const conditions: ConditionData[] = [
         a: 'Bipolar disorder is diagnosed using DSM-5 criteria, which require at least one episode of mania or hypomania characterized by elevated mood, increased energy, and reduced need for sleep lasting at least four to seven days. Diagnosis in adolescents requires careful clinical evaluation to distinguish bipolar disorder from ADHD, DMDD, and unipolar depression, often involving mood charting and collateral information from parents and teachers.',
       },
     ],
-    relatedPrograms: ['residential-treatment', 'php', 'iop'],
+    relatedPrograms: ['residential-treatment'],
     relatedConditions: ['depression-treatment', 'dmdd-treatment', 'dual-diagnosis-treatment'],
     metaTitle: 'Teen Bipolar Disorder Treatment | Silver State',
     metaDescription:
@@ -528,7 +528,7 @@ export const conditions: ConditionData[] = [
       'Occupational Therapy with Sensory Integration',
     ],
     approach:
-      "Silver State's autism support program integrates mental health treatment with neurodiversity-affirming practices. Across Residential, PHP, and IOP levels, we address co-occurring conditions while building social skills and emotional regulation in a structured, predictable environment. Our 4:1 staff-to-client ratio provides the consistent support autistic teens need, and on-site academics offer accommodations tailored to each student's learning profile.\n\nWe work closely with families to help parents understand their teen's neurological profile, develop effective communication strategies, and create a home environment that supports sensory and emotional needs. Our step-down process is carefully paced to ensure transitions are predictable and well-supported, recognizing that change can be especially challenging for autistic teens.",
+      "Silver State's autism support program integrates mental health treatment with neurodiversity-affirming practices. Within our residential program, we address co-occurring conditions while building social skills and emotional regulation in a structured, predictable environment. Our 4:1 staff-to-client ratio provides the consistent support autistic teens need, and on-site academics offer accommodations tailored to each student's learning profile.\n\nWe work closely with families to help parents understand their teen's neurological profile, develop effective communication strategies, and create a home environment that supports sensory and emotional needs. Our discharge process is carefully paced to ensure transitions are predictable and well-supported, with outpatient referrals tailored to each teen's needs, recognizing that change can be especially challenging for autistic teens.",
     faqs: [
       {
         q: 'Do you treat autism itself or co-occurring conditions?',
@@ -559,7 +559,7 @@ export const conditions: ConditionData[] = [
         a: 'ASD is diagnosed using DSM-5 criteria, which require persistent deficits in social communication and interaction along with restricted, repetitive patterns of behavior or interests. Diagnosis in adolescents may involve comprehensive developmental history, standardized assessment tools such as the ADOS-2, and evaluation by a multidisciplinary team to distinguish ASD from social anxiety, ADHD, or other conditions.',
       },
     ],
-    relatedPrograms: ['residential-treatment', 'php', 'iop'],
+    relatedPrograms: ['residential-treatment'],
     relatedConditions: [
       'anxiety-treatment',
       'ocd-treatment',
@@ -610,7 +610,7 @@ export const conditions: ConditionData[] = [
       'Collaborative Problem Solving (CPS)',
     ],
     approach:
-      "Silver State's ODD treatment focuses on teaching emotional regulation, communication skills, and collaborative problem-solving. Across Residential, PHP, and IOP settings, we help your teen identify the emotions beneath their defiant behavior and develop healthier responses. Our 4:1 staff ratio enables consistent, patient engagement with teens who may initially resist therapeutic relationships.\n\nFamily therapy is crucial — ODD affects the entire family, and lasting change requires shifting interaction patterns on both sides. We work with parents to replace coercive cycles with collaborative problem-solving, set effective boundaries without escalation, and build a more positive family dynamic. As your teen progresses through our step-down model, families practice new skills with decreasing clinical support.",
+      "Silver State's ODD treatment focuses on teaching emotional regulation, communication skills, and collaborative problem-solving. Within our residential program, we help your teen identify the emotions beneath their defiant behavior and develop healthier responses. Our 4:1 staff ratio enables consistent, patient engagement with teens who may initially resist therapeutic relationships.\n\nFamily therapy is crucial — ODD affects the entire family, and lasting change requires shifting interaction patterns on both sides. We work with parents to replace coercive cycles with collaborative problem-solving, set effective boundaries without escalation, and build a more positive family dynamic. As your teen progresses, families practice new skills with clinical guidance and are prepared for continued success through aftercare planning.",
     faqs: [
       {
         q: 'Is my teen just being a typical teenager, or is it ODD?',
@@ -641,7 +641,7 @@ export const conditions: ConditionData[] = [
         a: 'ODD is diagnosed using DSM-5 criteria, which require a pattern of angry or irritable mood, argumentative or defiant behavior, and vindictiveness lasting at least six months. A clinician conducts a thorough evaluation including behavioral observations, parent and teacher reports, and screening for co-occurring conditions such as ADHD and anxiety that frequently accompany ODD.',
       },
     ],
-    relatedPrograms: ['residential-treatment', 'php', 'iop'],
+    relatedPrograms: ['residential-treatment'],
     relatedConditions: ['conduct-disorder-treatment', 'dmdd-treatment', 'anxiety-treatment'],
     metaTitle: 'Adolescent ODD Treatment | Silver State',
     metaDescription:
@@ -688,7 +688,7 @@ export const conditions: ConditionData[] = [
       'Aggression Replacement Training (ART)',
     ],
     approach:
-      'Silver State treats conduct disorder through a structured therapeutic environment that provides clear expectations and consistent, compassionate responses. Across Residential, PHP, and IOP levels, we combine individual therapy with group skill-building focused on empathy, anger management, and problem-solving. Our 4:1 staff ratio ensures close supervision and mentorship while modeling the healthy adult relationships many of these teens have not experienced.\n\nFamily therapy addresses family dynamics that may reinforce problem behavior and teaches parents effective strategies for setting boundaries and reinforcing prosocial choices. As your teen demonstrates progress, our step-down model allows them to practice new skills in less structured settings while maintaining clinical support and accountability.',
+      'Silver State treats conduct disorder through a structured therapeutic environment that provides clear expectations and consistent, compassionate responses. Within our residential program, we combine individual therapy with group skill-building focused on empathy, anger management, and problem-solving. Our 4:1 staff ratio ensures close supervision and mentorship while modeling the healthy adult relationships many of these teens have not experienced.\n\nFamily therapy addresses family dynamics that may reinforce problem behavior and teaches parents effective strategies for setting boundaries and reinforcing prosocial choices. As your teen demonstrates progress, our discharge planning prepares them to practice new skills independently while connecting them with outpatient support and accountability.',
     faqs: [
       {
         q: 'How is conduct disorder different from ODD?',
@@ -719,7 +719,7 @@ export const conditions: ConditionData[] = [
         a: 'Conduct disorder is diagnosed using DSM-5 criteria, which require a repetitive pattern of behavior involving aggression toward people or animals, destruction of property, deceitfulness or theft, or serious rule violations over the past 12 months. A comprehensive clinical evaluation includes behavioral assessment, family history review, and screening for co-occurring conditions such as ADHD, trauma, and substance use.',
       },
     ],
-    relatedPrograms: ['residential-treatment', 'php', 'iop'],
+    relatedPrograms: ['residential-treatment'],
     relatedConditions: [
       'oppositional-defiant-disorder-treatment',
       'dmdd-treatment',
@@ -767,7 +767,7 @@ export const conditions: ConditionData[] = [
       'Emotion Regulation Skills Training',
     ],
     approach:
-      "Silver State's DMDD treatment prioritizes emotional regulation skill-building in a structured, predictable environment. Through Residential, PHP, and IOP programming, teens learn to identify emotional triggers, develop distress tolerance techniques, and practice healthier responses. Our 4:1 staff-to-client ratio provides the consistent support needed during emotional crises, and our structured daily routine minimizes unexpected triggers while building tolerance for frustration.\n\nFamily therapy teaches parents de-escalation strategies and reinforces skills learned in treatment. We help families break the cycle of reactive responses that can inadvertently escalate DMDD outbursts, replacing them with calm, consistent approaches that support emotional regulation. Our step-down model ensures teens have adequate support at each transition as they build independence in managing their emotions.",
+      "Silver State's DMDD treatment prioritizes emotional regulation skill-building in a structured, predictable environment. Within our residential program, teens learn to identify emotional triggers, develop distress tolerance techniques, and practice healthier responses. Our 4:1 staff-to-client ratio provides the consistent support needed during emotional crises, and our structured daily routine minimizes unexpected triggers while building tolerance for frustration.\n\nFamily therapy teaches parents de-escalation strategies and reinforces skills learned in treatment. We help families break the cycle of reactive responses that can inadvertently escalate DMDD outbursts, replacing them with calm, consistent approaches that support emotional regulation. Our discharge planning ensures teens have adequate support as they transition home, with outpatient referrals to continue building independence in managing their emotions.",
     faqs: [
       {
         q: 'How is DMDD different from bipolar disorder in teens?',
@@ -798,7 +798,7 @@ export const conditions: ConditionData[] = [
         a: 'DMDD is diagnosed using DSM-5 criteria, which require severe temper outbursts at least three times per week, a persistently irritable or angry mood between outbursts most of the day nearly every day, and symptoms present for at least 12 months in two or more settings. The diagnosis can only be made between ages 6 and 18, and a thorough evaluation is needed to distinguish DMDD from bipolar disorder, ODD, and other mood conditions.',
       },
     ],
-    relatedPrograms: ['residential-treatment', 'php', 'iop'],
+    relatedPrograms: ['residential-treatment'],
     relatedConditions: [
       'bipolar-disorder-treatment',
       'oppositional-defiant-disorder-treatment',
@@ -850,7 +850,7 @@ export const conditions: ConditionData[] = [
       'Cognitive Behavioral Therapy (CBT)',
     ],
     approach:
-      "Silver State's BPD treatment is anchored in comprehensive DBT, the therapy with the strongest evidence base for this condition. Across Residential, PHP, and IOP settings, your teen participates in individual therapy, skills training groups, phone coaching, and therapist consultation teams. Our 4:1 staff ratio ensures the close relationship-building that is essential for treating BPD, and our therapists are specifically trained to navigate the relational intensity that characterizes this condition.\n\nFamily involvement helps parents learn validation techniques, set effective boundaries, and understand the dialectical balance between acceptance and change. As your teen develops stronger emotional regulation and interpersonal skills, our step-down model provides graduated independence with continued DBT support at each level of care.",
+      "Silver State's BPD treatment is anchored in comprehensive DBT, the therapy with the strongest evidence base for this condition. Within our residential program, your teen participates in individual therapy, skills training groups, phone coaching, and therapist consultation teams. Our 4:1 staff ratio ensures the close relationship-building that is essential for treating BPD, and our therapists are specifically trained to navigate the relational intensity that characterizes this condition.\n\nFamily involvement helps parents learn validation techniques, set effective boundaries, and understand the dialectical balance between acceptance and change. As your teen develops stronger emotional regulation and interpersonal skills, our discharge planning provides a path to graduated independence with outpatient DBT referrals and continued aftercare support.",
     faqs: [
       {
         q: 'Can teens be diagnosed with BPD?',
@@ -881,7 +881,7 @@ export const conditions: ConditionData[] = [
         a: 'BPD is diagnosed using DSM-5 criteria, which require a pervasive pattern of instability in interpersonal relationships, self-image, and emotions along with marked impulsivity, beginning by early adulthood or late adolescence. In teens, diagnosis requires careful clinical evaluation to distinguish emerging BPD traits from normal adolescent development, using structured interviews and validated assessment tools.',
       },
     ],
-    relatedPrograms: ['residential-treatment', 'php', 'iop'],
+    relatedPrograms: ['residential-treatment'],
     relatedConditions: [
       'depression-treatment',
       'suicidal-ideation-treatment',
@@ -931,7 +931,7 @@ export const conditions: ConditionData[] = [
       'Dialectical Behavior Therapy (DBT)',
     ],
     approach:
-      'Silver State treats adjustment disorder with a focus on helping your teen process the triggering event and build resilience for future challenges. Through our PHP and IOP programs — or Residential when symptoms are severe — your teen receives individual therapy, group support, and family sessions. Our 4:1 staff ratio ensures personalized attention, and on-site academics help your teen stay connected to school during treatment.\n\nFamily therapy is an integral part of adjustment disorder treatment, especially when the stressor involves family changes. We help parents understand their teen\'s emotional response, improve family communication, and create a stable home environment that supports recovery. Our goal is not just symptom relief but building lasting resilience skills your teen will carry forward.',
+      'Silver State treats adjustment disorder with a focus on helping your teen process the triggering event and build resilience for future challenges. Within our residential program, your teen receives individual therapy, group support, and family sessions in a structured, supportive environment. Our 4:1 staff ratio ensures personalized attention, and on-site academics help your teen stay connected to school during treatment.\n\nFamily therapy is an integral part of adjustment disorder treatment, especially when the stressor involves family changes. We help parents understand their teen\'s emotional response, improve family communication, and create a stable home environment that supports recovery. Our goal is not just symptom relief but building lasting resilience skills your teen will carry forward.',
     faqs: [
       {
         q: 'How is adjustment disorder different from depression?',
@@ -962,7 +962,7 @@ export const conditions: ConditionData[] = [
         a: 'Adjustment disorder is diagnosed using DSM-5 criteria, which require the development of emotional or behavioral symptoms within three months of an identifiable stressor, with symptoms out of proportion to the stressor or causing significant impairment. A clinician evaluates the timeline of symptoms, their severity, and rules out other conditions such as major depression or generalized anxiety that better explain the presentation.',
       },
     ],
-    relatedPrograms: ['residential-treatment', 'php', 'iop'],
+    relatedPrograms: ['residential-treatment'],
     relatedConditions: ['anxiety-treatment', 'depression-treatment', 'trauma-ptsd-treatment'],
     metaTitle: 'Teen Adjustment Disorder Treatment | Silver State',
     metaDescription:
@@ -1007,7 +1007,7 @@ export const conditions: ConditionData[] = [
       'Integrated Group Therapy (IGT)',
     ],
     approach:
-      "Silver State's dual diagnosis program treats both substance use and mental health conditions in a single, coordinated treatment plan. Through Residential, PHP, and IOP levels, your teen works with a unified clinical team that addresses the interplay between their conditions. Our 4:1 staff ratio provides the intensive support needed for complex cases, and our clinicians are cross-trained in both mental health and substance use treatment.\n\nFamily education helps families understand how the conditions interact and how to support recovery at home. As your teen progresses through our step-down model, relapse prevention planning addresses both conditions, ensuring your teen has strategies for managing mental health symptoms without returning to substance use. Aftercare planning connects your family with ongoing community support.",
+      "Silver State's dual diagnosis program treats both substance use and mental health conditions in a single, coordinated treatment plan. Within our residential program, your teen works with a unified clinical team that addresses the interplay between their conditions. Our 4:1 staff ratio provides the intensive support needed for complex cases, and our clinicians are cross-trained in both mental health and substance use treatment.\n\nFamily education helps families understand how the conditions interact and how to support recovery at home. As your teen progresses, relapse prevention planning addresses both conditions, ensuring your teen has strategies for managing mental health symptoms without returning to substance use. Aftercare planning connects your family with ongoing outpatient support and community resources.",
     faqs: [
       {
         q: 'Why is integrated treatment important for dual diagnosis?',
@@ -1038,7 +1038,7 @@ export const conditions: ConditionData[] = [
         a: 'Dual diagnosis is identified through a comprehensive clinical assessment that evaluates both mental health symptoms and substance use patterns using validated screening tools recommended by the Substance Abuse and Mental Health Services Administration (SAMHSA). Clinicians assess the timeline and interplay between both conditions to develop an integrated treatment plan that addresses their interconnected nature.',
       },
     ],
-    relatedPrograms: ['residential-treatment', 'php', 'iop'],
+    relatedPrograms: ['residential-treatment'],
     relatedConditions: ['substance-abuse-treatment', 'depression-treatment', 'anxiety-treatment'],
     metaTitle: 'Teen Dual Diagnosis Treatment | Silver State',
     metaDescription:
@@ -1085,7 +1085,7 @@ export const conditions: ConditionData[] = [
       'Social Skills Training',
     ],
     approach:
-      "Silver State treats school refusal through a gradual, therapeutic re-engagement process. Our Residential and PHP programs provide daily structure including on-site academics, so your teen can practice attending classes in a safe environment. Individual CBT helps identify and challenge the thoughts driving avoidance, while exposure therapy systematically builds tolerance for school-related situations.\n\nFamily therapy addresses family dynamics that may inadvertently maintain the refusal pattern — including accommodating avoidance, allowing excessive reassurance-seeking, or engaging in morning conflicts that reinforce anxiety. Our 4:1 staff ratio ensures personalized support throughout the process. As your teen builds confidence in our therapeutic classroom setting, we coordinate a structured transition plan with their home school to ensure a smooth return.",
+      "Silver State treats school refusal through a gradual, therapeutic re-engagement process. Our residential program provides daily structure including on-site academics, so your teen can practice attending classes in a safe environment. Individual CBT helps identify and challenge the thoughts driving avoidance, while exposure therapy systematically builds tolerance for school-related situations.\n\nFamily therapy addresses family dynamics that may inadvertently maintain the refusal pattern — including accommodating avoidance, allowing excessive reassurance-seeking, or engaging in morning conflicts that reinforce anxiety. Our 4:1 staff ratio ensures personalized support throughout the process. As your teen builds confidence in our therapeutic classroom setting, we coordinate a structured transition plan with their home school to ensure a smooth return.",
     faqs: [
       {
         q: 'Is school refusal the same as truancy?',
@@ -1116,7 +1116,7 @@ export const conditions: ConditionData[] = [
         a: 'School refusal is identified through comprehensive clinical assessment that distinguishes anxiety-driven school avoidance from truancy, evaluating the underlying conditions such as social anxiety, separation anxiety, depression, or specific phobias. The American Academy of Child and Adolescent Psychiatry (AACAP) recommends assessing attendance patterns, physical symptom history, family dynamics, and school-related triggers to develop a targeted treatment plan.',
       },
     ],
-    relatedPrograms: ['residential-treatment', 'php', 'iop'],
+    relatedPrograms: ['residential-treatment'],
     relatedConditions: ['anxiety-treatment', 'depression-treatment', 'autism-spectrum-treatment'],
     metaTitle: 'Adolescent School Refusal Treatment | Silver State',
     metaDescription:
@@ -1167,7 +1167,7 @@ export const conditions: ConditionData[] = [
       'Family Behavior Therapy',
     ],
     approach:
-      "Silver State's substance abuse treatment addresses the root causes of your teen's substance use while building skills for long-term sobriety. Through Residential, PHP, and IOP levels of care, your teen participates in individual and group therapy, psychoeducation about substances and the brain, and relapse prevention planning. Our 4:1 staff-to-client ratio provides close mentorship, and family involvement is woven into every level of care.\n\nWe screen every teen for co-occurring mental health conditions, because treating substance use without addressing underlying depression, anxiety, or trauma leads to poor outcomes. Our step-down model provides continued structure as your teen transitions from intensive care back to daily life, with relapse prevention planning and family support at every stage.",
+      "Silver State's substance abuse treatment addresses the root causes of your teen's substance use while building skills for long-term sobriety. Within our residential program, your teen participates in individual and group therapy, psychoeducation about substances and the brain, and relapse prevention planning. Our 4:1 staff-to-client ratio provides close mentorship, and family involvement is woven into every aspect of care.\n\nWe screen every teen for co-occurring mental health conditions, because treating substance use without addressing underlying depression, anxiety, or trauma leads to poor outcomes. Our discharge planning provides continued structure as your teen transitions from residential care back to daily life, with outpatient referrals, relapse prevention strategies, and family support for lasting recovery.",
     faqs: [
       {
         q: 'At what point does teen substance use become abuse?',
@@ -1179,7 +1179,7 @@ export const conditions: ConditionData[] = [
       },
       {
         q: 'How do you prevent relapse in teens after treatment?',
-        a: 'Relapse prevention starts from day one. We teach coping skills, develop personalized safety plans, address triggers, involve families in aftercare planning, and provide step-down support from residential to PHP to IOP.',
+        a: 'Relapse prevention starts from day one. We teach coping skills, develop personalized safety plans, address triggers, involve families in aftercare planning, and connect your teen with outpatient support for continued recovery.',
       },
       {
         q: 'What types of substances do you treat in adolescents?',
@@ -1198,7 +1198,7 @@ export const conditions: ConditionData[] = [
         a: 'Substance use disorders in adolescents are diagnosed using DSM-5 criteria, which evaluate patterns of use leading to clinically significant impairment including tolerance, withdrawal, loss of control, and continued use despite negative consequences. Clinicians use validated screening tools such as the CRAFFT screening tool along with clinical interviews and collateral information from families.',
       },
     ],
-    relatedPrograms: ['residential-treatment', 'php', 'iop'],
+    relatedPrograms: ['residential-treatment'],
     relatedConditions: [
       'dual-diagnosis-treatment',
       'alcohol-abuse-treatment',
@@ -1206,7 +1206,7 @@ export const conditions: ConditionData[] = [
     ],
     metaTitle: 'Teen Substance Abuse Treatment | Silver State',
     metaDescription:
-      'Comprehensive adolescent substance abuse treatment at Silver State in Las Vegas. Evidence-based therapy for teens ages 11-17 in residential, PHP, and IOP.',
+      'Comprehensive adolescent substance abuse treatment at Silver State in Las Vegas. Evidence-based residential care and individualized therapy for teens 11-17.',
     reviewedBy: 'Dr. Russ Park, MD',
     reviewDate: '2026-02-01',
     sources: [
@@ -1249,7 +1249,7 @@ export const conditions: ConditionData[] = [
       'Family Behavior Therapy',
     ],
     approach:
-      "Silver State treats adolescent alcohol abuse through our full continuum — Residential, PHP, and IOP — based on the severity of your teen's use. Treatment combines psychoeducation about alcohol's impact on the developing brain, individual and group therapy to address triggers, and family involvement to create a supportive recovery environment. Our 4:1 staff ratio ensures your teen receives personalized, consistent support.\n\nFamily therapy is a core component because the family environment significantly influences teen alcohol use and recovery. We help parents set appropriate boundaries, model healthy coping, and create a home environment that supports sobriety. Our step-down model provides continued structure and relapse prevention support as your teen transitions back to daily life.",
+      "Silver State treats adolescent alcohol abuse within our residential program, tailored to the severity of your teen's use. Treatment combines psychoeducation about alcohol's impact on the developing brain, individual and group therapy to address triggers, and family involvement to create a supportive recovery environment. Our 4:1 staff ratio ensures your teen receives personalized, consistent support.\n\nFamily therapy is a core component because the family environment significantly influences teen alcohol use and recovery. We help parents set appropriate boundaries, model healthy coping, and create a home environment that supports sobriety. Our discharge planning provides continued structure with outpatient referrals and relapse prevention support as your teen transitions back to daily life.",
     faqs: [
       {
         q: "How do I know if my teen's drinking is a serious problem?",
@@ -1280,7 +1280,7 @@ export const conditions: ConditionData[] = [
         a: 'Alcohol use disorder in adolescents is diagnosed using DSM-5 criteria, which evaluate 11 symptoms including impaired control, social impairment, risky use, and physiological dependence. Clinicians use validated adolescent screening tools such as the AUDIT and CRAFFT along with clinical interviews to determine the severity of the problem and appropriate level of care.',
       },
     ],
-    relatedPrograms: ['residential-treatment', 'php', 'iop'],
+    relatedPrograms: ['residential-treatment'],
     relatedConditions: [
       'substance-abuse-treatment',
       'dual-diagnosis-treatment',
@@ -1325,7 +1325,7 @@ export const conditions: ConditionData[] = [
       'Dialectical Behavior Therapy (DBT)',
     ],
     approach:
-      "Silver State's opioid treatment begins with medically supported stabilization when needed, followed by comprehensive therapeutic intervention. Through Residential, PHP, and IOP levels, we address the psychological dependence on opioids while treating co-occurring mental health conditions. Our 4:1 staff ratio provides constant support during the challenging early stages of recovery.\n\nFamily education is a critical component — we help parents understand the neuroscience of opioid dependence, learn to secure medications at home, recognize warning signs of relapse, and support their teen's long-term sobriety. Our step-down model provides continued structure as your teen transitions from intensive care, with robust relapse prevention planning at every stage.",
+      "Silver State's opioid treatment begins with medically supported stabilization when needed, followed by comprehensive therapeutic intervention. Within our residential program, we address the psychological dependence on opioids while treating co-occurring mental health conditions. Our 4:1 staff ratio provides constant support during the challenging early stages of recovery.\n\nFamily education is a critical component — we help parents understand the neuroscience of opioid dependence, learn to secure medications at home, recognize warning signs of relapse, and support their teen's long-term sobriety. Our discharge planning provides continued structure as your teen transitions from residential care, with outpatient referrals and robust relapse prevention planning for sustained recovery.",
     faqs: [
       {
         q: 'Does my teen need medical detox for opioids?',
@@ -1356,7 +1356,7 @@ export const conditions: ConditionData[] = [
         a: 'Opioid use disorder in adolescents is diagnosed using DSM-5 criteria that evaluate patterns including loss of control over use, continued use despite harm, tolerance, and withdrawal symptoms. Clinical assessment includes drug screening, comprehensive interviews, and evaluation for co-occurring mental health conditions that frequently accompany opioid misuse in teens.',
       },
     ],
-    relatedPrograms: ['residential-treatment', 'php', 'iop'],
+    relatedPrograms: ['residential-treatment'],
     relatedConditions: [
       'substance-abuse-treatment',
       'dual-diagnosis-treatment',
@@ -1404,7 +1404,7 @@ export const conditions: ConditionData[] = [
       'Anxiety Management Skills Training',
     ],
     approach:
-      "Silver State's benzodiazepine treatment requires careful medical supervision due to the risks associated with withdrawal. Our Residential and PHP programs provide the structured medical oversight needed for safe stabilization, including gradual tapering protocols when appropriate. Ongoing therapy addresses the anxiety or stress that typically drives benzodiazepine misuse, teaching your teen evidence-based coping strategies that are safer and more sustainable than medication.\n\nOur 4:1 staff ratio ensures close monitoring throughout the stabilization and treatment process. Family therapy helps parents understand benzodiazepine dependence, secure medications at home, and support their teen's recovery. Our step-down model provides continued support as your teen transitions to less intensive care with a strong foundation in anxiety management skills.",
+      "Silver State's benzodiazepine treatment requires careful medical supervision due to the risks associated with withdrawal. Our residential program provides the structured medical oversight needed for safe stabilization, including gradual tapering protocols when appropriate. Ongoing therapy addresses the anxiety or stress that typically drives benzodiazepine misuse, teaching your teen evidence-based coping strategies that are safer and more sustainable than medication.\n\nOur 4:1 staff ratio ensures close monitoring throughout the stabilization and treatment process. Family therapy helps parents understand benzodiazepine dependence, secure medications at home, and support their teen's recovery. Our discharge planning provides continued support with outpatient referrals as your teen transitions home with a strong foundation in anxiety management skills.",
     faqs: [
       {
         q: 'Is benzodiazepine withdrawal dangerous for teens?',
@@ -1416,7 +1416,7 @@ export const conditions: ConditionData[] = [
       },
       {
         q: 'How long does recovery from benzodiazepine dependence take?',
-        a: 'The timeline depends on the duration and amount of use. Medical stabilization may take weeks, followed by therapeutic treatment to address underlying conditions. Our step-down model from residential to PHP to IOP supports long-term recovery.',
+        a: 'The timeline depends on the duration and amount of use. Medical stabilization may take weeks, followed by therapeutic treatment to address underlying conditions. Our residential program and aftercare planning support long-term recovery.',
       },
       {
         q: 'Can my teen manage anxiety without benzodiazepines?',
@@ -1435,7 +1435,7 @@ export const conditions: ConditionData[] = [
         a: 'Benzodiazepine use disorder is diagnosed using DSM-5 substance use disorder criteria, evaluating patterns of escalating use, failed attempts to cut down, withdrawal symptoms, and continued use despite negative consequences. Medical evaluation includes assessment of physical dependence severity to plan a safe tapering protocol and screening for co-occurring anxiety disorders.',
       },
     ],
-    relatedPrograms: ['residential-treatment', 'php', 'iop'],
+    relatedPrograms: ['residential-treatment'],
     relatedConditions: [
       'substance-abuse-treatment',
       'anxiety-treatment',
@@ -1489,7 +1489,7 @@ export const conditions: ConditionData[] = [
       'Community Reinforcement Approach',
     ],
     approach:
-      'Silver State treats adolescent cocaine abuse through our comprehensive continuum of care. Residential treatment provides the most intensive support for teens with severe use patterns, while PHP and IOP serve those with moderate symptoms or as step-down care. Our 4:1 staff ratio ensures close support during cravings and emotional challenges. Treatment addresses the thrill-seeking behavior, peer influences, and underlying emotional pain that often drive teen cocaine use.\n\nFamily involvement is essential for sustained recovery. We educate parents about cocaine\'s effects on the adolescent brain, help them recognize warning signs of relapse, and build a home environment that supports sobriety. Our step-down model provides continued therapeutic support as your teen transitions back to daily life.',
+      'Silver State treats adolescent cocaine abuse within our residential program. Our 4:1 staff ratio ensures close support during cravings and emotional challenges. Treatment addresses the thrill-seeking behavior, peer influences, and underlying emotional pain that often drive teen cocaine use through individual therapy, group sessions, and evidence-based interventions.\n\nFamily involvement is essential for sustained recovery. We educate parents about cocaine\'s effects on the adolescent brain, help them recognize warning signs of relapse, and build a home environment that supports sobriety. Our discharge planning provides continued therapeutic support with outpatient referrals as your teen transitions back to daily life.',
     faqs: [
       {
         q: 'Is cocaine physically addictive in teens?',
@@ -1520,7 +1520,7 @@ export const conditions: ConditionData[] = [
         a: 'Cocaine use disorder is diagnosed using DSM-5 criteria that assess patterns including escalating use, inability to control use, continued use despite physical or psychological harm, and impairment in daily functioning. Clinical assessment includes urine drug screening, comprehensive behavioral evaluation, and screening for co-occurring conditions such as ADHD and depression.',
       },
     ],
-    relatedPrograms: ['residential-treatment', 'php', 'iop'],
+    relatedPrograms: ['residential-treatment'],
     relatedConditions: [
       'substance-abuse-treatment',
       'dual-diagnosis-treatment',
@@ -1568,11 +1568,11 @@ export const conditions: ConditionData[] = [
       'Matrix Model',
     ],
     approach:
-      "Silver State's methamphetamine treatment provides intensive, structured care beginning with our Residential program for stabilization and early recovery. The 4:1 staff ratio ensures constant support as teens navigate the significant mood and energy changes that occur in early meth recovery. Medical monitoring addresses the physical health consequences of meth use while therapy begins to address the psychological dependence.\n\nAs teens stabilize, they step down to PHP and IOP with continued therapeutic support. We address the often severe co-occurring mental health conditions that accompany meth use — including depression, anxiety, and trauma — while rebuilding healthy routines and family relationships. Family therapy helps parents understand the recovery timeline and create a supportive home environment.",
+      "Silver State's methamphetamine treatment provides intensive, structured care within our residential program for stabilization and early recovery. The 4:1 staff ratio ensures constant support as teens navigate the significant mood and energy changes that occur in early meth recovery. Medical monitoring addresses the physical health consequences of meth use while therapy begins to address the psychological dependence.\n\nAs teens stabilize, we prepare a comprehensive discharge plan with outpatient referrals and continued aftercare support. We address the often severe co-occurring mental health conditions that accompany meth use — including depression, anxiety, and trauma — while rebuilding healthy routines and family relationships. Family therapy helps parents understand the recovery timeline and create a supportive home environment.",
     faqs: [
       {
         q: 'How long does it take for a teen to recover from meth use?',
-        a: 'Methamphetamine recovery is a gradual process. Physical stabilization may take weeks, and the brain continues to heal for months after stopping use. Our step-down model provides sustained support through residential, PHP, and IOP levels of care to give your teen the best foundation for lasting recovery.',
+        a: 'Methamphetamine recovery is a gradual process. Physical stabilization may take weeks, and the brain continues to heal for months after stopping use. Our residential program provides sustained support, followed by aftercare planning with outpatient referrals to give your teen the best foundation for lasting recovery.',
       },
       {
         q: 'Can the brain heal after teen meth use?',
@@ -1599,7 +1599,7 @@ export const conditions: ConditionData[] = [
         a: 'Methamphetamine use disorder is diagnosed using DSM-5 stimulant use disorder criteria, which evaluate patterns including escalating use, inability to reduce use, cravings, and continued use despite physical and psychological harm. Clinical assessment includes toxicology screening, evaluation of physical health consequences, and comprehensive mental health evaluation to identify co-occurring conditions.',
       },
     ],
-    relatedPrograms: ['residential-treatment', 'php', 'iop'],
+    relatedPrograms: ['residential-treatment'],
     relatedConditions: [
       'substance-abuse-treatment',
       'dual-diagnosis-treatment',
@@ -1607,7 +1607,7 @@ export const conditions: ConditionData[] = [
     ],
     metaTitle: 'Teen Meth Abuse Treatment | Silver State',
     metaDescription:
-      'Intensive adolescent methamphetamine treatment at Silver State in Las Vegas. Structured residential, PHP, and IOP care for teens ages 11-17 with trauma support.',
+      'Intensive adolescent methamphetamine abuse treatment at Silver State in Las Vegas. Structured residential care and evidence-based therapy for teens 11-17.',
     reviewedBy: 'Dr. Russ Park, MD',
     reviewDate: '2026-02-01',
     sources: [
@@ -1650,7 +1650,7 @@ export const conditions: ConditionData[] = [
       'Family Behavior Therapy',
     ],
     approach:
-      "Silver State's cannabis treatment begins with psychoeducation about how cannabis affects the adolescent brain, then moves into evidence-based therapy addressing the patterns maintaining your teen's use. Through PHP and IOP — or Residential for severe cases with co-occurring conditions — we help teens develop alternative coping strategies and rebuild motivation. Our 4:1 staff ratio provides mentorship and accountability.\n\nFamily therapy addresses enabling patterns and builds a supportive home environment. We help parents navigate the complexities of cannabis being legal for adults while explaining the distinct risks for the developing adolescent brain. Our step-down model provides continued support and accountability as your teen rebuilds their daily routine and peer relationships.",
+      "Silver State's cannabis treatment begins with psychoeducation about how cannabis affects the adolescent brain, then moves into evidence-based therapy addressing the patterns maintaining your teen's use. Within our residential program, we help teens develop alternative coping strategies and rebuild motivation. Our 4:1 staff ratio provides mentorship and accountability.\n\nFamily therapy addresses enabling patterns and builds a supportive home environment. We help parents navigate the complexities of cannabis being legal for adults while explaining the distinct risks for the developing adolescent brain. Our aftercare planning provides continued support and accountability as your teen rebuilds their daily routine and peer relationships.",
     faqs: [
       {
         q: 'Is cannabis really addictive for teens?',
@@ -1662,7 +1662,7 @@ export const conditions: ConditionData[] = [
       },
       {
         q: 'Does my teen need residential treatment for cannabis?',
-        a: 'Most teens with cannabis use disorder respond well to PHP or IOP treatment. Residential may be recommended if your teen has severe co-occurring mental health conditions, has been unable to stop in less intensive settings, or needs distance from a high-risk social environment.',
+        a: 'The level of care depends on the severity of use and any co-occurring conditions. Residential treatment may be recommended if your teen has severe co-occurring mental health conditions, has been unable to stop in less intensive settings, or needs distance from a high-risk social environment. Our admissions team will help determine the right fit.',
       },
       {
         q: 'Are vape pens and edibles more dangerous than smoking marijuana?',
@@ -1681,7 +1681,7 @@ export const conditions: ConditionData[] = [
         a: 'Cannabis use disorder is diagnosed using DSM-5 criteria that assess 11 symptoms including tolerance, withdrawal, inability to cut down, and continued use despite problems in school, relationships, or health. A clinical evaluation includes screening for co-occurring anxiety, depression, and other conditions that frequently accompany problematic cannabis use in teens.',
       },
     ],
-    relatedPrograms: ['residential-treatment', 'php', 'iop'],
+    relatedPrograms: ['residential-treatment'],
     relatedConditions: [
       'substance-abuse-treatment',
       'dual-diagnosis-treatment',
@@ -1731,7 +1731,7 @@ export const conditions: ConditionData[] = [
       'Nutritional Rehabilitation',
     ],
     approach:
-      "Silver State's anorexia treatment integrates medical monitoring, nutritional rehabilitation, and evidence-based psychotherapy. Our Residential program provides the highest level of support with supervised meals, medical oversight, and 24/7 clinical care. The refeeding process is carefully managed by our medical and nutrition teams to ensure safety and appropriate weight restoration.\n\nAs teens stabilize medically and nutritionally, they step down to PHP and IOP with continued meal support and therapy. Our 4:1 staff ratio ensures individualized attention during the challenging recovery process. Family-Based Treatment puts parents in a central role, equipping families to support nutritional restoration and challenge the eating disorder at home. Our step-down model ensures that gains made in residential treatment are maintained as your teen transitions to less intensive care.",
+      "Silver State's anorexia treatment integrates medical monitoring, nutritional rehabilitation, and evidence-based psychotherapy. Our residential program provides the highest level of support with supervised meals, medical oversight, and 24/7 clinical care. The refeeding process is carefully managed by our medical and nutrition teams to ensure safety and appropriate weight restoration.\n\nAs teens stabilize medically and nutritionally, we develop a comprehensive discharge plan with outpatient referrals for continued meal support and therapy. Our 4:1 staff ratio ensures individualized attention during the challenging recovery process. Family-Based Treatment puts parents in a central role, equipping families to support nutritional restoration and challenge the eating disorder at home. Our discharge planning ensures that gains made in residential treatment are maintained as your teen transitions to outpatient care.",
     faqs: [
       {
         q: 'How serious is anorexia in adolescents?',
@@ -1743,7 +1743,7 @@ export const conditions: ConditionData[] = [
       },
       {
         q: 'How long does adolescent anorexia treatment take?',
-        a: 'Recovery from anorexia is typically a longer process. Residential stays may last 60–90+ days depending on medical stability, followed by PHP and IOP. Full recovery can take months to years, but meaningful progress often begins within the first weeks of structured treatment.',
+        a: 'Recovery from anorexia is typically a longer process. Residential stays may last 60–90+ days depending on medical stability, followed by outpatient aftercare. Full recovery can take months to years, but meaningful progress often begins within the first weeks of structured treatment.',
       },
       {
         q: 'Does insurance cover anorexia treatment for teens?',
@@ -1766,7 +1766,7 @@ export const conditions: ConditionData[] = [
         a: 'Anorexia nervosa is diagnosed using DSM-5 criteria, which require restriction of energy intake leading to significantly low body weight, intense fear of gaining weight, and disturbance in self-perceived weight or shape. In adolescents, clinicians also evaluate growth trajectory, as failure to gain expected weight during development may meet criteria even without dramatic weight loss.',
       },
     ],
-    relatedPrograms: ['residential-treatment', 'php', 'iop'],
+    relatedPrograms: ['residential-treatment'],
     relatedConditions: [
       'bulimia-nervosa-treatment',
       'depression-treatment',
@@ -1818,7 +1818,7 @@ export const conditions: ConditionData[] = [
       'Interpersonal Therapy (IPT)',
     ],
     approach:
-      "Silver State's bulimia treatment focuses on interrupting the binge-purge cycle and addressing the emotional triggers behind it. Through Residential, PHP, and IOP levels of care, your teen receives structured meal support, individual therapy, body image work, and nutritional counseling. Our 4:1 staff ratio allows clinicians to provide the close support needed during and after meals, a critical time for teens with bulimia.\n\nFamily therapy helps parents understand the disorder, recognize enabling patterns, and create a supportive recovery environment at home. Our step-down model ensures that as your teen transitions to less intensive care, they have the coping skills and meal structure needed to maintain recovery. We address co-occurring conditions like depression and anxiety simultaneously to support whole-person healing.",
+      "Silver State's bulimia treatment focuses on interrupting the binge-purge cycle and addressing the emotional triggers behind it. Within our residential program, your teen receives structured meal support, individual therapy, body image work, and nutritional counseling. Our 4:1 staff ratio allows clinicians to provide the close support needed during and after meals, a critical time for teens with bulimia.\n\nFamily therapy helps parents understand the disorder, recognize enabling patterns, and create a supportive recovery environment at home. Our discharge planning ensures that as your teen transitions to outpatient care, they have the coping skills and meal structure needed to maintain recovery. We address co-occurring conditions like depression and anxiety simultaneously to support whole-person healing.",
     faqs: [
       {
         q: "Can my teen have bulimia if they're not underweight?",
@@ -1849,7 +1849,7 @@ export const conditions: ConditionData[] = [
         a: 'Bulimia nervosa is diagnosed using DSM-5 criteria, which require recurrent episodes of binge eating and compensatory behaviors occurring at least once a week for three months, along with self-evaluation unduly influenced by body shape and weight. Clinical assessment includes medical evaluation for electrolyte imbalances, dental erosion, and other physical consequences of purging.',
       },
     ],
-    relatedPrograms: ['residential-treatment', 'php', 'iop'],
+    relatedPrograms: ['residential-treatment'],
     relatedConditions: [
       'anorexia-nervosa-treatment',
       'binge-eating-disorder-treatment',
@@ -1900,7 +1900,7 @@ export const conditions: ConditionData[] = [
       'Mindful Eating Practices',
     ],
     approach:
-      "Silver State's BED treatment addresses the emotional roots of binge eating while normalizing eating patterns. Through PHP and IOP — or Residential when co-occurring conditions require it — teens learn to identify emotional triggers, develop alternative coping skills, and practice structured, mindful eating. Our 4:1 staff ratio provides consistent support, and our clinical team creates a shame-free environment that is essential for healing.\n\nWe explicitly avoid diet-focused approaches, instead helping teens build a healthy, sustainable relationship with food and their bodies. Family therapy educates parents about BED, addresses family meal dynamics, and helps the household create an environment that supports recovery. Our step-down model ensures continued support as your teen builds independence in managing their relationship with food.",
+      "Silver State's BED treatment addresses the emotional roots of binge eating while normalizing eating patterns. Within our residential program, teens learn to identify emotional triggers, develop alternative coping skills, and practice structured, mindful eating. Our 4:1 staff ratio provides consistent support, and our clinical team creates a shame-free environment that is essential for healing.\n\nWe explicitly avoid diet-focused approaches, instead helping teens build a healthy, sustainable relationship with food and their bodies. Family therapy educates parents about BED, addresses family meal dynamics, and helps the household create an environment that supports recovery. Our aftercare planning ensures continued support as your teen builds independence in managing their relationship with food.",
     faqs: [
       {
         q: 'Is binge eating disorder different from overeating?',
@@ -1931,7 +1931,7 @@ export const conditions: ConditionData[] = [
         a: 'BED is diagnosed using DSM-5 criteria, which require recurrent binge eating episodes occurring at least once a week for three months, marked by eating rapidly, eating until uncomfortably full, eating large amounts when not hungry, eating alone due to embarrassment, and feeling distressed afterward. Unlike bulimia, BED does not involve regular compensatory behaviors such as purging.',
       },
     ],
-    relatedPrograms: ['residential-treatment', 'php', 'iop'],
+    relatedPrograms: ['residential-treatment'],
     relatedConditions: ['bulimia-nervosa-treatment', 'depression-treatment', 'anxiety-treatment'],
     metaTitle: 'Teen Binge Eating Treatment | Silver State',
     metaDescription:
@@ -1978,7 +1978,7 @@ export const conditions: ConditionData[] = [
       'Occupational Therapy with Sensory Integration',
     ],
     approach:
-      "Silver State's ARFID treatment combines gradual food exposure with anxiety management in a structured therapeutic environment. Through Residential, PHP, and IOP levels of care, our clinical and nutrition teams work together to help your teen slowly and safely expand their diet. Our 4:1 staff ratio provides patient, individualized support during meals, and our approach is always collaborative — never forceful.\n\nWe collaborate with families to continue progress at home, understanding that ARFID recovery requires consistency across all environments. Family therapy teaches parents how to support food exploration without pressure, manage mealtimes constructively, and distinguish between accommodation and support. For teens with sensory-based ARFID, occupational therapy with sensory integration helps build tolerance gradually.",
+      "Silver State's ARFID treatment combines gradual food exposure with anxiety management in a structured therapeutic environment. Within our residential program, our clinical and nutrition teams work together to help your teen slowly and safely expand their diet. Our 4:1 staff ratio provides patient, individualized support during meals, and our approach is always collaborative — never forceful.\n\nWe collaborate with families to continue progress at home, understanding that ARFID recovery requires consistency across all environments. Family therapy teaches parents how to support food exploration without pressure, manage mealtimes constructively, and distinguish between accommodation and support. For teens with sensory-based ARFID, occupational therapy with sensory integration helps build tolerance gradually.",
     faqs: [
       {
         q: 'How is ARFID different from picky eating?',
@@ -2009,7 +2009,7 @@ export const conditions: ConditionData[] = [
         a: 'ARFID is diagnosed using DSM-5 criteria, which require an eating or feeding disturbance resulting in persistent failure to meet nutritional needs, evidenced by significant weight loss, nutritional deficiency, dependence on supplements, or marked interference with psychosocial functioning. Crucially, ARFID is distinguished from other eating disorders by the absence of body image disturbance or fear of weight gain.',
       },
     ],
-    relatedPrograms: ['residential-treatment', 'php', 'iop'],
+    relatedPrograms: ['residential-treatment'],
     relatedConditions: [
       'anxiety-treatment',
       'autism-spectrum-treatment',
@@ -2060,7 +2060,7 @@ export const conditions: ConditionData[] = [
       'Nutritional Counseling',
     ],
     approach:
-      "Silver State's OSFED treatment is tailored to the specific presentation your teen is experiencing. Our clinical team identifies the core disordered eating patterns and applies the most appropriate evidence-based interventions. Through Residential, PHP, and IOP, your teen receives individualized therapy, structured meal support, and nutritional rehabilitation. Our 4:1 staff ratio provides the personalized care that OSFED's varied presentations require.\n\nFamily therapy helps parents understand their teen's specific eating disorder presentation, recognize warning signs of escalation, and create a home environment that supports recovery. Our treatment approach addresses co-occurring conditions like anxiety and depression simultaneously, and our step-down model ensures continued support as your teen builds independence in maintaining recovery.",
+      "Silver State's OSFED treatment is tailored to the specific presentation your teen is experiencing. Our clinical team identifies the core disordered eating patterns and applies the most appropriate evidence-based interventions. Within our residential program, your teen receives individualized therapy, structured meal support, and nutritional rehabilitation. Our 4:1 staff ratio provides the personalized care that OSFED's varied presentations require.\n\nFamily therapy helps parents understand their teen's specific eating disorder presentation, recognize warning signs of escalation, and create a home environment that supports recovery. Our treatment approach addresses co-occurring conditions like anxiety and depression simultaneously, and our aftercare planning ensures continued support as your teen builds independence in maintaining recovery.",
     faqs: [
       {
         q: 'Is OSFED as serious as anorexia or bulimia?',
@@ -2091,7 +2091,7 @@ export const conditions: ConditionData[] = [
         a: 'OSFED is diagnosed using DSM-5 criteria when an adolescent presents with clinically significant eating disorder symptoms that cause distress or impairment but do not meet the full criteria for anorexia nervosa, bulimia nervosa, BED, or ARFID. A comprehensive evaluation identifies the specific disordered eating patterns and any co-occurring conditions to guide individualized treatment planning.',
       },
     ],
-    relatedPrograms: ['residential-treatment', 'php', 'iop'],
+    relatedPrograms: ['residential-treatment'],
     relatedConditions: [
       'anorexia-nervosa-treatment',
       'bulimia-nervosa-treatment',
@@ -2144,7 +2144,7 @@ export const conditions: ConditionData[] = [
       'Mindfulness-Based Eating Awareness',
     ],
     approach:
-      "Silver State's compulsive eating treatment focuses on understanding the emotional function of overeating and developing alternative coping strategies. Through Residential, PHP, and IOP, your teen participates in individual therapy to identify triggers, group sessions to reduce shame, and structured meals with nutritional support. Our clinical team addresses co-occurring conditions like anxiety and depression that often drive compulsive eating patterns.\n\nOur 4:1 staff ratio ensures your teen receives personalized attention and support throughout treatment. Family therapy helps parents understand the compulsive eating cycle, avoid inadvertently reinforcing restrictive patterns, and create a home food environment that supports recovery. Our non-diet approach teaches intuitive eating skills and emotional regulation strategies that your teen can use for life.",
+      "Silver State's compulsive eating treatment focuses on understanding the emotional function of overeating and developing alternative coping strategies. Within our residential program, your teen participates in individual therapy to identify triggers, group sessions to reduce shame, and structured meals with nutritional support. Our clinical team addresses co-occurring conditions like anxiety and depression that often drive compulsive eating patterns.\n\nOur 4:1 staff ratio ensures your teen receives personalized attention and support throughout treatment. Family therapy helps parents understand the compulsive eating cycle, avoid inadvertently reinforcing restrictive patterns, and create a home food environment that supports recovery. Our non-diet approach teaches intuitive eating skills and emotional regulation strategies that your teen can use for life.",
     faqs: [
       {
         q: 'Is compulsive eating the same as binge eating disorder?',
@@ -2175,7 +2175,7 @@ export const conditions: ConditionData[] = [
         a: 'Compulsive eating is evaluated through comprehensive clinical assessment that examines eating patterns, emotional triggers, and the degree of distress and functional impairment. While compulsive eating may not always meet DSM-5 criteria for a specific eating disorder, clinicians use structured interviews and validated eating behavior questionnaires to characterize the pattern and develop an appropriate treatment plan.',
       },
     ],
-    relatedPrograms: ['residential-treatment', 'php', 'iop'],
+    relatedPrograms: ['residential-treatment'],
     relatedConditions: [
       'binge-eating-disorder-treatment',
       'depression-treatment',

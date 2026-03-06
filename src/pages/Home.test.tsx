@@ -148,7 +148,7 @@ describe('Home — Story 2.1 hero and data sourcing', () => {
 })
 
 describe('Home — Story 2.2 content sections', () => {
-  it('renders program highlight links for Residential, PHP, and IOP', () => {
+  it('renders program highlight links from programHighlightsData', () => {
     const { container } = renderHome()
 
     for (const program of programHighlightsData) {

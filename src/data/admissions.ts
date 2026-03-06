@@ -25,7 +25,7 @@ export const admissionsSteps: AdmissionStep[] = [
   {
     step: 3,
     title: 'Clinical Assessment',
-    desc: "A licensed clinician conducts a comprehensive evaluation to determine the right level of care — residential, PHP, or IOP — tailored to your teen's needs.",
+    desc: "A licensed clinician conducts a comprehensive evaluation to determine the right treatment plan and therapy combination tailored to your teen's needs.",
   },
   {
     step: 4,
@@ -68,7 +68,7 @@ export const admissionsFaqs: FaqEntry[] = [
   },
   {
     q: 'What happens after residential treatment?',
-    a: 'Silver State offers a full continuum of care. After residential treatment, your teen may step down to our Partial Hospitalization Program (PHP) or Intensive Outpatient Program (IOP). Your treatment team develops a personalized discharge plan to ensure a smooth transition and continued support.',
+    a: 'Your treatment team develops a personalized discharge plan well before your teen completes residential care. This includes referrals to outpatient therapists and psychiatrists, school reintegration strategies, aftercare recommendations, and access to our alumni support network to ensure a smooth transition and continued progress.',
   },
 ]
 

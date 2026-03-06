@@ -16,11 +16,11 @@ const DISPLAY = 'var(--font-display)'
 const WARM = 'var(--warm)'
 
 export const meta = generateMeta({
-  title: 'Treatment Programs for Teens | Residential, PHP & IOP | Silver State',
+  title: 'Treatment Programs for Teens | Residential & Therapy | Silver State',
   description:
-    "Explore Silver State's adolescent treatment programs: Residential, PHP, and IOP for teens ages 11-17 in Las Vegas. Evidence-based care with a 4:1 staff-to-client ratio.",
+    "Explore Silver State's adolescent treatment programs: Residential treatment and 17+ evidence-based therapies for teens ages 11-17 in Las Vegas. 4:1 staff-to-client ratio.",
   path: '/programs',
-  keywords: ['teen treatment programs Las Vegas', 'adolescent residential treatment', 'teen PHP program', 'teen IOP program', 'mental health programs for teenagers'],
+  keywords: ['teen treatment programs Las Vegas', 'adolescent residential treatment', 'teen mental health treatment', 'mental health programs for teenagers', 'residential treatment for teens'],
 })
 
 export default function ProgramsHub() {
@@ -31,16 +31,16 @@ export default function ProgramsHub() {
 
   const hubFaqs = [
     {
-      q: 'What levels of care does Silver State offer?',
-      a: 'We offer three levels of care: Residential Treatment (24/7 care, 30\u201390 days), Partial Hospitalization Program (full-day programming with evenings at home, 4\u20136 weeks), and Intensive Outpatient Program (after-school sessions 3 days per week, 6\u201312 weeks). Each level provides evidence-based therapy tailored to your teen\u2019s needs.',
+      q: 'What treatment does Silver State offer?',
+      a: 'We offer residential treatment providing 24/7 care for 30\u201390 days, along with 17+ evidence-based therapy modalities including CBT, DBT, trauma-informed care, family therapy, and experiential programming. Each treatment plan is individualized to your teen\u2019s needs.',
     },
     {
       q: 'How do you determine which program is right for my teen?',
-      a: `Our admissions team conducts a free, confidential clinical assessment to evaluate your teen's symptoms, safety needs, and daily functioning. Based on this assessment, we recommend the most appropriate level of care. Call ${site.phone} to get started.`,
+      a: `Our admissions team conducts a free, confidential clinical assessment to evaluate your teen's symptoms, safety needs, and daily functioning. Based on this assessment, we recommend the most appropriate treatment approach. Call ${site.phone} to get started.`,
     },
     {
-      q: 'Can my teen move between levels of care?',
-      a: 'Yes. Our step-down model is designed for smooth transitions. Many teens begin in residential treatment and gradually move to PHP, then IOP as they progress. Your care team monitors progress and adjusts the level of care as needed.',
+      q: 'What happens after residential treatment?',
+      a: 'Discharge planning begins on day one. Your care team creates a comprehensive aftercare plan including coordination with outpatient providers, school re-entry support, and continued family strategies to maintain progress.',
     },
     {
       q: 'What ages do you treat?',
@@ -170,7 +170,7 @@ export default function ProgramsHub() {
               className="section-heading"
               style={{ marginTop: 8, marginBottom: 8 }}
             >
-              Three Levels, One Continuum
+              Our Treatment Approach
             </h2>
           </AnimateIn>
           <AnimateIn variant="blurUp" delay={0.1}>
@@ -183,8 +183,9 @@ export default function ProgramsHub() {
                 marginBottom: 40,
               }}
             >
-              Each level of care builds on the last, providing a seamless step-down path from
-              intensive residential support to flexible outpatient sessions.
+              Our residential program provides around-the-clock care combined with 17+
+              evidence-based therapy modalities, accredited academics, and comprehensive family
+              programming.
             </p>
           </AnimateIn>
 

@@ -24,7 +24,7 @@ const faqs = [
   },
   {
     q: 'Where should I send a defiant teenager for help?',
-    a: `The right placement depends on severity. For teens whose defiance is disrupting daily life and safety, a structured treatment program with evidence-based behavioral therapy is most effective. Silver State offers residential, PHP, and IOP levels of care specifically for adolescents ages 11-17. Call ${site.phone} for a free clinical assessment to determine the right level.`,
+    a: `The right placement depends on severity. For teens whose defiance is disrupting daily life and safety, a structured treatment program with evidence-based behavioral therapy is most effective. Silver State offers residential treatment specifically for adolescents ages 11-17. Call ${site.phone} for a free clinical assessment to determine the right level of care.`,
   },
   {
     q: 'Can therapy really help a defiant teen?',
@@ -32,7 +32,7 @@ const faqs = [
   },
   {
     q: 'How long does treatment for defiant behavior take?',
-    a: 'Treatment duration varies based on the severity of behavior and any co-occurring conditions. Residential treatment typically runs 45 to 90 days, PHP lasts 4 to 6 weeks, and IOP lasts 6 to 12 weeks. Many teens benefit from stepping through multiple levels of care for the most sustained improvement.',
+    a: 'Treatment duration varies based on the severity of behavior and any co-occurring conditions. Residential treatment typically runs 45 to 90 days. The clinical team monitors progress throughout and adjusts the treatment plan as your teen grows, ensuring the most sustained improvement.',
   },
 ]
 
@@ -240,10 +240,8 @@ export default function DefiantTeenArticle() {
           <h3 style={H3}>Structured Treatment Programs</h3>
           <p style={BODY}>
             When outpatient therapy is not enough, a structured program provides the containment and intensive support that severely defiant teens need. Silver State offers{' '}
-            <Link to="/programs/residential-treatment" style={{ color: 'var(--sage)', fontWeight: 600 }}>residential treatment</Link>,{' '}
-            <Link to="/programs/php" style={{ color: 'var(--sage)', fontWeight: 600 }}>partial hospitalization (PHP)</Link>, and{' '}
-            <Link to="/programs/iop" style={{ color: 'var(--sage)', fontWeight: 600 }}>intensive outpatient (IOP)</Link>{' '}
-            specifically for adolescents ages 11&ndash;17 in Las Vegas, NV.
+            <Link to="/programs/residential-treatment" style={{ color: 'var(--sage)', fontWeight: 600 }}>residential treatment</Link>{' '}
+            with a comprehensive range of evidence-based therapy programs, specifically for adolescents ages 11&ndash;17 in Las Vegas, NV.
           </p>
 
           <h2 style={H2}>When to Seek Professional Help</h2>

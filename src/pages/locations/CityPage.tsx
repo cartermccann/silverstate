@@ -20,8 +20,6 @@ const WARM = 'var(--warm)'
 
 const programLinks: Record<string, { name: string; path: string }> = {
   residential: { name: 'Residential Treatment', path: '/programs/residential-treatment' },
-  php: { name: 'Partial Hospitalization (PHP)', path: '/programs/php' },
-  iop: { name: 'Intensive Outpatient (IOP)', path: '/programs/iop' },
 }
 
 export default function CityPage({ location }: CityPageProps) {
@@ -209,7 +207,7 @@ export default function CityPage({ location }: CityPageProps) {
                   </a>
                 </p>
                 <p style={{ color: 'var(--body)', fontSize: '0.9rem', lineHeight: 1.6 }}>
-                  Ages {site.ages} &middot; Residential, PHP &amp; IOP
+                  Ages {site.ages} &middot; Residential Treatment
                 </p>
               </address>
             </AnimateIn>

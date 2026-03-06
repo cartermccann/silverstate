@@ -61,7 +61,7 @@ const steps = [
     number: '01',
     title: 'Assessment',
     description:
-      'Every journey begins with a comprehensive clinical assessment. Our admissions team evaluates your teen\'s mental health, substance use history, family dynamics, and daily functioning to determine the right level of care \u2014 residential, PHP, or IOP.',
+      'Every journey begins with a comprehensive clinical assessment. Our admissions team evaluates your teen\'s mental health, substance use history, family dynamics, and daily functioning to determine the right treatment plan and therapy combination for their needs.',
   },
   {
     number: '02',
@@ -80,7 +80,7 @@ const steps = [
 const faqs = [
   {
     q: 'How long does treatment last?',
-    a: `Treatment duration varies by level of care and individual needs. Residential treatment typically lasts 45 to 90 days, partial hospitalization (PHP) runs 4 to 6 weeks, and intensive outpatient (IOP) lasts 6 to 12 weeks. Our clinical team reassesses progress regularly and adjusts the timeline to ensure your teen gets the time they need. Call ${site.phone} to discuss your teen's situation.`,
+    a: `Treatment duration varies by individual needs and clinical progress. Residential treatment typically lasts 45 to 90 days. Our clinical team reassesses progress regularly and adjusts the timeline to ensure your teen gets the time they need before transitioning to outpatient care and aftercare support. Call ${site.phone} to discuss your teen's situation.`,
   },
   {
     q: 'What does a typical day look like?',
@@ -92,7 +92,7 @@ const faqs = [
   },
   {
     q: 'What happens after my teen completes treatment?',
-    a: 'Every teen leaves Silver State with a comprehensive discharge plan. This includes step-down level of care recommendations (for example, transitioning from residential to PHP or IOP), referrals to outpatient therapists and psychiatrists, school reintegration support, and access to our alumni network. Our goal is to set your teen up for lasting success beyond our walls.',
+    a: 'Every teen leaves Silver State with a comprehensive discharge plan. This includes outpatient referrals to therapists and psychiatrists, school reintegration support, aftercare recommendations, and access to our alumni network. Our goal is to set your teen up for lasting success beyond our walls.',
   },
 ]
 

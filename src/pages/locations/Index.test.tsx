@@ -45,7 +45,7 @@ describe('locations data', () => {
   })
 
   it('all locations reference valid program slugs', () => {
-    const validPrograms = ['residential', 'php', 'iop']
+    const validPrograms = ['residential']
     for (const loc of locations) {
       for (const prog of loc.relatedPrograms) {
         expect(validPrograms).toContain(prog)

@@ -156,8 +156,8 @@ export default function LocationsHub() {
                   {site.ages}
                 </p>
                 <p style={{ color: 'var(--body)', fontSize: '0.95rem', lineHeight: 1.6 }}>
-                  <strong style={{ color: 'var(--text)' }}>Programs:</strong> Residential Treatment,
-                  PHP, IOP
+                  <strong style={{ color: 'var(--text)' }}>Programs:</strong> Residential Treatment
+                  &amp; Therapy Programs
                 </p>
                 <p style={{ color: 'var(--body)', fontSize: '0.95rem', lineHeight: 1.6 }}>
                   <strong style={{ color: 'var(--text)' }}>Accredited:</strong> Joint Commission
@@ -367,7 +367,7 @@ export default function LocationsHub() {
                     marginBottom: 16,
                   }}
                 >
-                  Learn about our residential, PHP, and IOP treatment programs for adolescents.
+                  Learn about our residential treatment and therapy programs for adolescents.
                 </p>
                 <Link
                   to="/programs/residential-treatment"

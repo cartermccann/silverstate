@@ -538,7 +538,7 @@ export default function ComparisonPage({ comparison }: ComparisonPageProps) {
                     marginBottom: 16,
                   }}
                 >
-                  Learn about residential, PHP, and IOP treatment for adolescents.
+                  Learn about residential treatment and therapy programs for adolescents.
                 </p>
                 <Link
                   to="/programs"

@@ -370,7 +370,7 @@ async function run(): Promise<void> {
         for (const conditionSlug of p.relatedConditions) {
           requireSlug('programs.ts', p.slug, 'relatedConditions[]', conditionSlug)
         }
-        requireArray('programs.ts', p.slug, 'relatedPrograms', p.relatedPrograms)
+        requireArray('programs.ts', p.slug, 'relatedPrograms', p.relatedPrograms, 0)
         for (const programSlug of p.relatedPrograms) {
           requireSlug('programs.ts', p.slug, 'relatedPrograms[]', programSlug)
         }

@@ -125,8 +125,6 @@ describe('CityPage template — renders with Henderson data', () => {
   it('renders program links', () => {
     renderCityPage(henderson)
     expect(screen.getByText('Residential Treatment')).toBeInTheDocument()
-    expect(screen.getByText('Partial Hospitalization (PHP)')).toBeInTheDocument()
-    expect(screen.getByText('Intensive Outpatient (IOP)')).toBeInTheDocument()
   })
 
   it('renders condition links', () => {

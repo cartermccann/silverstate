@@ -834,7 +834,7 @@ export default function Contact() {
                     marginBottom: 16,
                   }}
                 >
-                  Explore our residential, PHP, and IOP treatment programs for teens ages 11-17.
+                  Explore our residential treatment and therapy programs for teens ages 11-17.
                 </p>
                 <Link
                   to="/programs/residential-treatment"

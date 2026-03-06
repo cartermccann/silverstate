@@ -210,30 +210,6 @@ export const programHighlightsData: HomepageProgramHighlight[] = [
     ],
     stat: '4:1 staff-to-client ratio',
   },
-  {
-    slug: 'php',
-    label: 'Partial Hospitalization (PHP)',
-    title: 'Structured days, home evenings',
-    body: 'Full clinical intensity during the day with the flexibility to return home each evening. PHP provides a bridge between residential care and independent living, helping teens practice new skills in real-world settings with their families.',
-    features: [
-      'Full-day therapeutic programming',
-      'Real-world skill practice each evening',
-      'Continued family integration and therapy',
-      'CBT, DBT, and trauma-informed approaches',
-    ],
-  },
-  {
-    slug: 'iop',
-    label: 'Intensive Outpatient (IOP)',
-    title: 'Focused support, flexible schedule',
-    body: 'Targeted therapeutic sessions several times per week. Ideal for teens stepping down from higher levels of care or needing focused support while maintaining school, friendships, and daily routines.',
-    features: [
-      'Multiple sessions per week',
-      'Maintain school enrollment',
-      'Step-down transition support',
-      'Individual and group modalities',
-    ],
-  },
 ]
 
 export const conditionsOverviewData: ConditionOverviewCategory[] = [
@@ -418,7 +394,7 @@ export const admissionsOverviewData: HomepageAdmissionsStep[] = [
   {
     step: 3,
     title: 'Clinical assessment',
-    desc: 'A licensed clinician conducts a comprehensive evaluation to determine the right level of care \u2014 residential, PHP, or IOP \u2014 tailored to your teen\u2019s needs.',
+    desc: 'A licensed clinician conducts a comprehensive evaluation to determine the right level of care tailored to your teen\u2019s needs.',
   },
   {
     step: 4,

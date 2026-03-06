@@ -5,25 +5,23 @@ import { getInsuranceBySlug } from '../../data/insurance'
 import { site } from '../../data/common'
 import { meta as aetnaMeta } from './Aetna'
 import { meta as cignaMeta } from './Cigna'
-import { meta as bcbsMeta } from './BCBS'
 import { meta as ambetterMeta } from './Ambetter'
-import { meta as humanaMeta } from './Humana'
 import { meta as uhcMeta } from './UHC'
-import { meta as tricareMeta } from './TRICARE'
-import { meta as medicaidMeta } from './Medicaid'
-import { meta as anthemMeta } from './Anthem'
+import { meta as hpnMeta } from './HPN'
+import { meta as medicaidFFSMeta } from './MedicaidFFS'
+import { meta as gehaMeta } from './GEHA'
+import { meta as umrMeta } from './UMR'
 
 const aetna = getInsuranceBySlug('aetna')!
 const insuranceRouteMetas = [
   aetnaMeta,
   cignaMeta,
-  bcbsMeta,
   ambetterMeta,
-  humanaMeta,
   uhcMeta,
-  tricareMeta,
-  medicaidMeta,
-  anthemMeta,
+  hpnMeta,
+  medicaidFFSMeta,
+  gehaMeta,
+  umrMeta,
 ]
 
 function renderInsurancePage() {
@@ -70,12 +68,9 @@ describe('InsurancePage template - Story 5.2', () => {
     expect(
       screen.getByRole('link', { name: /learn about residential treatment/i }).getAttribute('href'),
     ).toBe('/programs/residential-treatment')
-    expect(screen.getByRole('link', { name: /learn about php/i }).getAttribute('href')).toBe(
-      '/programs/php',
-    )
-    expect(screen.getByRole('link', { name: /learn about iop/i }).getAttribute('href')).toBe(
-      '/programs/iop',
-    )
+    expect(
+      screen.getByRole('link', { name: /explore our therapy programs/i }).getAttribute('href'),
+    ).toBe('/programs/therapy-programs')
     expect(
       screen.getByRole('link', { name: /start the admissions process/i }).getAttribute('href'),
     ).toBe('/admissions')
@@ -116,7 +111,7 @@ describe('Insurance provider route metadata - Story 5.2', () => {
     }
   })
 
-  it('keeps unique page titles across all 9 provider pages', () => {
+  it('keeps unique page titles across all provider pages', () => {
     const titles = insuranceRouteMetas
       .map((meta) => meta.find((tag) => tag.title)?.title)
       .filter((title): title is string => Boolean(title))

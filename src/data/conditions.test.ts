@@ -39,7 +39,7 @@ describe('conditions data (Story 4.1)', () => {
   })
 
   it('ensures relatedPrograms only references valid program slugs', () => {
-    const validProgramSlugs = new Set(['residential-treatment', 'php', 'iop'])
+    const validProgramSlugs = new Set(['residential-treatment'])
 
     for (const condition of conditions) {
       for (const relatedProgram of condition.relatedPrograms) {

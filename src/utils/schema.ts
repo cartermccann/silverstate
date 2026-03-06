@@ -132,16 +132,6 @@ export function generateMedicalOrganization(
         name: 'Residential Treatment',
         description: '24/7 residential treatment for adolescents ages 11-17',
       },
-      {
-        '@type': 'MedicalTherapy',
-        name: 'Partial Hospitalization Program (PHP)',
-        description: 'Day treatment program for adolescents transitioning from residential care',
-      },
-      {
-        '@type': 'MedicalTherapy',
-        name: 'Intensive Outpatient Program (IOP)',
-        description: 'Flexible outpatient treatment for adolescents',
-      },
     ],
     hasCredential: credentials.map((name) => ({
       '@type': 'EducationalOccupationalCredential',

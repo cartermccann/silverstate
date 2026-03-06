@@ -17,7 +17,7 @@ const WARM = 'var(--warm)'
 export const meta = generateMeta({
   title: 'Insurance Coverage for Teen Treatment | Silver State Treatment Center',
   description:
-    'Silver State accepts Aetna, Cigna, Ambetter, UHC, HPN, GEHA, UMR, and Medicaid FFS for adolescent residential, PHP, and IOP treatment. Verify coverage.',
+    'Silver State accepts Aetna, Cigna, Ambetter, UHC, HPN, GEHA, UMR, and Medicaid FFS for adolescent residential treatment. Verify coverage.',
   path: '/insurance',
   keywords: ['teen treatment insurance coverage', 'mental health insurance verification', 'insurance for adolescent treatment', 'behavioral health insurance Las Vegas', 'residential treatment insurance'],
 })
@@ -41,7 +41,7 @@ export default function InsuranceHub() {
     },
     {
       q: 'How do I verify my insurance coverage?',
-      a: `Call Silver State at ${site.phone} and our admissions team can verify your insurance benefits in under 10 minutes. We check your specific plan details, including coverage levels for residential, PHP, and IOP treatment.`,
+      a: `Call Silver State at ${site.phone} and our admissions team can verify your insurance benefits in under 10 minutes. We check your specific plan details, including coverage levels for residential treatment.`,
     },
     {
       q: 'What if my insurance is not listed?',
@@ -98,8 +98,7 @@ export default function InsuranceHub() {
                 lineHeight: 1.7,
               }}
             >
-              Silver State accepts most major insurance plans for adolescent residential, partial
-              hospitalization (PHP), and intensive outpatient (IOP) treatment. Our admissions team
+              Silver State accepts most major insurance plans for adolescent residential treatment. Our admissions team
               can verify your coverage in under 10 minutes — call today to find out what your plan
               covers.
             </p>
@@ -400,7 +399,7 @@ export default function InsuranceHub() {
                     marginBottom: 16,
                   }}
                 >
-                  Learn about our residential, PHP, and IOP treatment programs for adolescents.
+                  Learn about our residential treatment and therapy programs for adolescents.
                 </p>
                 <Link
                   to="/programs/residential-treatment"

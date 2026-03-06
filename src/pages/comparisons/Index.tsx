@@ -19,7 +19,7 @@ export const meta = generateMeta({
   description:
     'Compare teen treatment options side-by-side. Understand differences between therapies, programs, and conditions to find the right approach for your adolescent.',
   path: '/compare',
-  keywords: ['teen therapy comparison', 'treatment program comparison', 'CBT vs DBT teens', 'residential vs PHP', 'mental health treatment comparison'],
+  keywords: ['teen therapy comparison', 'treatment program comparison', 'CBT vs DBT teens', 'mental health treatment comparison', 'adolescent treatment options'],
 })
 
 const categoryLabels: Record<string, string> = {
@@ -32,7 +32,7 @@ const categoryDescriptions: Record<string, string> = {
   therapy:
     'Compare evidence-based therapy modalities to understand which approach is best suited for your teen\'s specific needs.',
   program:
-    'Understand the differences between our treatment levels — residential, PHP, and IOP — to choose the right intensity of care.',
+    'Understand the differences between treatment levels to choose the right intensity of care for your teen.',
   condition:
     'Learn how common adolescent mental health conditions differ and overlap, and how treatment approaches vary.',
 }
@@ -54,7 +54,7 @@ export default function ComparisonsHub() {
     },
     {
       q: 'How do you determine the right level of care for my teen?',
-      a: 'Our admissions team evaluates symptom severity, safety risk, home environment stability, previous treatment history, and daily functioning. Based on this assessment, we recommend residential, PHP, or IOP. Many teens progress through multiple levels during their treatment journey.',
+      a: 'Our admissions team evaluates symptom severity, safety risk, home environment stability, previous treatment history, and daily functioning. Based on this assessment, we recommend the most appropriate treatment approach for your teen.',
     },
   ]
 
@@ -302,7 +302,7 @@ export default function ComparisonsHub() {
                   Treatment Programs
                 </h3>
                 <p style={{ fontSize: '.9rem', color: 'var(--body)', lineHeight: 1.6, marginBottom: 16 }}>
-                  Explore our residential, PHP, and IOP programs designed for adolescents ages 11–17.
+                  Explore our treatment programs designed for adolescents ages 11–17.
                 </p>
                 <Link
                   to="/programs"

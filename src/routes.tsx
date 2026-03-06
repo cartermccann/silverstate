@@ -9,8 +9,6 @@ const Home = lazy(() => import('./pages/Home'))
 // Programs
 const ProgramsIndex = lazy(() => import('./pages/programs/Index'))
 const Residential = lazy(() => import('./pages/programs/Residential'))
-const PHP = lazy(() => import('./pages/programs/PHP'))
-const IOP = lazy(() => import('./pages/programs/IOP'))
 const CPI = lazy(() => import('./pages/programs/CPI'))
 const TherapiesIndex = lazy(() => import('./pages/programs/TherapiesIndex'))
 const CBTPage = lazy(() => import('./pages/programs/CBTPage'))
@@ -97,8 +95,6 @@ const SchoolBurnoutArticle = lazy(() => import('./pages/resources/SchoolBurnoutA
 // Comparisons
 const ComparisonsIndex = lazy(() => import('./pages/comparisons/Index'))
 const CbtVsDbt = lazy(() => import('./pages/comparisons/CbtVsDbt'))
-const ResidentialVsPhp = lazy(() => import('./pages/comparisons/ResidentialVsPhp'))
-const ResidentialVsIop = lazy(() => import('./pages/comparisons/ResidentialVsIop'))
 const AnxietyVsDepression = lazy(() => import('./pages/comparisons/AnxietyVsDepression'))
 const PtsdVsAnxiety = lazy(() => import('./pages/comparisons/PtsdVsAnxiety'))
 const AnorexiaVsBulimia = lazy(() => import('./pages/comparisons/AnorexiaVsBulimia'))
@@ -143,22 +139,6 @@ export const routes: RouteObject[] = [
     element: (
       <S>
         <Residential />
-      </S>
-    ),
-  },
-  {
-    path: '/programs/php',
-    element: (
-      <S>
-        <PHP />
-      </S>
-    ),
-  },
-  {
-    path: '/programs/iop',
-    element: (
-      <S>
-        <IOP />
       </S>
     ),
   },
@@ -755,22 +735,6 @@ export const routes: RouteObject[] = [
     element: (
       <S>
         <CbtVsDbt />
-      </S>
-    ),
-  },
-  {
-    path: '/compare/residential-vs-php',
-    element: (
-      <S>
-        <ResidentialVsPhp />
-      </S>
-    ),
-  },
-  {
-    path: '/compare/residential-vs-iop',
-    element: (
-      <S>
-        <ResidentialVsIop />
       </S>
     ),
   },

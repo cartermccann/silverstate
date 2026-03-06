@@ -20,7 +20,7 @@ const faqs = [
   },
   {
     q: 'Is CPI only used in residential treatment?',
-    a: 'No. CPI techniques are used across all levels of care at Silver State, including our partial hospitalization and intensive outpatient programs. The same principles of early intervention and empathetic de-escalation apply regardless of the treatment setting.',
+    a: 'No. CPI techniques are used across all care settings. The same principles of early intervention and empathetic de-escalation apply in residential treatment, therapeutic sessions, and family programming.',
   },
   {
     q: 'How does the supportive approach in CPI work?',
@@ -240,7 +240,7 @@ export default function CPI() {
                   lineHeight: 1.7,
                 }}
               >
-                In a residential or partial hospitalization setting, many teens arrive with histories
+                In a residential treatment setting, many teens arrive with histories
                 of trauma, attachment disruption, or chronic invalidation. A crisis response that feels
                 punitive or controlling can retraumatize, eroding the trust that effective treatment
                 depends on. CPI-based approaches help maintain the therapeutic relationship even during
@@ -528,16 +528,6 @@ export default function CPI() {
                 label: 'Residential Treatment',
                 slug: 'residential-treatment',
                 desc: '24/7 CPI-trained staff with rapid response capability. Crisis prevention is woven into the structured daily schedule from wake-up to lights out.',
-              },
-              {
-                label: 'Partial Hospitalization (PHP)',
-                slug: 'php',
-                desc: 'Full-day programming with CPI-certified clinicians. De-escalation skills are reinforced during group and individual sessions.',
-              },
-              {
-                label: 'Intensive Outpatient (IOP)',
-                slug: 'iop',
-                desc: 'After-school sessions led by CPI-trained therapists. Teens learn to apply crisis prevention strategies in their everyday environments.',
               },
             ].map((program) => (
               <StaggerItem key={program.slug}>

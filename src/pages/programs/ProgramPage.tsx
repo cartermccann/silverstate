@@ -44,12 +44,7 @@ export default function ProgramPage({ program }: ProgramPageProps) {
     conditions: program.relatedConditions.map((slug) => formatConditionLabel(slug)),
   })
 
-  const scheduleHeading =
-    program.slug === 'residential-treatment'
-      ? 'A Day in Treatment'
-      : program.slug === 'php'
-        ? 'A Day in PHP'
-        : 'An IOP Session'
+  const scheduleHeading = 'A Day in Treatment'
 
   return (
     <>

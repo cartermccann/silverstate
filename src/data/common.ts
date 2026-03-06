@@ -27,8 +27,6 @@ export const navLinks: NavLinkItemWithDropdown[] = [
         heading: 'Treatment Levels',
         links: [
           { label: 'Residential Treatment', href: '/programs/residential-treatment' },
-          { label: 'Partial Hospitalization (PHP)', href: '/programs/php' },
-          { label: 'Intensive Outpatient (IOP)', href: '/programs/iop' },
           { label: 'Crisis Prevention', href: '/programs/crisis-prevention-intervention' },
         ],
         viewAll: { label: 'View All Programs', href: '/programs' },
@@ -52,7 +50,6 @@ export const navLinks: NavLinkItemWithDropdown[] = [
           { label: 'Holistic Treatment', href: '/programs/holistic-treatment' },
           { label: 'Trauma-Informed Care', href: '/programs/trauma-informed-care' },
           { label: 'CBT vs DBT', href: '/compare/cbt-vs-dbt' },
-          { label: 'Residential vs PHP', href: '/compare/residential-vs-php' },
           { label: 'Treatment Comparisons', href: '/compare' },
         ],
         viewAll: { label: 'Our Approach', href: '/our-approach' },
@@ -145,8 +142,7 @@ export const footerLinks: FooterLinkGroup[] = [
     heading: 'Programs',
     links: [
       { label: 'Residential Treatment', href: '/programs/residential-treatment' },
-      { label: 'Partial Hospitalization', href: '/programs/php' },
-      { label: 'Intensive Outpatient', href: '/programs/iop' },
+      { label: 'Crisis Prevention', href: '/programs/crisis-prevention-intervention' },
       { label: 'Mental Health', href: '/conditions/anxiety-treatment' },
       { label: 'Substance Abuse', href: '/conditions/substance-abuse-treatment' },
       { label: 'Eating Disorders', href: '/conditions/anorexia-nervosa-treatment' },

@@ -253,10 +253,8 @@ export default function SchoolBurnoutArticle() {
             At Silver State, our treatment programs are designed around the academic and emotional realities of adolescence. Our on-site{' '}
             <Link to="/about/youth-academy" style={{ color: 'var(--sage)', fontWeight: 600 }}>Youth Academy</Link>{' '}
             keeps students on track academically during treatment, while our clinical team addresses the underlying mental health conditions driving burnout. We offer{' '}
-            <Link to="/programs/residential-treatment" style={{ color: 'var(--sage)', fontWeight: 600 }}>residential</Link>,{' '}
-            <Link to="/programs/php" style={{ color: 'var(--sage)', fontWeight: 600 }}>PHP</Link>, and{' '}
-            <Link to="/programs/iop" style={{ color: 'var(--sage)', fontWeight: 600 }}>IOP</Link>{' '}
-            levels of care for teens ages 11&ndash;17.
+            <Link to="/programs/residential-treatment" style={{ color: 'var(--sage)', fontWeight: 600 }}>residential treatment</Link>{' '}
+            and a full range of evidence-based therapy programs for teens ages 11&ndash;17.
           </p>
         </div>
       </section>

@@ -26,11 +26,11 @@ const faqSections = [
       },
       {
         q: 'What levels of care do you offer?',
-        a: 'Silver State offers three levels of care: Residential Treatment (24/7 supervised care for teens who need the highest level of support), Partial Hospitalization Program (PHP, a structured day program for teens stepping down from residential or who need more than outpatient), and Intensive Outpatient Program (IOP, flexible evening sessions that allow teens to live at home and attend school). Teens can transition between levels as their needs change.',
+        a: 'Silver State provides residential treatment with 24/7 supervised care for teens who need the highest level of support. Our residential program combines evidence-based therapy, on-site academics, and a structured daily schedule in a safe, supportive environment. We also offer a comprehensive range of therapy programs — including CBT, DBT, family therapy, group therapy, adventure therapy, and more — tailored to each teen\'s specific needs.',
       },
       {
         q: 'How long does treatment last?',
-        a: 'Treatment duration depends on the level of care and your teen\'s individual progress. Residential treatment typically lasts 45 to 90 days, PHP runs 4 to 6 weeks, and IOP lasts 6 to 12 weeks. Our clinical team reassesses regularly and adjusts the timeline to make sure your teen gets the time they need.',
+        a: 'Treatment duration depends on your teen\'s individual progress and clinical needs. Residential treatment typically lasts 45 to 90 days. Our clinical team reassesses regularly and adjusts the timeline to make sure your teen gets the time they need before transitioning to outpatient care and aftercare support.',
       },
       {
         q: 'What therapies do you use?',
