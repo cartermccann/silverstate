@@ -46,10 +46,12 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
     }
   }, [])
 
-  // Scroll Lenis to top on route change
+  // Scroll to top on route change — use Lenis when active, native fallback otherwise
   useEffect(() => {
     if (lenisRef.current) {
       lenisRef.current.scrollTo(0, { immediate: true })
+    } else {
+      window.scrollTo(0, 0)
     }
   }, [pathname])
 

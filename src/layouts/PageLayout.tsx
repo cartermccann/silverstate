@@ -68,10 +68,7 @@ export default function PageLayout({ children }: PageLayoutProps) {
     }
   }, [pathname])
 
-  // Scroll to top on route change
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [pathname])
+  // Scroll to top is handled by SmoothScroll (uses Lenis when active, window.scrollTo fallback)
 
   // Initialize Core Web Vitals monitoring once (runs regardless of consent)
   useEffect(() => {
