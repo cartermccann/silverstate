@@ -227,7 +227,7 @@ export const insuranceProviders: InsurancePageData[] = [
       },
     ],
     metaDescription:
-      'UMR adolescent treatment coverage at Silver State in Las Vegas. We accept UMR plans for residential, PHP, and IOP teen behavioral health treatment.',
+      'UMR insurance coverage for adolescent treatment at Silver State in Las Vegas. Verify your employer-sponsored UMR behavioral health benefits for your teen.',
   },
 ]
 
