@@ -68,13 +68,13 @@ export function setConsentState(state: 'granted' | 'denied'): void {
 
 /**
  * Update Google Consent Mode v2 signals.
- * ad_storage is always 'denied' — Silver State does not use Google Ads remarketing.
+ * Both analytics and ad storage follow user consent (Google Tag bundles GA4 + Google Ads).
  */
 export function updateGoogleConsent(state: 'granted' | 'denied'): void {
   ensureGtagShim()
   window.gtag('consent', 'update', {
     analytics_storage: state,
-    ad_storage: 'denied',
+    ad_storage: state,
   })
 }
 
@@ -91,41 +91,27 @@ export function initializeDefaultConsent(): void {
   })
 }
 
-/** Track whether GA4 script has already been injected */
-let ga4Loaded = false
-
-/** Reset GA4 loaded state — test only */
-export function _resetGA4(): void {
-  ga4Loaded = false
-}
-
 /**
- * Initialize GA4 via the server-side GTM proxy.
- * CRITICAL: Never call on Zone 2 pages — zone check happens BEFORE script injection.
+ * Grant Google Tag tracking after user consent.
+ * The gtag.js script is already loaded in index.html with consent defaults denied.
+ * This just updates consent signals so GA4 + Google Ads start collecting.
  */
 export function initializeGA4(zone: TrackingZone): void {
   if (zone === 'zone2') return
-  if (ga4Loaded) return
 
   const consent = getConsentState()
   if (consent !== 'granted') return
 
-  const ga4Id = import.meta.env.VITE_GA4_ID
-  if (!ga4Id) return
-
-  // Load GA4 via server-side proxy
-  const script = document.createElement('script')
-  script.async = true
-  script.src = `/api/gtm?id=${encodeURIComponent(ga4Id)}`
-  document.head.appendChild(script)
-
   ensureGtagShim()
-  window.gtag('js', new Date())
-  window.gtag('config', ga4Id, {
-    send_page_view: true,
+  window.gtag('consent', 'update', {
+    analytics_storage: 'granted',
+    ad_storage: 'granted',
   })
+}
 
-  ga4Loaded = true
+/** Reset GA4 loaded state — test only */
+export function _resetGA4(): void {
+  // No-op — kept for test compatibility
 }
 
 /**
