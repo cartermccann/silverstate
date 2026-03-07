@@ -1,4 +1,4 @@
-import { site, CDN_URL } from '../data/common'
+import { site } from '../data/common'
 
 const SITE_URL = (import.meta.env?.VITE_SITE_URL || 'https://www.silverstatetreatment.com').replace(
   /\/+$/,
@@ -119,7 +119,7 @@ export function generateMedicalOrganization(
     '@type': 'MedicalOrganization',
     name: site.name,
     url: input?.url ? toAbsoluteUrl(input.url) : SITE_URL,
-    logo: `${CDN_URL}/assets/logo.png`,
+    logo: toAbsoluteUrl('/assets/logo.png'),
     telephone: SCHEMA_TELEPHONE,
     address: {
       '@type': 'PostalAddress',

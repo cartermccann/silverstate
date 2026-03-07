@@ -30,6 +30,7 @@
     { "source": "/compare/residential-vs-php", "destination": "/compare", "statusCode": 301 },
     { "source": "/compare/residential-vs-iop", "destination": "/compare", "statusCode": 301 },
 
+    { "source": "/what-we-treat", "destination": "/conditions", "statusCode": 301 },
     { "source": "/what-we-treat/teen-anxiety", "destination": "/conditions/anxiety-treatment", "statusCode": 301 },
     { "source": "/what-we-treat/teen-depression", "destination": "/conditions/depression-treatment", "statusCode": 301 },
     { "source": "/what-we-treat/teen-mental-health", "destination": "/conditions", "statusCode": 301 },
@@ -140,6 +141,16 @@
     { "source": "/what-is-ocd-in-teens", "destination": "/conditions/ocd-treatment", "statusCode": 301 },
     { "source": "/lp/teen-boot-camp-alternative", "destination": "/programs/residential-treatment", "statusCode": 301 },
 
+    { "source": "/pre-teen-anxiety-treatment-approaches-for-teens-exposed-to-synthetic-cannabinoids", "destination": "/conditions/anxiety-treatment", "statusCode": 301 },
+    { "source": "/is-teenage-outpatient-treatment-effective-for-vaping-addiction", "destination": "/conditions/substance-abuse-treatment", "statusCode": 301 },
+    { "source": "/why-parents-choose-a-residential-treatment-facility-for-teens-struggling-with-dmt", "destination": "/programs/residential-treatment", "statusCode": 301 },
+    { "source": "/from-self-harm-to-xanax-why-young-adult-addiction-treatment-is-vital-for-17-year-old-girls", "destination": "/conditions/benzodiazepine-abuse-treatment", "statusCode": 301 },
+    { "source": "/warning-signs-you-need-a-teen-addiction-recovery-program", "destination": "/conditions/substance-abuse-treatment", "statusCode": 301 },
+    { "source": "/how-psychedelics-contribute-to-trauma-in-teen-substance-use-disorder", "destination": "/conditions/substance-abuse-treatment", "statusCode": 301 },
+    { "source": "/holistic-program-for-ayahuasca-dependency-in-rural-boys", "destination": "/programs/holistic-treatment", "statusCode": 301 },
+    { "source": "/adolescent-detox-program-for-cough-syrup-addiction", "destination": "/conditions/substance-abuse-treatment", "statusCode": 301 },
+
+    { "source": "/programs/:path*", "destination": "/programs", "statusCode": 301 },
     { "source": "/what-we-treat/:path*", "destination": "/conditions", "statusCode": 301 },
     { "source": "/blog/:path*", "destination": "/resources", "statusCode": 301 }
   ],
