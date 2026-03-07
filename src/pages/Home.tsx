@@ -1362,9 +1362,6 @@ export default function Home() {
                     className="home-logo-img"
                     style={{
                       height: 36,
-                      filter: 'grayscale(100%)',
-                      opacity: 0.5,
-                      transition: 'all .2s ease',
                     }}
                   />
                 ) : (
@@ -1415,9 +1412,6 @@ export default function Home() {
                     className="home-logo-img"
                     style={{
                       height: 44,
-                      filter: 'grayscale(100%)',
-                      opacity: 0.5,
-                      transition: 'all .2s ease',
                     }}
                   />
                 ) : (
@@ -1641,10 +1635,12 @@ export default function Home() {
 
       {/* -- Scoped Styles -- */}
       <style>{`
-        /* Logo hover effect */
+        /* Logo hover effect — subtle lift */
+        .home-logo-img {
+          transition: transform .2s ease;
+        }
         .home-logo-img:hover {
-          filter: grayscale(0%) !important;
-          opacity: 1 !important;
+          transform: scale(1.05);
         }
 
         /* Team Carousel scrollbar hide */

@@ -68,7 +68,7 @@ export default function CookieConsent() {
           textAlign: isMobile ? 'center' : 'left',
         }}
       >
-        <div style={styles.text}>
+        <div style={{ ...styles.text, flex: isMobile ? '0 0 auto' : '1 1 280px' }}>
           <p style={styles.heading}>We value your privacy</p>
           <p style={styles.description}>
             We use cookies to analyze site traffic and improve your experience. No health
@@ -144,7 +144,7 @@ const styles: Record<string, React.CSSProperties> = {
     flexWrap: 'wrap',
   },
   text: {
-    flex: '1 1 400px',
+    flex: '1 1 280px',
     minWidth: 0,
   },
   heading: {
