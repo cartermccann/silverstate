@@ -1,4 +1,4 @@
-import { useEffect, useRef, type ReactNode } from 'react'
+import { useEffect, useLayoutEffect, useRef, type ReactNode } from 'react'
 import { useLocation } from 'react-router'
 import Lenis from 'lenis'
 import { gsap, ScrollTrigger } from '../utils/gsap'
@@ -46,8 +46,8 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
     }
   }, [])
 
-  // Scroll to top on route change — use Lenis when active, native fallback otherwise
-  useEffect(() => {
+  // Scroll to top on route change — useLayoutEffect runs before paint to prevent flash
+  useLayoutEffect(() => {
     if (lenisRef.current) {
       lenisRef.current.scrollTo(0, { immediate: true })
     } else {
