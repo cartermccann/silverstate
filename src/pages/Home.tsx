@@ -159,7 +159,7 @@ export default function Home() {
             objectFit: 'cover',
           }}
         >
-          <source src="/Videos/hero-bg.mp4" type="video/mp4" />
+          <source src="/Videos/silverstate-tour.mp4" type="video/mp4" />
         </video>
 
         {/* Overlay gradient */}
@@ -384,8 +384,8 @@ export default function Home() {
             }}
           >
             <img
-              src={`${CDN_URL}/assets/teen-therapist.jpg`}
-              alt="Teen participating in a therapy session"
+              src="/assets/facility-gallery/therapy-room-cozy.jpg"
+              alt="Silver State therapy room with comfortable seating"
               loading="lazy"
               style={{
                 position: 'absolute',
@@ -759,8 +759,8 @@ export default function Home() {
                 }}
               >
                 <img
-                  src={`${CDN_URL}/assets/teen-therapist.jpg`}
-                  alt="Youth Academy classroom environment"
+                  src="/assets/facility-gallery/classroom-mural-tv.jpg"
+                  alt="Silver State Youth Academy classroom with inspirational mural"
                   loading="lazy"
                   style={{
                     width: '100%',
