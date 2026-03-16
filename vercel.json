@@ -150,9 +150,9 @@
     { "source": "/holistic-program-for-ayahuasca-dependency-in-rural-boys", "destination": "/programs/holistic-treatment", "statusCode": 301 },
     { "source": "/adolescent-detox-program-for-cough-syrup-addiction", "destination": "/conditions/substance-abuse-treatment", "statusCode": 301 },
 
-    { "source": "/programs/:path*", "destination": "/programs", "statusCode": 301 },
-    { "source": "/what-we-treat/:path*", "destination": "/conditions", "statusCode": 301 },
-    { "source": "/blog/:path*", "destination": "/resources", "statusCode": 301 }
+    { "source": "/programs/:path+", "destination": "/programs", "statusCode": 301 },
+    { "source": "/what-we-treat/:path+", "destination": "/conditions", "statusCode": 301 },
+    { "source": "/blog/:path+", "destination": "/resources", "statusCode": 301 }
   ],
   "headers": [
     {
