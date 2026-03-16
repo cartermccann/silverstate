@@ -7,6 +7,7 @@ import useIsMobile from '../../hooks/useIsMobile'
 import AnimateIn, { StaggerGroup, StaggerItem } from '../../components/AnimateIn'
 import { CharReveal } from '../../components/TextReveal'
 import MagneticButton from '../../components/MagneticButton'
+import FacilityGallery from '../../components/FacilityGallery'
 import { IconPhone, IconShield, IconUsers, IconCheck, IconMapPin } from '../../components/Icons'
 
 const DISPLAY = 'var(--font-display)'
@@ -245,52 +246,16 @@ export default function Facility() {
         </div>
       </section>
 
-      {/* ── 3. FACILITY IMAGES ── */}
-      <section style={{ padding: '48px 0', background: WARM }}>
+      {/* ── 3. FACILITY GALLERY (full-width) ── */}
+      <section style={{ padding: '48px 0', background: WARM, overflow: 'hidden' }}>
         <div className="wrap">
           <AnimateIn variant="fadeUp">
             <h2 className="section-heading" style={{ textAlign: 'center', marginBottom: 32 }}>
               Inside Silver State
             </h2>
           </AnimateIn>
-
-          <StaggerGroup
-            stagger={0.08}
-            variant="fadeUp"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
-              gap: 20,
-            }}
-          >
-            {facilityData.images.map((img) => (
-              <StaggerItem key={img.alt}>
-                <div
-                  style={{
-                    borderRadius: 'var(--radius-lg)',
-                    overflow: 'hidden',
-                    background: 'var(--cream)',
-                    aspectRatio: '16 / 10',
-                  }}
-                >
-                  <img
-                    src={img.src}
-                    alt={img.alt}
-                    loading="lazy"
-                    width={640}
-                    height={400}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      display: 'block',
-                    }}
-                  />
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerGroup>
         </div>
+        <FacilityGallery fullWidth showCategoryTabs />
       </section>
 
       {/* ── 4. AMENITIES ── */}

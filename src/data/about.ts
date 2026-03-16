@@ -173,24 +173,44 @@ export const facilityData: AboutPageData = {
   ],
   images: [
     {
-      src: `${baseUrl}/facility/exterior-sign.webp`,
-      alt: 'Silver State Treatment Center building sign and exterior',
+      src: `${baseUrl}/facility-gallery/exterior-entrance-front.jpg`,
+      alt: 'Silver State front entrance with covered portico and stone facade',
     },
     {
-      src: `${baseUrl}/facility/lobby-reception.webp`,
-      alt: 'Main lobby and reception area with branded sign',
+      src: `${baseUrl}/facility-gallery/lobby-reception-desk.jpg`,
+      alt: 'Silver State reception desk with logo sign and stone pillars',
     },
     {
-      src: `${baseUrl}/facility/bedroom-twin.webp`,
-      alt: 'Private apartment-style bedroom for adolescent residents',
+      src: `${baseUrl}/facility-gallery/bedroom-twin-window.jpg`,
+      alt: 'Bright shared bedroom with natural light and personal storage',
     },
     {
-      src: `${baseUrl}/facility/therapy-room.webp`,
-      alt: 'Dedicated therapy office for individual and group sessions',
+      src: `${baseUrl}/facility-gallery/therapy-room-cozy.jpg`,
+      alt: 'Warm therapy room with comfortable seating and natural sunlight',
     },
     {
-      src: `${baseUrl}/facility/courtyard-basketball.webp`,
-      alt: 'Outdoor courtyard with basketball court for recreation',
+      src: `${baseUrl}/facility-gallery/courtyard-patio-seating.jpg`,
+      alt: 'Covered patio with wrought iron seating alongside courtyard',
+    },
+    {
+      src: `${baseUrl}/facility-gallery/classroom-mural-tv.jpg`,
+      alt: 'Silver State Youth Academy classroom with inspirational mural',
+    },
+    {
+      src: `${baseUrl}/facility-gallery/game-room-gaming-lounge.jpg`,
+      alt: 'Gaming lounge with TV, board games, and social seating',
+    },
+    {
+      src: `${baseUrl}/facility-gallery/medical-office-wide.jpg`,
+      alt: 'On-site medical office with vitals equipment and dual desks',
+    },
+    {
+      src: `${baseUrl}/facility-gallery/nursing-station-wide.jpg`,
+      alt: '24/7 nursing station with AED and medical supplies',
+    },
+    {
+      src: `${baseUrl}/facility-gallery/exterior-street-sign.jpg`,
+      alt: 'Silver State street-level monument sign with desert landscaping',
     },
   ],
   metaTitle: 'Our Facility | Silver State Adolescent Treatment Center',
@@ -215,12 +235,28 @@ export const youthAcademyData: AboutPageData = {
   ],
   images: [
     {
-      src: `${baseUrl}/facility/classroom.webp`,
-      alt: 'Silver State Youth Academy classroom with small class sizes',
+      src: `${baseUrl}/facility-gallery/classroom-mural-tv.jpg`,
+      alt: 'Silver State Youth Academy classroom with inspirational mural and TV',
     },
     {
-      src: `${baseUrl}/facility/hallway-rooms.webp`,
-      alt: 'Academy hallway with numbered room doors',
+      src: `${baseUrl}/facility-gallery/classroom-desks-mural.jpg`,
+      alt: 'Silver State Youth Academy classroom with student desks and mural',
+    },
+    {
+      src: `${baseUrl}/facility-gallery/classroom-teacher-desk.jpg`,
+      alt: 'Certified teacher station with civics poster and laptop',
+    },
+    {
+      src: `${baseUrl}/facility-gallery/classroom-whiteboard-mural.jpg`,
+      alt: 'Classroom with whiteboard and student desk chairs',
+    },
+    {
+      src: `${baseUrl}/facility-gallery/game-room-gaming-lounge.jpg`,
+      alt: 'Recreation lounge with gaming and board games for students',
+    },
+    {
+      src: `${baseUrl}/facility-gallery/courtyard-basketball-wide.jpg`,
+      alt: 'Outdoor courtyard with basketball court for physical activity',
     },
   ],
   metaTitle: 'Silver State Youth Academy | On-Site Accredited Academics',

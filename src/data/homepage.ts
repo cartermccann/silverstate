@@ -3,7 +3,7 @@ import type {
   DailyScheduleEntry,
   HeroData,
   IntroData,
-  LightboxImage,
+
   LegacyHeroData,
   HomepageStatItem,
   HomepageTestimonialData,
@@ -49,38 +49,7 @@ export const introData: IntroData = {
     'Joint Commission Gold Seal accredited. LegitScript approved. HIPAA compliant. Same-day admissions available. Serving Nevada families since day one.',
 }
 
-export const facilityGalleryImages: LightboxImage[] = [
-  {
-    src: '/assets/facility/lobby-reception.webp',
-    alt: 'Main lobby and reception area',
-    caption: 'Welcoming lobby and reception at Silver State',
-  },
-  {
-    src: '/assets/facility/courtyard-basketball.webp',
-    alt: 'Outdoor courtyard with basketball court',
-    caption: 'Outdoor recreation and courtyard activities',
-  },
-  {
-    src: '/assets/facility/bedroom-twin.webp',
-    alt: 'Private apartment-style bedroom',
-    caption: 'Private bedrooms designed for comfort and safety',
-  },
-  {
-    src: '/assets/facility/therapy-room.webp',
-    alt: 'Cozy therapy room with seating',
-    caption: 'Dedicated therapy rooms for individual sessions',
-  },
-  {
-    src: '/assets/facility/game-room.webp',
-    alt: 'Recreation room with activities',
-    caption: 'Recreation and social spaces for teens',
-  },
-  {
-    src: '/assets/facility/exterior-sign.webp',
-    alt: 'Silver State building exterior and sign',
-    caption: 'Our facility in Las Vegas, Nevada',
-  },
-]
+export { galleryBestPicks as facilityGalleryImages } from './facility-gallery'
 
 export const stats: HomepageStatItem[] = [
   { value: '24/7', label: 'Clinical support' },
