@@ -384,8 +384,8 @@ export default function Home() {
             }}
           >
             <img
-              src="/assets/facility-gallery/therapy-room-cozy.jpg"
-              alt="Silver State therapy room with comfortable seating"
+              src={`${CDN_URL}/assets/teen-therapist.jpg`}
+              alt="Teen participating in a therapy session"
               loading="lazy"
               style={{
                 position: 'absolute',
