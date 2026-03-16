@@ -38,7 +38,7 @@ export const conditions: ConditionData[] = [
   {
     slug: 'anxiety-treatment',
     name: 'Anxiety Treatment',
-    heroImage: '/Photos/ULC09136.webp',
+    heroImage: '/assets/facility-gallery/therapy-room-seating.jpg',
     sectionImages: ['/assets/stock/psychologist-with-teen.jpg', '/assets/stock/group-therapy-session.jpg'],
     seoKeywords: ['teen anxiety treatment', 'anxiety in teens', 'adolescent anxiety treatment', 'teen anxiety therapy Las Vegas', 'anxiety treatment for teenagers'],
     headline: 'Adolescent Anxiety Treatment at Silver State',
@@ -117,7 +117,7 @@ export const conditions: ConditionData[] = [
   {
     slug: 'depression-treatment',
     name: 'Depression Treatment',
-    heroImage: '/Photos/ULC09112.webp',
+    heroImage: '/assets/facility-gallery/hallway-rooms-numbered.jpg',
     sectionImages: ['/assets/stock/teen-depression-therapy.jpg', '/assets/stock/family-therapy-session.jpg'],
     seoKeywords: ['adolescent depression treatment', 'teen depression treatment', 'teen depression therapy Las Vegas', 'depression in teenagers', 'youth depression program'],
     headline: 'Adolescent Depression Treatment at Silver State',
@@ -197,7 +197,7 @@ export const conditions: ConditionData[] = [
   {
     slug: 'trauma-ptsd-treatment',
     name: 'Trauma & PTSD Treatment',
-    heroImage: '/Photos/ULC09135.webp',
+    heroImage: '/assets/facility-gallery/therapy-room-cozy.jpg',
     sectionImages: ['/assets/stock/individual-therapy-pink.jpg', '/assets/stock/family-art-therapy.jpg'],
     seoKeywords: ['teen trauma therapy', 'adolescent PTSD treatment', 'teen PTSD treatment Las Vegas', 'trauma therapy for teenagers', 'childhood trauma treatment'],
     headline: 'Adolescent Trauma & PTSD Treatment at Silver State',
@@ -273,7 +273,7 @@ export const conditions: ConditionData[] = [
   {
     slug: 'suicidal-ideation-treatment',
     name: 'Suicidal Ideation Treatment',
-    heroImage: '/Photos/ULC09138.webp',
+    heroImage: '/assets/facility-gallery/therapy-room-counselor.jpg',
     sectionImages: ['/assets/stock/psychologist-with-teen.jpg', '/assets/stock/treatment-plan-doctor.jpg'],
     seoKeywords: ['teen suicidal ideation treatment', 'adolescent self-harm treatment', 'teen suicide prevention Las Vegas', 'suicidal thoughts in teenagers', 'teen crisis intervention'],
     headline: 'Adolescent Suicidal Ideation Treatment at Silver State',
@@ -349,7 +349,7 @@ export const conditions: ConditionData[] = [
   {
     slug: 'ocd-treatment',
     name: 'OCD Treatment',
-    heroImage: '/assets/facility/therapy-room.webp',
+    heroImage: '/assets/facility-gallery/therapy-room-cozy.jpg',
     sectionImages: ['/assets/stock/holistic-therapy.jpg', '/assets/stock/group-therapy-session.jpg'],
     seoKeywords: ['teen OCD treatment', 'adolescent OCD treatment', 'OCD treatment for teenagers', 'teen OCD therapy Las Vegas', 'ERP therapy for teens'],
     headline: 'Adolescent OCD Treatment at Silver State',
@@ -427,7 +427,7 @@ export const conditions: ConditionData[] = [
   {
     slug: 'bipolar-disorder-treatment',
     name: 'Bipolar Disorder Treatment',
-    heroImage: '/Photos/ULC09137.webp',
+    heroImage: '/assets/facility-gallery/therapy-room-dresser.jpg',
     sectionImages: ['/assets/stock/bipolar-occupational.jpg', '/assets/stock/treatment-plan-doctor.jpg'],
     seoKeywords: ['teen bipolar treatment', 'adolescent bipolar disorder treatment', 'bipolar disorder in teens', 'teen bipolar therapy Las Vegas', 'teenage mood disorder treatment'],
     headline: 'Adolescent Bipolar Disorder Treatment at Silver State',
@@ -503,7 +503,7 @@ export const conditions: ConditionData[] = [
   {
     slug: 'autism-spectrum-treatment',
     name: 'Autism Spectrum Treatment',
-    heroImage: '/Photos/ULC09126.webp',
+    heroImage: '/assets/facility-gallery/classroom-mural-tv.jpg',
     sectionImages: ['/assets/stock/music-therapy-piano.jpg', '/assets/stock/family-art-therapy.jpg'],
     seoKeywords: ['teen autism treatment', 'adolescent autism spectrum support', 'ASD teen therapy Las Vegas', 'autism and mental health treatment teens', 'neurodiversity affirming treatment'],
     headline: 'Adolescent Autism Spectrum Support at Silver State',
@@ -585,7 +585,7 @@ export const conditions: ConditionData[] = [
   {
     slug: 'oppositional-defiant-disorder-treatment',
     name: 'Oppositional Defiant Disorder Treatment',
-    heroImage: '/Photos/ULC09129.webp',
+    heroImage: '/assets/facility-gallery/classroom-teacher-station.jpg',
     sectionImages: ['/assets/stock/odd-occupational.jpg', '/assets/stock/family-therapy-session.jpg'],
     seoKeywords: ['teen ODD treatment', 'adolescent oppositional defiant disorder treatment', 'ODD therapy for teens', 'teen defiant behavior treatment Las Vegas', 'oppositional behavior in teenagers'],
     headline: 'Adolescent ODD Treatment at Silver State',
@@ -663,7 +663,7 @@ export const conditions: ConditionData[] = [
   {
     slug: 'conduct-disorder-treatment',
     name: 'Conduct Disorder Treatment',
-    heroImage: '/Photos/ULC09122.webp',
+    heroImage: '/assets/facility-gallery/courtyard-patio-seating.jpg',
     sectionImages: ['/assets/stock/conduct-occupational.jpg', '/assets/stock/individual-therapy-pink.jpg'],
     seoKeywords: ['teen conduct disorder treatment', 'adolescent conduct disorder therapy', 'conduct disorder treatment Las Vegas', 'teen behavioral disorder treatment', 'juvenile behavior therapy'],
     headline: 'Adolescent Conduct Disorder Treatment at Silver State',
@@ -742,7 +742,7 @@ export const conditions: ConditionData[] = [
   {
     slug: 'dmdd-treatment',
     name: 'DMDD Treatment',
-    heroImage: '/assets/facility/common-area.webp',
+    heroImage: '/assets/facility-gallery/common-area-lounge.jpg',
     sectionImages: ['/assets/stock/dmdd-occupational.jpg', '/assets/stock/group-therapy-session.jpg'],
     seoKeywords: ['teen DMDD treatment', 'adolescent DMDD therapy', 'disruptive mood dysregulation disorder treatment', 'DMDD treatment Las Vegas', 'teen mood dysregulation therapy'],
     headline: 'Adolescent DMDD Treatment at Silver State',
@@ -824,7 +824,7 @@ export const conditions: ConditionData[] = [
   {
     slug: 'bpd-treatment',
     name: 'Borderline Personality Disorder Treatment',
-    heroImage: '/Photos/ULC09149.webp',
+    heroImage: '/assets/facility-gallery/game-room-yoga-doorway.jpg',
     sectionImages: ['/assets/stock/bpd-occupational.jpg', '/assets/stock/psychologist-with-teen.jpg'],
     seoKeywords: ['teen BPD treatment', 'adolescent borderline personality disorder treatment', 'BPD therapy for teens', 'teen borderline treatment Las Vegas', 'DBT for teen BPD'],
     headline: 'Adolescent BPD Treatment at Silver State',
@@ -907,7 +907,7 @@ export const conditions: ConditionData[] = [
   {
     slug: 'adjustment-disorder-treatment',
     name: 'Adjustment Disorder Treatment',
-    heroImage: '/Photos/ULC09123.webp',
+    heroImage: '/assets/facility-gallery/courtyard-patio-benches.jpg',
     sectionImages: ['/assets/stock/adjustment-therapy.jpg', '/assets/stock/holistic-therapy.jpg'],
     seoKeywords: ['teen adjustment disorder treatment', 'adolescent adjustment disorder therapy', 'adjustment disorder treatment Las Vegas', 'teen coping with life changes', 'stress response treatment teenagers'],
     headline: 'Adolescent Adjustment Disorder Treatment at Silver State',
@@ -982,7 +982,7 @@ export const conditions: ConditionData[] = [
   {
     slug: 'dual-diagnosis-treatment',
     name: 'Dual Diagnosis Treatment',
-    heroImage: '/Photos/ULC09131.webp',
+    heroImage: '/assets/facility-gallery/medical-office-wide.jpg',
     sectionImages: ['/assets/stock/dual-diagnosis-therapy.jpg', '/assets/stock/treatment-plan-doctor.jpg'],
     seoKeywords: ['teen dual diagnosis treatment', 'adolescent co-occurring disorders treatment', 'dual diagnosis treatment Las Vegas', 'teen substance use and mental health', 'co-occurring disorder therapy teenagers'],
     headline: 'Adolescent Dual Diagnosis Treatment at Silver State',
@@ -1060,7 +1060,7 @@ export const conditions: ConditionData[] = [
   {
     slug: 'school-refusal-treatment',
     name: 'School Refusal Treatment',
-    heroImage: '/Photos/ULC09125.webp',
+    heroImage: '/assets/facility-gallery/classroom-desks-mural.jpg',
     sectionImages: ['/assets/stock/school-refusal-therapy.jpg', '/assets/stock/family-therapy-session.jpg'],
     seoKeywords: ['teen school refusal treatment', 'adolescent school avoidance therapy', 'school refusal treatment Las Vegas', 'teen school anxiety treatment', 'school phobia treatment teenagers'],
     headline: 'Adolescent School Refusal Treatment at Silver State',
@@ -1141,7 +1141,7 @@ export const conditions: ConditionData[] = [
   {
     slug: 'substance-abuse-treatment',
     name: 'Substance Abuse Treatment',
-    heroImage: '/Photos/ULC09130.webp',
+    heroImage: '/assets/facility-gallery/medical-office-equipment.jpg',
     sectionImages: ['/assets/stock/individual-therapy-pink.jpg', '/assets/stock/holistic-therapy.jpg'],
     seoKeywords: ['teen substance abuse treatment', 'adolescent substance abuse treatment', 'teen drug treatment Las Vegas', 'substance abuse treatment for teenagers', 'teen addiction treatment program'],
     headline: 'Adolescent Substance Abuse Treatment at Silver State',
@@ -1224,7 +1224,7 @@ export const conditions: ConditionData[] = [
   {
     slug: 'alcohol-abuse-treatment',
     name: 'Alcohol Abuse Treatment',
-    heroImage: '/Photos/ULC09132.webp',
+    heroImage: '/assets/facility-gallery/medical-office-desk.jpg',
     sectionImages: ['/assets/stock/alcohol-therapy.jpg', '/assets/stock/group-therapy-session.jpg'],
     seoKeywords: ['teen alcohol abuse treatment', 'adolescent alcohol treatment', 'underage drinking treatment Las Vegas', 'teen alcohol addiction therapy', 'alcohol abuse treatment for teenagers'],
     headline: 'Adolescent Alcohol Abuse Treatment at Silver State',
@@ -1300,7 +1300,7 @@ export const conditions: ConditionData[] = [
   {
     slug: 'opioid-abuse-treatment',
     name: 'Opioid Abuse Treatment',
-    heroImage: '/Photos/ULC09134.webp',
+    heroImage: '/assets/facility-gallery/medical-office-full.jpg',
     sectionImages: ['/assets/stock/opioid-therapy.jpg', '/assets/stock/treatment-plan-doctor.jpg'],
     seoKeywords: ['teen opioid treatment', 'adolescent opioid abuse treatment', 'teen opioid addiction Las Vegas', 'opioid treatment for teenagers', 'teen prescription drug abuse treatment'],
     headline: 'Adolescent Opioid Abuse Treatment at Silver State',
@@ -1379,7 +1379,7 @@ export const conditions: ConditionData[] = [
   {
     slug: 'benzodiazepine-abuse-treatment',
     name: 'Benzodiazepine Abuse Treatment',
-    heroImage: '/Photos/ULC09133.webp',
+    heroImage: '/assets/facility-gallery/medical-office-patient-view.jpg',
     sectionImages: ['/assets/stock/benzo-therapy.jpg', '/assets/stock/family-therapy-session.jpg'],
     seoKeywords: ['teen benzodiazepine treatment', 'adolescent benzo abuse treatment', 'Xanax abuse treatment teens', 'benzodiazepine treatment Las Vegas', 'teen prescription drug abuse therapy'],
     headline: 'Adolescent Benzodiazepine Abuse Treatment at Silver State',
@@ -1464,7 +1464,7 @@ export const conditions: ConditionData[] = [
   {
     slug: 'cocaine-abuse-treatment',
     name: 'Cocaine Abuse Treatment',
-    heroImage: '/Photos/ULC09140.webp',
+    heroImage: '/assets/facility-gallery/nursing-station-wide.jpg',
     sectionImages: ['/assets/stock/cocaine-therapy.jpg', '/assets/stock/behavioral-therapy-cocaine.jpg'],
     seoKeywords: ['teen cocaine treatment', 'adolescent cocaine abuse treatment', 'cocaine treatment for teenagers', 'teen stimulant abuse Las Vegas', 'youth cocaine addiction therapy'],
     headline: 'Adolescent Cocaine Abuse Treatment at Silver State',
@@ -1543,7 +1543,7 @@ export const conditions: ConditionData[] = [
   {
     slug: 'meth-abuse-treatment',
     name: 'Methamphetamine Abuse Treatment',
-    heroImage: '/Photos/ULC09139.webp',
+    heroImage: '/assets/facility-gallery/nursing-station-hallway.jpg',
     sectionImages: ['/assets/stock/meth-therapy.jpg', '/assets/stock/holistic-therapy-cocaine.jpg'],
     seoKeywords: ['teen meth treatment', 'adolescent methamphetamine treatment', 'meth abuse treatment teenagers', 'teen crystal meth treatment Las Vegas', 'youth methamphetamine recovery'],
     headline: 'Adolescent Methamphetamine Treatment at Silver State',
@@ -1625,7 +1625,7 @@ export const conditions: ConditionData[] = [
   {
     slug: 'cannabis-abuse-treatment',
     name: 'Cannabis Abuse Treatment',
-    heroImage: '/Photos/ULC09113.webp',
+    heroImage: '/assets/facility-gallery/hallway-central-hub.jpg',
     sectionImages: ['/assets/stock/cannabis-therapy.jpg', '/assets/stock/family-art-therapy.jpg'],
     seoKeywords: ['teen cannabis treatment', 'adolescent marijuana treatment', 'teen marijuana addiction Las Vegas', 'cannabis abuse treatment teenagers', 'teen weed dependence therapy'],
     headline: 'Adolescent Cannabis Abuse Treatment at Silver State',
@@ -1705,7 +1705,7 @@ export const conditions: ConditionData[] = [
   {
     slug: 'anorexia-nervosa-treatment',
     name: 'Anorexia Nervosa Treatment',
-    heroImage: '/assets/facility/dining-area.webp',
+    heroImage: '/assets/facility-gallery/courtyard-patio-seating.jpg',
     sectionImages: ['/assets/stock/anorexia-therapy.jpg', '/assets/stock/treatment-plan-doctor.jpg'],
     seoKeywords: ['teen anorexia treatment', 'adolescent anorexia nervosa treatment', 'teen eating disorder treatment Las Vegas', 'anorexia treatment for teenagers', 'adolescent eating disorder program'],
     headline: 'Adolescent Anorexia Nervosa Treatment at Silver State',
@@ -1793,7 +1793,7 @@ export const conditions: ConditionData[] = [
   {
     slug: 'bulimia-nervosa-treatment',
     name: 'Bulimia Nervosa Treatment',
-    heroImage: '/assets/facility/medical-office.webp',
+    heroImage: '/assets/facility-gallery/medical-office-wide.jpg',
     sectionImages: ['/assets/stock/bulimia-therapy.jpg', '/assets/stock/group-therapy-session.jpg'],
     seoKeywords: ['teen bulimia treatment', 'adolescent bulimia nervosa treatment', 'bulimia treatment for teenagers', 'teen eating disorder treatment Las Vegas', 'teen binge purge treatment'],
     headline: 'Adolescent Bulimia Nervosa Treatment at Silver State',
@@ -1875,7 +1875,7 @@ export const conditions: ConditionData[] = [
   {
     slug: 'binge-eating-disorder-treatment',
     name: 'Binge Eating Disorder Treatment',
-    heroImage: '/Photos/ULC09115.webp',
+    heroImage: '/assets/facility-gallery/lobby-common-corridor.jpg',
     sectionImages: ['/assets/stock/binge-eating-therapy.jpg', '/assets/stock/family-therapy-session.jpg'],
     seoKeywords: ['teen binge eating treatment', 'adolescent binge eating disorder treatment', 'BED treatment for teenagers', 'teen binge eating therapy Las Vegas', 'teen eating disorder treatment'],
     headline: 'Adolescent Binge Eating Disorder Treatment at Silver State',
@@ -1953,7 +1953,7 @@ export const conditions: ConditionData[] = [
   {
     slug: 'arfid-treatment',
     name: 'ARFID Treatment',
-    heroImage: '/Photos/ULC09128.webp',
+    heroImage: '/assets/facility-gallery/classroom-whiteboard-mural.jpg',
     sectionImages: ['/assets/stock/arfid-therapy.jpg', '/assets/stock/holistic-therapy.jpg'],
     seoKeywords: ['teen ARFID treatment', 'adolescent ARFID treatment', 'avoidant restrictive food intake disorder treatment', 'ARFID treatment Las Vegas', 'teen selective eating treatment'],
     headline: 'Adolescent ARFID Treatment at Silver State',
@@ -2035,7 +2035,7 @@ export const conditions: ConditionData[] = [
   {
     slug: 'osfed-treatment',
     name: 'OSFED Treatment',
-    heroImage: '/assets/facility/medical-office.webp',
+    heroImage: '/assets/facility-gallery/medical-office-wide.jpg',
     sectionImages: ['/assets/stock/osfed-therapy.jpg', '/assets/stock/individual-therapy-pink.jpg'],
     seoKeywords: ['teen OSFED treatment', 'adolescent OSFED treatment', 'atypical eating disorder treatment teens', 'OSFED treatment Las Vegas', 'other specified eating disorder therapy teenagers'],
     headline: 'Adolescent OSFED Treatment at Silver State',
@@ -2118,7 +2118,7 @@ export const conditions: ConditionData[] = [
   {
     slug: 'compulsive-eating-treatment',
     name: 'Compulsive Eating Treatment',
-    heroImage: '/assets/facility/bedroom-welcome.webp',
+    heroImage: '/assets/facility-gallery/bedroom-twin-window.jpg',
     sectionImages: ['/assets/stock/compulsive-eating-therapy.jpg', '/assets/stock/psychologist-with-teen.jpg'],
     seoKeywords: ['teen compulsive eating treatment', 'adolescent compulsive eating therapy', 'compulsive overeating treatment teenagers', 'teen emotional eating treatment Las Vegas', 'compulsive eating disorder therapy'],
     headline: 'Adolescent Compulsive Eating Treatment at Silver State',

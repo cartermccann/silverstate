@@ -24,7 +24,7 @@ export const therapyModalities: TherapyModality[] = [
     slug: 'cbt',
     name: 'Cognitive Behavioral Therapy (CBT)',
     shortName: 'CBT',
-    heroImage: '/assets/facility/therapy-room.webp',
+    heroImage: '/assets/facility-gallery/therapy-room-cozy.jpg',
     description:
       'Cognitive Behavioral Therapy (CBT) for teens is one of the most widely practiced and thoroughly researched forms of psychotherapy. At Silver State, our licensed therapists use CBT to help adolescents identify the negative thought patterns and core beliefs that drive anxiety, depression, and behavioral challenges. Through structured, goal-oriented sessions, teens learn to recognize cognitive distortions \u2014 such as catastrophizing, black-and-white thinking, and personalization \u2014 and replace them with more balanced, realistic perspectives.\n\nA typical CBT session begins with a check-in and mood rating, followed by collaborative work on a specific thinking pattern or behavioral goal. Teens may complete thought records, practice role-playing scenarios, or work through exposure hierarchies for anxiety-related concerns. Homework assignments between sessions reinforce new skills and encourage real-world practice.\n\nOur therapists adapt CBT techniques for adolescent developmental stages, using relatable examples, interactive worksheets, and age-appropriate language. Parents receive regular updates on their teen\u2019s progress and learn supportive strategies they can use at home to reinforce the cognitive restructuring skills their child is building in therapy.',
     howItHelps:
@@ -52,7 +52,7 @@ export const therapyModalities: TherapyModality[] = [
     slug: 'dbt',
     name: 'Dialectical Behavior Therapy (DBT)',
     shortName: 'DBT',
-    heroImage: '/Photos/ULC09141.webp',
+    heroImage: '/assets/facility-gallery/game-room-yoga-mats.jpg',
     description:
       'Dialectical Behavior Therapy (DBT) for teens combines cognitive-behavioral techniques with mindfulness practices to help adolescents manage intense emotions, improve interpersonal relationships, and reduce self-destructive behaviors. Originally developed by Dr. Marsha Linehan for adults with borderline personality disorder, DBT has been extensively adapted for adolescents and is now considered a leading treatment for emotionally dysregulated teens.\n\nDBT teaches four core skill areas: mindfulness (staying present and aware), distress tolerance (surviving crisis moments without making things worse), emotion regulation (understanding and managing intense feelings), and interpersonal effectiveness (communicating needs and setting boundaries). At Silver State, teens participate in both individual DBT sessions and skills-training groups where they practice these techniques with peers.\n\nSessions are structured and interactive. Teens use diary cards to track emotions and urges between sessions, and therapists review these cards collaboratively to identify patterns and reinforce skill use. Parents are encouraged to learn DBT skills alongside their teen through family sessions, creating a shared language for navigating emotional challenges at home.',
     howItHelps:
@@ -80,7 +80,7 @@ export const therapyModalities: TherapyModality[] = [
     slug: 'emdr',
     name: 'Eye Movement Desensitization and Reprocessing (EMDR)',
     shortName: 'EMDR',
-    heroImage: '/Photos/ULC09136.webp',
+    heroImage: '/assets/facility-gallery/therapy-room-seating.jpg',
     description:
       'EMDR for teens is a specialized, evidence-based therapy that helps the brain process and heal from traumatic memories. Using bilateral stimulation \u2014 such as guided eye movements, tapping, or auditory tones \u2014 EMDR allows adolescents to reprocess distressing experiences so they no longer trigger overwhelming emotional responses. Unlike traditional talk therapy, EMDR does not require teens to describe their trauma in detail, making it especially well-suited for adolescents who find it difficult or distressing to verbalize their experiences.\n\nDuring a typical EMDR session, the therapist guides the teen through a structured eight-phase protocol. After establishing safety and identifying target memories, the teen focuses on the distressing memory while simultaneously engaging in bilateral stimulation. This dual-attention process helps the brain move the memory from an active, distressing state to a resolved, integrated one. Sessions typically last 50\u201390 minutes, and many teens notice significant relief within six to twelve sessions.\n\nOur EMDR-trained clinicians adapt the protocol for adolescent developmental needs, using age-appropriate language and creative engagement strategies. Parents are informed about the process and can expect to see gradual reductions in their teen\u2019s trauma-related symptoms, including nightmares, hypervigilance, avoidance behaviors, and emotional reactivity.',
     howItHelps:
@@ -102,7 +102,7 @@ export const therapyModalities: TherapyModality[] = [
     slug: 'tf-cbt',
     name: 'Trauma-Focused Cognitive Behavioral Therapy (TF-CBT)',
     shortName: 'TF-CBT',
-    heroImage: '/Photos/ULC09135.webp',
+    heroImage: '/assets/facility-gallery/therapy-room-cozy.jpg',
     description:
       'Trauma-Focused Cognitive Behavioral Therapy (TF-CBT) is a structured, evidence-based treatment designed specifically for children and adolescents who have experienced trauma. It integrates trauma-sensitive interventions with cognitive behavioral principles and includes a significant family component to support healing. The model follows the PRACTICE acronym: Psychoeducation, Relaxation, Affective modulation, Cognitive coping, Trauma narrative, In vivo mastery, Conjoint sessions, and Enhancing safety.\n\nIn a typical TF-CBT session, teens work through these components sequentially with their therapist. Early sessions focus on building coping skills and emotional regulation, while later sessions guide the adolescent in creating a structured trauma narrative \u2014 a carefully paced process that allows them to make sense of their experiences without being overwhelmed. The therapist ensures the teen feels safe and supported throughout each phase.\n\nA distinctive feature of TF-CBT is its emphasis on caregiver involvement. Parents or guardians participate in parallel sessions where they learn about trauma\u2019s impact, develop their own coping strategies, and prepare for conjoint sessions with their teen. This family component is critical because it helps parents understand their child\u2019s experience, strengthens the parent-child relationship, and creates a more supportive home environment for ongoing recovery.',
     howItHelps:
@@ -124,7 +124,7 @@ export const therapyModalities: TherapyModality[] = [
     slug: 'somatic-experiencing',
     name: 'Somatic Experiencing',
     shortName: 'Somatic',
-    heroImage: '/Photos/ULC09116.webp',
+    heroImage: '/assets/facility-gallery/courtyard-basketball-wide.jpg',
     description:
       'Somatic Experiencing is a body-oriented approach to healing trauma and stress-related disorders developed by Dr. Peter Levine. It focuses on the connection between physical sensations and emotional states, helping teens release stored tension and complete the body\u2019s natural stress response cycle. Unlike purely cognitive approaches, Somatic Experiencing recognizes that trauma lives not only in the mind but also in the body, and that healing requires attending to both.\n\nDuring a somatic therapy session, the therapist gently guides the teen\u2019s awareness to physical sensations \u2014 such as tightness in the chest, clenching in the jaw, or butterflies in the stomach. By noticing these sensations without judgment and allowing the body to process them at its own pace, teens learn to release the physiological patterns associated with trauma and chronic stress. Sessions are paced carefully to avoid overwhelming the teen, using a technique called titration.\n\nFor adolescents, our therapists incorporate age-appropriate exercises including grounding techniques, gentle movement, and body-awareness activities. Parents can expect their teen to develop a stronger sense of safety in their own body, improved ability to recognize early stress signals, and greater capacity to self-regulate during emotionally challenging moments.',
     howItHelps:
@@ -146,7 +146,7 @@ export const therapyModalities: TherapyModality[] = [
     slug: 'motivational-interviewing',
     name: 'Motivational Interviewing (MI)',
     shortName: 'MI',
-    heroImage: '/Photos/ULC09137.webp',
+    heroImage: '/assets/facility-gallery/therapy-room-dresser.jpg',
     description:
       'Motivational Interviewing (MI) is a collaborative, goal-oriented communication style that strengthens a teen\u2019s own motivation and commitment to change. Developed by Drs. William Miller and Stephen Rollnick, MI is grounded in the understanding that lasting change must come from within. Rather than telling teens what to do, MI helps them explore their own reasons for wanting change and resolve the ambivalence that often keeps them stuck.\n\nIn a typical MI session, the therapist uses open-ended questions, reflective listening, and affirmations to draw out the teen\u2019s own values and goals. The conversation is intentionally non-confrontational \u2014 there is no lecturing, shaming, or persuading. Instead, the therapist helps the teen examine the gap between where they are now and where they want to be, naturally strengthening their motivation to take positive steps.\n\nMI is particularly well-suited for adolescents because it respects their developmental need for autonomy and self-determination. Our therapists adapt MI techniques for teens by using their own language, referencing their specific interests and social context, and meeting them at their current stage of readiness for change. Parents learn about the MI approach so they can support their teen\u2019s self-directed motivation at home rather than relying on pressure or consequences alone.',
     howItHelps:
@@ -167,7 +167,7 @@ export const therapyModalities: TherapyModality[] = [
   {
     slug: 'family-therapy',
     name: 'Family Therapy',
-    heroImage: '/assets/facility/lobby-reception.webp',
+    heroImage: '/assets/facility-gallery/lobby-reception-desk.jpg',
     shortName: 'Family',
     description:
       'Family therapy at Silver State involves parents, siblings, and other family members in the treatment process. It addresses family dynamics, communication patterns, and relational issues that may contribute to or result from a teen\u2019s mental health challenges. Our licensed marriage and family therapists use evidence-based approaches including Structural Family Therapy, Functional Family Therapy, and systemic models to help the entire family system heal and grow together.\n\nDuring family therapy sessions, the therapist helps family members understand how their interactions affect one another. Sessions may focus on improving communication, resolving longstanding conflicts, establishing healthy boundaries, or rebuilding trust that has been damaged by a teen\u2019s behavioral health challenges. The therapist acts as a neutral facilitator, ensuring every family member\u2019s voice is heard.\n\nFamily sessions are scheduled weekly and may include the full family or specific subsets depending on the therapeutic goals. Parents can expect to gain a deeper understanding of their teen\u2019s struggles, learn practical communication strategies, and develop a collaborative family plan for supporting their child\u2019s ongoing recovery after discharge. Sibling sessions, when appropriate, help brothers and sisters process their own feelings and strengthen family bonds.',
@@ -196,7 +196,7 @@ export const therapyModalities: TherapyModality[] = [
   {
     slug: 'group-therapy',
     name: 'Group Therapy',
-    heroImage: '/Photos/ULC09143.webp',
+    heroImage: '/assets/facility-gallery/game-room-pool-table.jpg',
     shortName: 'Group',
     description:
       'Group therapy for adolescents brings together a small number of teens \u2014 typically six to ten \u2014 under the guidance of a licensed therapist. Participants share experiences, practice interpersonal skills, and provide mutual support in a structured, confidential setting. At Silver State, group therapy is a core component of every teen\u2019s treatment plan, complementing individual and family therapy with a powerful peer-based healing experience.\n\nOur group therapy sessions are organized by theme and therapeutic focus. Teens may participate in process groups (where they explore feelings and interpersonal dynamics in real time), psychoeducational groups (where they learn skills around topics like anger management, healthy relationships, or coping with grief), and specialized groups for substance use recovery or trauma processing. Each group has clear guidelines around confidentiality, respect, and participation.\n\nTherapists facilitate rather than lecture, creating space for teens to learn from one another. Adolescents are naturally oriented toward their peers, and group therapy harnesses this developmental reality as a therapeutic tool. Parents can expect their teen to develop stronger social skills, greater empathy, and the confidence that comes from being heard and valued by peers who truly understand their struggles.',
@@ -218,7 +218,7 @@ export const therapyModalities: TherapyModality[] = [
   {
     slug: 'individual-therapy',
     name: 'Individual Therapy',
-    heroImage: '/Photos/ULC09138.webp',
+    heroImage: '/assets/facility-gallery/therapy-room-counselor.jpg',
     shortName: 'Individual',
     description:
       'Individual therapy at Silver State provides dedicated one-on-one sessions between a teen and their assigned primary therapist. These sessions are tailored to the adolescent\u2019s specific needs, diagnosis, and treatment goals, and may incorporate multiple therapeutic approaches including CBT, DBT, EMDR, and trauma-focused interventions. Each teen meets with their individual therapist multiple times per week, building a strong therapeutic relationship that serves as the foundation of their treatment.\n\nA typical individual therapy session begins with a check-in about the teen\u2019s current emotional state and any significant events since the last session. The therapist and teen then work collaboratively on treatment goals \u2014 this might involve processing a difficult memory, practicing a new coping skill, preparing for a family session, or working through a challenge that arose in the milieu. Sessions are structured yet flexible, adapting to the teen\u2019s needs on any given day.\n\nOur therapists are trained to work specifically with adolescents, understanding the unique developmental, social, and identity challenges of the teenage years. They create a warm, nonjudgmental space where teens feel safe to be fully honest. Parents receive regular updates on their teen\u2019s therapeutic progress and are invited to participate in sessions when clinically appropriate.',
@@ -246,7 +246,7 @@ export const therapyModalities: TherapyModality[] = [
   {
     slug: 'art-music-therapy',
     name: 'Art & Music Therapy',
-    heroImage: '/Photos/ULC09144.webp',
+    heroImage: '/assets/facility-gallery/game-room-pool-closeup.jpg',
     shortName: 'Art & Music',
     description:
       'Art therapy for teens and music therapy use creative expression as powerful therapeutic tools. At Silver State, licensed art and music therapists \u2014 credentialed through the American Art Therapy Association and the Certification Board for Music Therapists \u2014 guide adolescents through creative activities that help process emotions, reduce stress, and develop self-awareness without relying solely on verbal communication. These are not recreational art classes; they are clinically directed sessions with specific therapeutic goals.\n\nIn art therapy sessions, teens may paint, draw, sculpt, collage, or work with mixed media to explore and express their inner experiences. The therapist observes the creative process, asks reflective questions, and helps the teen connect their artwork to their emotional life. Music therapy sessions may involve songwriting, drumming, guided listening, or instrumental improvisation. Both modalities engage different parts of the brain than traditional talk therapy, often accessing emotions and memories that words alone cannot reach.\n\nOur therapists adapt creative therapy activities for different ages, abilities, and comfort levels \u2014 no artistic talent is required. Parents often notice that their teen becomes more emotionally expressive and communicative after engaging in art and music therapy. Creative work produced in sessions can serve as a meaningful record of the teen\u2019s healing journey.',
@@ -269,7 +269,7 @@ export const therapyModalities: TherapyModality[] = [
   {
     slug: 'adventure-therapy',
     name: 'Adventure Therapy',
-    heroImage: '/Photos/ULC09120.webp',
+    heroImage: '/assets/facility-gallery/courtyard-basketball-hoop.jpg',
     shortName: 'Adventure',
     description:
       'Adventure therapy at Silver State uses outdoor activities and experiential challenges \u2014 such as hiking, rock climbing, team-building exercises, and nature-based activities \u2014 as therapeutic tools for adolescent growth and healing. These activities are facilitated by trained therapists who help teens draw connections between outdoor experiences and personal growth. Adventure therapy is not simply recreation; each activity is intentionally designed to create therapeutic opportunities around trust, communication, problem-solving, and emotional resilience.\n\nA typical adventure therapy session involves a briefing, the experiential activity, and a structured debrief. During the debrief, the therapist guides teens in reflecting on what happened, what emotions arose, and how the experience relates to challenges they face in their daily lives. For example, a trust fall exercise becomes a conversation about vulnerability and reliance on others, while a group navigation challenge highlights communication patterns and leadership styles.\n\nOur adventure therapy program takes advantage of Nevada\u2019s natural landscape and is adapted for varying fitness levels and comfort zones. Teens are encouraged to stretch beyond their comfort zone but are never forced into activities. Parents can expect their teen to develop greater self-confidence, improved peer relationships, and a newfound appreciation for healthy, substance-free activities.',
@@ -291,7 +291,7 @@ export const therapyModalities: TherapyModality[] = [
   {
     slug: 'meditation-mindfulness',
     name: 'Meditation & Mindfulness',
-    heroImage: '/assets/facility/yoga-room.webp',
+    heroImage: '/assets/facility-gallery/game-room-yoga-mats.jpg',
     shortName: 'Mindfulness',
     description:
       'Meditation and mindfulness practices at Silver State teach teens to develop present-moment awareness, observe their thoughts without judgment, and cultivate inner calm. Sessions include guided meditation, breathing exercises, yoga, and body-scan techniques, all adapted for adolescents who may be new to contemplative practices. Our mindfulness programming is facilitated by trained staff and integrated into the daily treatment schedule, giving teens consistent practice opportunities.\n\nA typical mindfulness session begins with a brief grounding exercise to help teens arrive in the present moment. The facilitator then guides the group through a specific practice \u2014 this might be a focused-breathing meditation, a progressive muscle relaxation, a walking meditation, or a gentle yoga flow. Sessions conclude with reflection time where teens share their experience and discuss how they might use mindfulness skills in their daily lives.\n\nMindfulness practices are intentionally age-appropriate and accessible. Sessions start short (five to ten minutes) and gradually build in duration as teens develop their practice. No prior experience is needed, and teens are met where they are without pressure to achieve a particular outcome. Parents learn that mindfulness is a skill, not a talent, and that regular practice at home can support their teen\u2019s ongoing emotional regulation after discharge.',
@@ -313,7 +313,7 @@ export const therapyModalities: TherapyModality[] = [
   {
     slug: 'cpi',
     name: 'Crisis Prevention & Intervention (CPI)',
-    heroImage: '/assets/facility/nursing-station.webp',
+    heroImage: '/assets/facility-gallery/nursing-station-wide.jpg',
     shortName: 'CPI',
     description:
       'Crisis Prevention and Intervention (CPI) is a comprehensive framework for safely managing behavioral crises in adolescent treatment settings. At Silver State, all clinical and direct-care staff are CPI-certified through the Crisis Prevention Institute, trained in evidence-based de-escalation techniques, and equipped to support teens during moments of acute distress while maintaining dignity, safety, and therapeutic rapport.\n\nThe CPI approach emphasizes prevention above all. Staff are trained to recognize early warning signs of escalating behavior \u2014 such as changes in tone, posture, pacing, or verbal content \u2014 and to intervene with verbal de-escalation techniques before a situation reaches crisis level. When a crisis does occur, staff use a structured decision-making model that prioritizes the least restrictive intervention appropriate to the situation. Physical intervention is always a last resort and is guided by strict safety protocols.\n\nFor teens in our program, CPI creates a predictable, safe environment. Adolescents know that staff will respond to their distress with compassion rather than punishment, and that their safety is always the top priority. Parents can take comfort knowing that every staff member is trained to the same high standard of crisis response, and that all incidents are documented, reviewed, and used to improve each teen\u2019s individualized safety plan.',
@@ -335,7 +335,7 @@ export const therapyModalities: TherapyModality[] = [
   {
     slug: 'medication-management',
     name: 'Medication Management',
-    heroImage: '/assets/facility/medical-office.webp',
+    heroImage: '/assets/facility-gallery/medical-office-wide.jpg',
     shortName: 'Medication Mgmt',
     description:
       'Medication management at Silver State is overseen by our board-certified child and adolescent psychiatrist, who evaluates each teen\u2019s need for psychiatric medication and provides ongoing monitoring and adjustment throughout their treatment stay. Medication is always used as part of a comprehensive treatment plan alongside therapy, never as a standalone intervention. Our philosophy is that medication should support a teen\u2019s ability to engage in therapy and skill-building, not replace it.\n\nThe medication evaluation process begins with a thorough psychiatric assessment, including a review of the teen\u2019s medical history, current symptoms, prior medication trials, and family psychiatric history. Our psychiatrist explains all medication options, potential benefits, and possible side effects to both the teen and their parents, ensuring informed consent and shared decision-making. If medication is prescribed, the psychiatrist monitors the teen closely \u2014 including regular check-ins, lab work when indicated, and coordination with the treatment team.\n\nParents are active partners in medication management. They receive regular updates on their teen\u2019s medication response, participate in medication review discussions, and are prepared for continuity of care after discharge. Our psychiatrist coordinates with the teen\u2019s outpatient prescriber to ensure a smooth transition and ongoing stability.',
@@ -363,7 +363,7 @@ export const therapyModalities: TherapyModality[] = [
   {
     slug: 'lgbtqia-affirming-care',
     name: 'LGBTQIA+ Affirming Care',
-    heroImage: '/Photos/ULC09124.webp',
+    heroImage: '/assets/facility-gallery/courtyard-patio-tables.jpg',
     shortName: 'LGBTQIA+',
     description:
       'Our LGBTQIA+ affirming care approach ensures that teens of all gender identities and sexual orientations receive treatment that respects, validates, and supports who they are. At Silver State, we provide specialized mental health support for trans teens, gender-diverse youth, and adolescents across the LGBTQIA+ spectrum. All clinical staff are trained in affirming practices grounded in the standards set by the American Psychological Association and the World Professional Association for Transgender Health (WPATH).\n\nAffirming care is not a separate therapy modality but a foundational orientation woven into every aspect of treatment. This means using correct names and pronouns, creating gender-inclusive spaces, addressing minority stress and discrimination as clinical issues, and ensuring that therapeutic interventions never pathologize a teen\u2019s identity. Our staff understand the unique mental health challenges faced by LGBTQIA+ youth \u2014 including higher rates of depression, anxiety, suicidality, and family rejection \u2014 and are equipped to address these experiences with sensitivity and expertise.\n\nParents and families receive education about supporting their LGBTQIA+ teen, regardless of where they are in their own understanding and acceptance journey. Family therapy sessions can address identity-related family conflict in a safe, facilitated environment. Whether your child identifies as gay, lesbian, bisexual, transgender, nonbinary, or questioning, our goal is to create a treatment experience where they feel fully seen, safe, and supported.',
@@ -385,7 +385,7 @@ export const therapyModalities: TherapyModality[] = [
   {
     slug: 'holistic-treatment',
     name: 'Holistic Treatment',
-    heroImage: '/Photos/ULC09117.webp',
+    heroImage: '/assets/facility-gallery/courtyard-basketball-trees.jpg',
     shortName: 'Holistic',
     description:
       'Our holistic treatment approach addresses the whole person \u2014 mind, body, and spirit. At Silver State, we recognize that mental health challenges do not exist in isolation; they affect and are affected by physical health, nutrition, sleep, activity level, and sense of purpose. Beyond clinical therapy, teens participate in nutrition education, fitness programming, yoga, meditation, creative arts, and life-skills training. These complementary practices support overall well-being and reinforce clinical treatment goals.\n\nA typical day at Silver State integrates holistic activities alongside traditional therapy sessions. Teens might begin with a morning mindfulness practice, attend individual therapy, participate in a nutrition workshop where they learn about the connection between diet and mood, engage in physical fitness activities, and end the day with a journaling or relaxation exercise. Each holistic activity is intentionally connected to therapeutic goals and facilitated by trained staff.\n\nOur holistic approach is grounded in the understanding that sustainable recovery requires teens to develop a full range of wellness practices. Parents can expect their teen to explore new interests, develop healthy daily routines, and build self-care habits that support long-term mental health. The holistic framework also helps teens discover substance-free sources of joy, relaxation, and accomplishment \u2014 critical protective factors against relapse.',
@@ -407,7 +407,7 @@ export const therapyModalities: TherapyModality[] = [
   {
     slug: 'trauma-informed-care',
     name: 'Trauma-Informed Care',
-    heroImage: '/Photos/ULC09112.webp',
+    heroImage: '/assets/facility-gallery/hallway-rooms-numbered.jpg',
     shortName: 'TIC',
     description:
       'Trauma-informed care (TIC) is a foundational approach woven throughout every aspect of our program at Silver State. All staff \u2014 from clinicians and psychiatrists to teachers and direct-care workers \u2014 understand the prevalence and impact of trauma, recognize its signs and symptoms, and respond with practices that promote safety, trustworthiness, collaboration, and empowerment. This is not a specific therapy technique but a philosophy that shapes every interaction, policy, and decision in our treatment environment.\n\nIn practice, trauma-informed care means that our facility is designed to minimize potential triggers: predictable schedules, clearly communicated expectations, choices wherever possible, and consistent, respectful treatment from every staff member. When challenging behaviors arise, staff understand them through a trauma lens \u2014 asking "What happened to you?" rather than "What\u2019s wrong with you?" This shift in perspective allows for responses that de-escalate rather than re-traumatize, and that build trust rather than reinforce fear.\n\nParents are educated about trauma-informed principles so they can carry this approach into the home environment. Understanding how trauma affects the brain and behavior helps parents respond to their teen with greater patience, empathy, and effectiveness. Our trauma-informed framework recognizes that healing happens in relationships, and every relationship within our program \u2014 between staff and teens, between peers, and between families \u2014 is an opportunity for healing.',

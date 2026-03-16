@@ -27,7 +27,7 @@ export const residentialProgram: ProgramPageData = {
   metaTitle: 'Residential Treatment for Teens | Silver State Treatment Center',
   metaDescription:
     'Our residential program provides 24/7 therapeutic support for adolescents 11\u201317. Evidence-based therapies, academic continuity, and family programming in a structured, safe environment.',
-  heroImage: '/assets/facility/lobby-reception.webp',
+  heroImage: '/assets/facility-gallery/lobby-reception-desk.jpg',
   sectionImages: ['/assets/stock/residential-teens-smiling.jpg', '/assets/stock/residential-therapy-tablet.jpg'],
   seoKeywords: [
     'teen residential treatment',
