@@ -102,7 +102,7 @@ export const therapyModalities: TherapyModality[] = [
     slug: 'tf-cbt',
     name: 'Trauma-Focused Cognitive Behavioral Therapy (TF-CBT)',
     shortName: 'TF-CBT',
-    heroImage: '/assets/facility-gallery/therapy-room-cozy.jpg',
+    heroImage: '/assets/facility-gallery/common-area-lounge.jpg',
     description:
       'Trauma-Focused Cognitive Behavioral Therapy (TF-CBT) is a structured, evidence-based treatment designed specifically for children and adolescents who have experienced trauma. It integrates trauma-sensitive interventions with cognitive behavioral principles and includes a significant family component to support healing. The model follows the PRACTICE acronym: Psychoeducation, Relaxation, Affective modulation, Cognitive coping, Trauma narrative, In vivo mastery, Conjoint sessions, and Enhancing safety.\n\nIn a typical TF-CBT session, teens work through these components sequentially with their therapist. Early sessions focus on building coping skills and emotional regulation, while later sessions guide the adolescent in creating a structured trauma narrative \u2014 a carefully paced process that allows them to make sense of their experiences without being overwhelmed. The therapist ensures the teen feels safe and supported throughout each phase.\n\nA distinctive feature of TF-CBT is its emphasis on caregiver involvement. Parents or guardians participate in parallel sessions where they learn about trauma\u2019s impact, develop their own coping strategies, and prepare for conjoint sessions with their teen. This family component is critical because it helps parents understand their child\u2019s experience, strengthens the parent-child relationship, and creates a more supportive home environment for ongoing recovery.',
     howItHelps:
@@ -291,7 +291,7 @@ export const therapyModalities: TherapyModality[] = [
   {
     slug: 'meditation-mindfulness',
     name: 'Meditation & Mindfulness',
-    heroImage: '/assets/facility-gallery/game-room-yoga-mats.jpg',
+    heroImage: '/assets/facility-gallery/game-room-yoga-wide.jpg',
     shortName: 'Mindfulness',
     description:
       'Meditation and mindfulness practices at Silver State teach teens to develop present-moment awareness, observe their thoughts without judgment, and cultivate inner calm. Sessions include guided meditation, breathing exercises, yoga, and body-scan techniques, all adapted for adolescents who may be new to contemplative practices. Our mindfulness programming is facilitated by trained staff and integrated into the daily treatment schedule, giving teens consistent practice opportunities.\n\nA typical mindfulness session begins with a brief grounding exercise to help teens arrive in the present moment. The facilitator then guides the group through a specific practice \u2014 this might be a focused-breathing meditation, a progressive muscle relaxation, a walking meditation, or a gentle yoga flow. Sessions conclude with reflection time where teens share their experience and discuss how they might use mindfulness skills in their daily lives.\n\nMindfulness practices are intentionally age-appropriate and accessible. Sessions start short (five to ten minutes) and gradually build in duration as teens develop their practice. No prior experience is needed, and teens are met where they are without pressure to achieve a particular outcome. Parents learn that mindfulness is a skill, not a talent, and that regular practice at home can support their teen\u2019s ongoing emotional regulation after discharge.',

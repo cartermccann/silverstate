@@ -56,28 +56,33 @@ export default function ConditionPage({ condition }: ConditionPageProps) {
       />
 
       {/* ── 1. HERO / HEADER ── */}
-      <section style={{ padding: '64px 0 48px', background: WARM }}>
-        <div className="wrap" style={{ maxWidth: 800 }}>
-          {condition.heroImage && (
-            <AnimateIn variant="fadeUp">
-              <img
-                src={condition.heroImage}
-                alt={`${condition.name} treatment at Silver State`}
-                loading="eager"
-                width={800}
-                height={360}
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  aspectRatio: '800 / 360',
-                  objectFit: 'cover',
-                  borderRadius: 'var(--radius-lg)',
-                  marginBottom: 24,
-                }}
-              />
-            </AnimateIn>
-          )}
+      {condition.heroImage && (
+        <div
+          style={{
+            width: '100%',
+            overflow: 'hidden',
+            maxHeight: 480,
+          }}
+        >
+          <img
+            src={condition.heroImage}
+            alt={`${condition.name} treatment at Silver State`}
+            loading="eager"
+            width={1600}
+            height={480}
+            style={{
+              width: '100%',
+              height: '100%',
+              maxHeight: 480,
+              objectFit: 'cover',
+              display: 'block',
+            }}
+          />
+        </div>
+      )}
 
+      <section style={{ padding: '48px 0 48px', background: WARM }}>
+        <div className="wrap" style={{ maxWidth: 800 }}>
           <AnimateIn variant="fadeUp">
             <span className="section-label">
               {categoryLabels[condition.category] ?? condition.category}
