@@ -106,27 +106,21 @@ export default function CPI() {
 
   return (
     <>
-      {/* ── 1. HERO ── */}
-      <section style={{ padding: '64px 0 48px', background: WARM }}>
-        <div className="wrap" style={{ maxWidth: 800 }}>
-          <AnimateIn variant="fadeUp">
-            <img
-              src="/assets/facility/common-area.webp"
-              alt="Silver State common area — safe therapeutic environment"
-              loading="eager"
-              width={800}
-              height={360}
-              style={{
-                width: '100%',
-                height: 'auto',
-                aspectRatio: '800 / 360',
-                objectFit: 'cover',
-                borderRadius: 'var(--radius-lg)',
-                marginBottom: 24,
-              }}
-            />
-          </AnimateIn>
+      {/* ── 1. FULL-WIDTH HERO IMAGE ── */}
+      <div style={{ width: '100%', overflow: 'hidden', maxHeight: 480 }}>
+        <img
+          src="/assets/facility-gallery/common-area-lounge.jpg"
+          alt="Silver State common area — safe therapeutic environment"
+          loading="eager"
+          width={1600}
+          height={480}
+          style={{ width: '100%', height: '100%', maxHeight: 480, objectFit: 'cover', display: 'block' }}
+        />
+      </div>
 
+      {/* ── 1b. TITLE + INTRO ── */}
+      <section style={{ padding: '48px 0 48px', background: WARM }}>
+        <div className="wrap" style={{ maxWidth: 800 }}>
           <AnimateIn variant="fadeUp">
             <span className="section-label">Safety &amp; De-Escalation</span>
           </AnimateIn>
@@ -147,13 +141,7 @@ export default function CPI() {
 
           <div className="cpi-text-blocks">
             <AnimateIn variant="blurUp" delay={0.2}>
-              <p
-                style={{
-                  color: 'var(--body)',
-                  fontSize: '1rem',
-                  lineHeight: 1.7,
-                }}
-              >
+              <p style={{ color: 'var(--body)', fontSize: '1rem', lineHeight: 1.7 }}>
                 When an adolescent is in emotional crisis, the response they receive in those first
                 critical moments shapes everything that follows. At Silver State, every team member is
                 certified in Crisis Prevention Intervention (CPI) — an evidence-informed framework
@@ -161,13 +149,7 @@ export default function CPI() {
               </p>
             </AnimateIn>
             <AnimateIn variant="blurUp" delay={0.3}>
-              <p
-                style={{
-                  color: 'var(--body)',
-                  fontSize: '1rem',
-                  lineHeight: 1.7,
-                }}
-              >
+              <p style={{ color: 'var(--body)', fontSize: '1rem', lineHeight: 1.7 }}>
                 CPI is not a single technique. It is a philosophy of care that prioritizes the dignity
                 and safety of both the individual in crisis and those around them. The framework
                 emphasizes prevention first — identifying and addressing triggers before a crisis fully
@@ -175,40 +157,69 @@ export default function CPI() {
               </p>
             </AnimateIn>
           </div>
-
-          <AnimateIn variant="fadeUp" delay={0.4}>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, marginTop: 24 }}>
-              <span
-                style={{
-                  display: 'inline-block',
-                  padding: '8px 20px',
-                  borderRadius: 999,
-                  background: 'var(--white)',
-                  border: '1px solid var(--border)',
-                  fontSize: '.85rem',
-                  fontWeight: 600,
-                  color: 'var(--text)',
-                }}
-              >
-                All staff CPI-certified
-              </span>
-              <span
-                style={{
-                  display: 'inline-block',
-                  padding: '8px 20px',
-                  borderRadius: 999,
-                  background: SAGE,
-                  color: '#fff',
-                  fontSize: '.85rem',
-                  fontWeight: 600,
-                }}
-              >
-                4:1 staff-to-client ratio
-              </span>
-            </div>
-          </AnimateIn>
         </div>
       </section>
+
+      {/* ── 1c. STATS BAR ── */}
+      <section style={{ background: SAGE, padding: '32px 0' }}>
+        <div className="wrap">
+          <StaggerGroup
+            stagger={0.08}
+            variant="fadeUp"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+              gap: 20,
+              textAlign: 'center',
+            }}
+          >
+            <StaggerItem>
+              <div style={{ color: '#fff' }}>
+                <span style={{ fontFamily: DISPLAY, fontSize: '2rem', fontWeight: 700, display: 'block' }}>100%</span>
+                <span style={{ fontSize: '.85rem', opacity: 0.85 }}>Staff CPI-Certified</span>
+              </div>
+            </StaggerItem>
+            <StaggerItem>
+              <div style={{ color: '#fff' }}>
+                <span style={{ fontFamily: DISPLAY, fontSize: '2rem', fontWeight: 700, display: 'block' }}>4:1</span>
+                <span style={{ fontSize: '.85rem', opacity: 0.85 }}>Staff-to-Client Ratio</span>
+              </div>
+            </StaggerItem>
+            <StaggerItem>
+              <div style={{ color: '#fff' }}>
+                <span style={{ fontFamily: DISPLAY, fontSize: '2rem', fontWeight: 700, display: 'block' }}>24/7</span>
+                <span style={{ fontSize: '.85rem', opacity: 0.85 }}>Crisis Response Available</span>
+              </div>
+            </StaggerItem>
+            <StaggerItem>
+              <div style={{ color: '#fff' }}>
+                <span style={{ fontFamily: DISPLAY, fontSize: '2rem', fontWeight: 700, display: 'block' }}>11–17</span>
+                <span style={{ fontSize: '.85rem', opacity: 0.85 }}>Ages Served</span>
+              </div>
+            </StaggerItem>
+          </StaggerGroup>
+        </div>
+      </section>
+
+      {/* ── 1d. IMAGE STRIP ── */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 4 }}>
+        <div style={{ overflow: 'hidden', maxHeight: 360 }}>
+          <img
+            src="/assets/facility-gallery/nursing-station-wide.jpg"
+            alt="Silver State nursing station with clinical monitoring"
+            loading="lazy"
+            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+          />
+        </div>
+        <div style={{ overflow: 'hidden', maxHeight: 360 }}>
+          <img
+            src="/assets/facility-gallery/therapy-room-cozy.jpg"
+            alt="Comfortable therapy room at Silver State"
+            loading="lazy"
+            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+          />
+        </div>
+      </div>
 
       {/* ── 2. WHY CPI MATTERS ── */}
       <section style={{ padding: '64px 0' }}>
@@ -413,7 +424,7 @@ export default function CPI() {
 
             <AnimateIn variant="fadeUp" delay={0.15}>
               <img
-                src="/assets/facility/therapy-room.webp"
+                src="/assets/facility-gallery/therapy-room-counselor.jpg"
                 alt="Therapy room at Silver State — CPI-trained clinical environment"
                 loading="lazy"
                 style={{

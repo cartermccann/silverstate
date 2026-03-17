@@ -84,6 +84,7 @@ export default function ProgramPage({ program }: ProgramPageProps) {
         </div>
       )}
 
+      {/* ── 1b. TITLE + INTRO (first 2 paragraphs only) ── */}
       <section style={{ padding: '48px 0 48px', background: WARM }}>
         <div className="wrap" style={{ maxWidth: 800 }}>
           <AnimateIn variant="fadeUp">
@@ -104,72 +105,131 @@ export default function ProgramPage({ program }: ProgramPageProps) {
             {program.title}
           </CharReveal>
 
+          {/* Show only the first 2 paragraphs as intro */}
           <div className="program-text-blocks">
-            {program.overview.split('\n\n').map((paragraph, i) => (
-              <AnimateIn key={i} variant="blurUp" delay={0.2 + i * 0.1}>
-                <p
-                  style={{
-                    color: 'var(--body)',
-                    fontSize: '1rem',
-                    lineHeight: 1.7,
-                  }}
-                >
-                  {paragraph}
-                </p>
-              </AnimateIn>
-            ))}
+            {program.overview
+              .split('\n\n')
+              .slice(0, 2)
+              .map((paragraph, i) => (
+                <AnimateIn key={i} variant="blurUp" delay={0.2 + i * 0.1}>
+                  <p style={{ color: 'var(--body)', fontSize: '1rem', lineHeight: 1.7 }}>
+                    {paragraph}
+                  </p>
+                </AnimateIn>
+              ))}
           </div>
+        </div>
+      </section>
 
-          <AnimateIn variant="fadeUp" delay={0.3}>
-            <div
-              style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                gap: 12,
-                marginTop: 24,
-              }}
-            >
-              <span
-                style={{
-                  display: 'inline-block',
-                  padding: '8px 20px',
-                  borderRadius: 999,
-                  background: 'var(--white)',
-                  border: '1px solid var(--border)',
-                  fontSize: '.85rem',
-                  fontWeight: 600,
-                  color: 'var(--text)',
-                }}
-              >
-                {program.duration}
-              </span>
-              {program.stat && (
-                <span
-                  style={{
-                    display: 'inline-block',
-                    padding: '8px 20px',
-                    borderRadius: 999,
-                    background: SAGE,
-                    color: '#fff',
-                    fontSize: '.85rem',
-                    fontWeight: 600,
-                  }}
-                >
-                  {program.stat}
-                </span>
-              )}
+      {/* ── 1c. AT-A-GLANCE STATS BAR ── */}
+      <section style={{ background: SAGE, padding: '32px 0' }}>
+        <div className="wrap">
+          <StaggerGroup
+            stagger={0.08}
+            variant="fadeUp"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+              gap: 20,
+              textAlign: 'center',
+            }}
+          >
+            <StaggerItem>
+              <div style={{ color: '#fff' }}>
+                <span style={{ fontFamily: DISPLAY, fontSize: '2rem', fontWeight: 700, display: 'block' }}>24/7</span>
+                <span style={{ fontSize: '.85rem', opacity: 0.85 }}>Clinical Support</span>
+              </div>
+            </StaggerItem>
+            <StaggerItem>
+              <div style={{ color: '#fff' }}>
+                <span style={{ fontFamily: DISPLAY, fontSize: '2rem', fontWeight: 700, display: 'block' }}>4:1</span>
+                <span style={{ fontSize: '.85rem', opacity: 0.85 }}>Staff-to-Client Ratio</span>
+              </div>
+            </StaggerItem>
+            <StaggerItem>
+              <div style={{ color: '#fff' }}>
+                <span style={{ fontFamily: DISPLAY, fontSize: '2rem', fontWeight: 700, display: 'block' }}>11–17</span>
+                <span style={{ fontSize: '.85rem', opacity: 0.85 }}>Ages Served</span>
+              </div>
+            </StaggerItem>
+            <StaggerItem>
+              <div style={{ color: '#fff' }}>
+                <span style={{ fontFamily: DISPLAY, fontSize: '1.2rem', fontWeight: 700, display: 'block', lineHeight: 1.3 }}>{program.duration?.replace('Typical stay is ', '') || '30–90 Days'}</span>
+                <span style={{ fontSize: '.85rem', opacity: 0.85 }}>Typical Length of Stay</span>
+              </div>
+            </StaggerItem>
+          </StaggerGroup>
+        </div>
+      </section>
+
+      {/* ── 1d. FULL-WIDTH IMAGE STRIP ── */}
+      {program.sectionImages && program.sectionImages.length > 0 && (
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: program.sectionImages.length > 1 ? '1fr 1fr' : '1fr',
+            gap: 4,
+          }}
+        >
+          {program.sectionImages.map((src, i) => (
+            <div key={i} style={{ overflow: 'hidden', maxHeight: 360 }}>
+              <img
+                src={src}
+                alt={`${program.label} environment at Silver State`}
+                loading="lazy"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              />
             </div>
-          </AnimateIn>
+          ))}
+        </div>
+      )}
 
-          <div className="program-text-blocks">
+      {/* ── 1e. REMAINING OVERVIEW + WHO THIS IS FOR ── */}
+      {program.overview.split('\n\n').length > 2 && (
+        <section style={{ padding: '48px 0' }}>
+          <div className="wrap" style={{ maxWidth: 800 }}>
+            <div className="program-text-blocks">
+              {program.overview
+                .split('\n\n')
+                .slice(2)
+                .map((paragraph, i) => (
+                  <AnimateIn key={i} variant="blurUp" delay={0.1 + i * 0.1}>
+                    <p style={{ color: 'var(--body)', fontSize: '1rem', lineHeight: 1.7 }}>
+                      {paragraph}
+                    </p>
+                  </AnimateIn>
+                ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── 1f. WHO IS THIS FOR — callout card ── */}
+      <section style={{ padding: '48px 0', background: WARM }}>
+        <div className="wrap" style={{ maxWidth: 800 }}>
+          <AnimateIn variant="fadeUp">
+            <h2 className="section-heading" style={{ marginBottom: 20 }}>
+              Is This Right for Your Teen?
+            </h2>
+          </AnimateIn>
+          <div
+            style={{
+              background: 'rgba(255,255,255,0.85)',
+              borderRadius: 'var(--radius-lg)',
+              padding: '28px 32px',
+              border: '1px solid rgba(255,255,255,0.3)',
+              backdropFilter: 'blur(24px)',
+              WebkitBackdropFilter: 'blur(24px)',
+            }}
+          >
             {program.targetAudience.split('\n\n').map((paragraph, i) => (
-              <AnimateIn key={i} variant="blurUp" delay={0.4 + i * 0.1}>
+              <AnimateIn key={i} variant="blurUp" delay={0.1 + i * 0.1}>
                 <p
                   style={{
                     color: 'var(--body)',
-                    fontSize: '.9rem',
+                    fontSize: '.95rem',
                     lineHeight: 1.7,
-                    fontStyle: 'italic',
+                    marginTop: i > 0 ? 16 : 0,
                   }}
                 >
                   {paragraph}
