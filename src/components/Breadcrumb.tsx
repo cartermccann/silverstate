@@ -22,7 +22,7 @@ const SEGMENT_LABELS: Record<string, string> = {
   'suicidal-ideation-treatment': 'Suicidal Ideation Treatment',
   'ocd-treatment': 'OCD Treatment',
   'bipolar-disorder-treatment': 'Bipolar Disorder Treatment',
-  'autism-spectrum-treatment': 'Autism Spectrum Treatment',
+  'reactive-attachment-disorder-treatment': 'Reactive Attachment Disorder Treatment',
   'oppositional-defiant-disorder-treatment': 'Oppositional Defiant Disorder Treatment',
   'oppositional-defiant-treatment': 'Oppositional Defiant Treatment',
   'conduct-disorder-treatment': 'Conduct Disorder Treatment',

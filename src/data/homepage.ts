@@ -22,8 +22,8 @@ import type {
 import { site } from './common'
 
 export const heroData: HeroData = {
-  headline: 'The path forward starts with one conversation',
-  body: 'Residential and outpatient mental health treatment for youth ages 11\u201317. Evidence-based care rooted in family, built for lasting change.',
+  headline: 'When other treatments haven\u2019t worked, we\u2019re here',
+  body: 'For teens who\u2019ve been in and out of hospitals, through multiple programs, or caught up in the justice system \u2014 Silver State provides the intensive, structured care that finally makes a difference. Ages 11\u201317.',
   ctaPrimary: { label: `Call ${site.phone}`, href: site.phoneTel },
   ctaSecondary: { label: 'Learn More', href: '/programs/residential-treatment' },
   backgroundImage: { src: '/assets/hero-youth.webp', alt: 'Adolescent treatment at Silver State' },
@@ -33,8 +33,8 @@ export const heroData: HeroData = {
 export const hero: LegacyHeroData = {
   refined: {
     label: "Nevada's Leading Teen Treatment Center",
-    headline: 'We guide teens toward a brighter future',
-    body: 'At Silver State, we guide teens away from self-destructive behaviors and towards building self-esteem \u2014 addressing the core mental health issues that drive high-risk actions.',
+    headline: 'When nothing else has worked, there\u2019s still a way forward',
+    body: 'Silver State is built for teens who\u2019ve been through hospitalizations, multiple programs, and setbacks that left your family searching for answers. We provide the intensive care and structure that creates real, lasting change.',
   },
   immersive: {
     headline: heroData.headline,
@@ -88,15 +88,15 @@ export const testimonial: HomepageTestimonialData = {
 }
 
 export const whoThisIsFor: WhoThisIsForData = {
-  headline: 'This isn\'t just for "troubled teens"',
-  body: 'Many teens who benefit from our program are anxious, overwhelmed, or withdrawn \u2014 not defiant or aggressive. Whether your child is dealing with self-harm, emotional crises, or declining adolescent mental wellness, if outpatient care isn\u2019t enough, this may be the right step.',
+  headline: 'We help the teens other programs couldn\u2019t reach',
+  body: 'Most families who call us have already tried outpatient therapy, hospital stays, or other programs. If your teen\u2019s situation has gone beyond what those settings can handle, you\u2019re not out of options \u2014 you\u2019re in the right place.',
   profiles: [
-    { label: 'The anxious teen', desc: 'who can\u2019t make it through a school day' },
-    { label: 'The withdrawn teen', desc: 'who has stopped talking to family and friends' },
-    { label: 'The overwhelmed teen', desc: 'whose emotions feel too big to manage' },
-    { label: 'The teen in crisis', desc: 'whose self-harm or safety you\u2019re worried about every day' },
-    { label: 'The teen who\u2019s tried everything', desc: 'and nothing has stuck' },
-    { label: 'The teen masking pain', desc: 'behind substances, screens, or silence' },
+    { label: 'The teen who\u2019s been in and out of hospitals', desc: 'and still hasn\u2019t found the right level of care' },
+    { label: 'The teen facing court involvement', desc: 'who needs treatment, not just consequences' },
+    { label: 'The teen who\u2019s been through multiple programs', desc: 'without lasting progress' },
+    { label: 'The teen whose behavior has escalated', desc: 'beyond what outpatient or school can manage' },
+    { label: 'The teen masking pain with risky behavior', desc: 'substances, acting out, or shutting down completely' },
+    { label: 'The overwhelmed family that\u2019s tried everything', desc: 'and needs a partner who truly understands' },
   ],
 }
 
@@ -137,7 +137,7 @@ export const dailySchedule: DailyScheduleEntry[] = [
   {
     time: '4:00 PM',
     activity: 'Recreation & Adventure',
-    desc: 'Pickleball, basketball, art, music, yoga, or off-site adventure therapy.',
+    desc: 'Pickleball, basketball, yoga, recreational therapy, or off-site adventure therapy.',
   },
   {
     time: '5:30 PM',
@@ -156,6 +156,9 @@ export const dailySchedule: DailyScheduleEntry[] = [
   },
 ]
 
+export const scheduleDisclaimer =
+  'Sample schedule — individual activities and times may vary based on treatment needs.'
+
 // Alias for story 2.2 naming convention
 export const dailyScheduleData: DailyScheduleEntry[] = dailySchedule
 export const testimonialData: HomepageTestimonialData = testimonial
@@ -173,7 +176,7 @@ export const programHighlightsData: HomepageProgramHighlight[] = [
       'On-site accredited academics (Silver State Youth Academy)',
       'Family therapy and parent education workshops',
       'Experiential, recreational, and adventure therapy',
-      'Music, art, and meditation therapy',
+      'Recreational and meditation therapy',
       'Trauma-informed care throughout',
       'Transition and discharge planning from day one',
     ],
@@ -191,7 +194,7 @@ export const conditionsOverviewData: ConditionOverviewCategory[] = [
       { name: 'Suicidal Ideation', slug: 'suicidal-ideation-treatment' },
       { name: 'OCD', slug: 'ocd-treatment' },
       { name: 'Bipolar Disorder', slug: 'bipolar-disorder-treatment' },
-      { name: 'Autism Spectrum (ASD)', slug: 'autism-spectrum-treatment' },
+      { name: 'Reactive Attachment Disorder (RAD)', slug: 'reactive-attachment-disorder-treatment' },
       {
         name: 'Oppositional Defiant Disorder (ODD)',
         slug: 'oppositional-defiant-disorder-treatment',
@@ -212,6 +215,7 @@ export const conditionsOverviewData: ConditionOverviewCategory[] = [
       { name: 'Cocaine', slug: 'cocaine-abuse-treatment' },
       { name: 'Crystal Meth', slug: 'meth-abuse-treatment' },
       { name: 'Cannabis', slug: 'cannabis-abuse-treatment' },
+      { name: 'MDMA & Ecstasy', slug: 'mdma-treatment' },
     ],
   },
   {
@@ -234,7 +238,7 @@ export const therapiesOverviewData: string[] = [
   'Group Therapy',
   'Family Therapy',
   'Meditation & Mindfulness',
-  'Art & Music Therapy',
+  'Recreational Therapy',
   'Adventure Therapy',
   'Holistic Treatment',
   'Crisis Prevention & Intervention (CPI)',
@@ -275,7 +279,7 @@ export const youthAcademyData: {
 }
 
 export const teamOverviewData: HomepageTeamOverview = {
-  clinical: 'Dr. Russ Park and Arianne Smith',
+  clinical: 'Dr. Russ Park, DNP, APRN, PMHNP-BC and Arianne Smith, LMFT',
   members: [
     'Psychiatrist',
     'Individual Therapist',
@@ -285,7 +289,7 @@ export const teamOverviewData: HomepageTeamOverview = {
     'Registered Dietitians',
     'Recovery Counselors',
     'Adventure Therapists',
-    'Music & Art Therapists',
+    'Recreational Therapists',
     'Fitness Experts',
     'Yoga & Meditation Instructors',
     'Academic Teachers & Tutors',

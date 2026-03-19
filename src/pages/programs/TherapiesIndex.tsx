@@ -48,7 +48,7 @@ const categoryOrder: CategoryKey[] = [
 
 const categorySlugs: Record<CategoryKey, string[]> = {
   'evidence-based': ['cbt', 'dbt', 'emdr', 'tf-cbt', 'somatic-experiencing', 'motivational-interviewing'],
-  'therapeutic-modalities': ['individual-therapy', 'group-therapy', 'family-therapy', 'art-music-therapy', 'adventure-therapy', 'meditation-mindfulness'],
+  'therapeutic-modalities': ['individual-therapy', 'group-therapy', 'family-therapy', 'recreational-therapy', 'adventure-therapy', 'meditation-mindfulness'],
   'treatment-approaches': ['medication-management', 'lgbtqia-affirming-care', 'holistic-treatment', 'trauma-informed-care', 'cpi'],
 }
 

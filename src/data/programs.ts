@@ -10,7 +10,7 @@ export const programs: { residential: ProgramData } = {
       'On-site accredited academics (Silver State Youth Academy)',
       'Family therapy and parent education workshops',
       'Experiential, recreational, and adventure therapy',
-      'Music, art, and meditation therapy',
+      'Recreational and meditation therapy',
       'Trauma-informed care throughout',
       'Transition and discharge planning from day one',
     ],
@@ -77,7 +77,7 @@ export const residentialProgram: ProgramPageData = {
     {
       time: '4:00 PM',
       activity: 'Recreation & Adventure',
-      desc: 'Pickleball, basketball, art, music, yoga, or off-site adventure therapy.',
+      desc: 'Pickleball, basketball, yoga, recreational therapy, or off-site adventure therapy.',
     },
     {
       time: '5:30 PM',
@@ -95,6 +95,8 @@ export const residentialProgram: ProgramPageData = {
       desc: 'Nightly check-in with staff, reading time, and lights out.',
     },
   ],
+  scheduleDisclaimer:
+    'Sample schedule — individual activities and times may vary based on treatment needs.',
   therapyModalities: [
     'cbt',
     'dbt',
@@ -102,7 +104,7 @@ export const residentialProgram: ProgramPageData = {
     'individual-therapy',
     'group-therapy',
     'family-therapy',
-    'art-music-therapy',
+    'recreational-therapy',
     'adventure-therapy',
     'meditation-mindfulness',
   ],
@@ -111,7 +113,7 @@ export const residentialProgram: ProgramPageData = {
     'On-site accredited academics (Silver State Youth Academy)',
     'Family therapy and parent education workshops',
     'Experiential, recreational, and adventure therapy',
-    'Music, art, and meditation therapy',
+    'Recreational and meditation therapy',
     'Trauma-informed care throughout',
     'Transition and discharge planning from day one',
     '24/7 clinical and nursing support',
@@ -165,7 +167,7 @@ export const residentialProgram: ProgramPageData = {
     'dual-diagnosis-treatment',
   ],
   relatedPrograms: [],
-  reviewedBy: 'Dr. Russ Park, DNP',
+  reviewedBy: 'Dr. Russ Park, DNP, APRN, PMHNP-BC',
   reviewDate: '2026-02-01',
 }
 

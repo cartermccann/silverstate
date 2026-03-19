@@ -12,7 +12,7 @@ export const conditionNamesByCategory: Record<
     'Suicidal Ideation',
     'OCD',
     'Bipolar Disorder',
-    'Autism Spectrum (ASD)',
+    'Reactive Attachment Disorder (RAD)',
     'Oppositional Defiant Disorder (ODD)',
     'Conduct Disorder',
     'DMDD',
@@ -21,7 +21,7 @@ export const conditionNamesByCategory: Record<
     'Dual Diagnosis',
     'School Refusal',
   ],
-  substanceAbuse: ['Alcohol', 'Opioids', 'Benzodiazepines', 'Cocaine', 'Crystal Meth', 'Cannabis'],
+  substanceAbuse: ['Alcohol', 'Opioids', 'Benzodiazepines', 'Cocaine', 'Crystal Meth', 'Cannabis', 'MDMA & Ecstasy'],
   eatingDisorders: [
     'Anorexia Nervosa',
     'Bulimia Nervosa',
@@ -100,7 +100,7 @@ export const conditions: ConditionData[] = [
     metaTitle: 'Adolescent Anxiety Treatment | Silver State',
     metaDescription:
       'Evidence-based adolescent anxiety treatment at Silver State in Las Vegas. CBT, DBT, and family therapy in a structured residential program for teens 11-17.',
-    reviewedBy: 'Dr. Russ Park, MD',
+    reviewedBy: 'Dr. Russ Park, DNP, APRN, PMHNP-BC',
     reviewDate: '2026-02-01',
     sources: [
       {
@@ -151,7 +151,7 @@ export const conditions: ConditionData[] = [
       },
       {
         q: 'What does the daily treatment schedule look like for teen depression?',
-        a: 'Each day at Silver State follows a structured schedule that balances clinical therapy with wellness activities. Teens participate in individual therapy, group sessions, family therapy, on-site academics, and therapeutic activities like art therapy and mindfulness — all designed to address depression from multiple angles.',
+        a: 'Each day at Silver State follows a structured schedule that balances clinical therapy with wellness activities. Teens participate in individual therapy, group sessions, family therapy, on-site academics, and therapeutic activities like recreational therapy and mindfulness — all designed to address depression from multiple angles.',
       },
       {
         q: 'Can depression in teens be treated without medication?',
@@ -183,7 +183,7 @@ export const conditions: ConditionData[] = [
     metaTitle: 'Adolescent Depression Treatment | Silver State',
     metaDescription:
       'Specialized adolescent depression treatment at Silver State in Las Vegas. Individual therapy, family support, and on-site academics for teens ages 11-17.',
-    reviewedBy: 'Dr. Russ Park, MD',
+    reviewedBy: 'Dr. Russ Park, DNP, APRN, PMHNP-BC',
     reviewDate: '2026-02-01',
     sources: [
       { label: 'NIMH: Depression', url: 'https://www.nimh.nih.gov/health/topics/depression' },
@@ -259,7 +259,7 @@ export const conditions: ConditionData[] = [
     metaTitle: 'Teen Trauma & PTSD Treatment | Silver State',
     metaDescription:
       'Specialized adolescent trauma and PTSD treatment at Silver State in Las Vegas. EMDR, TF-CBT, and DBT for teens ages 11-17 in a safe healing environment.',
-    reviewedBy: 'Dr. Russ Park, MD',
+    reviewedBy: 'Dr. Russ Park, DNP, APRN, PMHNP-BC',
     reviewDate: '2026-02-01',
     sources: [
       {
@@ -335,7 +335,7 @@ export const conditions: ConditionData[] = [
     metaTitle: 'Teen Self-Harm & Suicidal Ideation Treatment | Silver State',
     metaDescription:
       'Teen self-harm treatment and suicidal ideation care at Silver State in Las Vegas. 24/7 safety, DBT, and crisis intervention for adolescents ages 11-17.',
-    reviewedBy: 'Dr. Russ Park, MD',
+    reviewedBy: 'Dr. Russ Park, DNP, APRN, PMHNP-BC',
     reviewDate: '2026-02-01',
     sources: [
       {
@@ -410,7 +410,7 @@ export const conditions: ConditionData[] = [
     metaTitle: 'Adolescent OCD Treatment | Silver State',
     metaDescription:
       'Specialized adolescent OCD treatment at Silver State in Las Vegas. ERP, CBT, and individualized care for teens ages 11-17 with obsessive-compulsive disorder.',
-    reviewedBy: 'Dr. Russ Park, MD',
+    reviewedBy: 'Dr. Russ Park, DNP, APRN, PMHNP-BC',
     reviewDate: '2026-02-01',
     sources: [
       {
@@ -489,7 +489,7 @@ export const conditions: ConditionData[] = [
     metaTitle: 'Teen Bipolar Disorder Treatment | Silver State',
     metaDescription:
       'Structured adolescent bipolar disorder treatment at Silver State in Las Vegas. CBT, DBT, and family therapy for teens ages 11-17 with bipolar mood episodes.',
-    reviewedBy: 'Dr. Russ Park, MD',
+    reviewedBy: 'Dr. Russ Park, DNP, APRN, PMHNP-BC',
     reviewDate: '2026-02-01',
     sources: [
       {
@@ -501,84 +501,87 @@ export const conditions: ConditionData[] = [
     ],
   },
   {
-    slug: 'autism-spectrum-treatment',
-    name: 'Autism Spectrum Treatment',
+    slug: 'reactive-attachment-disorder-treatment',
+    name: 'Reactive Attachment Disorder (RAD) Treatment',
     heroImage: '/assets/facility-gallery/classroom-mural-tv.jpg',
-    sectionImages: ['/assets/stock/music-therapy-piano.jpg', '/assets/stock/family-art-therapy.jpg'],
-    seoKeywords: ['teen autism treatment', 'adolescent autism spectrum support', 'ASD teen therapy Las Vegas', 'autism and mental health treatment teens', 'neurodiversity affirming treatment'],
-    headline: 'Adolescent Autism Spectrum Support at Silver State',
+    sectionImages: ['/assets/stock/family-therapy-session.jpg', '/assets/stock/individual-therapy-full.jpg'],
+    seoKeywords: ['teen reactive attachment disorder treatment', 'RAD treatment adolescents', 'attachment disorder therapy teens', 'reactive attachment disorder Las Vegas', 'teen attachment therapy'],
+    headline: 'Adolescent Reactive Attachment Disorder Treatment at Silver State',
     category: 'mental-health',
     description:
-      "Autism spectrum disorder (ASD) frequently co-occurs with other mental health conditions, with approximately 70% of autistic adolescents having at least one co-occurring condition and nearly 40% having two or more according to the National Institute of Mental Health (NIMH). Silver State provides neurodiversity-affirming treatment for teens ages 11–17 who are navigating the intersection of autism and co-occurring mental health challenges, including unique difficulties with social communication, sensory processing, and emotional regulation that intensify during the teen years.\n\nThe teenage years are particularly challenging for autistic youth. Increasing social complexity, changing routines, academic demands, and the pressure to fit in can overwhelm coping strategies that worked in childhood. Many autistic teens also experience co-occurring conditions like anxiety, depression, OCD, or ADHD, which can significantly complicate their daily functioning and quality of life.\n\nWithout appropriate support, autistic adolescents are at elevated risk for social isolation, school refusal, self-harm, and crisis. Early, targeted intervention that addresses both autism-related challenges and co-occurring mental health conditions produces the best outcomes for long-term functioning and wellbeing.\n\nAt our Las Vegas treatment center, Silver State's clinicians understand the intersection of autism and mental health. We tailor every treatment plan to respect your teen's neurological differences while building the skills they need to thrive in a world that is not always designed for neurodivergent minds.",
+      "Reactive attachment disorder (RAD) is a serious condition that develops when a child fails to form healthy emotional bonds with caregivers during early childhood, often due to neglect, abuse, frequent changes in foster placements, or repeated disruptions in the caregiver relationship. According to the American Academy of Child and Adolescent Psychiatry, RAD is most commonly seen in children who have experienced institutional care, multiple foster placements, or adoption disruptions. Silver State provides specialized treatment for teens ages 11\u201317 with reactive attachment disorder and its co-occurring mental health challenges.\n\nMany teens with RAD have a heartbreaking pattern: every time they begin to love and trust a caregiver, the relationship ends \u2014 through adoption disruptions, placement changes, or family instability. Over time, these teens learn that attachment itself is dangerous. They develop powerful defenses against closeness, either withdrawing from relationships entirely or becoming indiscriminately social without genuine emotional connection.\n\nThe adolescent years bring unique challenges for teens with RAD. As treatment progresses and trust begins to build, many teens with attachment disorders experience intense fear and may unconsciously sabotage the therapeutic relationship or act out dramatically. This push-pull pattern \u2014 drawing close then pushing away \u2014 is one of the hallmark challenges of treating RAD and requires clinicians who understand that the behavior is driven by fear, not defiance.\n\nAt our Las Vegas treatment center, Silver State\u2019s clinicians specialize in recognizing these attachment patterns and providing the consistent, patient care that allows teens to slowly rebuild their capacity for trust and healthy relationships.",
     symptoms: [
-      'Difficulty reading social cues or maintaining conversations with peers',
-      'Sensory sensitivities that lead to overwhelm or meltdowns',
-      'Rigid thinking patterns or intense distress with changes in routine',
-      'Challenges with emotional regulation and expressing feelings',
-      'Social isolation or difficulty forming and keeping friendships',
-      'Co-occurring anxiety, depression, or obsessive behaviors',
-      'Meltdowns or shutdowns in response to sensory overload or unexpected change',
-      'Difficulty with executive functioning tasks like organization and planning',
-      'Intense, focused interests that interfere with other responsibilities',
+      'Withdrawal from caregivers and reluctance to seek comfort when distressed',
+      'Difficulty forming genuine emotional connections with adults or peers',
+      'Push-pull pattern: building trust then suddenly acting out to create distance',
+      'Resistance to affection, praise, or nurturing from caregivers',
+      'Controlling or manipulative behavior as a way to feel safe',
+      'Intense anger, defiance, or emotional outbursts that seem disproportionate',
+      'Difficulty with empathy or understanding others\u2019 feelings',
+      'History of multiple placement disruptions, adoption breakdowns, or caregiver changes',
+      'Self-sabotaging behavior, especially when things are going well',
     ],
     therapies: [
-      'Cognitive Behavioral Therapy (CBT) adapted for ASD',
-      'Social Skills Training',
+      'Trust-Based Relational Intervention (TBRI)',
+      'Trauma-Focused Cognitive Behavioral Therapy (TF-CBT)',
       'Dialectical Behavior Therapy (DBT)',
-      'Occupational Therapy with Sensory Integration',
+      'Family Therapy',
     ],
     approach:
-      "Silver State's autism support program integrates mental health treatment with neurodiversity-affirming practices. Within our residential program, we address co-occurring conditions while building social skills and emotional regulation in a structured, predictable environment. Our 4:1 staff-to-client ratio provides the consistent support autistic teens need, and on-site academics offer accommodations tailored to each student's learning profile.\n\nWe work closely with families to help parents understand their teen's neurological profile, develop effective communication strategies, and create a home environment that supports sensory and emotional needs. Our discharge process is carefully paced to ensure transitions are predictable and well-supported, with outpatient referrals tailored to each teen's needs, recognizing that change can be especially challenging for autistic teens.",
+      "Silver State\u2019s approach to reactive attachment disorder centers on creating a safe, consistent therapeutic environment where teens can begin to experience healthy attachment without the fear of abandonment. Our 4:1 staff-to-client ratio ensures that each teen has consistent caregivers who model reliability and emotional availability \u2014 often for the first time in the teen\u2019s life.\n\nOur clinicians are trained to recognize and work through the push-pull cycle that is central to RAD. When a teen begins to build trust and then acts out to create distance, our team responds with calm consistency rather than punishment or rejection, gradually teaching the teen that relationships can survive conflict. Family therapy is a critical component, helping adoptive or biological families understand attachment patterns and develop strategies for building connection at home. Our discharge planning is carefully paced, with gradual transitions that respect the teen\u2019s heightened sensitivity to change and loss.",
     faqs: [
       {
-        q: 'Do you treat autism itself or co-occurring conditions?',
-        a: "We focus on treating co-occurring mental health conditions like anxiety, depression, and OCD that often accompany autism. We provide a neurodiversity-affirming environment that supports your teen's unique needs while addressing the conditions that are causing distress.",
+        q: 'What causes reactive attachment disorder in teens?',
+        a: 'RAD develops when a child does not form a secure emotional bond with a primary caregiver during the first years of life. Common causes include neglect, abuse, frequent changes in foster care placements, institutional care, or repeated adoption disruptions. The child learns that caregivers are unreliable, leading to lasting difficulties with trust and emotional connection.',
       },
       {
-        q: 'How do you accommodate sensory needs?',
-        a: "Our environment includes sensory-friendly spaces, flexible scheduling when possible, and staff trained in sensory processing differences. Each teen's sensory profile is assessed during intake and integrated into their treatment plan.",
+        q: 'How is RAD different from oppositional defiant disorder?',
+        a: 'While both conditions involve challenging behavior, RAD is rooted in attachment disruption and fear of closeness, while ODD is primarily about defiance toward authority. Teens with RAD may appear oppositional, but their behavior is driven by a deep fear of vulnerability and abandonment rather than a desire to challenge rules.',
       },
       {
-        q: 'Is your program suitable for autistic teens with high support needs?',
-        a: "Our program is designed for autistic adolescents who can participate in group therapy settings with support. During the admissions process, we assess whether our environment and programming are the right fit for your teen's specific needs.",
+        q: 'Can teens with RAD form healthy attachments?',
+        a: 'Yes, with consistent, patient, and specialized treatment. The adolescent brain retains significant capacity for forming new attachment patterns. Treatment focuses on providing corrective emotional experiences \u2014 showing the teen through consistent actions that adults can be trustworthy and that relationships can be safe.',
       },
       {
-        q: 'How do you adapt therapy for autistic teens?',
-        a: 'Our clinicians modify evidence-based therapies to be accessible for autistic adolescents. This includes using visual supports, concrete language, special interest integration, flexible session structures, and sensory accommodations. We meet each teen where they are and adapt our approach to their communication style.',
+        q: 'Why does my teen push people away when things are going well?',
+        a: 'This push-pull pattern is one of the hallmark features of RAD. As your teen begins to trust and feel close to someone, it triggers deep fear based on past experiences of loss and abandonment. Acting out is an unconscious attempt to create distance before the inevitable rejection they expect. Understanding this pattern is key to responding with patience rather than frustration.',
       },
       {
-        q: 'Can autistic teens benefit from group therapy?',
-        a: 'Yes. Our groups are structured with clear expectations, predictable formats, and smaller sizes when needed. Many autistic teens find tremendous value in connecting with peers who share similar experiences, and group settings provide natural opportunities to practice social skills in a supported environment.',
+        q: 'How do you work with adoptive or foster families?',
+        a: 'Family therapy is a critical part of RAD treatment. We help families understand attachment patterns, develop realistic expectations, learn therapeutic parenting strategies, and build connection through structured bonding activities. We also provide education about the neurobiological effects of early neglect on the developing brain.',
       },
       {
-        q: 'What is the success rate of treatment for teens with autism spectrum disorder?',
-        a: 'According to the Centers for Disease Control and Prevention (CDC), early and consistent intervention for co-occurring mental health conditions in autistic teens produces significant improvements in anxiety, depression, and social functioning. Adapted CBT and social skills training have been shown to reduce anxiety symptoms in 50–70% of autistic adolescents who complete treatment.',
+        q: 'What is the success rate of treatment for teen RAD?',
+        a: 'Research published in the Journal of Child Psychology and Psychiatry shows that targeted attachment-focused interventions produce significant improvements in attachment security, emotional regulation, and relationship functioning in adolescents with RAD. Teens who receive consistent, long-term treatment in a structured environment show the greatest gains.',
       },
       {
-        q: 'How is autism spectrum disorder diagnosed in adolescents?',
-        a: 'ASD is diagnosed using DSM-5 criteria, which require persistent deficits in social communication and interaction along with restricted, repetitive patterns of behavior or interests. Diagnosis in adolescents may involve comprehensive developmental history, standardized assessment tools such as the ADOS-2, and evaluation by a multidisciplinary team to distinguish ASD from social anxiety, ADHD, or other conditions.',
+        q: 'How is reactive attachment disorder diagnosed?',
+        a: 'RAD is diagnosed using DSM-5 criteria, which require a consistent pattern of emotionally withdrawn behavior toward caregivers, along with evidence of insufficient care (neglect, deprivation, or repeated changes in primary caregivers) before age 5. A comprehensive evaluation includes developmental history, attachment assessment, and ruling out autism spectrum disorder and other conditions.',
       },
     ],
     relatedPrograms: ['residential-treatment'],
     relatedConditions: [
-      'anxiety-treatment',
-      'ocd-treatment',
+      'trauma-ptsd-treatment',
+      'depression-treatment',
       'oppositional-defiant-disorder-treatment',
     ],
-    metaTitle: 'Teen Autism Spectrum Support | Silver State',
+    metaTitle: 'Teen Reactive Attachment Disorder Treatment | Silver State',
     metaDescription:
-      'Neurodiversity-affirming adolescent autism support at Silver State in Las Vegas. Treating co-occurring mental health conditions in teens ages 11-17 with autism.',
-    reviewedBy: 'Dr. Russ Park, MD',
-    reviewDate: '2026-02-01',
+      'Reactive attachment disorder (RAD) treatment for teens ages 11-17 at Silver State in Las Vegas. Helping adolescents rebuild trust and healthy attachments.',
+    reviewedBy: 'Dr. Russ Park, DNP, APRN, PMHNP-BC',
+    reviewDate: '2026-03-01',
     sources: [
       {
-        label: 'NIMH: Autism Spectrum Disorder',
-        url: 'https://www.nimh.nih.gov/health/topics/autism-spectrum-disorders-asd',
+        label: 'DSM-5 Overview: Reactive Attachment Disorder',
+        url: 'https://www.psychiatry.org/patients-families/reactive-attachment-disorder/what-is-reactive-attachment-disorder',
       },
-      { label: 'CDC: Autism Spectrum Disorder', url: 'https://www.cdc.gov/autism/' },
       {
-        label: 'APA: Autism Spectrum Disorder',
-        url: 'https://www.apa.org/topics/autism-spectrum-disorder',
+        label: 'AACAP: Reactive Attachment Disorder',
+        url: 'https://www.aacap.org/aacap/families_and_youth/facts_for_families/fff-guide/Reactive-Attachment-Disorder-085.aspx',
+      },
+      {
+        label: 'APA: Attachment Disorders',
+        url: 'https://www.apa.org/topics/attachment',
       },
     ],
   },
@@ -646,7 +649,7 @@ export const conditions: ConditionData[] = [
     metaTitle: 'Adolescent ODD Treatment | Silver State',
     metaDescription:
       'Specialized adolescent ODD treatment at Silver State in Las Vegas. CBT, DBT, and family therapy for teens ages 11-17 with oppositional defiant disorder.',
-    reviewedBy: 'Dr. Russ Park, MD',
+    reviewedBy: 'Dr. Russ Park, DNP, APRN, PMHNP-BC',
     reviewDate: '2026-02-01',
     sources: [
       {
@@ -669,7 +672,7 @@ export const conditions: ConditionData[] = [
     headline: 'Adolescent Conduct Disorder Treatment at Silver State',
     category: 'mental-health',
     description:
-      'Conduct disorder is a serious behavioral condition affecting approximately 2–10% of adolescents according to the American Psychological Association (APA), involving a repetitive pattern of behavior that violates the rights of others or major age-appropriate social norms. Silver State provides specialized treatment for teens ages 11–17 with conduct disorder, including aggression, destruction of property, deceitfulness, or serious rule violations. Without intervention, conduct disorder can lead to lasting legal, academic, and social consequences.\n\nConduct disorder is more common in boys than girls, though girls may present with different behavioral patterns such as relational aggression and rule violations rather than physical aggression. Many teens with conduct disorder have experienced adverse childhood experiences, trauma, or unstable home environments that contribute to their behavioral patterns.\n\nResearch shows that early, structured intervention during adolescence significantly improves long-term outcomes. Without treatment, conduct disorder increases the risk of antisocial personality disorder, substance abuse, incarceration, and chronic relationship difficulties in adulthood. The adolescent brain is still developing, making this a critical window for teaching alternative behavioral patterns.\n\nAt our Las Vegas treatment center, Silver State provides structured, therapeutic treatment that goes beyond punishment. Our clinicians address the underlying emotional and environmental factors driving the behavior while teaching prosocial skills, empathy development, and emotional regulation.',
+      'Conduct disorder is a serious behavioral condition affecting approximately 2\u201310% of adolescents according to the American Psychological Association (APA), involving a repetitive pattern of behavior that violates the rights of others or major age-appropriate social norms. Silver State provides specialized treatment for teens ages 11\u201317 with conduct disorder, including aggression, destruction of property, deceitfulness, or serious rule violations. Without intervention, conduct disorder can lead to lasting legal, academic, and social consequences.\n\nConduct disorder often represents an escalation from oppositional defiant disorder (ODD). When oppositional behavior becomes so severe that law enforcement gets involved \u2014 stealing, property destruction, assault, or other acts that bring teens into contact with the juvenile justice system \u2014 the diagnosis frequently shifts from ODD to conduct disorder. Many of the teens we treat have had involvement with probation, court-mandated treatment, or the juvenile justice system, and Silver State has successfully helped teens navigate court proceedings during their treatment stay.\n\nConduct disorder is more common in boys than girls, though girls may present with different behavioral patterns such as relational aggression and rule violations rather than physical aggression. Many teens with conduct disorder have experienced adverse childhood experiences, trauma, or unstable home environments that contribute to their behavioral patterns.\n\nResearch shows that early, structured intervention during adolescence significantly improves long-term outcomes. Without treatment, conduct disorder increases the risk of antisocial personality disorder, substance abuse, incarceration, and chronic relationship difficulties in adulthood. The adolescent brain is still developing, making this a critical window for teaching alternative behavioral patterns.\n\nAt our Las Vegas treatment center, Silver State provides structured, therapeutic treatment that goes beyond punishment. Our clinicians address the underlying emotional and environmental factors driving the behavior while teaching prosocial skills, empathy development, and emotional regulation. For teens involved with the juvenile justice system, we coordinate with courts and probation officers, providing documentation of treatment progress that has helped teens receive reduced charges or alternative sentencing.',
     symptoms: [
       'Aggression toward people or animals, including bullying or intimidation',
       'Deliberate destruction of property',
@@ -688,7 +691,7 @@ export const conditions: ConditionData[] = [
       'Aggression Replacement Training (ART)',
     ],
     approach:
-      'Silver State treats conduct disorder through a structured therapeutic environment that provides clear expectations and consistent, compassionate responses. Within our residential program, we combine individual therapy with group skill-building focused on empathy, anger management, and problem-solving. Our 4:1 staff ratio ensures close supervision and mentorship while modeling the healthy adult relationships many of these teens have not experienced.\n\nFamily therapy addresses family dynamics that may reinforce problem behavior and teaches parents effective strategies for setting boundaries and reinforcing prosocial choices. As your teen demonstrates progress, our discharge planning prepares them to practice new skills independently while connecting them with outpatient support and accountability.',
+      'Silver State treats conduct disorder through a structured therapeutic environment that provides clear expectations and consistent, compassionate responses. Within our residential program, we combine individual therapy with group skill-building focused on empathy, anger management, and problem-solving. Our 4:1 staff ratio ensures close supervision and mentorship while modeling the healthy adult relationships many of these teens have not experienced.\n\nFor teens involved with the juvenile justice system, Silver State provides a therapeutic alternative to detention. We coordinate with courts, probation officers, and attorneys to support court-mandated treatment requirements, and our clinical team provides progress documentation that has helped teens receive favorable outcomes in their legal proceedings. Treatment in a structured residential setting addresses the root causes of behavior rather than simply punishing it.\n\nFamily therapy addresses family dynamics that may reinforce problem behavior and teaches parents effective strategies for setting boundaries and reinforcing prosocial choices. As your teen demonstrates progress, our discharge planning prepares them to practice new skills independently while connecting them with outpatient support and accountability.',
     faqs: [
       {
         q: 'How is conduct disorder different from ODD?',
@@ -728,13 +731,13 @@ export const conditions: ConditionData[] = [
     metaTitle: 'Teen Conduct Disorder Treatment | Silver State',
     metaDescription:
       'Structured adolescent conduct disorder treatment at Silver State in Las Vegas. Evidence-based therapy for teens ages 11-17 with behavioral challenges.',
-    reviewedBy: 'Dr. Russ Park, MD',
+    reviewedBy: 'Dr. Russ Park, DNP, APRN, PMHNP-BC',
     reviewDate: '2026-02-01',
     sources: [
       { label: 'APA: Conduct Disorder', url: 'https://www.apa.org/topics/conduct-disorder' },
       {
-        label: 'NIMH: Child and Adolescent Mental Health',
-        url: 'https://www.nimh.nih.gov/health/topics',
+        label: 'AACAP: Conduct Disorder',
+        url: 'https://www.aacap.org/aacap/families_and_youth/facts_for_families/fff-guide/Conduct-Disorder-033.aspx',
       },
       { label: 'SAMHSA: Mental Health Services', url: 'https://www.samhsa.gov/mental-health' },
     ],
@@ -807,7 +810,7 @@ export const conditions: ConditionData[] = [
     metaTitle: 'Adolescent DMDD Treatment | Silver State',
     metaDescription:
       'Specialized adolescent DMDD treatment at Silver State in Las Vegas. DBT, CBT, emotion regulation, and parent coaching for teens ages 11-17 with outbursts.',
-    reviewedBy: 'Dr. Russ Park, MD',
+    reviewedBy: 'Dr. Russ Park, DNP, APRN, PMHNP-BC',
     reviewDate: '2026-02-01',
     sources: [
       {
@@ -890,7 +893,7 @@ export const conditions: ConditionData[] = [
     metaTitle: 'Adolescent BPD Treatment | Silver State',
     metaDescription:
       'Specialized adolescent BPD treatment at Silver State in Las Vegas. Comprehensive DBT program for teens ages 11-17 with borderline personality symptoms.',
-    reviewedBy: 'Dr. Russ Park, MD',
+    reviewedBy: 'Dr. Russ Park, DNP, APRN, PMHNP-BC',
     reviewDate: '2026-02-01',
     sources: [
       {
@@ -967,7 +970,7 @@ export const conditions: ConditionData[] = [
     metaTitle: 'Teen Adjustment Disorder Treatment | Silver State',
     metaDescription:
       'Compassionate adolescent adjustment disorder treatment at Silver State in Las Vegas. CBT and family therapy for teens ages 11-17 facing life transitions.',
-    reviewedBy: 'Dr. Russ Park, MD',
+    reviewedBy: 'Dr. Russ Park, DNP, APRN, PMHNP-BC',
     reviewDate: '2026-02-01',
     sources: [
       { label: 'APA: Adjustment Disorders', url: 'https://www.apa.org/topics/adjustment-disorder' },
@@ -1043,7 +1046,7 @@ export const conditions: ConditionData[] = [
     metaTitle: 'Teen Dual Diagnosis Treatment | Silver State',
     metaDescription:
       'Integrated adolescent dual diagnosis treatment at Silver State in Las Vegas. Treating co-occurring mental health and substance use in teens ages 11-17.',
-    reviewedBy: 'Dr. Russ Park, MD',
+    reviewedBy: 'Dr. Russ Park, DNP, APRN, PMHNP-BC',
     reviewDate: '2026-02-01',
     sources: [
       {
@@ -1117,11 +1120,11 @@ export const conditions: ConditionData[] = [
       },
     ],
     relatedPrograms: ['residential-treatment'],
-    relatedConditions: ['anxiety-treatment', 'depression-treatment', 'autism-spectrum-treatment'],
+    relatedConditions: ['anxiety-treatment', 'depression-treatment', 'reactive-attachment-disorder-treatment'],
     metaTitle: 'Adolescent School Refusal Treatment | Silver State',
     metaDescription:
       'Evidence-based school refusal treatment for teens ages 11-17 at Silver State in Las Vegas. CBT, gradual exposure therapy, and on-site Youth Academy academics.',
-    reviewedBy: 'Dr. Russ Park, MD',
+    reviewedBy: 'Dr. Russ Park, DNP, APRN, PMHNP-BC',
     reviewDate: '2026-02-01',
     sources: [
       {
@@ -1167,7 +1170,7 @@ export const conditions: ConditionData[] = [
       'Family Behavior Therapy',
     ],
     approach:
-      "Silver State's substance abuse treatment addresses the root causes of your teen's substance use while building skills for long-term sobriety. Within our residential program, your teen participates in individual and group therapy, psychoeducation about substances and the brain, and relapse prevention planning. Our 4:1 staff-to-client ratio provides close mentorship, and family involvement is woven into every aspect of care.\n\nWe screen every teen for co-occurring mental health conditions, because treating substance use without addressing underlying depression, anxiety, or trauma leads to poor outcomes. Our discharge planning provides continued structure as your teen transitions from residential care back to daily life, with outpatient referrals, relapse prevention strategies, and family support for lasting recovery.",
+      "At Silver State, adolescent substance use is treated as secondary to the underlying mental health condition. We do not provide on-site detox or withdrawal management. Instead, we focus on teens whose substance use is occurring alongside anxiety, depression, trauma, or other primary behavioral health needs and can refer families to a higher-acuity detox provider first when that level of care is needed.\n\nWithin our residential program, your teen participates in individual and group therapy, psychoeducation about substances and the brain, and relapse prevention planning. Our 4:1 staff-to-client ratio provides close mentorship, and family involvement is woven into every aspect of care.\n\nWe screen every teen for co-occurring mental health conditions, because treating substance use without addressing underlying depression, anxiety, or trauma leads to poor outcomes. Our discharge planning provides continued structure as your teen transitions from residential care back to daily life, with outpatient referrals, relapse prevention strategies, and family support for lasting recovery.",
     faqs: [
       {
         q: 'At what point does teen substance use become abuse?',
@@ -1207,7 +1210,7 @@ export const conditions: ConditionData[] = [
     metaTitle: 'Teen Substance Abuse Treatment | Silver State',
     metaDescription:
       'Comprehensive adolescent substance abuse treatment at Silver State in Las Vegas. Evidence-based residential care and individualized therapy for teens 11-17.',
-    reviewedBy: 'Dr. Russ Park, MD',
+    reviewedBy: 'Dr. Russ Park, DNP, APRN, PMHNP-BC',
     reviewDate: '2026-02-01',
     sources: [
       {
@@ -1249,7 +1252,7 @@ export const conditions: ConditionData[] = [
       'Family Behavior Therapy',
     ],
     approach:
-      "Silver State treats adolescent alcohol abuse within our residential program, tailored to the severity of your teen's use. Treatment combines psychoeducation about alcohol's impact on the developing brain, individual and group therapy to address triggers, and family involvement to create a supportive recovery environment. Our 4:1 staff ratio ensures your teen receives personalized, consistent support.\n\nFamily therapy is a core component because the family environment significantly influences teen alcohol use and recovery. We help parents set appropriate boundaries, model healthy coping, and create a home environment that supports sobriety. Our discharge planning provides continued structure with outpatient referrals and relapse prevention support as your teen transitions back to daily life.",
+      "At Silver State, alcohol use is treated as secondary to the underlying mental health condition rather than as a stand-alone detox admission. We do not provide on-site detox or withdrawal management, so teens who need medical alcohol detox are referred to the appropriate setting first before transitioning into our behavioral health program.\n\nWithin our residential program, treatment combines psychoeducation about alcohol's impact on the developing brain, individual and group therapy to address triggers, and family involvement to create a supportive recovery environment. Our 4:1 staff ratio ensures your teen receives personalized, consistent support.\n\nFamily therapy is a core component because the family environment significantly influences teen alcohol use and recovery. We help parents set appropriate boundaries, model healthy coping, and create a home environment that supports sobriety. Our discharge planning provides continued structure with outpatient referrals and relapse prevention support as your teen transitions back to daily life.",
     faqs: [
       {
         q: "How do I know if my teen's drinking is a serious problem?",
@@ -1257,7 +1260,7 @@ export const conditions: ConditionData[] = [
       },
       {
         q: 'Does my teen need detox for alcohol?',
-        a: 'Some teens may need medically supervised withdrawal management depending on the frequency and quantity of their drinking. Our medical team assesses each teen during intake to determine if detox support is needed and ensures the process is safe and comfortable.',
+        a: 'Silver State does not provide on-site detox or withdrawal management. If your teen needs alcohol detox first, our admissions team will help identify an appropriate medical detox provider and coordinate a referral before residential treatment with us begins.',
       },
       {
         q: 'How do you address peer pressure after treatment?',
@@ -1289,7 +1292,7 @@ export const conditions: ConditionData[] = [
     metaTitle: 'Teen Alcohol Abuse Treatment | Silver State',
     metaDescription:
       'Specialized adolescent alcohol abuse treatment at Silver State in Las Vegas. CBT, MET, and family therapy for teens ages 11-17 struggling with alcohol.',
-    reviewedBy: 'Dr. Russ Park, MD',
+    reviewedBy: 'Dr. Russ Park, DNP, APRN, PMHNP-BC',
     reviewDate: '2026-02-01',
     sources: [
       { label: 'NIDA: Alcohol', url: 'https://nida.nih.gov/research-topics/alcohol' },
@@ -1325,11 +1328,11 @@ export const conditions: ConditionData[] = [
       'Dialectical Behavior Therapy (DBT)',
     ],
     approach:
-      "Silver State's opioid treatment begins with medically supported stabilization when needed, followed by comprehensive therapeutic intervention. Within our residential program, we address the psychological dependence on opioids while treating co-occurring mental health conditions. Our 4:1 staff ratio provides constant support during the challenging early stages of recovery.\n\nFamily education is a critical component — we help parents understand the neuroscience of opioid dependence, learn to secure medications at home, recognize warning signs of relapse, and support their teen's long-term sobriety. Our discharge planning provides continued structure as your teen transitions from residential care, with outpatient referrals and robust relapse prevention planning for sustained recovery.",
+      "At Silver State, opioid use is treated as secondary to the underlying mental health condition. We do not provide on-site detox or withdrawal management, so teens who need opioid detox or medical withdrawal support are referred to the appropriate medical setting before entering our behavioral health program.\n\nWithin our residential program, we address the psychological dependence on opioids while treating co-occurring mental health conditions. Our 4:1 staff ratio provides constant support during the challenging early stages of recovery.\n\nFamily education is a critical component — we help parents understand the neuroscience of opioid dependence, learn to secure medications at home, recognize warning signs of relapse, and support their teen's long-term sobriety. Our discharge planning provides continued structure as your teen transitions from residential care, with outpatient referrals and robust relapse prevention planning for sustained recovery.",
     faqs: [
       {
         q: 'Does my teen need medical detox for opioids?',
-        a: 'Opioid withdrawal can be physically uncomfortable and, in some cases, medically significant. Our medical team evaluates each teen and provides appropriate medical support to ensure withdrawal is managed safely. The specific approach depends on the type and duration of opioid use.',
+        a: 'Silver State does not provide on-site opioid detox or withdrawal management. If your teen needs medical detox first, our admissions team can help coordinate referral to an appropriate detox provider before they begin behavioral health treatment with us.',
       },
       {
         q: 'How did my teen get access to opioids?',
@@ -1365,7 +1368,7 @@ export const conditions: ConditionData[] = [
     metaTitle: 'Teen Opioid Abuse Treatment | Silver State',
     metaDescription:
       'Urgent adolescent opioid abuse treatment at Silver State in Las Vegas. Medical support and evidence-based therapy for teens ages 11-17 in early recovery.',
-    reviewedBy: 'Dr. Russ Park, MD',
+    reviewedBy: 'Dr. Russ Park, DNP, APRN, PMHNP-BC',
     reviewDate: '2026-02-01',
     sources: [
       { label: 'NIDA: Opioids', url: 'https://nida.nih.gov/research-topics/opioids' },
@@ -1404,11 +1407,11 @@ export const conditions: ConditionData[] = [
       'Anxiety Management Skills Training',
     ],
     approach:
-      "Silver State's benzodiazepine treatment requires careful medical supervision due to the risks associated with withdrawal. Our residential program provides the structured medical oversight needed for safe stabilization, including gradual tapering protocols when appropriate. Ongoing therapy addresses the anxiety or stress that typically drives benzodiazepine misuse, teaching your teen evidence-based coping strategies that are safer and more sustainable than medication.\n\nOur 4:1 staff ratio ensures close monitoring throughout the stabilization and treatment process. Family therapy helps parents understand benzodiazepine dependence, secure medications at home, and support their teen's recovery. Our discharge planning provides continued support with outpatient referrals as your teen transitions home with a strong foundation in anxiety management skills.",
+      "At Silver State, benzodiazepine misuse is treated as secondary to the underlying mental health condition. We do not provide on-site detox, tapering, or withdrawal management, so teens who need medical benzodiazepine stabilization are referred to an appropriate higher-acuity provider before entering our program.\n\nOngoing therapy addresses the anxiety or stress that typically drives benzodiazepine misuse, teaching your teen evidence-based coping strategies that are safer and more sustainable than medication. Our 4:1 staff ratio ensures close support throughout treatment, while family therapy helps parents understand benzodiazepine risks, secure medications at home, and support recovery. Our discharge planning provides continued support with outpatient referrals as your teen transitions home with a strong foundation in anxiety management skills.",
     faqs: [
       {
         q: 'Is benzodiazepine withdrawal dangerous for teens?',
-        a: 'Benzodiazepine withdrawal can be medically serious and should always be managed under medical supervision. Our clinical team develops a safe tapering plan when appropriate and monitors your teen closely throughout the stabilization process.',
+        a: 'Benzodiazepine withdrawal can be medically serious and should be managed in an appropriate medical detox setting. Silver State does not provide on-site tapering or withdrawal management, and our admissions team can help coordinate referral when that level of care is needed before treatment here.',
       },
       {
         q: 'Why do teens misuse benzodiazepines?',
@@ -1444,7 +1447,7 @@ export const conditions: ConditionData[] = [
     metaTitle: 'Teen Benzodiazepine Treatment | Silver State',
     metaDescription:
       'Medically supervised adolescent benzodiazepine abuse treatment at Silver State in Las Vegas. Safe stabilization and therapy for teens ages 11-17 in recovery.',
-    reviewedBy: 'Dr. Russ Park, MD',
+    reviewedBy: 'Dr. Russ Park, DNP, APRN, PMHNP-BC',
     reviewDate: '2026-02-01',
     sources: [
       {
@@ -1489,7 +1492,7 @@ export const conditions: ConditionData[] = [
       'Community Reinforcement Approach',
     ],
     approach:
-      'Silver State treats adolescent cocaine abuse within our residential program. Our 4:1 staff ratio ensures close support during cravings and emotional challenges. Treatment addresses the thrill-seeking behavior, peer influences, and underlying emotional pain that often drive teen cocaine use through individual therapy, group sessions, and evidence-based interventions.\n\nFamily involvement is essential for sustained recovery. We educate parents about cocaine\'s effects on the adolescent brain, help them recognize warning signs of relapse, and build a home environment that supports sobriety. Our discharge planning provides continued therapeutic support with outpatient referrals as your teen transitions back to daily life.',
+      'At Silver State, cocaine use is treated as secondary to the underlying mental health condition. We do not provide on-site detox or withdrawal management; instead, we focus on the emotional, behavioral, and family factors that keep stimulant use going once a teen is medically appropriate for treatment in our setting.\n\nOur 4:1 staff ratio ensures close support during cravings and emotional challenges. Treatment addresses the thrill-seeking behavior, peer influences, and underlying emotional pain that often drive teen cocaine use through individual therapy, group sessions, and evidence-based interventions.\n\nFamily involvement is essential for sustained recovery. We educate parents about cocaine\'s effects on the adolescent brain, help them recognize warning signs of relapse, and build a home environment that supports sobriety. Our discharge planning provides continued therapeutic support with outpatient referrals as your teen transitions back to daily life.',
     faqs: [
       {
         q: 'Is cocaine physically addictive in teens?',
@@ -1529,7 +1532,7 @@ export const conditions: ConditionData[] = [
     metaTitle: 'Teen Cocaine Abuse Treatment | Silver State',
     metaDescription:
       'Evidence-based adolescent cocaine abuse treatment at Silver State in Las Vegas. CBT, motivational therapy, and structured support for teens ages 11-17.',
-    reviewedBy: 'Dr. Russ Park, MD',
+    reviewedBy: 'Dr. Russ Park, DNP, APRN, PMHNP-BC',
     reviewDate: '2026-02-01',
     sources: [
       { label: 'NIDA: Cocaine', url: 'https://nida.nih.gov/research-topics/cocaine' },
@@ -1568,7 +1571,7 @@ export const conditions: ConditionData[] = [
       'Matrix Model',
     ],
     approach:
-      "Silver State's methamphetamine treatment provides intensive, structured care within our residential program for stabilization and early recovery. The 4:1 staff ratio ensures constant support as teens navigate the significant mood and energy changes that occur in early meth recovery. Medical monitoring addresses the physical health consequences of meth use while therapy begins to address the psychological dependence.\n\nAs teens stabilize, we prepare a comprehensive discharge plan with outpatient referrals and continued aftercare support. We address the often severe co-occurring mental health conditions that accompany meth use — including depression, anxiety, and trauma — while rebuilding healthy routines and family relationships. Family therapy helps parents understand the recovery timeline and create a supportive home environment.",
+      "At Silver State, methamphetamine use is treated as secondary to the underlying mental health condition. We do not provide on-site detox or withdrawal management; instead, we work with teens who are medically appropriate for residential behavioral health treatment and need intensive therapy for the emotional and psychiatric factors driving meth use.\n\nThe 4:1 staff ratio ensures constant support as teens navigate the significant mood and energy changes that occur in early recovery. Therapy addresses psychological dependence while also treating the severe co-occurring mental health conditions that often accompany meth use — including depression, anxiety, and trauma.\n\nWe prepare a comprehensive discharge plan with outpatient referrals and continued aftercare support while rebuilding healthy routines and family relationships. Family therapy helps parents understand the recovery timeline and create a supportive home environment.",
     faqs: [
       {
         q: 'How long does it take for a teen to recover from meth use?',
@@ -1608,7 +1611,7 @@ export const conditions: ConditionData[] = [
     metaTitle: 'Teen Meth Abuse Treatment | Silver State',
     metaDescription:
       'Intensive adolescent methamphetamine abuse treatment at Silver State in Las Vegas. Structured residential care and evidence-based therapy for teens 11-17.',
-    reviewedBy: 'Dr. Russ Park, MD',
+    reviewedBy: 'Dr. Russ Park, DNP, APRN, PMHNP-BC',
     reviewDate: '2026-02-01',
     sources: [
       {
@@ -1650,7 +1653,7 @@ export const conditions: ConditionData[] = [
       'Family Behavior Therapy',
     ],
     approach:
-      "Silver State's cannabis treatment begins with psychoeducation about how cannabis affects the adolescent brain, then moves into evidence-based therapy addressing the patterns maintaining your teen's use. Within our residential program, we help teens develop alternative coping strategies and rebuild motivation. Our 4:1 staff ratio provides mentorship and accountability.\n\nFamily therapy addresses enabling patterns and builds a supportive home environment. We help parents navigate the complexities of cannabis being legal for adults while explaining the distinct risks for the developing adolescent brain. Our aftercare planning provides continued support and accountability as your teen rebuilds their daily routine and peer relationships.",
+      "At Silver State, cannabis use is treated as secondary to the underlying mental health condition. We do not provide on-site detox or withdrawal management; instead, our focus is helping teens address the anxiety, depression, boredom, trauma, or social dynamics that keep cannabis use going.\n\nOur residential program combines psychoeducation about how cannabis affects the adolescent brain with evidence-based therapy addressing the patterns maintaining your teen's use. We help teens develop alternative coping strategies and rebuild motivation, while our 4:1 staff ratio provides mentorship and accountability.\n\nFamily therapy addresses enabling patterns and builds a supportive home environment. We help parents navigate the complexities of cannabis being legal for adults while explaining the distinct risks for the developing adolescent brain. Our aftercare planning provides continued support and accountability as your teen rebuilds their daily routine and peer relationships.",
     faqs: [
       {
         q: 'Is cannabis really addictive for teens?',
@@ -1690,7 +1693,7 @@ export const conditions: ConditionData[] = [
     metaTitle: 'Teen Cannabis Abuse Treatment | Silver State',
     metaDescription:
       'Specialized adolescent cannabis abuse treatment at Silver State in Las Vegas. Evidence-based therapy for teens ages 11-17 struggling with marijuana dependence.',
-    reviewedBy: 'Dr. Russ Park, MD',
+    reviewedBy: 'Dr. Russ Park, DNP, APRN, PMHNP-BC',
     reviewDate: '2026-02-01',
     sources: [
       {
@@ -1699,6 +1702,81 @@ export const conditions: ConditionData[] = [
       },
       { label: 'SAMHSA: Know the Risks of Marijuana', url: 'https://www.samhsa.gov/marijuana' },
       { label: 'CDC: Marijuana and Public Health', url: 'https://www.cdc.gov/marijuana/' },
+    ],
+  },
+  {
+    slug: 'mdma-treatment',
+    name: 'MDMA & Ecstasy Treatment',
+    heroImage: '/assets/facility-gallery/hallway-central-hub.jpg',
+    sectionImages: ['/assets/stock/dual-diagnosis-therapy.jpg', '/assets/stock/group-therapy-session.jpg'],
+    seoKeywords: ['teen MDMA treatment', 'adolescent ecstasy treatment', 'teen molly abuse treatment', 'MDMA treatment Las Vegas', 'teen party drug treatment'],
+    headline: 'Adolescent MDMA & Ecstasy Treatment at Silver State',
+    category: 'substance-abuse',
+    description:
+      'MDMA (3,4-methylenedioxymethamphetamine), commonly known as ecstasy or molly, is a synthetic drug popular in party and club settings that has become increasingly accessible to adolescents. According to the National Institute on Drug Abuse (NIDA), MDMA use among teens often occurs at parties, concerts, and social gatherings where the drug is presented as a harmless way to enhance the experience. Silver State provides specialized care for adolescents ages 11\u201317 who have developed problematic MDMA use patterns alongside co-occurring mental health conditions.\n\nMDMA acts as both a stimulant and a hallucinogen, flooding the brain with serotonin, dopamine, and norepinephrine. This produces intense feelings of euphoria, emotional closeness, and energy \u2014 but the aftermath can include severe depression, anxiety, and cognitive difficulties that last days or weeks. For teens whose brains are still developing, repeated MDMA use can disrupt serotonin systems in ways that may have lasting effects on mood regulation, memory, and impulse control.\n\nMany teens who use MDMA are also dealing with underlying mental health issues such as social anxiety, depression, or difficulty connecting with peers. The drug\u2019s ability to lower social barriers and create feelings of emotional connection can make it particularly appealing to teens who are struggling emotionally.\n\nAt Silver State, we understand that substance use in adolescents is typically secondary to underlying mental health conditions. Our approach treats the whole teen \u2014 addressing the anxiety, depression, or social difficulties that drive substance use while providing education about the specific risks of MDMA on the developing brain.',
+    symptoms: [
+      'Using MDMA at parties, concerts, or social events',
+      'Severe mood crashes (depression, irritability) in the days after use',
+      'Difficulty sleeping or disrupted sleep patterns after use',
+      'Teeth grinding, jaw clenching, or muscle tension',
+      'Increased social risk-taking or impulsive behavior while using',
+      'Memory problems or difficulty concentrating at school',
+      'Mixing MDMA with other substances (polydrug use)',
+      'Withdrawal from family and changes in friend groups',
+      'Dehydration, overheating, or physical health issues after use',
+    ],
+    therapies: [
+      'Cognitive Behavioral Therapy (CBT)',
+      'Motivational Interviewing (MI)',
+      'Dialectical Behavior Therapy (DBT)',
+      'Group Therapy',
+    ],
+    approach:
+      'At Silver State, substance use \u2014 including MDMA \u2014 is treated as secondary to the underlying mental health condition. We do not provide on-site detox or withdrawal management; instead, we focus on teens who are experimenting with or developing patterns of substance use alongside their primary mental health diagnosis. Our clinicians address the emotional and social factors that make MDMA appealing \u2014 social anxiety, desire for connection, difficulty managing emotions \u2014 while teaching healthier alternatives.\n\nWithin our residential program, teens participate in individual therapy, group sessions focused on substance education and refusal skills, and family therapy that helps parents understand the social context of teen drug use. Our approach emphasizes building genuine social connections, developing emotional regulation skills, and creating a fulfilling life that does not require substances to feel connected or happy.',
+    faqs: [
+      {
+        q: 'Is MDMA addictive for teens?',
+        a: 'While MDMA may be less physically addictive than some substances, teens can develop psychological dependence, particularly when using it to cope with social anxiety or emotional difficulties. Regular use disrupts the brain\u2019s serotonin system, leading to worsening mood and increased cravings.',
+      },
+      {
+        q: 'What are the dangers of MDMA for adolescents?',
+        a: 'MDMA poses serious risks for the developing adolescent brain, including disruption of serotonin pathways that regulate mood, sleep, and cognition. Acute risks include dangerous overheating, dehydration, serotonin syndrome, and the frequent contamination of street MDMA with fentanyl or methamphetamine.',
+      },
+      {
+        q: 'Do you provide detox for MDMA?',
+        a: 'Silver State does not provide on-site detox. We treat teens whose substance use is secondary to their primary mental health condition. MDMA does not typically produce physical withdrawal symptoms requiring medical detox, but the emotional and psychological aftermath of regular use is addressed through our therapeutic programming.',
+      },
+      {
+        q: 'How do you address the social aspects of MDMA use?',
+        a: 'Many teens use MDMA in social settings because it lowers barriers and creates feelings of connection. Our treatment helps teens develop genuine social skills, build authentic friendships, and manage social anxiety through evidence-based therapies \u2014 replacing the artificial connection of the drug with real relationship skills.',
+      },
+      {
+        q: 'What if my teen is using multiple substances?',
+        a: 'Polydrug use is common among teens who use MDMA. Our dual diagnosis approach addresses all substance use patterns alongside the underlying mental health conditions driving them. We assess the full picture during intake and create a comprehensive treatment plan.',
+      },
+      {
+        q: 'How is MDMA use disorder diagnosed in adolescents?',
+        a: 'MDMA use disorder is assessed using DSM-5 criteria for hallucinogen use disorder, evaluating patterns of use, failed attempts to cut down, continued use despite negative consequences, and impact on daily functioning. A comprehensive evaluation includes screening for co-occurring mental health conditions.',
+      },
+    ],
+    relatedPrograms: ['residential-treatment'],
+    relatedConditions: [
+      'dual-diagnosis-treatment',
+      'anxiety-treatment',
+      'depression-treatment',
+    ],
+    metaTitle: 'Teen MDMA & Ecstasy Treatment | Silver State',
+    metaDescription:
+      'Adolescent MDMA and ecstasy abuse treatment at Silver State in Las Vegas. Treating teen substance use secondary to mental health conditions ages 11-17.',
+    reviewedBy: 'Dr. Russ Park, DNP, APRN, PMHNP-BC',
+    reviewDate: '2026-03-01',
+    sources: [
+      {
+        label: 'NIDA: MDMA (Ecstasy/Molly)',
+        url: 'https://nida.nih.gov/research-topics/mdma-ecstasy-molly',
+      },
+      { label: 'SAMHSA: Mental Health Services', url: 'https://www.samhsa.gov/mental-health' },
+      { label: 'CDC: Youth Risk Behaviors', url: 'https://www.cdc.gov/yrbs/' },
     ],
   },
   // --- Eating Disorder Conditions ---
@@ -1731,7 +1809,7 @@ export const conditions: ConditionData[] = [
       'Nutritional Rehabilitation',
     ],
     approach:
-      "Silver State's anorexia treatment integrates medical monitoring, nutritional rehabilitation, and evidence-based psychotherapy. Our residential program provides the highest level of support with supervised meals, medical oversight, and 24/7 clinical care. The refeeding process is carefully managed by our medical and nutrition teams to ensure safety and appropriate weight restoration.\n\nAs teens stabilize medically and nutritionally, we develop a comprehensive discharge plan with outpatient referrals for continued meal support and therapy. Our 4:1 staff ratio ensures individualized attention during the challenging recovery process. Family-Based Treatment puts parents in a central role, equipping families to support nutritional restoration and challenge the eating disorder at home. Our discharge planning ensures that gains made in residential treatment are maintained as your teen transitions to outpatient care.",
+      "Silver State addresses anorexia-related symptoms when they are secondary to a teen's broader mental health presentation and medically appropriate for our level of care. Teens whose primary need is stand-alone eating disorder treatment, hospital-based refeeding, or a specialty eating disorder program may be referred to a dedicated eating disorder provider first.\n\nWithin our residential program, we integrate evidence-based psychotherapy, structured meal support, and coordinated clinical oversight. Our 4:1 staff ratio ensures individualized attention during the recovery process, and Family-Based Treatment puts parents in a central role, equipping families to support nutritional restoration and challenge the eating disorder at home. Our discharge planning ensures that gains made in residential treatment are maintained as your teen transitions to outpatient care.",
     faqs: [
       {
         q: 'How serious is anorexia in adolescents?',
@@ -1776,7 +1854,7 @@ export const conditions: ConditionData[] = [
     metaTitle: 'Teen Anorexia Nervosa Treatment | Silver State',
     metaDescription:
       'Specialized adolescent anorexia nervosa treatment at Silver State in Las Vegas. Medical monitoring, FBT, and nutritional care for teens ages 11-17 in recovery.',
-    reviewedBy: 'Dr. Russ Park, MD',
+    reviewedBy: 'Dr. Russ Park, DNP, APRN, PMHNP-BC',
     reviewDate: '2026-02-01',
     sources: [
       {
@@ -1818,7 +1896,7 @@ export const conditions: ConditionData[] = [
       'Interpersonal Therapy (IPT)',
     ],
     approach:
-      "Silver State's bulimia treatment focuses on interrupting the binge-purge cycle and addressing the emotional triggers behind it. Within our residential program, your teen receives structured meal support, individual therapy, body image work, and nutritional counseling. Our 4:1 staff ratio allows clinicians to provide the close support needed during and after meals, a critical time for teens with bulimia.\n\nFamily therapy helps parents understand the disorder, recognize enabling patterns, and create a supportive recovery environment at home. Our discharge planning ensures that as your teen transitions to outpatient care, they have the coping skills and meal structure needed to maintain recovery. We address co-occurring conditions like depression and anxiety simultaneously to support whole-person healing.",
+      "Silver State addresses bulimia-related symptoms when they are secondary to a teen's broader mental health presentation and appropriate for our level of care. Teens whose primary need is a stand-alone eating disorder program or specialty medical eating disorder treatment may be referred to a dedicated provider first.\n\nWithin our residential program, treatment focuses on interrupting the binge-purge cycle and addressing the emotional triggers behind it through structured meal support, individual therapy, body image work, and nutritional counseling. Our 4:1 staff ratio allows clinicians to provide the close support needed during and after meals, while family therapy helps parents recognize enabling patterns and create a supportive recovery environment at home. We address co-occurring conditions like depression and anxiety simultaneously to support whole-person healing.",
     faqs: [
       {
         q: "Can my teen have bulimia if they're not underweight?",
@@ -1858,7 +1936,7 @@ export const conditions: ConditionData[] = [
     metaTitle: 'Teen Bulimia Nervosa Treatment | Silver State',
     metaDescription:
       'Compassionate adolescent bulimia nervosa treatment at Silver State in Las Vegas. CBT-E, FBT, nutritional support, and relapse prevention for teens ages 11-17.',
-    reviewedBy: 'Dr. Russ Park, MD',
+    reviewedBy: 'Dr. Russ Park, DNP, APRN, PMHNP-BC',
     reviewDate: '2026-02-01',
     sources: [
       {
@@ -1900,7 +1978,7 @@ export const conditions: ConditionData[] = [
       'Mindful Eating Practices',
     ],
     approach:
-      "Silver State's BED treatment addresses the emotional roots of binge eating while normalizing eating patterns. Within our residential program, teens learn to identify emotional triggers, develop alternative coping skills, and practice structured, mindful eating. Our 4:1 staff ratio provides consistent support, and our clinical team creates a shame-free environment that is essential for healing.\n\nWe explicitly avoid diet-focused approaches, instead helping teens build a healthy, sustainable relationship with food and their bodies. Family therapy educates parents about BED, addresses family meal dynamics, and helps the household create an environment that supports recovery. Our aftercare planning ensures continued support as your teen builds independence in managing their relationship with food.",
+      "Silver State addresses binge-eating symptoms when they are secondary to a teen's primary mental health needs and clinically appropriate for our setting. Teens whose primary need is a stand-alone eating disorder program may be referred to a specialty eating disorder provider first.\n\nWithin our residential program, treatment addresses the emotional roots of binge eating while normalizing eating patterns. Teens learn to identify emotional triggers, develop alternative coping skills, and practice structured, mindful eating. Our 4:1 staff ratio provides consistent support, and our clinical team creates a shame-free environment that is essential for healing.\n\nWe explicitly avoid diet-focused approaches, instead helping teens build a healthy, sustainable relationship with food and their bodies. Family therapy educates parents about BED, addresses family meal dynamics, and helps the household create an environment that supports recovery. Our aftercare planning ensures continued support as your teen builds independence in managing their relationship with food.",
     faqs: [
       {
         q: 'Is binge eating disorder different from overeating?',
@@ -1936,7 +2014,7 @@ export const conditions: ConditionData[] = [
     metaTitle: 'Teen Binge Eating Treatment | Silver State',
     metaDescription:
       'Empathetic adolescent binge eating disorder treatment at Silver State in Las Vegas. CBT-E, DBT, and nutritional guidance for teens ages 11-17 in recovery.',
-    reviewedBy: 'Dr. Russ Park, MD',
+    reviewedBy: 'Dr. Russ Park, DNP, APRN, PMHNP-BC',
     reviewDate: '2026-02-01',
     sources: [
       {
@@ -1978,7 +2056,7 @@ export const conditions: ConditionData[] = [
       'Occupational Therapy with Sensory Integration',
     ],
     approach:
-      "Silver State's ARFID treatment combines gradual food exposure with anxiety management in a structured therapeutic environment. Within our residential program, our clinical and nutrition teams work together to help your teen slowly and safely expand their diet. Our 4:1 staff ratio provides patient, individualized support during meals, and our approach is always collaborative — never forceful.\n\nWe collaborate with families to continue progress at home, understanding that ARFID recovery requires consistency across all environments. Family therapy teaches parents how to support food exploration without pressure, manage mealtimes constructively, and distinguish between accommodation and support. For teens with sensory-based ARFID, occupational therapy with sensory integration helps build tolerance gradually.",
+      "Silver State addresses ARFID-related symptoms when they are secondary to a teen's broader mental health presentation and appropriate for our level of care. Teens whose primary need is a stand-alone eating disorder program, specialty feeding program, or more intensive nutritional restoration may be referred to a dedicated provider first.\n\nWithin our residential program, ARFID treatment combines gradual food exposure with anxiety management in a structured therapeutic environment. Our clinical and nutrition teams work together to help your teen slowly and safely expand their diet, while our 4:1 staff ratio provides patient, individualized support during meals. Family therapy teaches parents how to support food exploration without pressure, and for teens with sensory-based ARFID, occupational therapy with sensory integration helps build tolerance gradually.",
     faqs: [
       {
         q: 'How is ARFID different from picky eating?',
@@ -2012,13 +2090,13 @@ export const conditions: ConditionData[] = [
     relatedPrograms: ['residential-treatment'],
     relatedConditions: [
       'anxiety-treatment',
-      'autism-spectrum-treatment',
+      'reactive-attachment-disorder-treatment',
       'anorexia-nervosa-treatment',
     ],
     metaTitle: 'Adolescent ARFID Treatment | Silver State',
     metaDescription:
       'Specialized adolescent ARFID treatment at Silver State in Las Vegas. Gradual food exposure and therapy for teens ages 11-17 with avoidant eating patterns.',
-    reviewedBy: 'Dr. Russ Park, MD',
+    reviewedBy: 'Dr. Russ Park, DNP, APRN, PMHNP-BC',
     reviewDate: '2026-02-01',
     sources: [
       {
@@ -2060,7 +2138,7 @@ export const conditions: ConditionData[] = [
       'Nutritional Counseling',
     ],
     approach:
-      "Silver State's OSFED treatment is tailored to the specific presentation your teen is experiencing. Our clinical team identifies the core disordered eating patterns and applies the most appropriate evidence-based interventions. Within our residential program, your teen receives individualized therapy, structured meal support, and nutritional rehabilitation. Our 4:1 staff ratio provides the personalized care that OSFED's varied presentations require.\n\nFamily therapy helps parents understand their teen's specific eating disorder presentation, recognize warning signs of escalation, and create a home environment that supports recovery. Our treatment approach addresses co-occurring conditions like anxiety and depression simultaneously, and our aftercare planning ensures continued support as your teen builds independence in maintaining recovery.",
+      "Silver State addresses OSFED symptoms when they are secondary to a teen's broader mental health presentation and clinically appropriate for our setting. Teens whose primary need is a specialty eating disorder program may be referred to a dedicated provider first.\n\nOur clinical team identifies the core disordered eating patterns and applies the most appropriate evidence-based interventions within our residential program. Your teen receives individualized therapy, structured meal support, and nutritional rehabilitation, while our 4:1 staff ratio provides the personalized care that OSFED's varied presentations require. Family therapy helps parents recognize warning signs of escalation, and our treatment approach addresses co-occurring conditions like anxiety and depression simultaneously as your teen builds independence in maintaining recovery.",
     faqs: [
       {
         q: 'Is OSFED as serious as anorexia or bulimia?',
@@ -2101,7 +2179,7 @@ export const conditions: ConditionData[] = [
     metaTitle: 'Adolescent OSFED Treatment | Silver State',
     metaDescription:
       'Individualized adolescent OSFED treatment at Silver State in Las Vegas. Evidence-based care for teens ages 11-17 with other specified eating disorders.',
-    reviewedBy: 'Dr. Russ Park, MD',
+    reviewedBy: 'Dr. Russ Park, DNP, APRN, PMHNP-BC',
     reviewDate: '2026-02-01',
     sources: [
       {
@@ -2144,7 +2222,7 @@ export const conditions: ConditionData[] = [
       'Mindfulness-Based Eating Awareness',
     ],
     approach:
-      "Silver State's compulsive eating treatment focuses on understanding the emotional function of overeating and developing alternative coping strategies. Within our residential program, your teen participates in individual therapy to identify triggers, group sessions to reduce shame, and structured meals with nutritional support. Our clinical team addresses co-occurring conditions like anxiety and depression that often drive compulsive eating patterns.\n\nOur 4:1 staff ratio ensures your teen receives personalized attention and support throughout treatment. Family therapy helps parents understand the compulsive eating cycle, avoid inadvertently reinforcing restrictive patterns, and create a home food environment that supports recovery. Our non-diet approach teaches intuitive eating skills and emotional regulation strategies that your teen can use for life.",
+      "Silver State addresses compulsive eating when it is secondary to a teen's primary mental health needs and appropriate for our level of care. Teens whose primary need is a stand-alone eating disorder program may be referred to a specialty provider first.\n\nWithin our residential program, treatment focuses on understanding the emotional function of overeating and developing alternative coping strategies. Your teen participates in individual therapy to identify triggers, group sessions to reduce shame, and structured meals with nutritional support, while our clinical team addresses co-occurring conditions like anxiety and depression that often drive compulsive eating patterns.\n\nOur 4:1 staff ratio ensures personalized attention throughout treatment. Family therapy helps parents understand the compulsive eating cycle and create a home food environment that supports recovery, while our non-diet approach teaches intuitive eating skills and emotional regulation strategies your teen can use for life.",
     faqs: [
       {
         q: 'Is compulsive eating the same as binge eating disorder?',
@@ -2184,7 +2262,7 @@ export const conditions: ConditionData[] = [
     metaTitle: 'Adolescent Compulsive Eating Treatment | Silver State',
     metaDescription:
       'Specialized compulsive eating treatment for teens ages 11-17 at Silver State in Las Vegas. Non-restrictive, evidence-based care for emotional eating patterns.',
-    reviewedBy: 'Dr. Russ Park, MD',
+    reviewedBy: 'Dr. Russ Park, DNP, APRN, PMHNP-BC',
     reviewDate: '2026-02-01',
     sources: [
       {

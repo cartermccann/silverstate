@@ -322,6 +322,7 @@ export interface ProgramPageData {
   duration: string
   targetAudience: string
   dailySchedule: DailyScheduleEntry[]
+  scheduleDisclaimer?: string
   therapyModalities: string[]
   features: string[]
   stat?: string

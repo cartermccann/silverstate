@@ -25,6 +25,7 @@ import {
   youthAcademyData,
   testimonialData,
   dailyScheduleData,
+  scheduleDisclaimer,
   statsData,
   familySectionData,
   teamOverviewData,
@@ -923,6 +924,20 @@ export default function Home() {
                 <TimelineRow key={i} time={item.time} activity={item.activity} desc={item.desc} />
               ))}
             </div>
+          </AnimateIn>
+          <AnimateIn variant="fadeUp" delay={0.15}>
+            <p
+              style={{
+                margin: '14px auto 0',
+                maxWidth: 640,
+                fontSize: '.8rem',
+                color: 'var(--muted)',
+                lineHeight: 1.6,
+                textAlign: 'center',
+              }}
+            >
+              {scheduleDisclaimer}
+            </p>
           </AnimateIn>
         </div>
       </section>

@@ -34,7 +34,7 @@ const faqSections = [
       },
       {
         q: 'What therapies do you use?',
-        a: 'Our evidence-based modalities include Cognitive Behavioral Therapy (CBT), Dialectical Behavior Therapy (DBT), Eye Movement Desensitization and Reprocessing (EMDR), Trauma-Focused CBT (TF-CBT), family therapy, group therapy, art therapy, adventure therapy, mindfulness and meditation, and medication management. Each teen\'s treatment plan uses the specific combination of therapies best suited to their diagnosis and goals.',
+        a: 'Our evidence-based modalities include Cognitive Behavioral Therapy (CBT), Dialectical Behavior Therapy (DBT), Eye Movement Desensitization and Reprocessing (EMDR), Trauma-Focused CBT (TF-CBT), family therapy, group therapy, recreational therapy, adventure therapy, mindfulness and meditation, and medication management. Each teen\'s treatment plan uses the specific combination of therapies best suited to their diagnosis and goals.',
       },
       {
         q: 'Do you treat co-occurring disorders?',
@@ -80,7 +80,7 @@ const faqSections = [
       },
       {
         q: 'What activities are available?',
-        a: 'Silver State offers a range of therapeutic and recreational activities, including art therapy, music therapy, adventure therapy, fitness and strength training, yoga, meditation, and supervised recreational outings. These activities are integrated into treatment plans and support social skill development, emotional regulation, and physical wellness.',
+        a: 'Silver State offers a range of therapeutic and recreational activities, including recreational therapy, adventure therapy, fitness and strength training, yoga, meditation, and supervised recreational outings. These activities are integrated into treatment plans and support social skill development, emotional regulation, and physical wellness.',
       },
       {
         q: 'How are meals handled?',

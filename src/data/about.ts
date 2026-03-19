@@ -291,7 +291,7 @@ export const youthAcademyFeatures: YouthAcademyFeature[] = [
 // --- Team overview (used by homepage team section) ---
 
 export const team: { clinical: string; members: string[] } = {
-  clinical: 'Dr. Russ Park, DNP — Executive Director',
+  clinical: 'Dr. Russ Park, DNP, APRN, PMHNP-BC — Executive Director',
   members: [
     'Psychiatrist',
     'Individual Therapist',
@@ -301,7 +301,7 @@ export const team: { clinical: string; members: string[] } = {
     'Registered Dietitians',
     'Recovery Counselors',
     'Adventure Therapists',
-    'Music & Art Therapists',
+    'Recreational Therapists',
     'Fitness Experts',
     'Yoga & Meditation Instructors',
     'Academic Teachers & Tutors',

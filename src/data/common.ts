@@ -81,6 +81,7 @@ export const navLinks: NavLinkItemWithDropdown[] = [
           { label: 'Cannabis Abuse', href: '/conditions/cannabis-abuse-treatment' },
           { label: 'Meth Abuse', href: '/conditions/meth-abuse-treatment' },
           { label: 'Cocaine Abuse', href: '/conditions/cocaine-abuse-treatment' },
+          { label: 'MDMA & Ecstasy', href: '/conditions/mdma-treatment' },
         ],
         viewAll: { label: 'View All Conditions', href: '/conditions' },
       },

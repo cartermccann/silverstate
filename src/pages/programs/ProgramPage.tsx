@@ -394,6 +394,22 @@ export default function ProgramPage({ program }: ProgramPageProps) {
               ))}
             </div>
           </AnimateIn>
+          {program.scheduleDisclaimer && (
+            <AnimateIn variant="fadeUp" delay={0.15}>
+              <p
+                style={{
+                  margin: '14px auto 0',
+                  maxWidth: 640,
+                  fontSize: '.8rem',
+                  color: 'var(--muted)',
+                  lineHeight: 1.6,
+                  textAlign: 'center',
+                }}
+              >
+                {program.scheduleDisclaimer}
+              </p>
+            </AnimateIn>
+          )}
         </div>
       </section>
 
@@ -784,6 +800,41 @@ export default function ProgramPage({ program }: ProgramPageProps) {
               </div>
             </AnimateIn>
           </div>
+        </div>
+      </section>
+
+      {/* ── MEDICAL DISCLAIMER ── */}
+      <section style={{ padding: '24px 0 32px' }}>
+        <div className="wrap" style={{ maxWidth: 800 }}>
+          {program.reviewedBy && (
+            <p
+              style={{
+                fontSize: '.8rem',
+                color: 'var(--muted)',
+                lineHeight: 1.6,
+                margin: '0 0 10px',
+              }}
+            >
+              Clinically reviewed by {program.reviewedBy}
+              {program.reviewDate ? ` on ${program.reviewDate}` : ''}.
+            </p>
+          )}
+          <p
+            style={{
+              fontSize: '.75rem',
+              color: 'var(--muted)',
+              lineHeight: 1.6,
+              fontStyle: 'italic',
+              margin: 0,
+              borderTop: '1px solid var(--border)',
+              paddingTop: 16,
+            }}
+          >
+            The information provided on this page is for educational purposes only and does not
+            constitute medical advice. Treatment outcomes vary by individual. Silver State
+            Adolescent Treatment Center recommends consulting with a qualified healthcare
+            professional for personalized treatment recommendations.
+          </p>
         </div>
       </section>
 

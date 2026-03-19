@@ -563,45 +563,84 @@ export default function ConditionPage({ condition }: ConditionPageProps) {
       </section>
 
       {/* ── 11. SOURCE CITATIONS ── */}
-      {condition.sources.length > 0 && (
+      {(condition.reviewedBy || condition.sources.length > 0) && (
         <section style={{ padding: '0 0 48px' }}>
           <div className="wrap" style={{ maxWidth: 800 }}>
-            <h3
-              style={{
-                fontFamily: DISPLAY,
-                fontSize: '.9rem',
-                fontWeight: 600,
-                color: 'var(--muted)',
-                marginBottom: 12,
-              }}
-            >
-              Sources
-            </h3>
-            <ol style={{ margin: 0, paddingLeft: 20 }}>
-              {condition.sources.map((source, i) => (
-                <li
-                  key={i}
+            {condition.reviewedBy && (
+              <p
+                style={{
+                  fontSize: '.8rem',
+                  color: 'var(--muted)',
+                  lineHeight: 1.6,
+                  margin: '0 0 14px',
+                }}
+              >
+                Clinically reviewed by {condition.reviewedBy}
+                {condition.reviewDate ? ` on ${condition.reviewDate}` : ''}.
+              </p>
+            )}
+            {condition.sources.length > 0 && (
+              <>
+                <h3
                   style={{
-                    fontSize: '.8rem',
+                    fontFamily: DISPLAY,
+                    fontSize: '.9rem',
+                    fontWeight: 600,
                     color: 'var(--muted)',
-                    lineHeight: 1.6,
-                    marginBottom: 4,
+                    marginBottom: 12,
                   }}
                 >
-                  <a
-                    href={source.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ color: 'var(--blue)', textDecoration: 'none' }}
-                  >
-                    {source.label}
-                  </a>
-                </li>
-              ))}
-            </ol>
+                  Sources
+                </h3>
+                <ol style={{ margin: 0, paddingLeft: 20 }}>
+                  {condition.sources.map((source, i) => (
+                    <li
+                      key={i}
+                      style={{
+                        fontSize: '.8rem',
+                        color: 'var(--muted)',
+                        lineHeight: 1.6,
+                        marginBottom: 4,
+                      }}
+                    >
+                      <a
+                        href={source.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ color: 'var(--blue)', textDecoration: 'none' }}
+                      >
+                        {source.label}
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </>
+            )}
           </div>
         </section>
       )}
+
+      {/* ── MEDICAL DISCLAIMER ── */}
+      <section style={{ padding: '24px 0 32px' }}>
+        <div className="wrap" style={{ maxWidth: 800 }}>
+          <p
+            style={{
+              fontSize: '.75rem',
+              color: 'var(--muted)',
+              lineHeight: 1.6,
+              fontStyle: 'italic',
+              margin: 0,
+              borderTop: '1px solid var(--border)',
+              paddingTop: 16,
+            }}
+          >
+            The information provided on this page is for educational purposes only and does not
+            constitute medical advice. Treatment outcomes vary by individual. Silver State
+            Adolescent Treatment Center recommends consulting with a qualified healthcare
+            professional for personalized treatment recommendations.
+          </p>
+        </div>
+      </section>
 
       <style>{`
         @media (max-width: 900px) {

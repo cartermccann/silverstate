@@ -27,7 +27,7 @@ const faqs = [
   },
   {
     q: 'What holistic activities are available to teens?',
-    a: 'Our holistic programming includes yoga, guided meditation, nutrition education, physical fitness activities, art and music expression, journaling, nature-based mindfulness walks, and recreational therapy. Each teen\u2019s schedule is personalized to include activities that best support their individual treatment plan and interests.',
+    a: 'Our holistic programming includes yoga, guided meditation, nutrition education, physical fitness activities, recreational therapy activities, journaling, nature-based mindfulness walks, and recreational therapy. Each teen\u2019s schedule is personalized to include activities that best support their individual treatment plan and interests.',
   },
   {
     q: 'What is the evidence base for holistic treatment with teens?',

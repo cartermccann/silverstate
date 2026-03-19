@@ -9,7 +9,7 @@ import { meta as traumaPstdMeta } from './TraumaPTSD'
 import { meta as suicidalIdeationMeta } from './SuicidalIdeation'
 import { meta as ocdMeta } from './OCD'
 import { meta as bipolarMeta } from './BipolarDisorder'
-import { meta as autismMeta } from './AutismSpectrum'
+import { meta as radMeta } from './ReactiveAttachmentDisorder'
 import { meta as oddMeta } from './OppositionalDefiant'
 import { meta as conductMeta } from './ConductDisorder'
 import { meta as dmddMeta } from './DMDD'
@@ -38,7 +38,7 @@ const mentalHealthMetas = [
   suicidalIdeationMeta,
   ocdMeta,
   bipolarMeta,
-  autismMeta,
+  radMeta,
   oddMeta,
   conductMeta,
   dmddMeta,
@@ -195,6 +195,6 @@ describe('Eating disorder route metadata - Story 4.4', () => {
       (path) => path.startsWith('/conditions/') && path !== '/conditions',
     )
 
-    expect(conditionRoutes).toHaveLength(25)
+    expect(conditionRoutes).toHaveLength(28)
   })
 })

@@ -2,7 +2,7 @@ import ConditionPage from './ConditionPage'
 import { getConditionBySlug } from '../../data/conditions'
 import { generateMeta } from '../../utils/meta'
 
-const condition = getConditionBySlug('autism-spectrum-treatment')!
+const condition = getConditionBySlug('reactive-attachment-disorder-treatment')!
 
 export const meta = generateMeta({
   title: condition.metaTitle,
@@ -12,9 +12,9 @@ export const meta = generateMeta({
 })
 
 export const handle = {
-  breadcrumb: { label: 'Autism Spectrum Treatment', parent: '/conditions' },
+  breadcrumb: { label: 'Reactive Attachment Disorder Treatment', parent: '/conditions' },
 }
 
-export default function AutismSpectrum() {
+export default function ReactiveAttachmentDisorder() {
   return <ConditionPage condition={condition} />
 }

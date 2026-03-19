@@ -371,6 +371,28 @@ export default function TherapyPage({ therapy, faqs }: TherapyPageProps) {
           </div>
         </div>
       </section>
+
+      {/* ── MEDICAL DISCLAIMER ── */}
+      <section style={{ padding: '24px 0 32px' }}>
+        <div className="wrap" style={{ maxWidth: 800 }}>
+          <p
+            style={{
+              fontSize: '.75rem',
+              color: 'var(--muted)',
+              lineHeight: 1.6,
+              fontStyle: 'italic',
+              margin: 0,
+              borderTop: '1px solid var(--border)',
+              paddingTop: 16,
+            }}
+          >
+            The information provided on this page is for educational purposes only and does not
+            constitute medical advice. Treatment outcomes vary by individual. Silver State
+            Adolescent Treatment Center recommends consulting with a qualified healthcare
+            professional for personalized treatment recommendations.
+          </p>
+        </div>
+      </section>
     </>
   )
 }

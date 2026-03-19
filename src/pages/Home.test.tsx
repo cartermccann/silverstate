@@ -125,13 +125,11 @@ describe('Home — Story 2.1 hero and data sourcing', () => {
     expect(pageText).toContain(whoThisIsForData.body)
   })
 
-  it('marks hero image as eager/high-priority with explicit dimensions', () => {
-    renderHome()
-    const heroImage = screen.getByAltText(heroData.backgroundImage.alt)
-    expect(heroImage).toHaveAttribute('fetchpriority', 'high')
-    expect(heroImage).toHaveAttribute('loading', 'eager')
-    expect(heroImage).toHaveAttribute('width', '1920')
-    expect(heroImage).toHaveAttribute('height', '1080')
+  it('renders hero video with poster from backgroundImage', () => {
+    const { container } = renderHome()
+    const heroVideo = container.querySelector('video[poster]')
+    expect(heroVideo).toBeTruthy()
+    expect(heroVideo).toHaveAttribute('poster', heroData.backgroundImage.src)
   })
 
   it('renders hero CTAs with proper targets', () => {

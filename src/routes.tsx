@@ -20,7 +20,7 @@ const MotivationalInterviewing = lazy(() => import('./pages/programs/Motivationa
 const FamilyTherapy = lazy(() => import('./pages/programs/FamilyTherapy'))
 const GroupTherapy = lazy(() => import('./pages/programs/GroupTherapy'))
 const IndividualTherapy = lazy(() => import('./pages/programs/IndividualTherapy'))
-const ArtMusicTherapy = lazy(() => import('./pages/programs/ArtMusicTherapy'))
+const RecreationalTherapy = lazy(() => import('./pages/programs/RecreationalTherapy'))
 const AdventureTherapy = lazy(() => import('./pages/programs/AdventureTherapy'))
 const MeditationTherapy = lazy(() => import('./pages/programs/MeditationTherapy'))
 const MedicationManagement = lazy(() => import('./pages/programs/MedicationManagement'))
@@ -37,7 +37,7 @@ const SubstanceAbuse = lazy(() => import('./pages/conditions/SubstanceAbuse'))
 const SuicidalIdeation = lazy(() => import('./pages/conditions/SuicidalIdeation'))
 const OCD = lazy(() => import('./pages/conditions/OCD'))
 const BipolarDisorder = lazy(() => import('./pages/conditions/BipolarDisorder'))
-const AutismSpectrum = lazy(() => import('./pages/conditions/AutismSpectrum'))
+const ReactiveAttachmentDisorder = lazy(() => import('./pages/conditions/ReactiveAttachmentDisorder'))
 const OppositionalDefiant = lazy(() => import('./pages/conditions/OppositionalDefiant'))
 const ConductDisorder = lazy(() => import('./pages/conditions/ConductDisorder'))
 const DMDD = lazy(() => import('./pages/conditions/DMDD'))
@@ -50,6 +50,7 @@ const BenzodiazepineAbuse = lazy(() => import('./pages/conditions/Benzodiazepine
 const CocaineAbuse = lazy(() => import('./pages/conditions/CocaineAbuse'))
 const MethAbuse = lazy(() => import('./pages/conditions/MethAbuse'))
 const CannabisAbuse = lazy(() => import('./pages/conditions/CannabisAbuse'))
+const MdmaAbuse = lazy(() => import('./pages/conditions/MdmaAbuse'))
 const AnorexiaNervosa = lazy(() => import('./pages/conditions/AnorexiaNervosa'))
 const BulimiaNervosa = lazy(() => import('./pages/conditions/BulimiaNervosa'))
 const BingeEating = lazy(() => import('./pages/conditions/BingeEating'))
@@ -233,10 +234,10 @@ export const routes: RouteObject[] = [
     ),
   },
   {
-    path: '/programs/art-music-therapy',
+    path: '/programs/recreational-therapy',
     element: (
       <S>
-        <ArtMusicTherapy />
+        <RecreationalTherapy />
       </S>
     ),
   },
@@ -347,10 +348,10 @@ export const routes: RouteObject[] = [
     ),
   },
   {
-    path: '/conditions/autism-spectrum-treatment',
+    path: '/conditions/reactive-attachment-disorder-treatment',
     element: (
       <S>
-        <AutismSpectrum />
+        <ReactiveAttachmentDisorder />
       </S>
     ),
   },
@@ -457,6 +458,14 @@ export const routes: RouteObject[] = [
     element: (
       <S>
         <CannabisAbuse />
+      </S>
+    ),
+  },
+  {
+    path: '/conditions/mdma-treatment',
+    element: (
+      <S>
+        <MdmaAbuse />
       </S>
     ),
   },

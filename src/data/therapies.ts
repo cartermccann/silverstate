@@ -9,7 +9,7 @@ export const therapyNames: string[] = [
   'Group Therapy',
   'Family Therapy',
   'Meditation & Mindfulness',
-  'Art & Music Therapy',
+  'Recreational Therapy',
   'Adventure Therapy',
   'Holistic Treatment',
   'Crisis Prevention & Intervention (CPI)',
@@ -244,26 +244,26 @@ export const therapyModalities: TherapyModality[] = [
     ],
   },
   {
-    slug: 'art-music-therapy',
-    name: 'Art & Music Therapy',
+    slug: 'recreational-therapy',
+    name: 'Recreational Therapy',
     heroImage: '/assets/facility-gallery/game-room-pool-closeup.jpg',
-    shortName: 'Art & Music',
+    shortName: 'Rec Therapy',
     description:
-      'Art therapy for teens and music therapy use creative expression as powerful therapeutic tools. At Silver State, licensed art and music therapists \u2014 credentialed through the American Art Therapy Association and the Certification Board for Music Therapists \u2014 guide adolescents through creative activities that help process emotions, reduce stress, and develop self-awareness without relying solely on verbal communication. These are not recreational art classes; they are clinically directed sessions with specific therapeutic goals.\n\nIn art therapy sessions, teens may paint, draw, sculpt, collage, or work with mixed media to explore and express their inner experiences. The therapist observes the creative process, asks reflective questions, and helps the teen connect their artwork to their emotional life. Music therapy sessions may involve songwriting, drumming, guided listening, or instrumental improvisation. Both modalities engage different parts of the brain than traditional talk therapy, often accessing emotions and memories that words alone cannot reach.\n\nOur therapists adapt creative therapy activities for different ages, abilities, and comfort levels \u2014 no artistic talent is required. Parents often notice that their teen becomes more emotionally expressive and communicative after engaging in art and music therapy. Creative work produced in sessions can serve as a meaningful record of the teen\u2019s healing journey.',
+      'Recreational therapy at Silver State uses purposeful, structured activities to address therapeutic goals for adolescents. Our certified recreational therapist designs programs that incorporate sports, team-building exercises, outdoor recreation, fitness challenges, and leisure skill development \u2014 all tailored to each teen\u2019s treatment plan. These are not simply free-time activities; every session is clinically directed with specific objectives tied to the teen\u2019s mental health goals.\n\nActivities may include basketball, pickleball, yoga, hiking, team challenges, board games, and creative projects. Through these experiences, teens practice social skills, frustration tolerance, communication, and cooperation in a natural, low-pressure environment. The recreational therapist observes group dynamics, coaches teens through conflicts in real time, and helps them connect what they learn during activities to their broader treatment goals.\n\nRecreational therapy is especially effective for teens who struggle in traditional talk-therapy settings. Physical activity and play provide alternative pathways to emotional processing, stress relief, and self-discovery. Parents often notice improvements in their teen\u2019s confidence, social engagement, and willingness to try new things after participating in recreational therapy.',
     howItHelps:
-      'Many adolescents struggle to express their feelings in words, especially when dealing with trauma, shame, or overwhelming emotions. Art therapy for teens provides alternative channels for emotional expression, helping them access and process feelings they may not be able to articulate verbally. The creative process itself can be calming and grounding, reducing anxiety and providing a healthy outlet for difficult emotions.\n\nSkills developed through creative therapies \u2014 including emotional expression, frustration tolerance, creative problem-solving, and self-reflection \u2014 carry over into all areas of a teen\u2019s life. Adolescents learn that they have the internal resources to express and manage their feelings, building confidence and self-efficacy that supports long-term recovery.',
+      'Many adolescents find it difficult to engage in traditional therapy alone, particularly those dealing with trauma, depression, or social anxiety. Recreational therapy provides a structured yet enjoyable context where teens can build confidence, develop healthy coping skills, and practice interpersonal skills without the pressure of a clinical setting.\n\nSkills developed through recreational therapy \u2014 including teamwork, leadership, emotional regulation, problem-solving, and healthy competition \u2014 transfer directly into everyday life. Teens learn to manage frustration, celebrate effort over outcome, and build meaningful connections with peers. The physical activity component also supports mood regulation and overall wellness, complementing clinical therapies.',
     usedFor: ['trauma-ptsd-treatment', 'depression-treatment', 'anxiety-treatment'],
     evidenceBasis:
-      'Art and music therapy are recognized as effective complementary treatments by the American Psychological Association. A 2015 meta-analysis in the Arts in Psychotherapy found significant reductions in depression and anxiety symptoms among adolescents receiving art therapy. Music therapy research published in the Journal of Music Therapy demonstrates improvements in emotional regulation, social functioning, and self-esteem in teen populations.',
-    metaTitle: 'Art & Music Therapy for Teens | Silver State',
+      'Recreational therapy is recognized by the American Therapeutic Recreation Association as an evidence-based practice for improving mental health outcomes. Research published in Therapeutic Recreation Journal demonstrates that structured recreational interventions reduce symptoms of depression, anxiety, and social withdrawal in adolescents. Studies in the Journal of Leisure Research show that recreational therapy improves self-esteem, social competence, and emotional regulation in youth populations.',
+    metaTitle: 'Recreational Therapy for Teens | Silver State',
     metaDescription:
-      'Art therapy for teens and music therapy at Silver State use creative expression to process emotions and heal. Licensed therapists guide clinical sessions.',
+      'Recreational therapy at Silver State uses structured activities, sports, and team-building to help teens build confidence, social skills, and healthy coping strategies.',
     seoKeywords: [
-      'art therapy for teens',
-      'music therapy for adolescents',
-      'teen art therapy',
-      'creative arts therapy for teens',
-      'adolescent art and music therapy',
+      'recreational therapy for teens',
+      'teen recreational therapy',
+      'adolescent recreational therapy',
+      'therapeutic recreation for teens',
+      'teen activity therapy',
     ],
   },
   {

@@ -8,8 +8,8 @@ import {
 } from './conditions'
 
 describe('conditions data (Story 4.1)', () => {
-  it('exports 25 conditions and keeps conditionPages as a legacy alias', () => {
-    expect(conditions).toHaveLength(25)
+  it('exports 28 conditions and keeps conditionPages as a legacy alias', () => {
+    expect(conditions).toHaveLength(28)
     expect(conditionPages).toBe(conditions)
   })
 
