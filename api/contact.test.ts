@@ -124,7 +124,7 @@ describe('api/contact handler', () => {
         body: {
           name: '  Jane <b>Doe</b>  ',
           email: 'jane@example.com',
-          phone: '+1 (725) 525-9897',
+          phone: '+1 (725) 239-7557',
           message: 'Need <more> help with admissions details.',
         },
       }),

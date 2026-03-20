@@ -259,14 +259,6 @@ export default function HIPAA() {
           <a href="tel:7029190190" style={{ color: 'var(--blue)', textDecoration: 'none' }}>
             (702) 919-0190
           </a>
-          <br />
-          <strong>Email:</strong>{' '}
-          <a
-            href={`mailto:${site.email}`}
-            style={{ color: 'var(--blue)', textDecoration: 'none' }}
-          >
-            {site.email}
-          </a>
         </p>
         <p style={paragraphStyle}>
           If you believe your privacy rights have been violated, you may file a complaint with our

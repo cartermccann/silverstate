@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react'
 import { Link } from 'react-router'
-import { IconMapPin, IconPhone, IconMail } from './Icons'
+import { IconMapPin, IconPhone } from './Icons'
 import { OPEN_CONSENT_EVENT } from '../utils/consentEvents'
 import { footerLinks, site, accreditations, CDN_URL } from '../data/common'
 
@@ -35,7 +35,6 @@ const contactRowStyle: CSSProperties = {
 
 export default function Footer() {
   const phoneAriaLabel = `Call Silver State at ${site.phone}`
-  const emailAriaLabel = `Email Silver State at ${site.email}`
   const cookiePrefsAriaLabel = 'Open cookie preferences'
 
   function openCookiePreferences() {
@@ -82,9 +81,6 @@ export default function Footer() {
               </span>
               <a href={site.phoneTel} aria-label={phoneAriaLabel} style={contactRowStyle}>
                 <IconPhone /> {site.phone}
-              </a>
-              <a href={`mailto:${site.email}`} aria-label={emailAriaLabel} style={contactRowStyle}>
-                <IconMail /> {site.email}
               </a>
             </div>
           </div>

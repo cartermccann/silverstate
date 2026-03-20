@@ -5,9 +5,9 @@ export const CDN_URL = ''
 export const site: SiteInfo = {
   name: 'Silver State Adolescent Treatment Center',
   tagline: 'Empowering Teens to Blossom',
-  phone: '(725) 525-9897',
-  phoneTel: 'tel:7255259897',
-  email: 'info@silverstateatc.com',
+  phone: '(725) 239-7557',
+  phoneTel: 'tel:7252397557',
+  email: '',
   address: '8225 W Robindale Rd, Las Vegas, NV 89113',
   ages: '11-17',
   rating: 4.8,
@@ -70,7 +70,6 @@ export const navLinks: NavLinkItemWithDropdown[] = [
           { label: 'Bipolar Disorder', href: '/conditions/bipolar-disorder-treatment' },
           { label: 'Suicidal Ideation', href: '/conditions/suicidal-ideation-treatment' },
         ],
-        viewAll: { label: 'View All Conditions', href: '/conditions' },
       },
       {
         heading: 'Substance Abuse',
@@ -83,7 +82,6 @@ export const navLinks: NavLinkItemWithDropdown[] = [
           { label: 'Cocaine Abuse', href: '/conditions/cocaine-abuse-treatment' },
           { label: 'MDMA & Ecstasy', href: '/conditions/mdma-treatment' },
         ],
-        viewAll: { label: 'View All Conditions', href: '/conditions' },
       },
       {
         heading: 'Eating Disorders',
@@ -95,7 +93,7 @@ export const navLinks: NavLinkItemWithDropdown[] = [
           { label: 'Compulsive Eating', href: '/conditions/compulsive-eating-treatment' },
           { label: 'School Refusal', href: '/conditions/school-refusal-treatment' },
         ],
-        viewAll: { label: 'View All Conditions', href: '/conditions' },
+        viewAll: { label: 'All Conditions', href: '/conditions' },
       },
     ],
   },
@@ -128,7 +126,7 @@ export const navLinks: NavLinkItemWithDropdown[] = [
         links: [
           { label: 'Verify Your Coverage', href: '/insurance' },
           { label: 'Contact Admissions', href: '/admissions' },
-          { label: 'Call (725) 525-9897', href: 'tel:7255259897' },
+          { label: 'Call (725) 239-7557', href: 'tel:7252397557' },
         ],
       },
     ],

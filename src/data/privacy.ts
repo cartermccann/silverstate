@@ -98,7 +98,7 @@ export const privacySections: PrivacySection[] = [
       'Right to know: You may request information about what personal data we have collected about you.',
       'Right to deletion: You may request that we delete any personal information we have collected from you through this website.',
       'Right to opt out: You may opt out of analytics tracking at any time by declining or revoking cookie consent through the cookie consent banner.',
-      `Nevada privacy rights: Under Nevada Revised Statutes Chapter 603A, Nevada residents have the right to submit a verified request directing us not to sell their personal information. We do not sell personal information, but you may submit such a request by contacting us at ${site.email} or calling ${site.phone}.`,
+      `Nevada privacy rights: Under Nevada Revised Statutes Chapter 603A, Nevada residents have the right to submit a verified request directing us not to sell their personal information. We do not sell personal information, but you may submit such a request by calling ${site.phone}.`,
       `To exercise any of these rights, please contact us using the information provided in the "Contact Us" section below.`,
     ],
   },
@@ -125,7 +125,6 @@ export const privacySections: PrivacySection[] = [
     content: [
       'If you have questions or concerns about this Privacy Policy, your personal information, or our privacy practices, please contact us:',
       `Phone: ${site.phone}`,
-      `Email: ${site.email}`,
       `Address: ${site.address}`,
       'We will respond to your inquiry as promptly as possible, typically within 5 business days.',
     ],

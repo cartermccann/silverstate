@@ -47,7 +47,7 @@ describe('ErrorBoundary', () => {
       </ErrorBoundary>,
     )
     const phoneCta = screen.getByRole('link', { name: /call/i })
-    expect(phoneCta).toHaveAttribute('href', 'tel:7255259897')
+    expect(phoneCta).toHaveAttribute('href', 'tel:7252397557')
   })
 
   it('displays homepage link in fallback', () => {

@@ -8,7 +8,7 @@ import useIsMobile from '../hooks/useIsMobile'
 import AnimateIn from '../components/AnimateIn'
 import { CharReveal } from '../components/TextReveal'
 import MagneticButton from '../components/MagneticButton'
-import { IconPhone, IconMapPin, IconMail, IconArrowRight } from '../components/Icons'
+import { IconPhone, IconMapPin, IconArrowRight } from '../components/Icons'
 
 const DISPLAY = 'var(--font-display)'
 const WARM = 'var(--warm)'
@@ -18,7 +18,7 @@ const localBusinessSchema = generateLocalBusiness({ url: '/contact' })
 export const meta = generateMeta({
   title: 'Contact Us | Silver State Adolescent Treatment Center',
   description:
-    'Contact Silver State Adolescent Treatment Center. Call 24/7 at (725) 525-9897 or send a message. Our admissions team is ready to help your family.',
+    'Contact Silver State Adolescent Treatment Center. Call 24/7 at (725) 239-7557 or send a message. Our admissions team is ready to help your family.',
   path: '/contact',
   keywords: ['contact teen treatment center', 'Silver State contact', 'teen treatment Las Vegas contact', 'adolescent treatment inquiry', 'mental health treatment contact'],
   ogImage: facilityData.images[0]?.src,
@@ -289,48 +289,6 @@ export default function Contact() {
                         }}
                       >
                         {site.phone}
-                      </a>
-                    </div>
-                  </div>
-
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'flex-start',
-                      gap: 12,
-                      marginBottom: 20,
-                    }}
-                  >
-                    <IconMail
-                      style={{
-                        width: 20,
-                        height: 20,
-                        flexShrink: 0,
-                        marginTop: 2,
-                        color: 'var(--sage)',
-                      }}
-                    />
-                    <div>
-                      <p
-                        style={{
-                          fontFamily: DISPLAY,
-                          fontWeight: 600,
-                          fontSize: '0.9rem',
-                          marginBottom: 4,
-                          color: 'var(--text)',
-                        }}
-                      >
-                        Email
-                      </p>
-                      <a
-                        href={`mailto:${site.email}`}
-                        style={{
-                          color: 'var(--blue)',
-                          textDecoration: 'none',
-                          fontSize: '1rem',
-                        }}
-                      >
-                        {site.email}
                       </a>
                     </div>
                   </div>

@@ -1,10 +1,11 @@
 // CTM (Call Tracking Metrics) — Dynamic Number Insertion utility
-// Loads the CTM script asynchronously and provides helpers for SPA re-scanning.
+// Account: 497356 | Script: //497356.tctm.co/t.js
+// Primary script loads in index.html <head> per CTM standards.
+// This module handles SPA re-scanning after React route changes.
 
-export interface CTMConfig {
-  accountId: string
-  phoneNumber: string
-}
+const CTM_ACCOUNT_ID = '497356'
+const CTM_SCRIPT_URL = `https://${CTM_ACCOUNT_ID}.tctm.co/t.js`
+const CTM_SCRIPT_ID = 'ss-ctm-script'
 
 // CTM global API shape (available after script loads)
 declare global {
@@ -17,42 +18,15 @@ declare global {
 
 let ctmLoaded = false
 let ctmLoading = false
-const CTM_SCRIPT_ID = 'ss-ctm-script'
-
-function resolveCTMScriptUrl(accountId: string): string {
-  const encodedAccountId = encodeURIComponent(accountId)
-  const configuredBaseUrl = import.meta.env.VITE_CTM_BASE_URL?.trim()
-
-  if (!configuredBaseUrl) {
-    return `https://${encodedAccountId}.tctm.co/t.js`
-  }
-
-  // Supports placeholders like {ACCOUNT_ID} or {accountId}.
-  const baseUrl = configuredBaseUrl
-    .replaceAll('{ACCOUNT_ID}', encodedAccountId)
-    .replaceAll('{accountId}', encodedAccountId)
-    .replace(/\/+$/, '')
-
-  return baseUrl.endsWith('.js') ? baseUrl : `${baseUrl}/t.js`
-}
 
 /**
- * Load the CTM JavaScript snippet asynchronously.
- * Uses the CTM account ID from VITE_CTM_ID.
- * NOTE: The actual CTM script URL pattern should be confirmed with the CTM account setup.
- * Common patterns: https://{ACCOUNT_ID}.tctm.co/t.js or a CTM-provided script URL.
+ * Load the CTM tracking script.
+ * The primary load happens in index.html <head>, but this serves
+ * as a fallback if the head script hasn't loaded yet (e.g. consent-gated).
  */
 export function loadCTMScript(): void {
   if (typeof window === 'undefined') return
   if (ctmLoaded || ctmLoading) return
-
-  const accountId = import.meta.env.VITE_CTM_ID
-  if (!accountId) {
-    if (import.meta.env.DEV) {
-      console.debug('[CTM] VITE_CTM_ID not set — skipping CTM script load')
-    }
-    return
-  }
 
   const existingScript = document.getElementById(CTM_SCRIPT_ID)
   if (existingScript) return
@@ -60,9 +34,7 @@ export function loadCTMScript(): void {
   const script = document.createElement('script')
   script.id = CTM_SCRIPT_ID
   script.async = true
-  // CTM script URL — confirm with CTM account setup.
-  // Optionally configurable via VITE_CTM_BASE_URL.
-  script.src = resolveCTMScriptUrl(accountId)
+  script.src = CTM_SCRIPT_URL
   ctmLoading = true
   script.addEventListener('load', () => {
     ctmLoaded = true
@@ -77,8 +49,7 @@ export function loadCTMScript(): void {
 }
 
 /**
- * Initialize CTM — loads the script with a delay to avoid blocking LCP.
- * Uses requestIdleCallback (with setTimeout fallback) to defer loading.
+ * Initialize CTM — defers loading to avoid blocking LCP.
  */
 export function initializeCTM(): void {
   if (typeof window === 'undefined') return
@@ -94,7 +65,7 @@ export function initializeCTM(): void {
 
 /**
  * Trigger CTM to re-scan an element for phone numbers to replace.
- * Useful after React re-renders or SPA navigation that injects new phone CTAs.
+ * Call this after SPA navigation so new phone CTAs get swapped.
  */
 export function replaceCTMNumber(element: HTMLElement): void {
   if (typeof window === 'undefined') return
@@ -105,7 +76,6 @@ export function replaceCTMNumber(element: HTMLElement): void {
 
 /**
  * Best-effort CTM teardown for consent revocation.
- * Removes script and clears in-memory CTM state.
  */
 export function disableCTM(): void {
   if (typeof window === 'undefined') return

@@ -43,7 +43,7 @@ export const locations: LocationData[] = [
     relatedConditions: ['anxiety', 'depression', 'substance-abuse'],
     metaTitle: 'Teen Treatment Near Henderson, NV | Silver State Adolescent Treatment',
     metaDescription:
-      'Silver State serves Henderson, NV families with adolescent residential treatment and therapy. Located just 20-25 minutes away in Las Vegas. Call (725) 525-9897.',
+      'Silver State serves Henderson, NV families with adolescent residential treatment and therapy. Located just 20-25 minutes away in Las Vegas. Call (725) 239-7557.',
   },
   {
     name: 'North Las Vegas',
@@ -62,7 +62,7 @@ export const locations: LocationData[] = [
     relatedConditions: ['anxiety', 'depression', 'substance-abuse', 'conduct-disorder'],
     metaTitle: 'Teen Treatment Near North Las Vegas, NV | Silver State Treatment',
     metaDescription:
-      'Silver State serves North Las Vegas, NV families with teen residential treatment and therapy. Located approximately 25-30 minutes away. Call (725) 525-9897.',
+      'Silver State serves North Las Vegas, NV families with teen residential treatment and therapy. Located approximately 25-30 minutes away. Call (725) 239-7557.',
   },
   {
     name: 'Summerlin',
@@ -81,7 +81,7 @@ export const locations: LocationData[] = [
     relatedConditions: ['anxiety', 'depression', 'eating-disorders', 'ocd'],
     metaTitle: 'Adolescent Treatment Near Summerlin, NV | Silver State Treatment',
     metaDescription:
-      'Silver State serves Summerlin, NV families with adolescent residential treatment and therapy. Just 15-20 minutes away in Las Vegas. Call (725) 525-9897.',
+      'Silver State serves Summerlin, NV families with adolescent residential treatment and therapy. Just 15-20 minutes away in Las Vegas. Call (725) 239-7557.',
   },
   {
     name: 'Clark County',
@@ -106,7 +106,7 @@ export const locations: LocationData[] = [
     ],
     metaTitle: 'Teen Treatment in Clark County, NV | Silver State Treatment Center',
     metaDescription:
-      'Silver State serves all of Clark County, NV with adolescent residential treatment and therapy for teens 11-17. Located in Las Vegas. Call (725) 525-9897.',
+      'Silver State serves all of Clark County, NV with adolescent residential treatment and therapy for teens 11-17. Located in Las Vegas. Call (725) 239-7557.',
   },
 ]
 
