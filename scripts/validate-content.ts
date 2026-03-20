@@ -273,7 +273,6 @@ function validateCommon(): void {
   requireString('common.ts', 'site', 'name', site.name)
   requireString('common.ts', 'site', 'phone', site.phone)
   requireString('common.ts', 'site', 'phoneTel', site.phoneTel)
-  requireString('common.ts', 'site', 'email', site.email)
   requireString('common.ts', 'site', 'address', site.address)
 
   requireArray('common.ts', 'navLinks', 'navLinks', navLinks)
