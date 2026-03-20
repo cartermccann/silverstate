@@ -161,7 +161,7 @@ export default function Home() {
             objectFit: 'cover',
           }}
         >
-          <source src="/Videos/silverstate-tour.mp4" type="video/mp4" />
+          <source src="/Videos/hero-bg.mp4" type="video/mp4" />
         </video>
 
         {/* Overlay gradient */}
