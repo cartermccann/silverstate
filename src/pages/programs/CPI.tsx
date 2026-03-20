@@ -1,3 +1,4 @@
+import { facilityImg } from '../../data/image-url'
 import { useState } from 'react'
 import { Link } from 'react-router'
 import { site } from '../../data/common'
@@ -109,7 +110,7 @@ export default function CPI() {
       {/* ── 1. FULL-WIDTH HERO IMAGE ── */}
       <div style={{ width: '100%', overflow: 'hidden', maxHeight: 480 }}>
         <img
-          src="/assets/facility-gallery/common-area-lounge.jpg"
+          src={facilityImg('common-area-lounge.jpg')}
           alt="Silver State common area — safe therapeutic environment"
           loading="eager"
           width={1600}
@@ -205,7 +206,7 @@ export default function CPI() {
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 4 }}>
         <div style={{ overflow: 'hidden', maxHeight: 360 }}>
           <img
-            src="/assets/facility-gallery/nursing-station-wide.jpg"
+            src={facilityImg('nursing-station-wide.jpg')}
             alt="Silver State nursing station with clinical monitoring"
             loading="lazy"
             style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
@@ -213,7 +214,7 @@ export default function CPI() {
         </div>
         <div style={{ overflow: 'hidden', maxHeight: 360 }}>
           <img
-            src="/assets/facility-gallery/therapy-room-cozy.jpg"
+            src={facilityImg('therapy-room-cozy.jpg')}
             alt="Comfortable therapy room at Silver State"
             loading="lazy"
             style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
@@ -424,7 +425,7 @@ export default function CPI() {
 
             <AnimateIn variant="fadeUp" delay={0.15}>
               <img
-                src="/assets/facility-gallery/therapy-room-counselor.jpg"
+                src={facilityImg('therapy-room-counselor.jpg')}
                 alt="Therapy room at Silver State — CPI-trained clinical environment"
                 loading="lazy"
                 style={{

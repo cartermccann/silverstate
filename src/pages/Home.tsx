@@ -1,3 +1,4 @@
+import { facilityImg } from '../data/image-url'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router'
 import AnimateIn, { StaggerGroup, StaggerItem } from '../components/AnimateIn'
@@ -760,7 +761,7 @@ export default function Home() {
                 }}
               >
                 <img
-                  src="/assets/facility-gallery/classroom-mural-tv.jpg"
+                  src={facilityImg('classroom-mural-tv.jpg')}
                   alt="Silver State Youth Academy classroom with inspirational mural"
                   loading="lazy"
                   style={{

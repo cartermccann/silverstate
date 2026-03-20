@@ -1,18 +1,8 @@
 import type { LightboxImage } from '../types'
-
-// Supports both browser runtime (import.meta.env) and Node build scripts (globalThis.process.env).
-const baseUrl =
-  (import.meta as ImportMeta & { env?: Record<string, string | undefined> }).env
-    ?.VITE_R2_BASE_URL ||
-  (
-    globalThis as {
-      process?: { env?: Record<string, string | undefined> }
-    }
-  ).process?.env?.VITE_R2_BASE_URL ||
-  '/assets'
+import { facilityImg } from './image-url'
 
 const img = (file: string, alt: string, caption: string): LightboxImage => ({
-  src: `${baseUrl}/facility-gallery/${file}`,
+  src: facilityImg(file),
   alt,
   caption,
 })
